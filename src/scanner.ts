@@ -125,8 +125,18 @@ export function createScanner(
     let current = 0;
     let token: Token | undefined
 
+    return {
+        isEOF,
+        nextToken,
+        currentToken,
+    }
+
+    function isEOF () {
+        return token?.kind === TokenKind.EndOfFile;
+    }
+
     function currentToken() {
-        return token
+        return token!;
     }
 
     function nextToken() {
@@ -136,7 +146,8 @@ export function createScanner(
 
     function scan() {
         if (current >= text.length) {
-            return createToken(TokenKind.EndOfFile, current, current);
+            token = createToken(TokenKind.EndOfFile, current, current);
+            return;
         }
 
         const ch = text[current];
@@ -263,13 +274,5 @@ export function createScanner(
                 }
                 throw new Error("Unknown token" + ch)
         }
-    }
-
-    function getTokenText() {
-
-    }
-
-    function getTokenFullStart() {
-
     }
 }
