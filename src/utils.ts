@@ -4,6 +4,9 @@ export function setupDebugInfo (node: ASTNode) {
     node.__debugKind = SyntaxKind[node.kind];
 }
 
+export function isDef<T>(v: T): v is NonNullable<T> {
+    return v !== undefined && v !== null;
+}
 
 export enum Chars {
     Add = "+",

@@ -131,10 +131,10 @@ export type TokenSyntaxKind =
 export interface ASTNode {
     kind: SyntaxKind;
     pos: number;
+    fullPos: number;
+    leadingIdent: number;
     end: number;
     comments?: string;
-    leadingWhitespaceWidth?: number;
-    tralingWhitespaceWidth?: number
 
     __debugKind?: string
 }
