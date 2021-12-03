@@ -133,6 +133,9 @@ export interface ASTNode {
     pos: number;
     end: number;
     comments?: string;
+    leadingWhitespaceWidth?: number;
+    tralingWhitespaceWidth?: number
+
     __debugKind?: string
 }
 

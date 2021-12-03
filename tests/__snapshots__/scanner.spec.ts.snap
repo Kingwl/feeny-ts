@@ -1,54 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Scanner Should work with Arrays 1`] = `
-Array [
-  Object {
-    "__debugKind": "ArrayKeyword",
-    "end": 6,
-    "kind": 23,
-    "pos": 0,
-  },
-  Object {
-    "__debugKind": "OpenParenToken",
-    "end": 8,
-    "kind": 2,
-    "pos": 7,
-  },
-  Object {
-    "__debugKind": "IntegerToken",
-    "end": 10,
-    "kind": 19,
-    "pos": 8,
-    "value": "10",
-  },
-  Object {
-    "__debugKind": "CommaToken",
-    "end": 11,
-    "kind": 1,
-    "pos": 10,
-  },
-  Object {
-    "__debugKind": "IntegerToken",
-    "end": 13,
-    "kind": 19,
-    "pos": 12,
-    "value": "0",
-  },
-  Object {
-    "__debugKind": "CloseParenToken",
-    "end": 14,
-    "kind": 3,
-    "pos": 13,
-  },
-  Object {
-    "__debugKind": "EndOfFileToken",
-    "end": 14,
-    "kind": 33,
-    "pos": 14,
-  },
-]
-`;
-
 exports[`Scanner Should work with arrays 1`] = `
 Array [
   Object {
