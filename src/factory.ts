@@ -1,14 +1,16 @@
-import { AllTokens, GenericToken, IdentifierToken, IntegerLiteralToken, StringLiteralToken, Token, TokenKind } from "./types";
+import { TokenSyntaxKind } from "./types";
+import { GenericToken, IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
 
-export function createToken <K extends TokenKind>(kind: K, pos: number, end: number): GenericToken<K> {
+export function createToken <K extends TokenSyntaxKind>(kind: K, pos: number, end: number): GenericToken<K> {
     const token = { kind } as GenericToken<K>
     token.pos = pos;
     token.end = end;
+
     return token
 }
 
 export function createStringLiteralToken(pos: number, end: number, value: string): StringLiteralToken {
-    const token = { kind: TokenKind.String } as StringLiteralToken
+    const token = { kind: SyntaxKind.StringToken } as StringLiteralToken
     token.pos = pos;
     token.end = end;
     token.value = value;
@@ -16,7 +18,7 @@ export function createStringLiteralToken(pos: number, end: number, value: string
 }
 
 export function createNumberLiteralToken(pos: number, end: number, value: string): IntegerLiteralToken {
-    const token = { kind: TokenKind.Integer } as IntegerLiteralToken
+    const token = { kind: SyntaxKind.IntegerToken } as IntegerLiteralToken
     token.pos = pos;
     token.end = end;
     token.value = value;
@@ -24,7 +26,7 @@ export function createNumberLiteralToken(pos: number, end: number, value: string
 }
 
 export function createIdentifier(pos: number, end: number, id: string): IdentifierToken {
-    const token = { kind: TokenKind.Identifier } as IdentifierToken
+    const token = { kind: SyntaxKind.Identifier } as IdentifierToken
     token.pos = pos;
     token.end = end;
     token.id = id;

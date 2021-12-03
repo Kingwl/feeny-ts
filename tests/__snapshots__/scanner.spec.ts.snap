@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scanner Should work with integer 1`] = `
+Array [
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 1,
+    "kind": 19,
+    "pos": 0,
+    "value": "1",
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 1,
+    "kind": 33,
+    "pos": 1,
+  },
+]
+`;
+
+exports[`Scanner Should work with variable reference 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "id": "x",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 1,
+    "kind": 33,
+    "pos": 1,
+  },
+]
+`;

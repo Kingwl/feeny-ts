@@ -1,31 +1,44 @@
-export enum TokenKind {
+export type BinaryShorthandToken =
+    | SyntaxKind.AddToken
+    | SyntaxKind.SubToken
+    | SyntaxKind.MulToken
+    | SyntaxKind.DivToken
+    | SyntaxKind.ModToken
+    | SyntaxKind.LessThanToken
+    | SyntaxKind.GreaterThanToken
+    | SyntaxKind.LessEqualsThanToken
+    | SyntaxKind.GreaterEqualsThanToken
+    | SyntaxKind.EqualsEqualsToken;
+
+export enum SyntaxKind {
     Unknown,
-    EndOfFile,
 
-    Comma,
-    OpenParen,
-    CloseParen,
-    Colon,
-    Dot,
-    Equals,
-    OpenBracket,
-    CloseBracket,
+    // Token
+    CommaToken,
+    OpenParenToken,
+    CloseParenToken,
+    ColonToken,
+    DotToken,
+    EqualsToken,
+    OpenBracketToken,
+    CloseBracketToken,
 
-    Add,
-    Sub,
-    Mul,
-    Div,
-    Mod,
-    LessThan,
-    GreaterThan,
-    LessEqualsThan,
-    GreaterEqualsThan,
-    EqualsEquals,
+    AddToken,
+    SubToken,
+    MulToken,
+    DivToken,
+    ModToken,
+    LessThanToken,
+    GreaterThanToken,
+    LessEqualsThanToken,
+    GreaterEqualsThanToken,
+    EqualsEqualsToken,
 
-    Integer,
-    String,
-
+    IntegerToken,
+    StringToken,
     Identifier,
+
+    // Syntax
 
     PrintfKeyword,
     ArrayKeyword,
@@ -38,22 +51,9 @@ export enum TokenKind {
     WhileKeyword,
     MethodKeyword,
     DefnKeyword,
-}
 
-export type BinaryShorthandToken =
-    | TokenKind.Add
-    | TokenKind.Sub
-    | TokenKind.Mul
-    | TokenKind.Div
-    | TokenKind.Mod
-    | TokenKind.LessThan
-    | TokenKind.GreaterThan
-    | TokenKind.LessEqualsThan
-    | TokenKind.GreaterEqualsThan
-    | TokenKind.EqualsEquals;
-
-export enum SyntaxKind {
-    Unknown,
+    EndOfFileToken,
+    SourceFile,
 
     // Expression
     IntegerLiteral,
@@ -88,77 +88,114 @@ export enum SyntaxKind {
     BinaryShorthand,
     GetShorthand,
     SetShorthand,
-
-    // Global
-    SourceFile
 }
 
+export type KeywordSyntaxKind =
+    | SyntaxKind.PrintfKeyword
+    | SyntaxKind.ArrayKeyword
+    | SyntaxKind.NullKeyword
+    | SyntaxKind.ObjectKeyword
+    | SyntaxKind.VarKeyword
+    | SyntaxKind.ThisKeyword
+    | SyntaxKind.IfKeyword
+    | SyntaxKind.ElseKeyword
+    | SyntaxKind.WhileKeyword
+    | SyntaxKind.MethodKeyword
+    | SyntaxKind.DefnKeyword
+
+export type TokenSyntaxKind =
+    | KeywordSyntaxKind
+    | SyntaxKind.EndOfFileToken
+    | SyntaxKind.CommaToken
+    | SyntaxKind.OpenParenToken
+    | SyntaxKind.CloseParenToken
+    | SyntaxKind.ColonToken
+    | SyntaxKind.DotToken
+    | SyntaxKind.EqualsToken
+    | SyntaxKind.OpenBracketToken
+    | SyntaxKind.CloseBracketToken
+    | SyntaxKind.AddToken
+    | SyntaxKind.SubToken
+    | SyntaxKind.MulToken
+    | SyntaxKind.DivToken
+    | SyntaxKind.ModToken
+    | SyntaxKind.LessThanToken
+    | SyntaxKind.GreaterThanToken
+    | SyntaxKind.LessEqualsThanToken
+    | SyntaxKind.GreaterEqualsThanToken
+    | SyntaxKind.EqualsEqualsToken
+    | SyntaxKind.IntegerToken
+    | SyntaxKind.StringToken
+    | SyntaxKind.Identifier
+
 export interface ASTNode {
+    kind: SyntaxKind;
     pos: number;
     end: number;
     comments?: string;
+    __debugKind?: string
 }
 
 export interface SourceFile extends ASTNode {
     _sourceFileBrand: never;
-
+    kind: SyntaxKind.SourceFile;
     statements: Statement[]
 }
 
 export interface Token extends ASTNode {
     _tokenBrand: never
-    kind: TokenKind
+    kind: TokenSyntaxKind
 }
 
-export interface GenericToken<T extends TokenKind> extends Token {
+export interface GenericToken<T extends TokenSyntaxKind> extends Token {
     kind: T;
 }
 
 export interface IdentifierToken extends Token {
-    kind: TokenKind.Identifier;
+    kind: SyntaxKind.Identifier;
     id: string;
 }
 
 export interface StringLiteralToken extends Token {
-    kind: TokenKind.String;
+    kind: SyntaxKind.StringToken;
     value: string;
 }
 
 export interface IntegerLiteralToken extends Token {
-    kind: TokenKind.Integer;
+    kind: SyntaxKind.IntegerToken;
     value: string;
 }
 
-export type EndOfFileToken = GenericToken<TokenKind.EndOfFile>;
-export type NullToken = GenericToken<TokenKind.NullKeyword>;
-export type ArrayKeywordToken = GenericToken<TokenKind.ArrayKeyword>;
-export type ObjectKeywordToken = GenericToken<TokenKind.ObjectKeyword>;
-export type VarKeywordToken = GenericToken<TokenKind.VarKeyword>;
-export type ThisKeywordToken = GenericToken<TokenKind.ThisKeyword>;
-export type IfKeywordToken = GenericToken<TokenKind.IfKeyword>;
-export type ElseKeywordToken = GenericToken<TokenKind.ElseKeyword>;
-export type WhileKeywordToken = GenericToken<TokenKind.WhileKeyword>;
-export type MethodKeywordToken = GenericToken<TokenKind.MethodKeyword>;
-export type DefnKeywordToken = GenericToken<TokenKind.DefnKeyword>;
-export type PrintfKeywordToken = GenericToken<TokenKind.PrintfKeyword>;
-export type OpenParenToken = GenericToken<TokenKind.OpenParen>;
-export type CloseParenToken = GenericToken<TokenKind.CloseParen>;
-export type CommaToken = GenericToken<TokenKind.Comma>;
-export type ColonToken = GenericToken<TokenKind.Colon>;
-export type DotToken = GenericToken<TokenKind.Dot>;
-export type EqualsToken = GenericToken<TokenKind.Equals>;
-export type OpenBracketToken = GenericToken<TokenKind.OpenBracket>;
-export type CloseBracketToken = GenericToken<TokenKind.CloseBracket>;
-export type AddToken = GenericToken<TokenKind.Add>;
-export type SubToken = GenericToken<TokenKind.Sub>;
-export type MulToken = GenericToken<TokenKind.Mul>;
-export type DivToken = GenericToken<TokenKind.Div>;
-export type ModToken = GenericToken<TokenKind.Mod>;
-export type LessThanToken = GenericToken<TokenKind.LessThan>;
-export type GreaterThanToken = GenericToken<TokenKind.GreaterThan>;
-export type LessEqualsThanToken = GenericToken<TokenKind.LessEqualsThan>;
-export type GreaterEqualsThanToken = GenericToken<TokenKind.GreaterEqualsThan>;
-export type EqualsEqualsToken = GenericToken<TokenKind.EqualsEquals>;
+export type EndOfFileToken = GenericToken<SyntaxKind.EndOfFileToken>;
+export type NullToken = GenericToken<SyntaxKind.NullKeyword>;
+export type ArrayKeywordToken = GenericToken<SyntaxKind.ArrayKeyword>;
+export type ObjectKeywordToken = GenericToken<SyntaxKind.ObjectKeyword>;
+export type VarKeywordToken = GenericToken<SyntaxKind.VarKeyword>;
+export type ThisKeywordToken = GenericToken<SyntaxKind.ThisKeyword>;
+export type IfKeywordToken = GenericToken<SyntaxKind.IfKeyword>;
+export type ElseKeywordToken = GenericToken<SyntaxKind.ElseKeyword>;
+export type WhileKeywordToken = GenericToken<SyntaxKind.WhileKeyword>;
+export type MethodKeywordToken = GenericToken<SyntaxKind.MethodKeyword>;
+export type DefnKeywordToken = GenericToken<SyntaxKind.DefnKeyword>;
+export type PrintfKeywordToken = GenericToken<SyntaxKind.PrintfKeyword>;
+export type OpenParenToken = GenericToken<SyntaxKind.OpenParenToken>;
+export type CloseParenToken = GenericToken<SyntaxKind.CloseParenToken>;
+export type CommaToken = GenericToken<SyntaxKind.CommaToken>;
+export type ColonToken = GenericToken<SyntaxKind.ColonToken>;
+export type DotToken = GenericToken<SyntaxKind.DotToken>;
+export type EqualsToken = GenericToken<SyntaxKind.EqualsToken>;
+export type OpenBracketToken = GenericToken<SyntaxKind.OpenBracketToken>;
+export type CloseBracketToken = GenericToken<SyntaxKind.CloseBracketToken>;
+export type AddToken = GenericToken<SyntaxKind.AddToken>;
+export type SubToken = GenericToken<SyntaxKind.SubToken>;
+export type MulToken = GenericToken<SyntaxKind.MulToken>;
+export type DivToken = GenericToken<SyntaxKind.DivToken>;
+export type ModToken = GenericToken<SyntaxKind.ModToken>;
+export type LessThanToken = GenericToken<SyntaxKind.LessThanToken>;
+export type GreaterThanToken = GenericToken<SyntaxKind.GreaterThanToken>;
+export type LessEqualsThanToken = GenericToken<SyntaxKind.LessEqualsThanToken>;
+export type GreaterEqualsThanToken = GenericToken<SyntaxKind.GreaterEqualsThanToken>;
+export type EqualsEqualsToken = GenericToken<SyntaxKind.EqualsEqualsToken>;
 
 export type AllTokens =
     | EndOfFileToken

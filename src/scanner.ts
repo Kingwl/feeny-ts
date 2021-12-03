@@ -1,5 +1,6 @@
 import { createIdentifier, createNumberLiteralToken, createStringLiteralToken, createToken } from "./factory";
-import { Token, TokenKind } from "./types";
+import { Token, SyntaxKind } from "./types";
+import { setupDebugInfo } from "./utils";
 
 export enum Chars {
     Add = "+",
@@ -52,38 +53,57 @@ export enum Keywords {
     Printf = 'printf',
 }
 
+function isKeyword(value: string): value is Keywords {
+    switch (value) {
+        case Keywords.Null:
+        case Keywords.Arrays:
+        case Keywords.Object:
+        case Keywords.Var:
+        case Keywords.This:
+        case Keywords.If:
+        case Keywords.Else:
+        case Keywords.While:
+        case Keywords.Method:
+        case Keywords.Defn:
+        case Keywords.Printf:
+            return true;
+        default:
+            return false;
+    }
+}
+
 const CharsToTokenKind = {
-    [Chars.Add]: TokenKind.Add,
-    [Chars.Sub]: TokenKind.Sub,
-    [Chars.Mul]: TokenKind.Mul,
-    [Chars.Div]: TokenKind.Div,
-    [Chars.Mod]: TokenKind.Mod,
-    [Chars.LessThan]: TokenKind.LessThan,
-    [Chars.GreaterThan]: TokenKind.GreaterThan,
-    [Chars.Equals]: TokenKind.Equals,
-    [Chars.OpenParen]: TokenKind.OpenParen,
-    [Chars.CloseParen]: TokenKind.CloseParen,
-    [Chars.OpenBracket]: TokenKind.OpenBracket,
-    [Chars.CloseBracket]: TokenKind.CloseBracket,
-    [Chars.Dot]: TokenKind.Dot,
-    [Chars.Colon]: TokenKind.Colon,
-    [Chars.Comma]: TokenKind.Comma,
-    [Chars.Quote]: TokenKind.String,
+    [Chars.Add]: SyntaxKind.AddToken,
+    [Chars.Sub]: SyntaxKind.SubToken,
+    [Chars.Mul]: SyntaxKind.MulToken,
+    [Chars.Div]: SyntaxKind.DivToken,
+    [Chars.Mod]: SyntaxKind.ModToken,
+    [Chars.LessThan]: SyntaxKind.LessThanToken,
+    [Chars.GreaterThan]: SyntaxKind.GreaterThanToken,
+    [Chars.Equals]: SyntaxKind.EqualsToken,
+    [Chars.OpenParen]: SyntaxKind.OpenParenToken,
+    [Chars.CloseParen]: SyntaxKind.CloseParenToken,
+    [Chars.OpenBracket]: SyntaxKind.OpenBracketToken,
+    [Chars.CloseBracket]: SyntaxKind.CloseBracketToken,
+    [Chars.Dot]: SyntaxKind.DotToken,
+    [Chars.Colon]: SyntaxKind.ColonToken,
+    [Chars.Comma]: SyntaxKind.CommaToken,
+    [Chars.Quote]: SyntaxKind.StringToken,
 } as const;
 
-const KeywordsToTokenKind: Record<string, TokenKind> = {
-    [Keywords.Null]: TokenKind.NullKeyword,
-    [Keywords.Arrays]: TokenKind.ArrayKeyword,
-    [Keywords.Object]: TokenKind.ObjectKeyword,
-    [Keywords.Var]: TokenKind.VarKeyword,
-    [Keywords.This]: TokenKind.ThisKeyword,
-    [Keywords.If]: TokenKind.IfKeyword,
-    [Keywords.Else]: TokenKind.ElseKeyword,
-    [Keywords.While]: TokenKind.WhileKeyword,
-    [Keywords.Method]: TokenKind.MethodKeyword,
-    [Keywords.Defn]: TokenKind.DefnKeyword,
-    [Keywords.Printf]: TokenKind.PrintfKeyword,
-}
+const KeywordsToTokenKind = {
+    [Keywords.Null]: SyntaxKind.NullKeyword,
+    [Keywords.Arrays]: SyntaxKind.ArrayKeyword,
+    [Keywords.Object]: SyntaxKind.ObjectKeyword,
+    [Keywords.Var]: SyntaxKind.VarKeyword,
+    [Keywords.This]: SyntaxKind.ThisKeyword,
+    [Keywords.If]: SyntaxKind.IfKeyword,
+    [Keywords.Else]: SyntaxKind.ElseKeyword,
+    [Keywords.While]: SyntaxKind.WhileKeyword,
+    [Keywords.Method]: SyntaxKind.MethodKeyword,
+    [Keywords.Defn]: SyntaxKind.DefnKeyword,
+    [Keywords.Printf]: SyntaxKind.PrintfKeyword,
+} as const
 
 function isDigit(char: string): boolean {
     switch (char) {
@@ -132,7 +152,7 @@ export function createScanner(
     }
 
     function isEOF () {
-        return token?.kind === TokenKind.EndOfFile;
+        return token?.kind === SyntaxKind.EndOfFileToken;
     }
 
     function currentToken() {
@@ -141,12 +161,16 @@ export function createScanner(
 
     function nextToken() {
         scan();
+
+        if (token) {
+            setupDebugInfo(token);
+        }
         return currentToken();
     }
 
     function scan() {
         if (current >= text.length) {
-            token = createToken(TokenKind.EndOfFile, current, current);
+            token = createToken(SyntaxKind.EndOfFileToken, current, current);
             return;
         }
 
@@ -195,29 +219,29 @@ export function createScanner(
             case Chars.LessThan:
                 if (current + 1 < text.length && text[current + 1] === Chars.Equals) {
                     current += 2;
-                    token = createToken(TokenKind.LessEqualsThan, tokenStart, current);
+                    token = createToken(SyntaxKind.LessEqualsThanToken, tokenStart, current);
                     break;
                 }
                 current++;
-                token = createToken(TokenKind.LessThan, tokenStart, current);
+                token = createToken(SyntaxKind.LessThanToken, tokenStart, current);
                 break;
             case Chars.GreaterThan:
                 if (current + 1 < text.length && text[current + 1] === Chars.Equals) {
                     current += 2;
-                    token = createToken(TokenKind.GreaterEqualsThan, tokenStart, current);
+                    token = createToken(SyntaxKind.GreaterEqualsThanToken, tokenStart, current);
                     break;
                 }
                 current++;
-                token = createToken(TokenKind.GreaterThan, tokenStart, current);
+                token = createToken(SyntaxKind.GreaterThanToken, tokenStart, current);
                 break;
             case Chars.Equals:
                 if (current + 1 < text.length && text[current + 1] === Chars.Equals) {
                     current += 2;
-                    token = createToken(TokenKind.EqualsEquals, tokenStart, current);
+                    token = createToken(SyntaxKind.EqualsEqualsToken, tokenStart, current);
                     break;
                 }
                 current++;
-                token = createToken(TokenKind.Equals, tokenStart, current);
+                token = createToken(SyntaxKind.EqualsToken, tokenStart, current);
                 break;
             case Chars.Quote: {
                 current++;
@@ -264,8 +288,7 @@ export function createScanner(
                     }
                     current += i;
                     const value = text.substring(tokenStart, current);
-
-                    if (value in KeywordsToTokenKind) {
+                    if (isKeyword(value)) {
                         token = createToken(KeywordsToTokenKind[value], tokenStart, current);
                         break;
                     }
