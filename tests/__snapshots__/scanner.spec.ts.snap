@@ -3,7 +3,7 @@
 exports[`Scanner Should work with arrays 1`] = `
 Array [
   Object {
-    "__debugKind": "ArrayKeyword",
+    "__debugKind": "ArraysKeyword",
     "end": 6,
     "fullPos": 0,
     "kind": 23,
@@ -18,7 +18,7 @@ Array [
     "pos": 7,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 10,
     "fullPos": 8,
     "kind": 19,
@@ -33,7 +33,7 @@ Array [
     "pos": 10,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 13,
     "fullPos": 11,
     "kind": 19,
@@ -186,7 +186,7 @@ Array [
     "pos": 1,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 4,
     "fullPos": 2,
     "kind": 19,
@@ -236,7 +236,7 @@ Array [
     "pos": 6,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 10,
     "fullPos": 7,
     "kind": 19,
@@ -294,7 +294,7 @@ Array [
     "pos": 16,
   },
   Object {
-    "__debugKind": "StringToken",
+    "__debugKind": "StringLiteralToken",
     "end": 20,
     "fullPos": 17,
     "kind": 20,
@@ -338,7 +338,7 @@ Array [
     "pos": 38,
   },
   Object {
-    "__debugKind": "StringToken",
+    "__debugKind": "StringLiteralToken",
     "end": 42,
     "fullPos": 39,
     "kind": 20,
@@ -403,7 +403,7 @@ Array [
     "pos": 16,
   },
   Object {
-    "__debugKind": "StringToken",
+    "__debugKind": "StringLiteralToken",
     "end": 20,
     "fullPos": 17,
     "kind": 20,
@@ -430,7 +430,7 @@ Array [
 exports[`Scanner Should work with integer 1`] = `
 Array [
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 1,
     "fullPos": 0,
     "kind": 19,
@@ -515,7 +515,7 @@ Array [
     "pos": 6,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 10,
     "fullPos": 7,
     "kind": 19,
@@ -565,7 +565,7 @@ Array [
     "pos": 3,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 6,
     "fullPos": 4,
     "kind": 19,
@@ -611,7 +611,7 @@ Array [
 exports[`Scanner Should work with object 1`] = `
 Array [
   Object {
-    "__debugKind": "ObjectKeyword",
+    "__debugKind": "ObjectsKeyword",
     "end": 6,
     "fullPos": 0,
     "kind": 25,
@@ -670,7 +670,7 @@ Array [
     "pos": 21,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 25,
     "fullPos": 22,
     "kind": 19,
@@ -750,7 +750,7 @@ Array [
 exports[`Scanner Should work with object with slots 1`] = `
 Array [
   Object {
-    "__debugKind": "ObjectKeyword",
+    "__debugKind": "ObjectsKeyword",
     "end": 6,
     "fullPos": 0,
     "kind": 25,
@@ -809,7 +809,7 @@ Array [
     "pos": 21,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 25,
     "fullPos": 22,
     "kind": 19,
@@ -972,7 +972,7 @@ Array [
 exports[`Scanner Should work with object without extends 1`] = `
 Array [
   Object {
-    "__debugKind": "ObjectKeyword",
+    "__debugKind": "ObjectsKeyword",
     "end": 6,
     "fullPos": 0,
     "kind": 25,
@@ -1009,7 +1009,7 @@ Array [
     "pos": 18,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 22,
     "fullPos": 19,
     "kind": 19,
@@ -1104,7 +1104,7 @@ Array [
     "pos": 7,
   },
   Object {
-    "__debugKind": "StringToken",
+    "__debugKind": "StringLiteralToken",
     "end": 26,
     "fullPos": 8,
     "kind": 20,
@@ -1119,7 +1119,7 @@ Array [
     "pos": 27,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 30,
     "fullPos": 28,
     "kind": 19,
@@ -1177,7 +1177,7 @@ Array [
     "pos": 8,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 12,
     "fullPos": 9,
     "kind": 19,
@@ -1355,7 +1355,7 @@ Array [
     "pos": 2,
   },
   Object {
-    "__debugKind": "IntegerToken",
+    "__debugKind": "IntegerLiteralToken",
     "end": 6,
     "fullPos": 3,
     "kind": 19,
