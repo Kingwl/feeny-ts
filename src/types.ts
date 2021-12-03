@@ -358,7 +358,7 @@ export interface GlobalVariableStatement extends Statement {
 export interface FunctionStatement extends Statement {
     kind: SyntaxKind.FunctionStatement
     name: IdentifierToken
-    args: IdentifierToken[]
+    params: NodeArray<IdentifierToken>
     body: Statement
 }
 

@@ -51,6 +51,78 @@ Object {
 }
 `;
 
+exports[`Parser Should work with function 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 28,
+  "kind": 34,
+  "pos": 1,
+  "statements": Array [
+    Object {
+      "__debugKind": "FunctionStatement",
+      "body": Object {
+        "__debugKind": "LocalExpressionStatement",
+        "end": 28,
+        "expression": Object {
+          "__debugKind": "NullExpression",
+          "end": 28,
+          "kind": 39,
+          "pos": 23,
+          "token": Object {
+            "__debugKind": "NullKeyword",
+            "end": 27,
+            "fullPos": 18,
+            "kind": 24,
+            "leadingIndent": 4,
+            "pos": 23,
+          },
+        },
+        "kind": 52,
+        "pos": 23,
+      },
+      "end": 28,
+      "kind": 54,
+      "name": Object {
+        "__debugKind": "Identifier",
+        "end": 7,
+        "fullPos": 5,
+        "id": "f",
+        "kind": 21,
+        "leadingIndent": 1,
+        "pos": 6,
+      },
+      "params": Array [
+        Object {
+          "__debugKind": "Identifier",
+          "end": 9,
+          "fullPos": 8,
+          "id": "x",
+          "kind": 21,
+          "pos": 8,
+        },
+        Object {
+          "__debugKind": "Identifier",
+          "end": 12,
+          "fullPos": 10,
+          "id": "y",
+          "kind": 21,
+          "pos": 11,
+        },
+        Object {
+          "__debugKind": "Identifier",
+          "end": 15,
+          "fullPos": 13,
+          "id": "z",
+          "kind": 21,
+          "pos": 14,
+        },
+      ],
+      "pos": 1,
+    },
+  ],
+}
+`;
+
 exports[`Parser Should work with integer 1`] = `
 Object {
   "__debugKind": "SourceFile",

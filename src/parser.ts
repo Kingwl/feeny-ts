@@ -4,7 +4,7 @@ import { createScanner } from "./scanner"
 import { finishNode, finishNodeArray } from './utils'
 import { GlobalVariableStatement, NodeArray, TopLevelStatement } from "./types";
 import { AllTokens, Expression, FunctionStatement, IdentifierToken, IntegerLiteralExpression, IntegerLiteralToken, SequenceOfStatements, Token, TopLevelExpressionStatement, VariableReferenceExpression } from "./types";
-import { createArraysExpression, createLocalExpressionStatement, createLocalVariableStatement, createNullExpression, createObjectsExpression, createPrintingExpression, createSequenceOfStatements, createVariableSlot, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrintingExpression, StringLiteralToken, VariableSlot } from ".";
+import { createArraysExpression, createFunctionStatement, createLocalExpressionStatement, createLocalVariableStatement, createNullExpression, createObjectsExpression, createPrintingExpression, createSequenceOfStatements, createVariableSlot, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrintingExpression, StringLiteralToken, VariableSlot } from ".";
 
 export function createParser(text: string) {
     const scanner = createScanner(text);
@@ -145,8 +145,44 @@ export function createParser(text: string) {
         return parseVariableStatementLike(createGlobalVariableStatement);
     }
 
+    function parseParameterList(): NodeArray<IdentifierToken> {
+        const pos = scanner.getTokenStart();
+        parseExpectdToken(SyntaxKind.OpenParenToken);
+        const params: IdentifierToken[] = [];
+        while (!scanner.isEOF() && scanner.currentToken().kind === SyntaxKind.Identifier) {
+            const param = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier)
+            params.push(param);
+
+            if (scanner.currentToken().kind === SyntaxKind.CommaToken) {
+                scanner.nextToken();
+            }
+        }
+        parseExpectdToken(SyntaxKind.CloseParenToken);
+
+        return finishNodeArray(
+            createNodeArray(params),
+            pos,
+            scanner.getCurrentPos()
+        )
+    }
+
     function parseFunctionStatement(): FunctionStatement {
-        throw new Error()
+        const pos = scanner.getTokenStart();
+        parseExpectdToken(SyntaxKind.DefnKeyword);
+        const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+        const params = parseParameterList();
+        parseExpectdToken(SyntaxKind.ColonToken);
+        const body = parseLocalStatement();
+
+        return finishNode(
+            createFunctionStatement(
+                name,
+                params,
+                body,
+            ),
+            pos,
+            scanner.getCurrentPos()
+        )
     }
 
     function parseSequenceOfStatements(): SequenceOfStatements {

@@ -64,4 +64,15 @@ describe('Parser', () => {
         const file = parseCode(code);
         expect(file).toMatchSnapshot();
     })
+
+
+    it('Should work with function', () => {
+        const code =
+`
+defn f(x, y, z ):
+    null
+`
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
 })

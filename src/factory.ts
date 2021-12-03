@@ -1,4 +1,4 @@
-import { Expression, GlobalVariableStatement, LocalStatement, NodeArray, NullToken, ObjectSlot, SequenceOfStatements, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
+import { Expression, FunctionStatement, GlobalVariableStatement, LocalStatement, NodeArray, NullToken, ObjectSlot, SequenceOfStatements, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
 import { ArraysExpression, ASTNode, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, NullExpression, ObjectsExpression, PrintingExpression, SourceFile, TextSpan, Token, VariableSlot } from "./types";
 import { IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
 
@@ -120,5 +120,13 @@ export function createLocalExpressionStatement(expression: Expression): LocalExp
 export function createSequenceOfStatements(statements: NodeArray<LocalStatement>): SequenceOfStatements {
     const node = createNode<SequenceOfStatements>(SyntaxKind.SequenceOfStatements)
     node.statements = statements;
+    return node;
+}
+
+export function createFunctionStatement(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: LocalStatement): FunctionStatement {
+    const node = createNode<FunctionStatement>(SyntaxKind.FunctionStatement)
+    node.name = name;
+    node.params = params;
+    node.body = body;
     return node;
 }
