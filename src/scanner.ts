@@ -180,6 +180,7 @@ export function createScanner(
         switch (ch) {
             case Chars.LineFeed:
                 current++;
+                scan();
                 break;
 
             case Chars.Semi: {
@@ -198,6 +199,7 @@ export function createScanner(
                     i++;
                 }
                 current += i;
+                scan();
                 break;
             }
 

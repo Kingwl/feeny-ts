@@ -1,5 +1,287 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Scanner Should work with Arrays 1`] = `
+Array [
+  Object {
+    "__debugKind": "ArrayKeyword",
+    "end": 6,
+    "kind": 23,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 8,
+    "kind": 2,
+    "pos": 7,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 10,
+    "kind": 19,
+    "pos": 8,
+    "value": "10",
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 11,
+    "kind": 1,
+    "pos": 10,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 13,
+    "kind": 19,
+    "pos": 12,
+    "value": "0",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 14,
+    "kind": 3,
+    "pos": 13,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 14,
+    "kind": 33,
+    "pos": 14,
+  },
+]
+`;
+
+exports[`Scanner Should work with arrays 1`] = `
+Array [
+  Object {
+    "__debugKind": "ArrayKeyword",
+    "end": 6,
+    "kind": 23,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 8,
+    "kind": 2,
+    "pos": 7,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 10,
+    "kind": 19,
+    "pos": 8,
+    "value": "10",
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 11,
+    "kind": 1,
+    "pos": 10,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 13,
+    "kind": 19,
+    "pos": 12,
+    "value": "0",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 14,
+    "kind": 3,
+    "pos": 13,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 14,
+    "kind": 33,
+    "pos": 14,
+  },
+]
+`;
+
+exports[`Scanner Should work with function call 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "id": "f",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 2,
+    "kind": 2,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 4,
+    "kind": 19,
+    "pos": 2,
+    "value": "10",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 5,
+    "kind": 3,
+    "pos": 4,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 5,
+    "kind": 33,
+    "pos": 5,
+  },
+]
+`;
+
+exports[`Scanner Should work with if expression 1`] = `
+Array [
+  Object {
+    "__debugKind": "IfKeyword",
+    "end": 2,
+    "kind": 28,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 4,
+    "id": "x",
+    "kind": 21,
+    "pos": 3,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 5,
+    "kind": 4,
+    "pos": 4,
+  },
+  Object {
+    "__debugKind": "PrintfKeyword",
+    "end": 16,
+    "kind": 22,
+    "pos": 10,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 17,
+    "kind": 2,
+    "pos": 16,
+  },
+  Object {
+    "__debugKind": "StringToken",
+    "end": 20,
+    "kind": 20,
+    "pos": 17,
+    "value": "A",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 21,
+    "kind": 3,
+    "pos": 20,
+  },
+  Object {
+    "__debugKind": "ElseKeyword",
+    "end": 26,
+    "kind": 29,
+    "pos": 22,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 27,
+    "kind": 4,
+    "pos": 26,
+  },
+  Object {
+    "__debugKind": "PrintfKeyword",
+    "end": 38,
+    "kind": 22,
+    "pos": 32,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 39,
+    "kind": 2,
+    "pos": 38,
+  },
+  Object {
+    "__debugKind": "StringToken",
+    "end": 42,
+    "kind": 20,
+    "pos": 39,
+    "value": "B",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 43,
+    "kind": 3,
+    "pos": 42,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 44,
+    "kind": 33,
+    "pos": 44,
+  },
+]
+`;
+
+exports[`Scanner Should work with if expression with only if 1`] = `
+Array [
+  Object {
+    "__debugKind": "IfKeyword",
+    "end": 2,
+    "kind": 28,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 4,
+    "id": "x",
+    "kind": 21,
+    "pos": 3,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 5,
+    "kind": 4,
+    "pos": 4,
+  },
+  Object {
+    "__debugKind": "PrintfKeyword",
+    "end": 16,
+    "kind": 22,
+    "pos": 10,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 17,
+    "kind": 2,
+    "pos": 16,
+  },
+  Object {
+    "__debugKind": "StringToken",
+    "end": 20,
+    "kind": 20,
+    "pos": 17,
+    "value": "A",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 21,
+    "kind": 3,
+    "pos": 20,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 22,
+    "kind": 33,
+    "pos": 22,
+  },
+]
+`;
+
 exports[`Scanner Should work with integer 1`] = `
 Array [
   Object {
@@ -18,6 +300,635 @@ Array [
 ]
 `;
 
+exports[`Scanner Should work with method call 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "id": "o",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "DotToken",
+    "end": 2,
+    "kind": 5,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 3,
+    "id": "f",
+    "kind": 21,
+    "pos": 2,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 4,
+    "kind": 2,
+    "pos": 3,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 6,
+    "kind": 19,
+    "pos": 4,
+    "value": "10",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 7,
+    "kind": 3,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 7,
+    "kind": 33,
+    "pos": 7,
+  },
+]
+`;
+
+exports[`Scanner Should work with null 1`] = `
+Array [
+  Object {
+    "__debugKind": "NullKeyword",
+    "end": 4,
+    "kind": 24,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 4,
+    "kind": 33,
+    "pos": 4,
+  },
+]
+`;
+
+exports[`Scanner Should work with object 1`] = `
+Array [
+  Object {
+    "__debugKind": "ObjectKeyword",
+    "end": 6,
+    "kind": 25,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 7,
+    "kind": 2,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 8,
+    "id": "p",
+    "kind": 21,
+    "pos": 7,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 9,
+    "kind": 3,
+    "pos": 8,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 10,
+    "kind": 4,
+    "pos": 9,
+  },
+  Object {
+    "__debugKind": "VarKeyword",
+    "end": 18,
+    "kind": 26,
+    "pos": 15,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 20,
+    "id": "x",
+    "kind": 21,
+    "pos": 19,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 22,
+    "kind": 6,
+    "pos": 21,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 25,
+    "kind": 19,
+    "pos": 23,
+    "value": "10",
+  },
+  Object {
+    "__debugKind": "MethodKeyword",
+    "end": 36,
+    "kind": 31,
+    "pos": 30,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 38,
+    "id": "f",
+    "kind": 21,
+    "pos": 37,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 39,
+    "kind": 2,
+    "pos": 38,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 40,
+    "kind": 3,
+    "pos": 39,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 41,
+    "kind": 4,
+    "pos": 40,
+  },
+  Object {
+    "__debugKind": "ThisKeyword",
+    "end": 54,
+    "kind": 27,
+    "pos": 50,
+  },
+  Object {
+    "__debugKind": "DotToken",
+    "end": 55,
+    "kind": 5,
+    "pos": 54,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 56,
+    "id": "x",
+    "kind": 21,
+    "pos": 55,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 57,
+    "kind": 33,
+    "pos": 57,
+  },
+]
+`;
+
+exports[`Scanner Should work with object with slots 1`] = `
+Array [
+  Object {
+    "__debugKind": "ObjectKeyword",
+    "end": 6,
+    "kind": 25,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 7,
+    "kind": 2,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 8,
+    "id": "p",
+    "kind": 21,
+    "pos": 7,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 9,
+    "kind": 3,
+    "pos": 8,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 10,
+    "kind": 4,
+    "pos": 9,
+  },
+  Object {
+    "__debugKind": "VarKeyword",
+    "end": 18,
+    "kind": 26,
+    "pos": 15,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 20,
+    "id": "x",
+    "kind": 21,
+    "pos": 19,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 22,
+    "kind": 6,
+    "pos": 21,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 25,
+    "kind": 19,
+    "pos": 23,
+    "value": "10",
+  },
+  Object {
+    "__debugKind": "MethodKeyword",
+    "end": 36,
+    "kind": 31,
+    "pos": 30,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 38,
+    "id": "f",
+    "kind": 21,
+    "pos": 37,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 39,
+    "kind": 2,
+    "pos": 38,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 40,
+    "id": "x",
+    "kind": 21,
+    "pos": 39,
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 41,
+    "kind": 1,
+    "pos": 40,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 43,
+    "id": "y",
+    "kind": 21,
+    "pos": 42,
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 44,
+    "kind": 1,
+    "pos": 43,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 46,
+    "id": "z",
+    "kind": 21,
+    "pos": 45,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 47,
+    "kind": 3,
+    "pos": 46,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 48,
+    "kind": 4,
+    "pos": 47,
+  },
+  Object {
+    "__debugKind": "ThisKeyword",
+    "end": 61,
+    "kind": 27,
+    "pos": 57,
+  },
+  Object {
+    "__debugKind": "DotToken",
+    "end": 62,
+    "kind": 5,
+    "pos": 61,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 63,
+    "id": "x",
+    "kind": 21,
+    "pos": 62,
+  },
+  Object {
+    "__debugKind": "AddToken",
+    "end": 65,
+    "kind": 9,
+    "pos": 64,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 67,
+    "id": "x",
+    "kind": 21,
+    "pos": 66,
+  },
+  Object {
+    "__debugKind": "AddToken",
+    "end": 69,
+    "kind": 9,
+    "pos": 68,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 71,
+    "id": "y",
+    "kind": 21,
+    "pos": 70,
+  },
+  Object {
+    "__debugKind": "AddToken",
+    "end": 73,
+    "kind": 9,
+    "pos": 72,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 75,
+    "id": "z",
+    "kind": 21,
+    "pos": 74,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 76,
+    "kind": 33,
+    "pos": 76,
+  },
+]
+`;
+
+exports[`Scanner Should work with object without extends 1`] = `
+Array [
+  Object {
+    "__debugKind": "ObjectKeyword",
+    "end": 6,
+    "kind": 25,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 7,
+    "kind": 4,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "VarKeyword",
+    "end": 15,
+    "kind": 26,
+    "pos": 12,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 17,
+    "id": "x",
+    "kind": 21,
+    "pos": 16,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 19,
+    "kind": 6,
+    "pos": 18,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 22,
+    "kind": 19,
+    "pos": 20,
+    "value": "10",
+  },
+  Object {
+    "__debugKind": "MethodKeyword",
+    "end": 33,
+    "kind": 31,
+    "pos": 27,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 35,
+    "id": "f",
+    "kind": 21,
+    "pos": 34,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 36,
+    "kind": 2,
+    "pos": 35,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 37,
+    "kind": 3,
+    "pos": 36,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 38,
+    "kind": 4,
+    "pos": 37,
+  },
+  Object {
+    "__debugKind": "ThisKeyword",
+    "end": 51,
+    "kind": 27,
+    "pos": 47,
+  },
+  Object {
+    "__debugKind": "DotToken",
+    "end": 53,
+    "kind": 5,
+    "pos": 52,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 55,
+    "id": "x",
+    "kind": 21,
+    "pos": 54,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 56,
+    "kind": 33,
+    "pos": 56,
+  },
+]
+`;
+
+exports[`Scanner Should work with printing 1`] = `
+Array [
+  Object {
+    "__debugKind": "PrintfKeyword",
+    "end": 6,
+    "kind": 22,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 8,
+    "kind": 2,
+    "pos": 7,
+  },
+  Object {
+    "__debugKind": "StringToken",
+    "end": 26,
+    "kind": 20,
+    "pos": 8,
+    "value": " My age is ~. n ",
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 28,
+    "kind": 1,
+    "pos": 27,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 30,
+    "kind": 19,
+    "pos": 29,
+    "value": "8",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 31,
+    "kind": 3,
+    "pos": 30,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 31,
+    "kind": 33,
+    "pos": 31,
+  },
+]
+`;
+
+exports[`Scanner Should work with slot assignment 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "id": "o",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "DotToken",
+    "end": 2,
+    "kind": 5,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 7,
+    "id": "field",
+    "kind": 21,
+    "pos": 2,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 9,
+    "kind": 6,
+    "pos": 8,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 12,
+    "kind": 19,
+    "pos": 10,
+    "value": "42",
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 12,
+    "kind": 33,
+    "pos": 12,
+  },
+]
+`;
+
+exports[`Scanner Should work with slot lookup 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "id": "o",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "DotToken",
+    "end": 2,
+    "kind": 5,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 7,
+    "id": "field",
+    "kind": 21,
+    "pos": 2,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 7,
+    "kind": 33,
+    "pos": 7,
+  },
+]
+`;
+
+exports[`Scanner Should work with variable assignment 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "id": "x",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 3,
+    "kind": 6,
+    "pos": 2,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 6,
+    "kind": 19,
+    "pos": 4,
+    "value": "42",
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 6,
+    "kind": 33,
+    "pos": 6,
+  },
+]
+`;
+
 exports[`Scanner Should work with variable reference 1`] = `
 Array [
   Object {
@@ -32,6 +943,69 @@ Array [
     "end": 1,
     "kind": 33,
     "pos": 1,
+  },
+]
+`;
+
+exports[`Scanner Should work with while expression 1`] = `
+Array [
+  Object {
+    "__debugKind": "WhileKeyword",
+    "end": 5,
+    "kind": 30,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 7,
+    "id": "x",
+    "kind": 21,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 8,
+    "kind": 4,
+    "pos": 7,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 14,
+    "id": "x",
+    "kind": 21,
+    "pos": 13,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 16,
+    "kind": 6,
+    "pos": 15,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 18,
+    "id": "x",
+    "kind": 21,
+    "pos": 17,
+  },
+  Object {
+    "__debugKind": "AddToken",
+    "end": 20,
+    "kind": 9,
+    "pos": 19,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 22,
+    "id": "y",
+    "kind": 21,
+    "pos": 21,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 23,
+    "kind": 33,
+    "pos": 23,
   },
 ]
 `;
