@@ -1,5 +1,6 @@
 export enum TokenKind {
     Unknown,
+    EndOfFile,
 
     Comma,
     OpenParen,
@@ -115,6 +116,7 @@ export interface GenericToken<T extends TokenKind> extends Token {
 
 export interface IdentifierToken extends Token {
     kind: TokenKind.Identifier;
+    id: string;
 }
 
 export interface StringLiteralToken extends Token {
@@ -127,6 +129,7 @@ export interface IntegerLiteralToken extends Token {
     value: string;
 }
 
+export type EndOfFileToken = GenericToken<TokenKind.EndOfFile>;
 export type NullToken = GenericToken<TokenKind.NullKeyword>;
 export type ArrayKeywordToken = GenericToken<TokenKind.ArrayKeyword>;
 export type ObjectKeywordToken = GenericToken<TokenKind.ObjectKeyword>;
@@ -158,6 +161,7 @@ export type GreaterEqualsThanToken = GenericToken<TokenKind.GreaterEqualsThan>;
 export type EqualsEqualsToken = GenericToken<TokenKind.EqualsEquals>;
 
 export type AllTokens =
+    | EndOfFileToken
     | NullToken
     | ArrayKeywordToken
     | ObjectKeywordToken
