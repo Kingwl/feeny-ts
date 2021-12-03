@@ -1,3 +1,4 @@
+import { finishNode } from ".";
 import { createIdentifier, createNumberLiteralToken, createStringLiteralToken, createToken } from "./factory";
 import { Token, SyntaxKind } from "./types";
 import { Chars, CharsToTokenKind, getIndent, isAlpha, isAlphaOrDigitOrLowDash, isDef, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind, setupDebugInfo } from "./utils";
@@ -56,7 +57,7 @@ export function createScanner(
 
         function worker () {
             if (current >= text.length) {
-                token = createToken(SyntaxKind.EndOfFileToken, current, current);
+                token = finishNode(createToken(SyntaxKind.EndOfFileToken), current, current);
                 return;
             }
     
@@ -107,34 +108,34 @@ export function createScanner(
                 case Chars.Colon:
                 case Chars.Comma:
                     current++;
-                    token = createToken(CharsToTokenKind[ch], tokenStart, current);
+                    token = finishNode(createToken(CharsToTokenKind[ch]), tokenStart, current);
                     break;
                 case Chars.LessThan:
                     if (current + 1 < text.length && text[current + 1] === Chars.Equals) {
                         current += 2;
-                        token = createToken(SyntaxKind.LessEqualsThanToken, tokenStart, current);
+                        token = finishNode(createToken(SyntaxKind.LessEqualsThanToken), tokenStart, current);
                         break;
                     }
                     current++;
-                    token = createToken(SyntaxKind.LessThanToken, tokenStart, current);
+                    token = finishNode(createToken(SyntaxKind.LessThanToken), tokenStart, current);
                     break;
                 case Chars.GreaterThan:
                     if (current + 1 < text.length && text[current + 1] === Chars.Equals) {
                         current += 2;
-                        token = createToken(SyntaxKind.GreaterEqualsThanToken, tokenStart, current);
+                        token = finishNode(createToken(SyntaxKind.GreaterEqualsThanToken), tokenStart, current);
                         break;
                     }
                     current++;
-                    token = createToken(SyntaxKind.GreaterThanToken, tokenStart, current);
+                    token = finishNode(createToken(SyntaxKind.GreaterThanToken), tokenStart, current);
                     break;
                 case Chars.Equals:
                     if (current + 1 < text.length && text[current + 1] === Chars.Equals) {
                         current += 2;
-                        token = createToken(SyntaxKind.EqualsEqualsToken, tokenStart, current);
+                        token = finishNode(createToken(SyntaxKind.EqualsEqualsToken), tokenStart, current);
                         break;
                     }
                     current++;
-                    token = createToken(SyntaxKind.EqualsToken, tokenStart, current);
+                    token = finishNode(createToken(SyntaxKind.EqualsToken), tokenStart, current);
                     break;
                 case Chars.Quote: {
                     current++;
@@ -149,7 +150,7 @@ export function createScanner(
                     const stringContentEnd = current + i;
                     current = stringContentEnd + 1;
                     const value = text.substring(stringContentStart, stringContentEnd);
-                    token = createStringLiteralToken(tokenStart, current, value);
+                    token = finishNode(createStringLiteralToken(value), tokenStart, current);
                     break;
                 }
     
@@ -169,7 +170,7 @@ export function createScanner(
                     }
                     current += i;
                     const value = text.substring(tokenStart, current);
-                    token = createNumberLiteralToken(tokenStart, current, value);
+                    token = finishNode(createNumberLiteralToken(value), tokenStart, current);
                     break;
                 }
     
@@ -182,10 +183,10 @@ export function createScanner(
                         current += i;
                         const value = text.substring(tokenStart, current);
                         if (isKeyword(value)) {
-                            token = createToken(KeywordsToTokenKind[value], tokenStart, current);
+                            token = finishNode(createToken(KeywordsToTokenKind[value]), tokenStart, current);
                             break;
                         }
-                        token = createIdentifier(tokenStart, current, value);
+                        token = finishNode(createIdentifier(value), tokenStart, current);
                         break;
                     }
                     throw new Error("Unknown token" + ch)

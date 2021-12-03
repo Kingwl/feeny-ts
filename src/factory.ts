@@ -1,34 +1,37 @@
-import { TokenSyntaxKind } from "./types";
-import { GenericToken, IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
+import { AllTokens, ASTNode } from ".";
+import { IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
 
-export function createToken <K extends TokenSyntaxKind>(kind: K, pos: number, end: number): GenericToken<K> {
-    const token = { kind } as GenericToken<K>
-    token.pos = pos;
-    token.end = end;
+export function finishNode<T extends ASTNode> (node: T, pos: number, end: number): T {
+    node.pos = pos;
+    node.end = end;
+    return node;
+}
 
+export function createNode <T extends ASTNode>(kind: T["kind"]): T {
+    const token = { kind } as T
+    token.pos = -1;
+    token.end = -1;
     return token
 }
 
-export function createStringLiteralToken(pos: number, end: number, value: string): StringLiteralToken {
-    const token = { kind: SyntaxKind.StringToken } as StringLiteralToken
-    token.pos = pos;
-    token.end = end;
+export function createToken<T extends AllTokens>(kind: T['kind']): T {
+    return createNode(kind)
+}
+
+export function createStringLiteralToken(value: string): StringLiteralToken {
+    const token = createToken<StringLiteralToken>(SyntaxKind.StringToken)
     token.value = value;
     return token;
 }
 
-export function createNumberLiteralToken(pos: number, end: number, value: string): IntegerLiteralToken {
-    const token = { kind: SyntaxKind.IntegerToken } as IntegerLiteralToken
-    token.pos = pos;
-    token.end = end;
+export function createNumberLiteralToken(value: string): IntegerLiteralToken {
+    const token = createToken<IntegerLiteralToken>(SyntaxKind.IntegerToken)
     token.value = value;
     return token;
 }
 
-export function createIdentifier(pos: number, end: number, id: string): IdentifierToken {
-    const token = { kind: SyntaxKind.Identifier } as IdentifierToken
-    token.pos = pos;
-    token.end = end;
+export function createIdentifier(id: string): IdentifierToken {
+    const token = createToken<IdentifierToken>(SyntaxKind.Identifier);
     token.id = id;
     return token;
 }

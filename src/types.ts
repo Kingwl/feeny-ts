@@ -1,15 +1,3 @@
-export type BinaryShorthandToken =
-    | SyntaxKind.AddToken
-    | SyntaxKind.SubToken
-    | SyntaxKind.MulToken
-    | SyntaxKind.DivToken
-    | SyntaxKind.ModToken
-    | SyntaxKind.LessThanToken
-    | SyntaxKind.GreaterThanToken
-    | SyntaxKind.LessEqualsThanToken
-    | SyntaxKind.GreaterEqualsThanToken
-    | SyntaxKind.EqualsEqualsToken;
-
 export enum SyntaxKind {
     Unknown,
 
@@ -103,17 +91,7 @@ export type KeywordSyntaxKind =
     | SyntaxKind.MethodKeyword
     | SyntaxKind.DefnKeyword
 
-export type TokenSyntaxKind =
-    | KeywordSyntaxKind
-    | SyntaxKind.EndOfFileToken
-    | SyntaxKind.CommaToken
-    | SyntaxKind.OpenParenToken
-    | SyntaxKind.CloseParenToken
-    | SyntaxKind.ColonToken
-    | SyntaxKind.DotToken
-    | SyntaxKind.EqualsToken
-    | SyntaxKind.OpenBracketToken
-    | SyntaxKind.CloseBracketToken
+export type BinaryShorthandToken =
     | SyntaxKind.AddToken
     | SyntaxKind.SubToken
     | SyntaxKind.MulToken
@@ -123,10 +101,7 @@ export type TokenSyntaxKind =
     | SyntaxKind.GreaterThanToken
     | SyntaxKind.LessEqualsThanToken
     | SyntaxKind.GreaterEqualsThanToken
-    | SyntaxKind.EqualsEqualsToken
-    | SyntaxKind.IntegerToken
-    | SyntaxKind.StringToken
-    | SyntaxKind.Identifier
+    | SyntaxKind.EqualsEqualsToken;
 
 export interface ASTNode {
     kind: SyntaxKind;
@@ -235,6 +210,7 @@ export type AllTokens =
     | StringLiteralToken
     | IntegerLiteralToken
 
+type TokenSyntaxKind = AllTokens['kind']
 
 export interface Expression extends ASTNode {
     _expressionBrand: never
