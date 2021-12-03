@@ -123,4 +123,44 @@ else:
         const tokens = scanCode(code);
         expect(tokens).toMatchSnapshot();
     })
+
+    it('Should work with local variable', () => {
+        const code = 'var x = 42'
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
+
+    it('Should work with statement sequences', () => {
+        const code = '( s1, s2, s3 )'
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
+
+    it('Should work with local expression', () => {
+        const code = 'f(x)'
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
+
+    it('Should work with global variable', () => {
+        const code = 'var x = 42'
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
+
+    it('Should work with function', () => {
+        const code =
+`
+defn f(x, y, z ):
+    x + y
+`
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
+
+    it('Should work with top level expression', () => {
+        const code = 'f(x)'
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
 })

@@ -98,6 +98,101 @@ Array [
 ]
 `;
 
+exports[`Scanner Should work with function 1`] = `
+Array [
+  Object {
+    "__debugKind": "DefnKeyword",
+    "end": 5,
+    "kind": 32,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 7,
+    "id": "f",
+    "kind": 21,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 8,
+    "kind": 2,
+    "pos": 7,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 9,
+    "id": "x",
+    "kind": 21,
+    "pos": 8,
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 10,
+    "kind": 1,
+    "pos": 9,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 12,
+    "id": "y",
+    "kind": 21,
+    "pos": 11,
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 13,
+    "kind": 1,
+    "pos": 12,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 15,
+    "id": "z",
+    "kind": 21,
+    "pos": 14,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 17,
+    "kind": 3,
+    "pos": 16,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 18,
+    "kind": 4,
+    "pos": 17,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 24,
+    "id": "x",
+    "kind": 21,
+    "pos": 23,
+  },
+  Object {
+    "__debugKind": "AddToken",
+    "end": 26,
+    "kind": 9,
+    "pos": 25,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 28,
+    "id": "y",
+    "kind": 21,
+    "pos": 27,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 29,
+    "kind": 33,
+    "pos": 29,
+  },
+]
+`;
+
 exports[`Scanner Should work with function call 1`] = `
 Array [
   Object {
@@ -131,6 +226,43 @@ Array [
     "end": 5,
     "kind": 33,
     "pos": 5,
+  },
+]
+`;
+
+exports[`Scanner Should work with global variable 1`] = `
+Array [
+  Object {
+    "__debugKind": "VarKeyword",
+    "end": 3,
+    "kind": 26,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 5,
+    "id": "x",
+    "kind": 21,
+    "pos": 4,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 7,
+    "kind": 6,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 10,
+    "kind": 19,
+    "pos": 8,
+    "value": "42",
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 10,
+    "kind": 33,
+    "pos": 10,
   },
 ]
 `;
@@ -296,6 +428,80 @@ Array [
     "end": 1,
     "kind": 33,
     "pos": 1,
+  },
+]
+`;
+
+exports[`Scanner Should work with local expression 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "id": "f",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 2,
+    "kind": 2,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 3,
+    "id": "x",
+    "kind": 21,
+    "pos": 2,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 4,
+    "kind": 3,
+    "pos": 3,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 4,
+    "kind": 33,
+    "pos": 4,
+  },
+]
+`;
+
+exports[`Scanner Should work with local variable 1`] = `
+Array [
+  Object {
+    "__debugKind": "VarKeyword",
+    "end": 3,
+    "kind": 26,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 5,
+    "id": "x",
+    "kind": 21,
+    "pos": 4,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 7,
+    "kind": 6,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "IntegerToken",
+    "end": 10,
+    "kind": 19,
+    "pos": 8,
+    "value": "42",
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 10,
+    "kind": 33,
+    "pos": 10,
   },
 ]
 `;
@@ -894,6 +1100,99 @@ Array [
     "end": 7,
     "kind": 33,
     "pos": 7,
+  },
+]
+`;
+
+exports[`Scanner Should work with statement sequences 1`] = `
+Array [
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 1,
+    "kind": 2,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 4,
+    "id": "s1",
+    "kind": 21,
+    "pos": 2,
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 5,
+    "kind": 1,
+    "pos": 4,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 8,
+    "id": "s2",
+    "kind": 21,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 9,
+    "kind": 1,
+    "pos": 8,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 12,
+    "id": "s3",
+    "kind": 21,
+    "pos": 10,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 14,
+    "kind": 3,
+    "pos": 13,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 14,
+    "kind": 33,
+    "pos": 14,
+  },
+]
+`;
+
+exports[`Scanner Should work with top level expression 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "id": "f",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 2,
+    "kind": 2,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 3,
+    "id": "x",
+    "kind": 21,
+    "pos": 2,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 4,
+    "kind": 3,
+    "pos": 3,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 4,
+    "kind": 33,
+    "pos": 4,
   },
 ]
 `;
