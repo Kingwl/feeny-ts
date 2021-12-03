@@ -132,7 +132,7 @@ export interface ASTNode {
     kind: SyntaxKind;
     pos: number;
     fullPos: number;
-    leadingIdent: number;
+    leadingIndent: number;
     end: number;
     comments?: string;
 

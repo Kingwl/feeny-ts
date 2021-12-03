@@ -47,7 +47,7 @@ export function createScanner(
                 token.fullPos = tokenFullStart;
 
                 if (isDef(leadingIndent) && leadingIndent) {
-                    token.leadingIdent = leadingIndent
+                    token.leadingIndent = leadingIndent
                     leadingIndent = undefined;
                 }
                 setupDebugInfo(token);
