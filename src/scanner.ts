@@ -1,7 +1,6 @@
-import { finishNode } from ".";
 import { createIdentifier, createNumberLiteralToken, createStringLiteralToken, createToken } from "./factory";
-import { Token, SyntaxKind } from "./types";
-import { Chars, CharsToTokenKind, getIndent, isAlpha, isAlphaOrDigitOrLowDash, isDef, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind, setupDebugInfo } from "./utils";
+import { Token, SyntaxKind, TokenSyntaxKind } from "./types";
+import { Chars, CharsToTokenKind, finishNode, getIndent, isAlpha, isAlphaOrDigitOrLowDash, isDef, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind, setupDebugInfo } from "./utils";
 
 
 export function createScanner(
@@ -11,13 +10,23 @@ export function createScanner(
     let tokenFullStart = 0;
     let tokenStart = 0;
     let current = 0;
-    let token: Token | undefined
+    let token: Token<TokenSyntaxKind> | undefined
     let leadingIndent: number | undefined = 0
 
     return {
         isEOF,
         nextToken,
         currentToken,
+        getTokenStart,
+        getCurrentPos
+    }
+
+    function getTokenStart () {
+        return tokenStart;
+    }
+
+    function getCurrentPos () {
+        return current;
     }
 
     function isEOF () {

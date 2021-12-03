@@ -1,4 +1,19 @@
-import { ASTNode, SyntaxKind } from "./types";
+import { ASTNode, SyntaxKind, NodeArray} from "./types";
+
+export function finishNode<T extends ASTNode> (node: T, pos: number, end: number): T {
+    node.pos = pos;
+    node.end = end;
+
+    setupDebugInfo(node);
+
+    return node;
+}
+
+export function finishNodeArray<T extends ASTNode>(nodes: NodeArray<T>, pos: number, end: number): NodeArray<T> {
+    nodes.pos = pos;
+    nodes.end = end;
+    return nodes;
+}
 
 export function setupDebugInfo (node: ASTNode) {
     node.__debugKind = SyntaxKind[node.kind];
@@ -48,7 +63,7 @@ export enum Chars {
 export enum Keywords {
     Null = 'null',
     Arrays = 'arrays',
-    Object = 'object',
+    Objects = 'object',
     Var = 'var',
     This = 'this',
     If = 'if',
@@ -63,7 +78,7 @@ export function isKeyword(value: string): value is Keywords {
     switch (value) {
         case Keywords.Null:
         case Keywords.Arrays:
-        case Keywords.Object:
+        case Keywords.Objects:
         case Keywords.Var:
         case Keywords.This:
         case Keywords.If:
@@ -94,13 +109,12 @@ export const CharsToTokenKind = {
     [Chars.Dot]: SyntaxKind.DotToken,
     [Chars.Colon]: SyntaxKind.ColonToken,
     [Chars.Comma]: SyntaxKind.CommaToken,
-    [Chars.Quote]: SyntaxKind.StringToken,
 } as const;
 
 export const KeywordsToTokenKind = {
     [Keywords.Null]: SyntaxKind.NullKeyword,
-    [Keywords.Arrays]: SyntaxKind.ArrayKeyword,
-    [Keywords.Object]: SyntaxKind.ObjectKeyword,
+    [Keywords.Arrays]: SyntaxKind.ArraysKeyword,
+    [Keywords.Objects]: SyntaxKind.ObjectsKeyword,
     [Keywords.Var]: SyntaxKind.VarKeyword,
     [Keywords.This]: SyntaxKind.ThisKeyword,
     [Keywords.If]: SyntaxKind.IfKeyword,

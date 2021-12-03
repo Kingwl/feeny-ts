@@ -22,16 +22,16 @@ export enum SyntaxKind {
     GreaterEqualsThanToken,
     EqualsEqualsToken,
 
-    IntegerToken,
-    StringToken,
+    IntegerLiteralToken,
+    StringLiteralToken,
     Identifier,
 
     // Syntax
 
     PrintfKeyword,
-    ArrayKeyword,
+    ArraysKeyword,
     NullKeyword,
-    ObjectKeyword,
+    ObjectsKeyword,
     VarKeyword,
     ThisKeyword,
     IfKeyword,
@@ -44,17 +44,17 @@ export enum SyntaxKind {
     SourceFile,
 
     // Expression
-    IntegerLiteral,
-    VariableReference,
-    Printing,
-    Array,
-    Null,
-    Objects,
-    MethodCall,
-    SlotLookup,
-    SlotAssignment,
-    FunctionCall,
-    VariableAssignment,
+    IntegerLiteralExpression,
+    VariableReferenceExpression,
+    PrintingExpression,
+    ArraysExpression,
+    NullExpression,
+    ObjectsExpression,
+    MethodCallExpression,
+    SlotLookupExpression,
+    SlotAssignmentExpression,
+    FunctionCallExpression,
+    VariableAssignmentExpression,
     IfExpression,
     WhileExpression,
 
@@ -63,14 +63,14 @@ export enum SyntaxKind {
     MethodSlot,
 
     // Local Statements
-    LocalVariable,
+    LocalVariableStatement,
     SequenceOfStatements,
-    LocalExpression,
+    LocalExpressionStatement,
 
     // Top Level Statement
-    GlobalVariable,
-    Function,
-    TopLevelExpression,
+    GlobalVariableStatement,
+    FunctionStatement,
+    TopLevelExpressionStatement,
 
     // Shorthand
     BinaryShorthand,
@@ -80,9 +80,9 @@ export enum SyntaxKind {
 
 export type KeywordSyntaxKind =
     | SyntaxKind.PrintfKeyword
-    | SyntaxKind.ArrayKeyword
+    | SyntaxKind.ArraysKeyword
     | SyntaxKind.NullKeyword
-    | SyntaxKind.ObjectKeyword
+    | SyntaxKind.ObjectsKeyword
     | SyntaxKind.VarKeyword
     | SyntaxKind.ThisKeyword
     | SyntaxKind.IfKeyword
@@ -103,83 +103,83 @@ export type BinaryShorthandToken =
     | SyntaxKind.GreaterEqualsThanToken
     | SyntaxKind.EqualsEqualsToken;
 
-export interface ASTNode {
-    kind: SyntaxKind;
-    pos: number;
+export interface TextSpan {
     fullPos: number;
-    leadingIndent: number;
+    pos: number;
     end: number;
-    comments?: string;
+}
 
+export interface ASTNode extends TextSpan {
+    kind: SyntaxKind;
     __debugKind?: string
+
+    leadingIndent: number;
+}
+
+export interface NodeArray<T extends ASTNode> extends ReadonlyArray<T>, TextSpan {
+
 }
 
 export interface SourceFile extends ASTNode {
     _sourceFileBrand: never;
     kind: SyntaxKind.SourceFile;
-    statements: Statement[]
+    statements: NodeArray<TopLevelStatement>
 }
 
-export interface Token extends ASTNode {
+export interface Token<K extends SyntaxKind> extends ASTNode {
     _tokenBrand: never
-    kind: TokenSyntaxKind
+    kind: K
 }
 
-export interface GenericToken<T extends TokenSyntaxKind> extends Token {
-    kind: T;
-}
 
-export interface IdentifierToken extends Token {
-    kind: SyntaxKind.Identifier;
+export interface IdentifierToken extends Token<SyntaxKind.Identifier> {
     id: string;
 }
 
-export interface StringLiteralToken extends Token {
-    kind: SyntaxKind.StringToken;
+export interface StringLiteralToken extends Token<SyntaxKind.StringLiteralToken> {
     value: string;
 }
 
-export interface IntegerLiteralToken extends Token {
-    kind: SyntaxKind.IntegerToken;
+export interface IntegerLiteralToken extends Token<SyntaxKind.IntegerLiteralToken> {
     value: string;
 }
 
-export type EndOfFileToken = GenericToken<SyntaxKind.EndOfFileToken>;
-export type NullToken = GenericToken<SyntaxKind.NullKeyword>;
-export type ArrayKeywordToken = GenericToken<SyntaxKind.ArrayKeyword>;
-export type ObjectKeywordToken = GenericToken<SyntaxKind.ObjectKeyword>;
-export type VarKeywordToken = GenericToken<SyntaxKind.VarKeyword>;
-export type ThisKeywordToken = GenericToken<SyntaxKind.ThisKeyword>;
-export type IfKeywordToken = GenericToken<SyntaxKind.IfKeyword>;
-export type ElseKeywordToken = GenericToken<SyntaxKind.ElseKeyword>;
-export type WhileKeywordToken = GenericToken<SyntaxKind.WhileKeyword>;
-export type MethodKeywordToken = GenericToken<SyntaxKind.MethodKeyword>;
-export type DefnKeywordToken = GenericToken<SyntaxKind.DefnKeyword>;
-export type PrintfKeywordToken = GenericToken<SyntaxKind.PrintfKeyword>;
-export type OpenParenToken = GenericToken<SyntaxKind.OpenParenToken>;
-export type CloseParenToken = GenericToken<SyntaxKind.CloseParenToken>;
-export type CommaToken = GenericToken<SyntaxKind.CommaToken>;
-export type ColonToken = GenericToken<SyntaxKind.ColonToken>;
-export type DotToken = GenericToken<SyntaxKind.DotToken>;
-export type EqualsToken = GenericToken<SyntaxKind.EqualsToken>;
-export type OpenBracketToken = GenericToken<SyntaxKind.OpenBracketToken>;
-export type CloseBracketToken = GenericToken<SyntaxKind.CloseBracketToken>;
-export type AddToken = GenericToken<SyntaxKind.AddToken>;
-export type SubToken = GenericToken<SyntaxKind.SubToken>;
-export type MulToken = GenericToken<SyntaxKind.MulToken>;
-export type DivToken = GenericToken<SyntaxKind.DivToken>;
-export type ModToken = GenericToken<SyntaxKind.ModToken>;
-export type LessThanToken = GenericToken<SyntaxKind.LessThanToken>;
-export type GreaterThanToken = GenericToken<SyntaxKind.GreaterThanToken>;
-export type LessEqualsThanToken = GenericToken<SyntaxKind.LessEqualsThanToken>;
-export type GreaterEqualsThanToken = GenericToken<SyntaxKind.GreaterEqualsThanToken>;
-export type EqualsEqualsToken = GenericToken<SyntaxKind.EqualsEqualsToken>;
+export type EndOfFileToken = Token<SyntaxKind.EndOfFileToken>;
+export type NullToken = Token<SyntaxKind.NullKeyword>;
+export type ArrayKeywordToken = Token<SyntaxKind.ArraysKeyword>;
+export type ObjectsKeywordToken = Token<SyntaxKind.ObjectsKeyword>;
+export type VarKeywordToken = Token<SyntaxKind.VarKeyword>;
+export type ThisKeywordToken = Token<SyntaxKind.ThisKeyword>;
+export type IfKeywordToken = Token<SyntaxKind.IfKeyword>;
+export type ElseKeywordToken = Token<SyntaxKind.ElseKeyword>;
+export type WhileKeywordToken = Token<SyntaxKind.WhileKeyword>;
+export type MethodKeywordToken = Token<SyntaxKind.MethodKeyword>;
+export type DefnKeywordToken = Token<SyntaxKind.DefnKeyword>;
+export type PrintfKeywordToken = Token<SyntaxKind.PrintfKeyword>;
+export type OpenParenToken = Token<SyntaxKind.OpenParenToken>;
+export type CloseParenToken = Token<SyntaxKind.CloseParenToken>;
+export type CommaToken = Token<SyntaxKind.CommaToken>;
+export type ColonToken = Token<SyntaxKind.ColonToken>;
+export type DotToken = Token<SyntaxKind.DotToken>;
+export type EqualsToken = Token<SyntaxKind.EqualsToken>;
+export type OpenBracketToken = Token<SyntaxKind.OpenBracketToken>;
+export type CloseBracketToken = Token<SyntaxKind.CloseBracketToken>;
+export type AddToken = Token<SyntaxKind.AddToken>;
+export type SubToken = Token<SyntaxKind.SubToken>;
+export type MulToken = Token<SyntaxKind.MulToken>;
+export type DivToken = Token<SyntaxKind.DivToken>;
+export type ModToken = Token<SyntaxKind.ModToken>;
+export type LessThanToken = Token<SyntaxKind.LessThanToken>;
+export type GreaterThanToken = Token<SyntaxKind.GreaterThanToken>;
+export type LessEqualsThanToken = Token<SyntaxKind.LessEqualsThanToken>;
+export type GreaterEqualsThanToken = Token<SyntaxKind.GreaterEqualsThanToken>;
+export type EqualsEqualsToken = Token<SyntaxKind.EqualsEqualsToken>;
 
 export type AllTokens =
     | EndOfFileToken
     | NullToken
     | ArrayKeywordToken
-    | ObjectKeywordToken
+    | ObjectsKeywordToken
     | VarKeywordToken
     | ThisKeywordToken
     | IfKeywordToken
@@ -210,70 +210,72 @@ export type AllTokens =
     | StringLiteralToken
     | IntegerLiteralToken
 
-type TokenSyntaxKind = AllTokens['kind']
+export type TokenSyntaxKind = AllTokens['kind']
 
 export interface Expression extends ASTNode {
     _expressionBrand: never
 }
 
 export interface IntegerLiteralExpression extends Expression {
-    kind: SyntaxKind.IntegerLiteral
+    kind: SyntaxKind.IntegerLiteralExpression
     value: IntegerLiteralToken
 }
 
 export interface VariableReferenceExpression extends Expression {
-    kind: SyntaxKind.VariableReference
+    kind: SyntaxKind.VariableReferenceExpression
     id: IdentifierToken
 }
 
-export interface PaintingExpression extends Expression {
-    kind: SyntaxKind.Printing
+export interface PrintingExpression extends Expression {
+    kind: SyntaxKind.PrintingExpression
     format: StringLiteralToken
-    args: Expression[]
+    args: NodeArray<Expression>
 }
 
-export interface ArrayExpression extends Expression {
-    kind: SyntaxKind.Array
+export interface ArraysExpression extends Expression {
+    kind: SyntaxKind.ArraysExpression
     length: Expression
-    initializer: Expression
+    defaultValue?: Expression
 }
 
 export interface NullExpression extends Expression {
-    kind: SyntaxKind.Null
+    kind: SyntaxKind.NullExpression
+    token: NullToken
 }
 
-export interface ObjectExpression extends Expression {
-    kind: SyntaxKind.Objects
-    slots: ObjectSlot[]
+export interface ObjectsExpression extends Expression {
+    kind: SyntaxKind.ObjectsExpression
+    extendsClause?: Expression;
+    slots: NodeArray<ObjectSlot>
 }
 
 export interface MethodCallExpression extends Expression {
-    kind: SyntaxKind.MethodCall
+    kind: SyntaxKind.MethodCallExpression
     lookup: SlotLookupExpression
     args: Expression[]
 }
 
 export interface SlotLookupExpression extends Expression {
-    kind: SyntaxKind.SlotLookup
+    kind: SyntaxKind.SlotLookupExpression
     expr: Expression
     name: VariableReferenceExpression
 }
 
 export interface SlotAssignmentExpression extends Expression {
-    kind: SyntaxKind.SlotAssignment
+    kind: SyntaxKind.SlotAssignmentExpression
     expr: Expression
     name: VariableReferenceExpression
     initializer: Expression
 }
 
 export interface FunctionCallExpression extends Expression {
-    kind: SyntaxKind.FunctionCall
+    kind: SyntaxKind.FunctionCallExpression
     expr: Expression
     args: Expression[]
 }
 
 export interface VariableAssignmentExpression extends Expression {
-    kind: SyntaxKind.VariableAssignment
+    kind: SyntaxKind.VariableAssignmentExpression
     name: VariableReferenceExpression
     initializer: Expression
 }
@@ -332,37 +334,37 @@ export interface Statement extends ASTNode {
 }
 
 export interface LocalVariableStatement extends Statement {
-    kind: SyntaxKind.LocalVariable
+    kind: SyntaxKind.LocalVariableStatement
     name: IdentifierToken
     initializer: Expression
 }
 
 export interface SequenceOfStatements extends Statement {
     kind: SyntaxKind.SequenceOfStatements
-    stmts: Statement[]
+    statements: NodeArray<LocalStatement>
 }
 
 export interface LocalExpressionStatement extends Statement {
-    kind: SyntaxKind.LocalExpression
-    expr: Expression
+    kind: SyntaxKind.LocalExpressionStatement
+    expression: Expression
 }
 
 export interface GlobalVariableStatement extends Statement {
-    kind: SyntaxKind.GlobalVariable
+    kind: SyntaxKind.GlobalVariableStatement
     name: IdentifierToken
     initializer: Expression
 }
 
 export interface FunctionStatement extends Statement {
-    kind: SyntaxKind.Function
+    kind: SyntaxKind.FunctionStatement
     name: IdentifierToken
     args: IdentifierToken[]
     body: Statement
 }
 
 export interface TopLevelExpressionStatement extends Statement {
-    kind: SyntaxKind.TopLevelExpression
-    expr: Expression
+    kind: SyntaxKind.TopLevelExpressionStatement
+    expression: Expression
 }
 
 export type TopLevelStatement =
@@ -370,3 +372,8 @@ export type TopLevelStatement =
     | SequenceOfStatements
     | FunctionStatement
     | TopLevelExpressionStatement
+
+export type LocalStatement =
+    | LocalVariableStatement
+    | SequenceOfStatements
+    | LocalExpressionStatement
