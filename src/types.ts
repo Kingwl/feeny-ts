@@ -1,4 +1,4 @@
-enum TokenKind {
+export enum TokenKind {
     Unknown,
 
     Comma,
@@ -39,7 +39,19 @@ enum TokenKind {
     DefnKeyword,
 }
 
-enum SyntaxKind {
+export type BinaryShorthandToken =
+    | TokenKind.Add
+    | TokenKind.Sub
+    | TokenKind.Mul
+    | TokenKind.Div
+    | TokenKind.Mod
+    | TokenKind.LessThan
+    | TokenKind.GreaterThan
+    | TokenKind.LessEqualsThan
+    | TokenKind.GreaterEqualsThan
+    | TokenKind.EqualsEquals;
+
+export enum SyntaxKind {
     Unknown,
 
     // Expression
@@ -72,208 +84,269 @@ enum SyntaxKind {
     TopLevelExpression,
 
     // Shorthand
-    AddShorthand,
-    SubShorthand,
-    MulShorthand,
-    DivShorthand,
-    ModShorthand,
-    LessThanShorthand,
-    GreaterThanShorthand,
-    LessEqualsThanShorthand,
-    GreaterEqualsThanShorthand,
-    EqualsEqualsShorthand,
+    BinaryShorthand,
     GetShorthand,
-    SetShorthand
+    SetShorthand,
+
+    // Global
+    SourceFile
 }
 
-interface ASTNode {
+export interface ASTNode {
     pos: number;
     end: number;
     comments?: string;
 }
 
-interface Token extends ASTNode {
+export interface SourceFile extends ASTNode {
+    _sourceFileBrand: never;
+
+    statements: Statement[]
+}
+
+export interface Token extends ASTNode {
+    _tokenBrand: never
     kind: TokenKind
 }
 
-interface GenericToken<T extends TokenKind> extends Token {
+export interface GenericToken<T extends TokenKind> extends Token {
     kind: T;
 }
 
-interface IdentifierToken extends Token {
+export interface IdentifierToken extends Token {
     kind: TokenKind.Identifier;
 }
 
-interface StringLiteralToken extends Token {
+export interface StringLiteralToken extends Token {
     kind: TokenKind.String;
     value: string;
 }
 
-interface IntegerLiteralToken extends Token {
+export interface IntegerLiteralToken extends Token {
     kind: TokenKind.Integer;
     value: string;
 }
 
-type NullToken = GenericToken<TokenKind.NullKeyword>;
-type ArrayKeywordToken = GenericToken<TokenKind.ArrayKeyword>;
-type ObjectKeywordToken = GenericToken<TokenKind.ObjectKeyword>;
-type VarKeywordToken = GenericToken<TokenKind.VarKeyword>;
-type ThisKeywordToken = GenericToken<TokenKind.ThisKeyword>;
-type IfKeywordToken = GenericToken<TokenKind.IfKeyword>;
-type ElseKeywordToken = GenericToken<TokenKind.ElseKeyword>;
-type WhileKeywordToken = GenericToken<TokenKind.WhileKeyword>;
-type MethodKeywordToken = GenericToken<TokenKind.MethodKeyword>;
-type DefnKeywordToken = GenericToken<TokenKind.DefnKeyword>;
-type PrintfKeywordToken = GenericToken<TokenKind.PrintfKeyword>;
-type OpenParenToken = GenericToken<TokenKind.OpenParen>;
-type CloseParenToken = GenericToken<TokenKind.CloseParen>;
-type CommaToken = GenericToken<TokenKind.Comma>;
-type ColonToken = GenericToken<TokenKind.Colon>;
-type DotToken = GenericToken<TokenKind.Dot>;
-type EqualsToken = GenericToken<TokenKind.Equals>;
-type OpenBracketToken = GenericToken<TokenKind.OpenBracket>;
-type CloseBracketToken = GenericToken<TokenKind.CloseBracket>;
-type AddToken = GenericToken<TokenKind.Add>;
-type SubToken = GenericToken<TokenKind.Sub>;
-type MulToken = GenericToken<TokenKind.Mul>;
-type DivToken = GenericToken<TokenKind.Div>;
-type ModToken = GenericToken<TokenKind.Mod>;
-type LessThanToken = GenericToken<TokenKind.LessThan>;
-type GreaterThanToken = GenericToken<TokenKind.GreaterThan>;
-type LessEqualsThanToken = GenericToken<TokenKind.LessEqualsThan>;
-type GreaterEqualsThanToken = GenericToken<TokenKind.GreaterEqualsThan>;
-type EqualsEqualsToken = GenericToken<TokenKind.EqualsEquals>;
+export type NullToken = GenericToken<TokenKind.NullKeyword>;
+export type ArrayKeywordToken = GenericToken<TokenKind.ArrayKeyword>;
+export type ObjectKeywordToken = GenericToken<TokenKind.ObjectKeyword>;
+export type VarKeywordToken = GenericToken<TokenKind.VarKeyword>;
+export type ThisKeywordToken = GenericToken<TokenKind.ThisKeyword>;
+export type IfKeywordToken = GenericToken<TokenKind.IfKeyword>;
+export type ElseKeywordToken = GenericToken<TokenKind.ElseKeyword>;
+export type WhileKeywordToken = GenericToken<TokenKind.WhileKeyword>;
+export type MethodKeywordToken = GenericToken<TokenKind.MethodKeyword>;
+export type DefnKeywordToken = GenericToken<TokenKind.DefnKeyword>;
+export type PrintfKeywordToken = GenericToken<TokenKind.PrintfKeyword>;
+export type OpenParenToken = GenericToken<TokenKind.OpenParen>;
+export type CloseParenToken = GenericToken<TokenKind.CloseParen>;
+export type CommaToken = GenericToken<TokenKind.Comma>;
+export type ColonToken = GenericToken<TokenKind.Colon>;
+export type DotToken = GenericToken<TokenKind.Dot>;
+export type EqualsToken = GenericToken<TokenKind.Equals>;
+export type OpenBracketToken = GenericToken<TokenKind.OpenBracket>;
+export type CloseBracketToken = GenericToken<TokenKind.CloseBracket>;
+export type AddToken = GenericToken<TokenKind.Add>;
+export type SubToken = GenericToken<TokenKind.Sub>;
+export type MulToken = GenericToken<TokenKind.Mul>;
+export type DivToken = GenericToken<TokenKind.Div>;
+export type ModToken = GenericToken<TokenKind.Mod>;
+export type LessThanToken = GenericToken<TokenKind.LessThan>;
+export type GreaterThanToken = GenericToken<TokenKind.GreaterThan>;
+export type LessEqualsThanToken = GenericToken<TokenKind.LessEqualsThan>;
+export type GreaterEqualsThanToken = GenericToken<TokenKind.GreaterEqualsThan>;
+export type EqualsEqualsToken = GenericToken<TokenKind.EqualsEquals>;
 
-interface Expression extends ASTNode {
+export type AllTokens =
+    | NullToken
+    | ArrayKeywordToken
+    | ObjectKeywordToken
+    | VarKeywordToken
+    | ThisKeywordToken
+    | IfKeywordToken
+    | ElseKeywordToken
+    | WhileKeywordToken
+    | MethodKeywordToken
+    | DefnKeywordToken
+    | PrintfKeywordToken
+    | OpenParenToken
+    | CloseParenToken
+    | CommaToken
+    | ColonToken
+    | DotToken
+    | EqualsToken
+    | OpenBracketToken
+    | CloseBracketToken
+    | AddToken
+    | SubToken
+    | MulToken
+    | DivToken
+    | ModToken
+    | LessThanToken
+    | GreaterThanToken
+    | LessEqualsThanToken
+    | GreaterEqualsThanToken
+    | EqualsEqualsToken
+    | IdentifierToken
+    | StringLiteralToken
+    | IntegerLiteralToken
+
+
+export interface Expression extends ASTNode {
     _expressionBrand: never
 }
 
-interface IntegerLiteralExpression extends Expression {
+export interface IntegerLiteralExpression extends Expression {
     kind: SyntaxKind.IntegerLiteral
     value: IntegerLiteralToken
 }
 
-interface VariableReferenceExpression extends Expression {
+export interface VariableReferenceExpression extends Expression {
     kind: SyntaxKind.VariableReference
     id: IdentifierToken
 }
 
-interface PaintingExpression extends Expression {
+export interface PaintingExpression extends Expression {
     kind: SyntaxKind.Printing
     format: StringLiteralToken
     args: Expression[]
 }
 
-interface ArrayExpression extends Expression {
+export interface ArrayExpression extends Expression {
     kind: SyntaxKind.Array
     length: Expression
     initializer: Expression
 }
 
-interface NullExpression extends Expression {
+export interface NullExpression extends Expression {
     kind: SyntaxKind.Null
 }
 
-interface ObjectExpression extends Expression {
+export interface ObjectExpression extends Expression {
     kind: SyntaxKind.Objects
     slots: ObjectSlot[]
 }
 
-interface MethodCallExpression extends Expression {
+export interface MethodCallExpression extends Expression {
     kind: SyntaxKind.MethodCall
     lookup: SlotLookupExpression
     args: Expression[]
 }
 
-interface SlotLookupExpression extends Expression {
+export interface SlotLookupExpression extends Expression {
     kind: SyntaxKind.SlotLookup
     expr: Expression
     name: VariableReferenceExpression
 }
 
-interface SlotAssignmentExpression extends Expression {
+export interface SlotAssignmentExpression extends Expression {
     kind: SyntaxKind.SlotAssignment
     expr: Expression
     name: VariableReferenceExpression
     initializer: Expression
 }
 
-interface FunctionCallExpression extends Expression {
+export interface FunctionCallExpression extends Expression {
     kind: SyntaxKind.FunctionCall
     expr: Expression
     args: Expression[]
 }
 
-interface VariableAssignmentExpression extends Expression {
+export interface VariableAssignmentExpression extends Expression {
     kind: SyntaxKind.VariableAssignment
     name: VariableReferenceExpression
     initializer: Expression
 }
 
-interface IfExpression extends Expression {
+export interface IfExpression extends Expression {
     kind: SyntaxKind.IfExpression
     condition: Expression
     then: Expression
     else?: Expression
 }
 
-interface WhileExpression extends Expression {
+export interface WhileExpression extends Expression {
     kind: SyntaxKind.WhileExpression
     condition: Expression
     body: Expression
 }
 
-interface ObjectSlot extends ASTNode {
+export interface BinaryShorthand extends Expression {
+    kind: SyntaxKind.BinaryShorthand
+    token: BinaryShorthandToken
+    left: Expression
+    right: Expression
+}
+
+export interface GetShortHand extends Expression {
+    kind: SyntaxKind.GetShorthand
+    expr: Expression
+    name: Expression
+}
+
+export interface SetShorthand extends Expression {
+    kind: SyntaxKind.SetShorthand
+    expr: Expression
+    name: Expression
+    initializer: Expression
+}
+
+export interface ObjectSlot extends ASTNode {
     _objectSlotBrand: never
 }
 
-interface VariableSlot extends ObjectSlot {
+export interface VariableSlot extends ObjectSlot {
     kind: SyntaxKind.VariableSlot
     name: IdentifierToken
     initializer: Expression
 }
 
-interface MethodSlot extends ObjectSlot {
+export interface MethodSlot extends ObjectSlot {
     kind: SyntaxKind.MethodSlot
     name: IdentifierToken
     args: IdentifierToken[]
     body: Statement
 }
-
-interface Statement extends ASTNode {
+export interface Statement extends ASTNode {
     _statementBrand: never
 }
 
-interface LocalVariableStatement extends Statement {
+export interface LocalVariableStatement extends Statement {
     kind: SyntaxKind.LocalVariable
     name: IdentifierToken
     initializer: Expression
 }
 
-interface SequenceOfStatements extends Statement {
+export interface SequenceOfStatements extends Statement {
     kind: SyntaxKind.SequenceOfStatements
     stmts: Statement[]
 }
 
-interface LocalExpressionStatement extends Statement {
+export interface LocalExpressionStatement extends Statement {
     kind: SyntaxKind.LocalExpression
     expr: Expression
 }
 
-interface GlobalVariableStatement extends Statement {
+export interface GlobalVariableStatement extends Statement {
     kind: SyntaxKind.GlobalVariable
     name: IdentifierToken
     initializer: Expression
 }
 
-interface FunctionStatement extends Statement {
+export interface FunctionStatement extends Statement {
     kind: SyntaxKind.Function
     name: IdentifierToken
     args: IdentifierToken[]
     body: Statement
 }
 
-interface TopLevelExpressionStatement extends Statement {
+export interface TopLevelExpressionStatement extends Statement {
     kind: SyntaxKind.TopLevelExpression
     expr: Expression
 }
+
+export type TopLevelStatement =
+    | GlobalVariableStatement
+    | SequenceOfStatements
+    | FunctionStatement
+    | TopLevelExpressionStatement
