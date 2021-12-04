@@ -1,4 +1,4 @@
-import { ArraysExpression, ASTNode, ObjectsExpression, SyntaxKind } from "./types";
+import { AccessOrAssignmentExpressionOrHigher, ArraysExpression, ASTNode, ObjectsExpression, SyntaxKind } from "./types";
 import { createNodeArray, createSourceFile, createGlobalVariableStatement, createIntegerLiteralExpression, createTopLevelExpressionStatement, createVariableReferenceExpression } from './factory'
 import { createScanner } from "./scanner"
 import { createFinishNode, finishNodeArray, isBinaryShorthandToken } from './utils'
@@ -250,7 +250,7 @@ export function createParser(text: string) {
 
     function parseFunctionCallExpressionOrHigher() {
         const pos = scanner.getTokenStart();
-        const expression = parseSlotOrShorthandOrAssignmentOrHigher();
+        const expression = parseAccessOrAssignmentExpressionOrHigher();
         if (!scanner.currentTokenhasLineFeed() && scanner.currentToken().kind === SyntaxKind.OpenParenToken) {
             const args = parseArgumentsList();
             return finishNode(
@@ -265,23 +265,38 @@ export function createParser(text: string) {
         return expression;
     }
 
-    function parseSlotOrShorthandOrAssignmentOrHigher () {
+    function parseAccessOrAssignmentExpressionOrHigher (): AccessOrAssignmentExpressionOrHigher {
         const pos = scanner.getTokenStart();
-        const primaryExpression = parsePrimaryExpression();;
-        if (scanner.currentToken().kind === SyntaxKind.DotToken) {
-            return parseSlotLookupOrAssignment(primaryExpression, pos)
+        const primaryExpression = parsePrimaryExpression();
+        return parseSlotOrShorthandOrAssignmentRest(primaryExpression, pos);
+    }
+
+    function parseSlotOrShorthandOrAssignmentRest(expression: AccessOrAssignmentExpressionOrHigher, pos: number): AccessOrAssignmentExpressionOrHigher {
+        while (true) {
+            if (scanner.currentToken().kind === SyntaxKind.DotToken) {
+                expression = parseSlotLookupOrAssignment(expression, pos)
+                pos = scanner.getCurrentPos();
+                continue
+            }
+            if (scanner.currentToken().kind === SyntaxKind.OpenBracketToken) {
+                expression = parseGetShorthandOrGetShorthand(expression, pos);
+                pos = scanner.getCurrentPos();
+                continue
+            }
+            if (scanner.currentToken().kind === SyntaxKind.EqualsToken) {
+                expression = parseVariableAssignmentExpression(expression, pos);
+                pos = scanner.getCurrentPos();
+                continue
+            }
+
+            break;
         }
-        if (scanner.currentToken().kind === SyntaxKind.OpenBracketToken) {
-            return parseGetShorthandOrGetShorthand(primaryExpression, pos);
-        }
-        if (scanner.currentToken().kind === SyntaxKind.EqualsToken) {
-            return parseVariableAssignmentExpression(primaryExpression, pos);
-        }
-        return primaryExpression;
+
+        return expression
     }
 
 
-    function parseVariableAssignmentExpression(expression: PrimaryExpression, pos: number) {
+    function parseVariableAssignmentExpression(expression: AccessOrAssignmentExpressionOrHigher, pos: number) {
         parseExpectdToken(SyntaxKind.EqualsToken);
         const value = parseExpression();
         return finishNode(
@@ -294,7 +309,7 @@ export function createParser(text: string) {
         )
     }
 
-    function parseSlotLookupOrAssignment(expression: PrimaryExpression, pos: number) {
+    function parseSlotLookupOrAssignment(expression: AccessOrAssignmentExpressionOrHigher, pos: number) {
         parseExpectdToken(SyntaxKind.DotToken);
         const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
 
@@ -332,7 +347,7 @@ export function createParser(text: string) {
         )
     }
 
-    function parseGetShorthandOrGetShorthand (expression: PrimaryExpression, pos: number) {
+    function parseGetShorthandOrGetShorthand (expression: AccessOrAssignmentExpressionOrHigher, pos: number) {
         parseExpectdToken(SyntaxKind.OpenBracketToken);
         const argsExpression = parseExpression();
         parseExpectdToken(SyntaxKind.CloseBracketToken);

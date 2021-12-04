@@ -1,5 +1,5 @@
 import { BinaryShorthandTokenSyntaxKind, Expression, FunctionStatement, GlobalVariableStatement, IfExpression, LocalStatement, MethodSlot, NodeArray, NullToken, ObjectSlot, ParenExpression, PrimaryExpression, SequenceOfStatements, SlotLookupExpression, Statement, SubToken, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
-import { ArraysExpression, ASTNode, BinaryShorthand, FunctionCallExpression, GetShorthand, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, PrintingExpression, SetShorthand, SlotAssignmentExpression, SourceFile, TextSpan, ThisExpression, Token, VariableAssignmentExpression, VariableSlot, WhileExpression } from "./types";
+import { AccessOrAssignmentExpressionOrHigher, ArraysExpression, ASTNode, BinaryShorthand, FunctionCallExpression, GetShorthand, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, PrintingExpression, SetShorthand, SlotAssignmentExpression, SourceFile, TextSpan, ThisExpression, Token, VariableAssignmentExpression, VariableSlot, WhileExpression } from "./types";
 import { IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
 
 
@@ -155,14 +155,14 @@ export function createWhileExpression(condition: Expression, body: SequenceOfSta
     return node;
 }
 
-export function createSlotLookupExpression(expression: PrimaryExpression, name: IdentifierToken): SlotLookupExpression {
+export function createSlotLookupExpression(expression: AccessOrAssignmentExpressionOrHigher, name: IdentifierToken): SlotLookupExpression {
     const node = createNode<SlotLookupExpression>(SyntaxKind.SlotLookupExpression)
     node.expression = expression;
     node.name = name;
     return node;
 }
 
-export function createSlotAssignmentExpression(expression: PrimaryExpression, name: IdentifierToken, value: Expression): SlotAssignmentExpression {
+export function createSlotAssignmentExpression(expression: AccessOrAssignmentExpressionOrHigher, name: IdentifierToken, value: Expression): SlotAssignmentExpression {
     const node = createNode<SlotAssignmentExpression>(SyntaxKind.SlotAssignmentExpression)
     node.expression = expression;
     node.name = name;
@@ -170,14 +170,14 @@ export function createSlotAssignmentExpression(expression: PrimaryExpression, na
     return node;
 }
 
-export function createGetShorthand(expression: PrimaryExpression, argExpression: Expression): GetShorthand {
+export function createGetShorthand(expression: AccessOrAssignmentExpressionOrHigher, argExpression: Expression): GetShorthand {
     const node = createNode<GetShorthand>(SyntaxKind.GetShorthand);
     node.expression = expression;
     node.argExpression = argExpression;
     return node;
 }
 
-export function createSetShorthand(expression: PrimaryExpression, argExpression: Expression, value: Expression): SetShorthand {
+export function createSetShorthand(expression: AccessOrAssignmentExpressionOrHigher, argExpression: Expression, value: Expression): SetShorthand {
     const node = createNode<SetShorthand>(SyntaxKind.SetShorthand);
     node.expression = expression;
     node.argExpression = argExpression;
@@ -185,14 +185,14 @@ export function createSetShorthand(expression: PrimaryExpression, argExpression:
     return node;
 }
 
-export function createVariableAssignmentExpression(expression: PrimaryExpression, value: Expression): VariableAssignmentExpression {
+export function createVariableAssignmentExpression(expression: AccessOrAssignmentExpressionOrHigher, value: Expression): VariableAssignmentExpression {
     const node = createNode<VariableAssignmentExpression>(SyntaxKind.VariableAssignmentExpression)
     node.expression = expression;
     node.value = value;
     return node;
 }
 
-export function createMethodCallExpression(expression: PrimaryExpression, name: IdentifierToken, args: NodeArray<Expression>): MethodCallExpression {
+export function createMethodCallExpression(expression: AccessOrAssignmentExpressionOrHigher, name: IdentifierToken, args: NodeArray<Expression>): MethodCallExpression {
     const node = createNode<MethodCallExpression>(SyntaxKind.MethodCallExpression)
     node.expression = expression;
     node.name = name;

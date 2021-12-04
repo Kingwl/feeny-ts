@@ -255,20 +255,20 @@ export interface ObjectsExpression extends Expression {
 
 export interface MethodCallExpression extends Expression {
     kind: SyntaxKind.MethodCallExpression
-    expression: PrimaryExpression
+    expression: AccessOrAssignmentExpressionOrHigher
     name: IdentifierToken
     args: NodeArray<Expression>
 }
 
 export interface SlotLookupExpression extends Expression {
     kind: SyntaxKind.SlotLookupExpression
-    expression: PrimaryExpression
+    expression: AccessOrAssignmentExpressionOrHigher
     name: IdentifierToken
 }
 
 export interface SlotAssignmentExpression extends Expression {
     kind: SyntaxKind.SlotAssignmentExpression
-    expression: PrimaryExpression
+    expression: AccessOrAssignmentExpressionOrHigher
     name: IdentifierToken
     value: Expression
 }
@@ -281,7 +281,7 @@ export interface FunctionCallExpression extends Expression {
 
 export interface VariableAssignmentExpression extends Expression {
     kind: SyntaxKind.VariableAssignmentExpression
-    expression: PrimaryExpression
+    expression: AccessOrAssignmentExpressionOrHigher
     value: Expression
 }
 
@@ -316,13 +316,13 @@ export interface BinaryShorthand extends Expression {
 
 export interface GetShorthand extends Expression {
     kind: SyntaxKind.GetShorthand
-    expression: PrimaryExpression
+    expression: AccessOrAssignmentExpressionOrHigher
     argExpression: Expression
 }
 
 export interface SetShorthand extends Expression {
     kind: SyntaxKind.SetShorthand
-    expression: PrimaryExpression
+    expression: AccessOrAssignmentExpressionOrHigher
     argExpression: Expression
     value: Expression
 }
@@ -392,6 +392,15 @@ export type PrimaryExpression =
     | WhileExpression
     | ThisExpression
     | ParenExpression
+
+export type AccessOrAssignmentExpressionOrHigher =
+    | PrimaryExpression
+    | SlotAssignmentExpression 
+    | MethodCallExpression 
+    | SlotLookupExpression 
+    | SetShorthand 
+    | GetShorthand 
+    | VariableAssignmentExpression
 
 export type TopLevelStatement =
     | GlobalVariableStatement

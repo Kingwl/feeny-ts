@@ -1196,6 +1196,68 @@ Object {
 }
 `;
 
+exports[`Parser Should work with lookup chains 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 5,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 5,
+      "expression": Object {
+        "__debugKind": "SlotLookupExpression",
+        "end": 5,
+        "expression": Object {
+          "__debugKind": "SlotLookupExpression",
+          "end": 4,
+          "expression": Object {
+            "__debugKind": "VariableReferenceExpression",
+            "end": 2,
+            "id": Object {
+              "__debugKind": "Identifier",
+              "end": 1,
+              "fullPos": 0,
+              "id": "a",
+              "kind": 21,
+              "leadingIndent": 0,
+              "pos": 0,
+            },
+            "kind": 36,
+            "pos": 0,
+          },
+          "kind": 42,
+          "name": Object {
+            "__debugKind": "Identifier",
+            "end": 3,
+            "fullPos": 2,
+            "id": "b",
+            "kind": 21,
+            "leadingIndent": 0,
+            "pos": 2,
+          },
+          "pos": 0,
+        },
+        "kind": 42,
+        "name": Object {
+          "__debugKind": "Identifier",
+          "end": 5,
+          "fullPos": 4,
+          "id": "c",
+          "kind": 21,
+          "leadingIndent": 0,
+          "pos": 4,
+        },
+        "pos": 4,
+      },
+      "kind": 57,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
 exports[`Parser Should work with method call 1`] = `
 Object {
   "__debugKind": "SourceFile",
