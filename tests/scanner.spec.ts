@@ -130,12 +130,6 @@ else:
         expect(tokens).toMatchSnapshot();
     })
 
-    it('Should work with statement sequences', () => {
-        const code = '( s1, s2, s3 )'
-        const tokens = scanCode(code);
-        expect(tokens).toMatchSnapshot();
-    })
-
     it('Should work with local expression', () => {
         const code = 'f(x)'
         const tokens = scanCode(code);

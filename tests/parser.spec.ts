@@ -59,12 +59,6 @@ describe('Parser', () => {
         expect(file).toMatchSnapshot();
     })
 
-    it('Should work with statement sequences', () => {
-        const code = '( s1, s2, s3 )'
-        const file = parseCode(code);
-        expect(file).toMatchSnapshot();
-    })
-
 
     it('Should work with function', () => {
         const code =
