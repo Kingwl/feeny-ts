@@ -60,15 +60,15 @@ export function createParser(text: string) {
         )
     }
 
-    function parseLocalStatement(ident: number): LocalStatement {
+    function parseLocalStatement(indent: number): LocalStatement {
         const token = scanner.currentToken();
         switch (token.kind) {
             case SyntaxKind.VarKeyword:
                 return parseLocalVariableStatement();
             case SyntaxKind.OpenParenToken:
-                return parseSequenceOfStatements(ident);
+                return parseSequenceOfStatements(indent);
             default:
-                if (token.leadingIndent > ident) {
+                if (token.leadingIndent > indent) {
                     return parseSequenceOfStatements(token.leadingIndent)
                 }
                 return parseLocalExpressionStatement();
@@ -556,10 +556,11 @@ export function createParser(text: string) {
         return token.kind === SyntaxKind.VarKeyword || token.kind === SyntaxKind.MethodKeyword;
     }
 
-    function parseObjectSlotList(ident: number): NodeArray<ObjectSlot> {
+    function parseObjectSlotList(indent: number): NodeArray<ObjectSlot> {
         const pos = scanner.getTokenStart();
         const slots: ObjectSlot[] = [];
-        while (!scanner.isEOF() && scanner.currentToken().leadingIndent > ident && isStartOfObjectSlot()) {
+        const slotIndent = scanner.currentToken().leadingIndent;
+        while (slotIndent > indent && !scanner.isEOF() && isStartOfObjectSlot() && scanner.currentToken().leadingIndent === slotIndent) {
             const slot = parseObjectSlot();
             slots.push(slot);
         }
