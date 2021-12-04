@@ -175,4 +175,22 @@ defn f(x, y, z ):
         const tokens = scanCode(code);
         expect(tokens).toMatchSnapshot();
     })
+
+    it('Should work with binary shorthand', () => {
+        const code = 
+`
+x + y
+x - y
+x * y
+x / y
+x % y
+x < y
+x > y
+x <= y
+x >= y
+x == y
+`
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
 })

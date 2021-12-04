@@ -168,4 +168,22 @@ else:
         const file = parseCode(code);
         expect(file).toMatchSnapshot();
     })
+
+    it('Should work with binary shorthand', () => {
+        const code = 
+`
+x + y
+x - y
+x * y
+x / y
+x % y
+x < y
+x > y
+x <= y
+x >= y
+x == y
+`
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
 })
