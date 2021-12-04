@@ -39,6 +39,7 @@ Object {
               "end": 36,
               "kind": 35,
               "pos": 23,
+              "subToken": undefined,
               "value": Object {
                 "__debugKind": "IntegerLiteralToken",
                 "end": 25,
@@ -49,7 +50,7 @@ Object {
                 "value": "10",
               },
             },
-            "kind": 49,
+            "kind": 50,
             "name": Object {
               "__debugKind": "Identifier",
               "end": 20,
@@ -66,7 +67,7 @@ Object {
             "body": Object {
               "__debugKind": "SequenceOfStatements",
               "end": 76,
-              "kind": 52,
+              "kind": 53,
               "pos": 57,
               "statements": Array [
                 Object {
@@ -75,7 +76,7 @@ Object {
                   "expression": Object {
                     "__debugKind": "BinaryShorthand",
                     "end": 76,
-                    "kind": 57,
+                    "kind": 58,
                     "left": Object {
                       "__debugKind": "SlotLookupExpression",
                       "end": 65,
@@ -109,7 +110,7 @@ Object {
                     "right": Object {
                       "__debugKind": "BinaryShorthand",
                       "end": 76,
-                      "kind": 57,
+                      "kind": 58,
                       "left": Object {
                         "__debugKind": "VariableReferenceExpression",
                         "end": 69,
@@ -137,7 +138,7 @@ Object {
                       "right": Object {
                         "__debugKind": "BinaryShorthand",
                         "end": 76,
-                        "kind": 57,
+                        "kind": 58,
                         "left": Object {
                           "__debugKind": "VariableReferenceExpression",
                           "end": 73,
@@ -180,13 +181,13 @@ Object {
                       },
                     },
                   },
-                  "kind": 53,
+                  "kind": 54,
                   "pos": 57,
                 },
               ],
             },
             "end": 76,
-            "kind": 50,
+            "kind": 51,
             "name": Object {
               "__debugKind": "Identifier",
               "end": 38,
@@ -229,7 +230,7 @@ Object {
           },
         ],
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -253,6 +254,7 @@ Object {
           "end": 14,
           "kind": 35,
           "pos": 12,
+          "subToken": undefined,
           "value": Object {
             "__debugKind": "IntegerLiteralToken",
             "end": 13,
@@ -270,6 +272,7 @@ Object {
           "end": 11,
           "kind": 35,
           "pos": 8,
+          "subToken": undefined,
           "value": Object {
             "__debugKind": "IntegerLiteralToken",
             "end": 10,
@@ -282,7 +285,7 @@ Object {
         },
         "pos": 0,
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -302,7 +305,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 8,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 4,
@@ -343,7 +346,7 @@ Object {
           "pos": 5,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 1,
     },
     Object {
@@ -352,7 +355,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 14,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 10,
@@ -393,7 +396,7 @@ Object {
           "pos": 11,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 7,
     },
     Object {
@@ -402,7 +405,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 20,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 16,
@@ -443,7 +446,7 @@ Object {
           "pos": 17,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 13,
     },
     Object {
@@ -452,7 +455,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 26,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 22,
@@ -493,7 +496,7 @@ Object {
           "pos": 23,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 19,
     },
     Object {
@@ -502,7 +505,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 32,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 28,
@@ -543,7 +546,7 @@ Object {
           "pos": 29,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 25,
     },
     Object {
@@ -552,7 +555,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 38,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 34,
@@ -593,7 +596,7 @@ Object {
           "pos": 35,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 31,
     },
     Object {
@@ -602,7 +605,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 44,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 40,
@@ -643,7 +646,7 @@ Object {
           "pos": 41,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 37,
     },
     Object {
@@ -652,7 +655,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 51,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 47,
@@ -693,7 +696,7 @@ Object {
           "pos": 48,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 43,
     },
     Object {
@@ -702,7 +705,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 58,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 54,
@@ -743,7 +746,7 @@ Object {
           "pos": 55,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 50,
     },
     Object {
@@ -752,7 +755,7 @@ Object {
       "expression": Object {
         "__debugKind": "BinaryShorthand",
         "end": 64,
-        "kind": 57,
+        "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 61,
@@ -793,7 +796,7 @@ Object {
           "pos": 62,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 57,
     },
   ],
@@ -812,7 +815,7 @@ Object {
       "body": Object {
         "__debugKind": "SequenceOfStatements",
         "end": 28,
-        "kind": 52,
+        "kind": 53,
         "pos": 23,
         "statements": Array [
           Object {
@@ -832,13 +835,13 @@ Object {
                 "pos": 23,
               },
             },
-            "kind": 53,
+            "kind": 54,
             "pos": 23,
           },
         ],
       },
       "end": 28,
-      "kind": 55,
+      "kind": 56,
       "name": Object {
         "__debugKind": "Identifier",
         "end": 7,
@@ -901,6 +904,7 @@ Object {
             "end": 5,
             "kind": 35,
             "pos": 2,
+            "subToken": undefined,
             "value": Object {
               "__debugKind": "IntegerLiteralToken",
               "end": 4,
@@ -931,7 +935,7 @@ Object {
         "kind": 44,
         "pos": 0,
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -955,6 +959,7 @@ Object {
           "end": 4,
           "kind": 35,
           "pos": 2,
+          "subToken": undefined,
           "value": Object {
             "__debugKind": "IntegerLiteralToken",
             "end": 3,
@@ -981,10 +986,10 @@ Object {
           "kind": 36,
           "pos": 0,
         },
-        "kind": 58,
+        "kind": 59,
         "pos": 0,
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1021,7 +1026,7 @@ Object {
         "elseStatement": Object {
           "__debugKind": "SequenceOfStatements",
           "end": 44,
-          "kind": 52,
+          "kind": 53,
           "pos": 32,
           "statements": Array [
             Object {
@@ -1043,7 +1048,7 @@ Object {
                 "kind": 37,
                 "pos": 32,
               },
-              "kind": 53,
+              "kind": 54,
               "pos": 32,
             },
           ],
@@ -1054,7 +1059,7 @@ Object {
         "thenStatement": Object {
           "__debugKind": "SequenceOfStatements",
           "end": 26,
-          "kind": 52,
+          "kind": 53,
           "pos": 10,
           "statements": Array [
             Object {
@@ -1076,13 +1081,13 @@ Object {
                 "kind": 37,
                 "pos": 10,
               },
-              "kind": 53,
+              "kind": 54,
               "pos": 10,
             },
           ],
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1123,7 +1128,7 @@ Object {
         "thenStatement": Object {
           "__debugKind": "SequenceOfStatements",
           "end": 22,
-          "kind": 52,
+          "kind": 53,
           "pos": 10,
           "statements": Array [
             Object {
@@ -1145,13 +1150,13 @@ Object {
                 "kind": 37,
                 "pos": 10,
               },
-              "kind": 53,
+              "kind": 54,
               "pos": 10,
             },
           ],
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1173,6 +1178,7 @@ Object {
         "end": 1,
         "kind": 35,
         "pos": 0,
+        "subToken": undefined,
         "value": Object {
           "__debugKind": "IntegerLiteralToken",
           "end": 1,
@@ -1183,7 +1189,7 @@ Object {
           "value": "1",
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1208,6 +1214,7 @@ Object {
             "end": 7,
             "kind": 35,
             "pos": 4,
+            "subToken": undefined,
             "value": Object {
               "__debugKind": "IntegerLiteralToken",
               "end": 6,
@@ -1247,7 +1254,7 @@ Object {
         },
         "pos": 0,
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1293,6 +1300,7 @@ Object {
               "end": 36,
               "kind": 35,
               "pos": 23,
+              "subToken": undefined,
               "value": Object {
                 "__debugKind": "IntegerLiteralToken",
                 "end": 25,
@@ -1303,7 +1311,7 @@ Object {
                 "value": "10",
               },
             },
-            "kind": 49,
+            "kind": 50,
             "name": Object {
               "__debugKind": "Identifier",
               "end": 20,
@@ -1320,7 +1328,7 @@ Object {
             "body": Object {
               "__debugKind": "SequenceOfStatements",
               "end": 57,
-              "kind": 52,
+              "kind": 53,
               "pos": 50,
               "statements": Array [
                 Object {
@@ -1347,13 +1355,13 @@ Object {
                     },
                     "pos": 50,
                   },
-                  "kind": 53,
+                  "kind": 54,
                   "pos": 50,
                 },
               ],
             },
             "end": 57,
-            "kind": 50,
+            "kind": 51,
             "name": Object {
               "__debugKind": "Identifier",
               "end": 38,
@@ -1368,7 +1376,7 @@ Object {
           },
         ],
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1399,7 +1407,7 @@ Object {
           "pos": 0,
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1445,6 +1453,7 @@ Object {
               "end": 26,
               "kind": 35,
               "pos": 23,
+              "subToken": undefined,
               "value": Object {
                 "__debugKind": "IntegerLiteralToken",
                 "end": 25,
@@ -1455,7 +1464,7 @@ Object {
                 "value": "10",
               },
             },
-            "kind": 49,
+            "kind": 50,
             "name": Object {
               "__debugKind": "Identifier",
               "end": 20,
@@ -1469,7 +1478,7 @@ Object {
           },
         ],
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1515,6 +1524,7 @@ Object {
               "end": 26,
               "kind": 35,
               "pos": 23,
+              "subToken": undefined,
               "value": Object {
                 "__debugKind": "IntegerLiteralToken",
                 "end": 25,
@@ -1525,7 +1535,7 @@ Object {
                 "value": "10",
               },
             },
-            "kind": 49,
+            "kind": 50,
             "name": Object {
               "__debugKind": "Identifier",
               "end": 20,
@@ -1539,7 +1549,7 @@ Object {
           },
         ],
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1571,6 +1581,7 @@ Object {
               "end": 23,
               "kind": 35,
               "pos": 20,
+              "subToken": undefined,
               "value": Object {
                 "__debugKind": "IntegerLiteralToken",
                 "end": 22,
@@ -1581,7 +1592,7 @@ Object {
                 "value": "10",
               },
             },
-            "kind": 49,
+            "kind": 50,
             "name": Object {
               "__debugKind": "Identifier",
               "end": 17,
@@ -1595,7 +1606,7 @@ Object {
           },
         ],
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1620,6 +1631,7 @@ Object {
             "end": 31,
             "kind": 35,
             "pos": 29,
+            "subToken": undefined,
             "value": Object {
               "__debugKind": "IntegerLiteralToken",
               "end": 30,
@@ -1644,7 +1656,7 @@ Object {
         "kind": 37,
         "pos": 0,
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1668,6 +1680,7 @@ Object {
           "end": 4,
           "kind": 35,
           "pos": 2,
+          "subToken": undefined,
           "value": Object {
             "__debugKind": "IntegerLiteralToken",
             "end": 3,
@@ -1694,13 +1707,14 @@ Object {
           "kind": 36,
           "pos": 0,
         },
-        "kind": 59,
+        "kind": 60,
         "pos": 0,
         "value": Object {
           "__debugKind": "IntegerLiteralExpression",
           "end": 8,
           "kind": 35,
           "pos": 7,
+          "subToken": undefined,
           "value": Object {
             "__debugKind": "IntegerLiteralToken",
             "end": 8,
@@ -1712,7 +1726,7 @@ Object {
           },
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1763,6 +1777,7 @@ Object {
           "end": 12,
           "kind": 35,
           "pos": 10,
+          "subToken": undefined,
           "value": Object {
             "__debugKind": "IntegerLiteralToken",
             "end": 12,
@@ -1774,7 +1789,7 @@ Object {
           },
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1821,7 +1836,7 @@ Object {
         },
         "pos": 0,
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1945,6 +1960,7 @@ Object {
           "end": 6,
           "kind": 35,
           "pos": 4,
+          "subToken": undefined,
           "value": Object {
             "__debugKind": "IntegerLiteralToken",
             "end": 6,
@@ -1956,7 +1972,7 @@ Object {
           },
         },
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -1988,7 +2004,7 @@ Object {
         "kind": 36,
         "pos": 0,
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],
@@ -2010,7 +2026,7 @@ Object {
         "body": Object {
           "__debugKind": "SequenceOfStatements",
           "end": 23,
-          "kind": 52,
+          "kind": 53,
           "pos": 13,
           "statements": Array [
             Object {
@@ -2039,7 +2055,7 @@ Object {
                 "value": Object {
                   "__debugKind": "BinaryShorthand",
                   "end": 23,
-                  "kind": 57,
+                  "kind": 58,
                   "left": Object {
                     "__debugKind": "VariableReferenceExpression",
                     "end": 20,
@@ -2081,7 +2097,7 @@ Object {
                   },
                 },
               },
-              "kind": 53,
+              "kind": 54,
               "pos": 13,
             },
           ],
@@ -2105,7 +2121,7 @@ Object {
         "kind": 47,
         "pos": 0,
       },
-      "kind": 56,
+      "kind": 57,
       "pos": 0,
     },
   ],

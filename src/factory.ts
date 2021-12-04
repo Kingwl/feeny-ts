@@ -1,4 +1,4 @@
-import { BinaryShorthandTokenSyntaxKind, Expression, FunctionStatement, GlobalVariableStatement, IfExpression, LocalStatement, MethodSlot, NodeArray, NullToken, ObjectSlot, PrimaryExpression, SequenceOfStatements, SlotLookupExpression, Statement, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
+import { BinaryShorthandTokenSyntaxKind, Expression, FunctionStatement, GlobalVariableStatement, IfExpression, LocalStatement, MethodSlot, NodeArray, NullToken, ObjectSlot, ParenExpression, PrimaryExpression, SequenceOfStatements, SlotLookupExpression, Statement, SubToken, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
 import { ArraysExpression, ASTNode, BinaryShorthand, FunctionCallExpression, GetShorthand, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, PrintingExpression, SetShorthand, SlotAssignmentExpression, SourceFile, TextSpan, ThisExpression, Token, VariableAssignmentExpression, VariableSlot, WhileExpression } from "./types";
 import { IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
 
@@ -58,9 +58,10 @@ export function createTopLevelExpressionStatement(expression: Expression): TopLe
     return node;
 }
 
-export function createIntegerLiteralExpression(value: IntegerLiteralToken): IntegerLiteralExpression {
+export function createIntegerLiteralExpression(value: IntegerLiteralToken, subToken?: SubToken): IntegerLiteralExpression {
     const node = createNode<IntegerLiteralExpression>(SyntaxKind.IntegerLiteralExpression)
     node.value = value;
+    node.subToken = subToken;
     return node;
 }
 
@@ -123,7 +124,7 @@ export function createSequenceOfStatements(statements: NodeArray<LocalStatement>
     return node;
 }
 
-export function createFunctionStatement(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: LocalStatement): FunctionStatement {
+export function createFunctionStatement(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements | Expression): FunctionStatement {
     const node = createNode<FunctionStatement>(SyntaxKind.FunctionStatement)
     node.name = name;
     node.params = params;
@@ -131,7 +132,7 @@ export function createFunctionStatement(name: IdentifierToken, params: NodeArray
     return node;
 }
 
-export function createMethodSlot(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: LocalStatement): MethodSlot {
+export function createMethodSlot(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements | Expression): MethodSlot {
     const node = createNode<MethodSlot>(SyntaxKind.MethodSlot)
     node.name = name;
     node.params = params;
@@ -139,7 +140,7 @@ export function createMethodSlot(name: IdentifierToken, params: NodeArray<Identi
     return node;
 }
 
-export function createIfExpression(condition: Expression, thenStatement: LocalStatement, elseStatement?: LocalStatement): IfExpression {
+export function createIfExpression(condition: Expression, thenStatement: SequenceOfStatements | Expression, elseStatement?: SequenceOfStatements | Expression): IfExpression {
     const node = createNode<IfExpression>(SyntaxKind.IfExpression)
     node.condition = condition;
     node.thenStatement = thenStatement;
@@ -147,7 +148,7 @@ export function createIfExpression(condition: Expression, thenStatement: LocalSt
     return node;
 }
 
-export function createWhileExpression(condition: Expression, body: LocalStatement): WhileExpression {
+export function createWhileExpression(condition: Expression, body: SequenceOfStatements | Expression): WhileExpression {
     const node = createNode<WhileExpression>(SyntaxKind.WhileExpression);
     node.condition = condition;
     node.body = body;
@@ -216,5 +217,11 @@ export function createBinaryShorthand(left: Expression, operator: Token<BinarySh
 
 export function createThisExpression() {
     const node = createNode<ThisExpression>(SyntaxKind.ThisExpression)
+    return node;
+}
+
+export function createParenExpression(expression: Expression) {
+    const node = createNode<ParenExpression>(SyntaxKind.ParenExpression)
+    node.expression = expression;
     return node;
 }

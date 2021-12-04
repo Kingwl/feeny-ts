@@ -1,14 +1,15 @@
-import { ArraysExpression, ObjectsExpression, SyntaxKind } from "./types";
+import { ArraysExpression, ASTNode, ObjectsExpression, SyntaxKind } from "./types";
 import { createNodeArray, createSourceFile, createGlobalVariableStatement, createIntegerLiteralExpression, createTopLevelExpressionStatement, createVariableReferenceExpression } from './factory'
 import { createScanner } from "./scanner"
-import { finishNode, finishNodeArray, isBinaryShorthandToken } from './utils'
+import { createFinishNode, finishNodeArray, isBinaryShorthandToken } from './utils'
 import { GlobalVariableStatement, NodeArray, TopLevelStatement } from "./types";
 import { AllTokens, Expression, FunctionStatement, IdentifierToken, IntegerLiteralExpression, IntegerLiteralToken, SequenceOfStatements, Token, TopLevelExpressionStatement, VariableReferenceExpression } from "./types";
-import { BinaryShorthand, createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createIfExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNullExpression, createObjectsExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createThisExpression, createVariableAssignmentExpression, createVariableSlot, createWhileExpression, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrimaryExpression, PrintingExpression, Statement, StringLiteralToken, VariableSlot } from ".";
+import { BinaryShorthand, createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createIfExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNullExpression, createObjectsExpression, createParenExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createThisExpression, createVariableAssignmentExpression, createVariableSlot, createWhileExpression, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrimaryExpression, PrintingExpression, Statement, StringLiteralToken, SubToken, VariableSlot } from ".";
 
 export function createParser(text: string) {
     const scanner = createScanner(text);
     scanner.nextToken();
+    const finishNode = createFinishNode(text)
 
     return {
         parseSourceFile
@@ -60,17 +61,13 @@ export function createParser(text: string) {
         )
     }
 
-    function parseLocalStatement(indent: number): LocalStatement {
+    function parseLocalStatement(): LocalStatement {
         const token = scanner.currentToken();
+
         switch (token.kind) {
             case SyntaxKind.VarKeyword:
                 return parseLocalVariableStatement();
-            case SyntaxKind.OpenParenToken:
-                return parseSequenceOfStatements(indent);
             default:
-                if (token.leadingIndent > indent) {
-                    return parseSequenceOfStatements(token.leadingIndent)
-                }
                 return parseLocalExpressionStatement();
         }
     }
@@ -96,8 +93,6 @@ export function createParser(text: string) {
                 return parseGlobalVarStatement();
             case SyntaxKind.DefnKeyword:
                 return parseFunctionStatement();
-            case SyntaxKind.OpenParenToken:
-                return parseSequenceOfStatements(0);
             default:
                 return parseTopLevelExpressionStatement();
         }
@@ -149,11 +144,10 @@ export function createParser(text: string) {
 
     function parseFunctionStatement(): FunctionStatement {
         const pos = scanner.getTokenStart();
-        const defnToken = parseExpectdToken(SyntaxKind.DefnKeyword);
+        parseExpectdToken(SyntaxKind.DefnKeyword);
         const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
         const params = parseParameterList();
-        parseExpectdToken(SyntaxKind.ColonToken);
-        const body = parseLocalStatement(defnToken.leadingIndent);
+        const body = parseSequenceOfStatementsOrExpression()
 
         return finishNode(
             createFunctionStatement(
@@ -166,27 +160,12 @@ export function createParser(text: string) {
         )
     }
 
-    function parseSingleLineStatementList(endToken: SyntaxKind, indent: number): NodeArray<LocalStatement> {
+    function parseIndentStatementList(baseIndent: number): NodeArray<LocalStatement> {
         const pos = scanner.getTokenStart();
         const statements: LocalStatement[] = [];
-        while (!scanner.isEOF() && scanner.currentToken().kind !== endToken) {
-            const statement = parseLocalStatement(indent)
-            statements.push(statement);
-            parseOptionalToken(SyntaxKind.CommaToken);
-        }
-
-        return finishNodeArray(
-            createNodeArray(statements),
-            pos,
-            scanner.getCurrentPos()
-        )
-    }
-
-    function parseIndentStatementList(indent: number): NodeArray<LocalStatement> {
-        const pos = scanner.getTokenStart();
-        const statements: LocalStatement[] = [];
-        while (!scanner.isEOF() && scanner.currentToken().leadingIndent === indent) {
-            const statement = parseLocalStatement(indent);
+        const indent = scanner.currentToken().leadingIndent;
+        while (!scanner.isEOF() && indent > baseIndent && scanner.currentToken().leadingIndent === indent) {
+            const statement = parseLocalStatement();
             statements.push(statement);
         }
 
@@ -197,17 +176,11 @@ export function createParser(text: string) {
         )
     }
 
-    function parseSequenceOfStatements(indent: number): SequenceOfStatements {
+    function parseSequenceOfStatements(baseIndent: number): SequenceOfStatements {
         const pos = scanner.getTokenStart();
-        let statements: NodeArray<LocalStatement>;
-        if (parseOptionalToken(SyntaxKind.OpenParenToken)) {
-            statements = parseSingleLineStatementList(SyntaxKind.CloseParenToken, indent);
-            parseExpectdToken(SyntaxKind.CloseParenToken);
-        } else {
-            const stmtIndent = scanner.currentToken().leadingIndent;
-            statements = parseIndentStatementList(stmtIndent)
-        }
 
+        const statements = parseIndentStatementList(baseIndent);
+    
         return finishNode(
             createSequenceOfStatements(statements),
             pos,
@@ -278,7 +251,7 @@ export function createParser(text: string) {
     function parseFunctionCallExpressionOrHigher() {
         const pos = scanner.getTokenStart();
         const expression = parseSlotOrShorthandOrAssignmentOrHigher();
-        if (scanner.currentToken().kind === SyntaxKind.OpenParenToken) {
+        if (!scanner.currentTokenhasLineFeed() && scanner.currentToken().kind === SyntaxKind.OpenParenToken) {
             const args = parseArgumentsList();
             return finishNode(
                 createFunctionCallExpression(
@@ -408,6 +381,7 @@ export function createParser(text: string) {
     function parsePrimaryExpression(): PrimaryExpression {
         const token = scanner.currentToken();
         switch (token.kind) {
+            case SyntaxKind.SubToken:
             case SyntaxKind.IntegerLiteralToken:
                 return parseIntegerLiteralExpression()
             case SyntaxKind.Identifier:
@@ -426,9 +400,24 @@ export function createParser(text: string) {
                 return parseWhileExpression();
             case SyntaxKind.ThisKeyword:
                 return parseThisExpression();
+            case SyntaxKind.OpenParenToken:
+                return parseParenExpression();
             default:
                 throw new Error(token.__debugKind);
         }
+    }
+
+    function parseParenExpression() {
+        const pos = scanner.getTokenStart();
+        parseExpectdToken(SyntaxKind.OpenParenToken);
+        const expression = parseExpression();
+        parseExpectdToken(SyntaxKind.CloseParenToken);
+
+        return finishNode(
+            createParenExpression(expression),
+            pos,
+            scanner.getCurrentPos()
+        )
     }
 
     function parseThisExpression() {
@@ -441,17 +430,26 @@ export function createParser(text: string) {
         )
     }
 
+    function parseSequenceOfStatementsOrExpression() {
+        const colonToken = parseOptionalToken(SyntaxKind.ColonToken);
+        if (colonToken && scanner.currentTokenhasLineFeed()) {
+            return parseSequenceOfStatements(colonToken.leadingIndent)
+        }
+
+        return parseExpression()
+    }
+
     function parseIfExpression() {
         const pos = scanner.getTokenStart();
-        const ifToken = parseExpectdToken(SyntaxKind.IfKeyword);
+        parseExpectdToken(SyntaxKind.IfKeyword);
         const condition = parseExpression();
-        parseExpectdToken(SyntaxKind.ColonToken);
-        const thenStatement = parseLocalStatement(ifToken.leadingIndent);
-        let elseStatement: LocalStatement | undefined;
+
+        const thenStatement = parseSequenceOfStatementsOrExpression();
+       
+        let elseStatement: SequenceOfStatements | Expression | undefined;
         const elseToken = parseOptionalToken(SyntaxKind.ElseKeyword);
         if (elseToken) {
-            parseExpectdToken(SyntaxKind.ColonToken);
-            elseStatement = parseLocalStatement(elseToken.leadingIndent);
+            elseStatement = parseSequenceOfStatementsOrExpression();
         }
 
         return finishNode(
@@ -467,10 +465,9 @@ export function createParser(text: string) {
 
     function parseWhileExpression() {
         const pos = scanner.getTokenStart();
-        const token = parseExpectdToken(SyntaxKind.WhileKeyword);
+        parseExpectdToken(SyntaxKind.WhileKeyword);
         const condition = parseExpression();
-        parseExpectdToken(SyntaxKind.ColonToken);
-        const body = parseLocalStatement(token.leadingIndent);
+        const body = parseSequenceOfStatementsOrExpression();
 
         return finishNode(
             createWhileExpression(
@@ -484,9 +481,11 @@ export function createParser(text: string) {
 
     function parseIntegerLiteralExpression(): IntegerLiteralExpression {
         const pos = scanner.getTokenStart();
+        const subToken = parseOptionalToken<SubToken>(SyntaxKind.SubToken);
+
         const token = parseExpectdToken<IntegerLiteralToken>(SyntaxKind.IntegerLiteralToken);
         return finishNode(
-            createIntegerLiteralExpression(token),
+            createIntegerLiteralExpression(token, subToken),
             pos,
             scanner.getCurrentPos()
         )
@@ -601,11 +600,10 @@ export function createParser(text: string) {
 
     function parseMethodSlot(): MethodSlot {
         const pos = scanner.getTokenStart();
-        const token = parseExpectdToken(SyntaxKind.MethodKeyword);
+        parseExpectdToken(SyntaxKind.MethodKeyword);
         const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
         const params = parseParameterList();
-        parseExpectdToken(SyntaxKind.ColonToken);
-        const body = parseLocalStatement(token.leadingIndent);
+        const body = parseSequenceOfStatementsOrExpression();
 
         return finishNode(
             createMethodSlot(name, params, body),

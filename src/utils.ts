@@ -1,13 +1,23 @@
-import { BinaryShorthand, Token } from ".";
-import { ASTNode, SyntaxKind, NodeArray, BinaryShorthandTokenSyntaxKind, BinaryShorthandToken} from "./types";
+import { ASTNode,Token, SyntaxKind, NodeArray, BinaryShorthandTokenSyntaxKind, BinaryShorthandToken} from "./types";
 
-export function finishNode<T extends ASTNode> (node: T, pos: number, end: number): T {
+export function finishNode<T extends ASTNode> (node: T, pos: number, end: number, text: string): T {
     node.pos = pos;
     node.end = end;
 
-    setupDebugInfo(node);
-
+    setupDebugInfo(node, text);
     return node;
+}
+
+export function createFinishNode(text: string) {
+    return wrapper;
+
+    function wrapper<T extends ASTNode> (node: T, pos: number, end: number): T {
+        node.pos = pos;
+        node.end = end;
+    
+        setupDebugInfo(node, text);
+        return node;
+    }
 }
 
 export function finishNodeArray<T extends ASTNode>(nodes: NodeArray<T>, pos: number, end: number): NodeArray<T> {
@@ -16,8 +26,20 @@ export function finishNodeArray<T extends ASTNode>(nodes: NodeArray<T>, pos: num
     return nodes;
 }
 
-export function setupDebugInfo (node: ASTNode) {
-    node.__debugKind = SyntaxKind[node.kind];
+export function setupDebugInfo (node: ASTNode, text: string) {
+    Object.defineProperty(node, "__debugKind", {
+        get () {
+            return  SyntaxKind[node.kind];
+        },
+        enumerable: true
+    })
+
+    Object.defineProperty(node, "__debugText", {
+        get () {
+            return text.substring(node.pos, node.end);
+        },
+        enumerable: false
+    })
 }
 
 export function isDef<T>(v: T): v is NonNullable<T> {
@@ -44,6 +66,7 @@ export enum Chars {
     BackSlash = '\\',
     Semi = ';',
     LowDash = '_',
+    Dash = '-',
 
     _0 = '0',
     _1 = '1',
@@ -176,8 +199,8 @@ export function isWhiteSpaceOrTab(char: string): boolean {
     return char === Chars.Whitespace || char === Chars.Tab;
 }
 
-export function isAlphaOrDigitOrLowDash(char: string): boolean {
-    return isAlpha(char) || isDigit(char) || char === Chars.LowDash;
+export function isAlphaOrDigitOrLowDashOrDash(char: string): boolean {
+    return isAlpha(char) || isDigit(char) || char === Chars.LowDash || char === Chars.Dash;
 }
 
 export function getIndent (ch: string) {

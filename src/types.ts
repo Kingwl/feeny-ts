@@ -57,6 +57,7 @@ export enum SyntaxKind {
     IfExpression,
     WhileExpression,
     ThisExpression,
+    ParenExpression,
 
     // Object slot
     VariableSlot,
@@ -221,6 +222,7 @@ export interface Expression extends ASTNode {
 export interface IntegerLiteralExpression extends Expression {
     kind: SyntaxKind.IntegerLiteralExpression
     value: IntegerLiteralToken
+    subToken?: SubToken
 }
 
 export interface VariableReferenceExpression extends Expression {
@@ -286,18 +288,23 @@ export interface VariableAssignmentExpression extends Expression {
 export interface IfExpression extends Expression {
     kind: SyntaxKind.IfExpression
     condition: Expression
-    thenStatement: LocalStatement
-    elseStatement?: LocalStatement
+    thenStatement: SequenceOfStatements | Expression
+    elseStatement?: SequenceOfStatements | Expression
 }
 
 export interface WhileExpression extends Expression {
     kind: SyntaxKind.WhileExpression
     condition: Expression
-    body: Statement
+    body: SequenceOfStatements | Expression
 }
 
 export interface ThisExpression extends Expression {
     kind: SyntaxKind.ThisExpression
+}
+
+export interface ParenExpression extends Expression {
+    kind: SyntaxKind.ParenExpression
+    expression: Expression
 }
 
 export interface BinaryShorthand extends Expression {
@@ -334,7 +341,7 @@ export interface MethodSlot extends ObjectSlot {
     kind: SyntaxKind.MethodSlot
     name: IdentifierToken
     params: NodeArray<IdentifierToken>
-    body: Statement
+    body: SequenceOfStatements | Expression
 }
 export interface Statement extends ASTNode {
     _statementBrand: never
@@ -366,7 +373,7 @@ export interface FunctionStatement extends Statement {
     kind: SyntaxKind.FunctionStatement
     name: IdentifierToken
     params: NodeArray<IdentifierToken>
-    body: Statement
+    body: SequenceOfStatements | Expression
 }
 
 export interface TopLevelExpressionStatement extends Statement {
@@ -384,6 +391,7 @@ export type PrimaryExpression =
     | IfExpression
     | WhileExpression
     | ThisExpression
+    | ParenExpression
 
 export type TopLevelStatement =
     | GlobalVariableStatement

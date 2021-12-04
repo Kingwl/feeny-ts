@@ -1,6 +1,6 @@
 import { createIdentifier, createNumberLiteralToken, createStringLiteralToken, createToken } from "./factory";
 import { Token, SyntaxKind, TokenSyntaxKind } from "./types";
-import { Chars, CharsToTokenKind, finishNode, getIndent, isAlpha, isAlphaOrDigitOrLowDash, isDef, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind, setupDebugInfo } from "./utils";
+import { Chars, CharsToTokenKind, createFinishNode, getIndent, isAlpha, isAlphaOrDigitOrLowDashOrDash, isDef, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind, setupDebugInfo } from "./utils";
 
 
 export function createScanner(
@@ -13,13 +13,21 @@ export function createScanner(
     let token: Token<TokenSyntaxKind> | undefined
     let leadingIndent: number = 0
     let shouldUpdateIndent = true
+    let hasLineFeed = false;
 
+    const finishNode = createFinishNode(text)
+    
     return {
         isEOF,
         nextToken,
         currentToken,
         getTokenStart,
-        getCurrentPos
+        getCurrentPos,
+        currentTokenhasLineFeed
+    }
+
+    function currentTokenhasLineFeed() {
+        return hasLineFeed
     }
 
     function getTokenStart () {
@@ -50,6 +58,7 @@ export function createScanner(
         afterWorker();
 
         function beforeWorker () {
+            hasLineFeed = false;
             tokenFullStart = current;
         }
 
@@ -59,8 +68,6 @@ export function createScanner(
 
                 token.fullPos = tokenFullStart;
                 token.leadingIndent = leadingIndent;
-
-                setupDebugInfo(token);
             }
         }
 
@@ -78,6 +85,7 @@ export function createScanner(
                     current++;
                     leadingIndent = 0;
                     shouldUpdateIndent = true;
+                    hasLineFeed = true;
                     worker();
                     break;
     
@@ -187,7 +195,7 @@ export function createScanner(
                 default:
                     if (isAlpha(ch)) {
                         let i = 0;
-                        while (current + i < text.length && isAlphaOrDigitOrLowDash(text[current + i])) {
+                        while (current + i < text.length && isAlphaOrDigitOrLowDashOrDash(text[current + i])) {
                             i++;
                         }
                         current += i;
@@ -199,7 +207,7 @@ export function createScanner(
                         token = finishNode(createIdentifier(value), tokenStart, current);
                         break;
                     }
-                    throw new Error("Unknown token" + ch)
+                    throw new Error("Unknown token: " + ch)
             }
         }
     }
