@@ -67,6 +67,7 @@ export enum Chars {
     Semi = ';',
     LowDash = '_',
     Dash = '-',
+    Question = '?',
 
     _0 = '0',
     _1 = '1',

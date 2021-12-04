@@ -191,6 +191,11 @@ export function createScanner(
                     token = finishNode(createNumberLiteralToken(value), tokenStart, current);
                     break;
                 }
+
+                case Chars.Question:
+                    current++;
+                    worker();
+                    break;
     
                 default:
                     if (isAlpha(ch)) {
