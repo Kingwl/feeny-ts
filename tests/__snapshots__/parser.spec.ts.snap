@@ -390,6 +390,146 @@ Object {
 }
 `;
 
+exports[`Parser Should work with if expression 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 44,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 44,
+      "expression": Object {
+        "__debugKind": "IfExpression",
+        "condition": Object {
+          "__debugKind": "VariableReferenceExpression",
+          "end": 5,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 4,
+            "fullPos": 2,
+            "id": "x",
+            "kind": 21,
+            "leadingIndent": 1,
+            "pos": 3,
+          },
+          "kind": 36,
+          "pos": 3,
+        },
+        "elseStatement": Object {
+          "__debugKind": "LocalExpressionStatement",
+          "end": 44,
+          "expression": Object {
+            "__debugKind": "PrintingExpression",
+            "args": Array [],
+            "end": 44,
+            "format": Object {
+              "__debugKind": "StringLiteralToken",
+              "end": 42,
+              "fullPos": 39,
+              "kind": 20,
+              "pos": 39,
+              "value": "B",
+            },
+            "kind": 37,
+            "pos": 32,
+          },
+          "kind": 53,
+          "pos": 32,
+        },
+        "end": 44,
+        "kind": 46,
+        "pos": 0,
+        "thenStatement": Object {
+          "__debugKind": "LocalExpressionStatement",
+          "end": 26,
+          "expression": Object {
+            "__debugKind": "PrintingExpression",
+            "args": Array [],
+            "end": 26,
+            "format": Object {
+              "__debugKind": "StringLiteralToken",
+              "end": 20,
+              "fullPos": 17,
+              "kind": 20,
+              "pos": 17,
+              "value": "A",
+            },
+            "kind": 37,
+            "pos": 10,
+          },
+          "kind": 53,
+          "pos": 10,
+        },
+      },
+      "kind": 56,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
+exports[`Parser Should work with if expression with only if 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 22,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 22,
+      "expression": Object {
+        "__debugKind": "IfExpression",
+        "condition": Object {
+          "__debugKind": "VariableReferenceExpression",
+          "end": 5,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 4,
+            "fullPos": 2,
+            "id": "x",
+            "kind": 21,
+            "leadingIndent": 1,
+            "pos": 3,
+          },
+          "kind": 36,
+          "pos": 3,
+        },
+        "elseStatement": undefined,
+        "end": 22,
+        "kind": 46,
+        "pos": 0,
+        "thenStatement": Object {
+          "__debugKind": "LocalExpressionStatement",
+          "end": 22,
+          "expression": Object {
+            "__debugKind": "PrintingExpression",
+            "args": Array [],
+            "end": 22,
+            "format": Object {
+              "__debugKind": "StringLiteralToken",
+              "end": 20,
+              "fullPos": 17,
+              "kind": 20,
+              "pos": 17,
+              "value": "A",
+            },
+            "kind": 37,
+            "pos": 10,
+          },
+          "kind": 53,
+          "pos": 10,
+        },
+      },
+      "kind": 56,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
 exports[`Parser Should work with integer 1`] = `
 Object {
   "__debugKind": "SourceFile",
@@ -1039,6 +1179,57 @@ Object {
 }
 `;
 
+exports[`Parser Should work with variable assignment 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 6,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 6,
+      "expression": Object {
+        "__debugKind": "VariableAssignmentExpression",
+        "end": 6,
+        "expression": Object {
+          "__debugKind": "VariableReferenceExpression",
+          "end": 3,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 1,
+            "fullPos": 0,
+            "id": "x",
+            "kind": 21,
+            "pos": 0,
+          },
+          "kind": 36,
+          "pos": 0,
+        },
+        "kind": 45,
+        "pos": 0,
+        "value": Object {
+          "__debugKind": "IntegerLiteralExpression",
+          "end": 6,
+          "kind": 35,
+          "pos": 4,
+          "value": Object {
+            "__debugKind": "IntegerLiteralToken",
+            "end": 6,
+            "fullPos": 3,
+            "kind": 19,
+            "pos": 4,
+            "value": "42",
+          },
+        },
+      },
+      "kind": 56,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
 exports[`Parser Should work with variable reference 1`] = `
 Object {
   "__debugKind": "SourceFile",
@@ -1061,6 +1252,112 @@ Object {
           "pos": 0,
         },
         "kind": 36,
+        "pos": 0,
+      },
+      "kind": 56,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
+exports[`Parser Should work with while expression 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 23,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 23,
+      "expression": Object {
+        "__debugKind": "WhileExpression",
+        "body": Object {
+          "__debugKind": "LocalExpressionStatement",
+          "end": 23,
+          "expression": Object {
+            "__debugKind": "VariableAssignmentExpression",
+            "end": 23,
+            "expression": Object {
+              "__debugKind": "VariableReferenceExpression",
+              "end": 16,
+              "id": Object {
+                "__debugKind": "Identifier",
+                "end": 14,
+                "fullPos": 8,
+                "id": "x",
+                "kind": 21,
+                "leadingIndent": 4,
+                "pos": 13,
+              },
+              "kind": 36,
+              "pos": 13,
+            },
+            "kind": 45,
+            "pos": 13,
+            "value": Object {
+              "__debugKind": "BinaryShorthand",
+              "end": 23,
+              "kind": 57,
+              "left": Object {
+                "__debugKind": "VariableReferenceExpression",
+                "end": 20,
+                "id": Object {
+                  "__debugKind": "Identifier",
+                  "end": 18,
+                  "fullPos": 16,
+                  "id": "x",
+                  "kind": 21,
+                  "pos": 17,
+                },
+                "kind": 36,
+                "pos": 17,
+              },
+              "operator": Object {
+                "__debugKind": "AddToken",
+                "end": 20,
+                "fullPos": 18,
+                "kind": 9,
+                "pos": 19,
+              },
+              "pos": 17,
+              "right": Object {
+                "__debugKind": "VariableReferenceExpression",
+                "end": 23,
+                "id": Object {
+                  "__debugKind": "Identifier",
+                  "end": 22,
+                  "fullPos": 20,
+                  "id": "y",
+                  "kind": 21,
+                  "pos": 21,
+                },
+                "kind": 36,
+                "pos": 21,
+              },
+            },
+          },
+          "kind": 53,
+          "pos": 13,
+        },
+        "condition": Object {
+          "__debugKind": "VariableReferenceExpression",
+          "end": 8,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 7,
+            "fullPos": 5,
+            "id": "x",
+            "kind": 21,
+            "leadingIndent": 1,
+            "pos": 6,
+          },
+          "kind": 36,
+          "pos": 6,
+        },
+        "end": 23,
+        "kind": 47,
         "pos": 0,
       },
       "kind": 56,

@@ -121,4 +121,39 @@ defn f(x, y, z ):
         const file = parseCode(code);
         expect(file).toMatchSnapshot();
     })
+
+    it('Should work with variable assignment', () => {
+        const code = 'x = 42'
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
+
+    it('Should work with if expression', () => {
+        const code = 
+`if x:
+    printf("A")
+else:
+    printf("B")
+`
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
+
+    it('Should work with if expression with only if', () => {
+        const code = 
+`if x:
+    printf("A")
+`
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
+
+    it('Should work with while expression', () => {
+        const code = 
+`while x:
+    x = x + y
+`
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
 })
