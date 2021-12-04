@@ -275,13 +275,13 @@ export function createParser(text: string) {
             return parseGetShorthandOrGetShorthand(primaryExpression, pos);
         }
         if (scanner.currentToken().kind === SyntaxKind.EqualsToken) {
-            return VariableAssignmentExpression(primaryExpression, pos);
+            return parseVariableAssignmentExpression(primaryExpression, pos);
         }
         return primaryExpression;
     }
 
 
-    function VariableAssignmentExpression(expression: PrimaryExpression, pos: number) {
+    function parseVariableAssignmentExpression(expression: PrimaryExpression, pos: number) {
         parseExpectdToken(SyntaxKind.EqualsToken);
         const value = parseExpression();
         return finishNode(

@@ -8,7 +8,7 @@ describe('Should work with demo', () => {
 
     const fileNames = fs.readdirSync(demoPath);
 
-    fileNames.forEach(fileName => {
+    fileNames.filter(x => x.startsWith('vector')).forEach(fileName => {
         const baseName = path.basename(fileName, '.feeny');
         const fileNamePath = path.join(demoPath, fileName);
         const content = fs.readFileSync(fileNamePath, 'utf8').toString();

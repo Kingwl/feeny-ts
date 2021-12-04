@@ -180,4 +180,10 @@ x == y
         const file = parseCode(code);
         expect(file).toMatchSnapshot();
     })
+
+    it('Should work with lookup chains', () => {
+        const code = `a.b.c`
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
 })
