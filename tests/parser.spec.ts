@@ -97,4 +97,28 @@ defn f(x, y, z ):
         const file = parseCode(code);
         expect(file).toMatchSnapshot();
     })
+
+    it('Should work with method call', () => {
+        const code = 'o.f(10)'
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
+
+    it('Should work with slot lookup', () => {
+        const code = 'o.field'
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
+
+    it('Should work with slot assignment', () => {
+        const code = 'o.field = 42'
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
+
+    it('Should work with function call', () => {
+        const code = 'f(10)'
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
 })

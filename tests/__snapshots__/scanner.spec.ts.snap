@@ -1063,25 +1063,25 @@ Array [
   },
   Object {
     "__debugKind": "DotToken",
-    "end": 53,
+    "end": 52,
     "fullPos": 51,
     "kind": 5,
-    "pos": 52,
+    "pos": 51,
   },
   Object {
     "__debugKind": "Identifier",
-    "end": 55,
-    "fullPos": 53,
+    "end": 53,
+    "fullPos": 52,
     "id": "x",
     "kind": 21,
-    "pos": 54,
+    "pos": 52,
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 56,
-    "fullPos": 55,
+    "end": 54,
+    "fullPos": 53,
     "kind": 33,
-    "pos": 56,
+    "pos": 54,
   },
 ]
 `;
