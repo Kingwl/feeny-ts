@@ -390,6 +390,57 @@ Object {
 }
 `;
 
+exports[`Parser Should work with get shorthand 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 4,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 4,
+      "expression": Object {
+        "__debugKind": "GetShorthand",
+        "argExpression": Object {
+          "__debugKind": "IntegerLiteralExpression",
+          "end": 4,
+          "kind": 35,
+          "pos": 2,
+          "value": Object {
+            "__debugKind": "IntegerLiteralToken",
+            "end": 3,
+            "fullPos": 2,
+            "kind": 19,
+            "pos": 2,
+            "value": "1",
+          },
+        },
+        "end": 4,
+        "expression": Object {
+          "__debugKind": "VariableReferenceExpression",
+          "end": 2,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 1,
+            "fullPos": 0,
+            "id": "a",
+            "kind": 21,
+            "pos": 0,
+          },
+          "kind": 36,
+          "pos": 0,
+        },
+        "kind": 58,
+        "pos": 0,
+      },
+      "kind": 56,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
 exports[`Parser Should work with if expression 1`] = `
 Object {
   "__debugKind": "SourceFile",
@@ -987,6 +1038,71 @@ Object {
         },
         "kind": 37,
         "pos": 0,
+      },
+      "kind": 56,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
+exports[`Parser Should work with set shorthand 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 8,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 8,
+      "expression": Object {
+        "__debugKind": "SetShorthand",
+        "argExpression": Object {
+          "__debugKind": "IntegerLiteralExpression",
+          "end": 4,
+          "kind": 35,
+          "pos": 2,
+          "value": Object {
+            "__debugKind": "IntegerLiteralToken",
+            "end": 3,
+            "fullPos": 2,
+            "kind": 19,
+            "pos": 2,
+            "value": "1",
+          },
+        },
+        "end": 8,
+        "expression": Object {
+          "__debugKind": "VariableReferenceExpression",
+          "end": 2,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 1,
+            "fullPos": 0,
+            "id": "a",
+            "kind": 21,
+            "pos": 0,
+          },
+          "kind": 36,
+          "pos": 0,
+        },
+        "kind": 59,
+        "pos": 0,
+        "value": Object {
+          "__debugKind": "IntegerLiteralExpression",
+          "end": 8,
+          "kind": 35,
+          "pos": 7,
+          "value": Object {
+            "__debugKind": "IntegerLiteralToken",
+            "end": 8,
+            "fullPos": 6,
+            "kind": 19,
+            "pos": 7,
+            "value": "0",
+          },
+        },
       },
       "kind": 56,
       "pos": 0,

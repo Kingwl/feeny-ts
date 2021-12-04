@@ -210,6 +210,48 @@ Array [
 ]
 `;
 
+exports[`Scanner Should work with get shorthand 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "fullPos": 0,
+    "id": "a",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenBracketToken",
+    "end": 2,
+    "fullPos": 1,
+    "kind": 7,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "IntegerLiteralToken",
+    "end": 3,
+    "fullPos": 2,
+    "kind": 19,
+    "pos": 2,
+    "value": "1",
+  },
+  Object {
+    "__debugKind": "CloseBracketToken",
+    "end": 4,
+    "fullPos": 3,
+    "kind": 8,
+    "pos": 3,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 4,
+    "fullPos": 4,
+    "kind": 33,
+    "pos": 4,
+  },
+]
+`;
+
 exports[`Scanner Should work with global variable 1`] = `
 Array [
   Object {
@@ -1139,6 +1181,64 @@ Array [
     "fullPos": 31,
     "kind": 33,
     "pos": 31,
+  },
+]
+`;
+
+exports[`Scanner Should work with set shorthand 1`] = `
+Array [
+  Object {
+    "__debugKind": "Identifier",
+    "end": 1,
+    "fullPos": 0,
+    "id": "a",
+    "kind": 21,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "OpenBracketToken",
+    "end": 2,
+    "fullPos": 1,
+    "kind": 7,
+    "pos": 1,
+  },
+  Object {
+    "__debugKind": "IntegerLiteralToken",
+    "end": 3,
+    "fullPos": 2,
+    "kind": 19,
+    "pos": 2,
+    "value": "1",
+  },
+  Object {
+    "__debugKind": "CloseBracketToken",
+    "end": 4,
+    "fullPos": 3,
+    "kind": 8,
+    "pos": 3,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 6,
+    "fullPos": 4,
+    "kind": 6,
+    "leadingIndent": 1,
+    "pos": 5,
+  },
+  Object {
+    "__debugKind": "IntegerLiteralToken",
+    "end": 8,
+    "fullPos": 6,
+    "kind": 19,
+    "pos": 7,
+    "value": "0",
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 8,
+    "fullPos": 8,
+    "kind": 33,
+    "pos": 8,
   },
 ]
 `;

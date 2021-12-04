@@ -163,4 +163,16 @@ defn f(x, y, z ):
         const tokens = scanCode(code);
         expect(tokens).toMatchSnapshot();
     })
+
+    it('Should work with get shorthand', () => {
+        const code = `a[1]`
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
+
+    it('Should work with set shorthand', () => {
+        const code = `a[1] = 0`
+        const tokens = scanCode(code);
+        expect(tokens).toMatchSnapshot();
+    })
 })
