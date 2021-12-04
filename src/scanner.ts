@@ -11,7 +11,8 @@ export function createScanner(
     let tokenStart = 0;
     let current = 0;
     let token: Token<TokenSyntaxKind> | undefined
-    let leadingIndent: number | undefined = 0
+    let leadingIndent: number = 0
+    let shouldUpdateIndent = true
 
     return {
         isEOF,
@@ -54,12 +55,11 @@ export function createScanner(
 
         function afterWorker () {
             if (token) {
-                token.fullPos = tokenFullStart;
+                shouldUpdateIndent = false;
 
-                if (isDef(leadingIndent) && leadingIndent) {
-                    token.leadingIndent = leadingIndent
-                    leadingIndent = undefined;
-                }
+                token.fullPos = tokenFullStart;
+                token.leadingIndent = leadingIndent;
+
                 setupDebugInfo(token);
             }
         }
@@ -77,6 +77,7 @@ export function createScanner(
                 case Chars.LineFeed:
                     current++;
                     leadingIndent = 0;
+                    shouldUpdateIndent = true;
                     worker();
                     break;
     
@@ -94,12 +95,12 @@ export function createScanner(
                 case Chars.Tab: {
                     let i = 0;
                     while (isWhiteSpaceOrTab(text[current + i])) {
+                        if (shouldUpdateIndent) {
+                            leadingIndent += getIndent(text[current + i]);
+                        }
                         i++;
                     }
                     current += i;
-                    if (isDef(leadingIndent)) {
-                        leadingIndent += i;
-                    }
                     worker();
                     break;
                 }

@@ -7,6 +7,7 @@ Array [
     "end": 6,
     "fullPos": 0,
     "kind": 23,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -14,7 +15,7 @@ Array [
     "end": 8,
     "fullPos": 6,
     "kind": 2,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 7,
   },
   Object {
@@ -22,6 +23,7 @@ Array [
     "end": 10,
     "fullPos": 8,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 8,
     "value": "10",
   },
@@ -30,6 +32,7 @@ Array [
     "end": 11,
     "fullPos": 10,
     "kind": 1,
+    "leadingIndent": 0,
     "pos": 10,
   },
   Object {
@@ -37,6 +40,7 @@ Array [
     "end": 13,
     "fullPos": 11,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 12,
     "value": "0",
   },
@@ -45,6 +49,7 @@ Array [
     "end": 14,
     "fullPos": 13,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 13,
   },
   Object {
@@ -52,6 +57,7 @@ Array [
     "end": 14,
     "fullPos": 14,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 14,
   },
 ]
@@ -65,6 +71,7 @@ Array [
     "fullPos": 0,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -72,7 +79,7 @@ Array [
     "end": 4,
     "fullPos": 2,
     "kind": 9,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 3,
   },
   Object {
@@ -81,6 +88,7 @@ Array [
     "fullPos": 4,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 5,
   },
   Object {
@@ -89,6 +97,7 @@ Array [
     "fullPos": 6,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 7,
   },
   Object {
@@ -96,7 +105,7 @@ Array [
     "end": 10,
     "fullPos": 8,
     "kind": 10,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 9,
   },
   Object {
@@ -105,6 +114,7 @@ Array [
     "fullPos": 10,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 11,
   },
   Object {
@@ -113,6 +123,7 @@ Array [
     "fullPos": 12,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 13,
   },
   Object {
@@ -120,7 +131,7 @@ Array [
     "end": 16,
     "fullPos": 14,
     "kind": 11,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 15,
   },
   Object {
@@ -129,6 +140,7 @@ Array [
     "fullPos": 16,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 17,
   },
   Object {
@@ -137,6 +149,7 @@ Array [
     "fullPos": 18,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 19,
   },
   Object {
@@ -144,7 +157,7 @@ Array [
     "end": 22,
     "fullPos": 20,
     "kind": 12,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 21,
   },
   Object {
@@ -153,6 +166,7 @@ Array [
     "fullPos": 22,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 23,
   },
   Object {
@@ -161,6 +175,7 @@ Array [
     "fullPos": 24,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 25,
   },
   Object {
@@ -168,7 +183,7 @@ Array [
     "end": 28,
     "fullPos": 26,
     "kind": 13,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 27,
   },
   Object {
@@ -177,6 +192,7 @@ Array [
     "fullPos": 28,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 29,
   },
   Object {
@@ -185,6 +201,7 @@ Array [
     "fullPos": 30,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 31,
   },
   Object {
@@ -192,7 +209,7 @@ Array [
     "end": 34,
     "fullPos": 32,
     "kind": 14,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 33,
   },
   Object {
@@ -201,6 +218,7 @@ Array [
     "fullPos": 34,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 35,
   },
   Object {
@@ -209,6 +227,7 @@ Array [
     "fullPos": 36,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 37,
   },
   Object {
@@ -216,7 +235,7 @@ Array [
     "end": 40,
     "fullPos": 38,
     "kind": 15,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 39,
   },
   Object {
@@ -225,6 +244,7 @@ Array [
     "fullPos": 40,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 41,
   },
   Object {
@@ -233,6 +253,7 @@ Array [
     "fullPos": 42,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 43,
   },
   Object {
@@ -240,7 +261,7 @@ Array [
     "end": 47,
     "fullPos": 44,
     "kind": 16,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 45,
   },
   Object {
@@ -249,6 +270,7 @@ Array [
     "fullPos": 47,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 48,
   },
   Object {
@@ -257,6 +279,7 @@ Array [
     "fullPos": 49,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 50,
   },
   Object {
@@ -264,7 +287,7 @@ Array [
     "end": 54,
     "fullPos": 51,
     "kind": 17,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 52,
   },
   Object {
@@ -273,6 +296,7 @@ Array [
     "fullPos": 54,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 55,
   },
   Object {
@@ -281,6 +305,7 @@ Array [
     "fullPos": 56,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 57,
   },
   Object {
@@ -288,7 +313,7 @@ Array [
     "end": 61,
     "fullPos": 58,
     "kind": 18,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 59,
   },
   Object {
@@ -297,6 +322,7 @@ Array [
     "fullPos": 61,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 62,
   },
   Object {
@@ -304,6 +330,7 @@ Array [
     "end": 64,
     "fullPos": 63,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 64,
   },
 ]
@@ -316,6 +343,7 @@ Array [
     "end": 5,
     "fullPos": 0,
     "kind": 32,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -324,7 +352,7 @@ Array [
     "fullPos": 5,
     "id": "f",
     "kind": 21,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -332,6 +360,7 @@ Array [
     "end": 8,
     "fullPos": 7,
     "kind": 2,
+    "leadingIndent": 0,
     "pos": 7,
   },
   Object {
@@ -340,6 +369,7 @@ Array [
     "fullPos": 8,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 8,
   },
   Object {
@@ -347,6 +377,7 @@ Array [
     "end": 10,
     "fullPos": 9,
     "kind": 1,
+    "leadingIndent": 0,
     "pos": 9,
   },
   Object {
@@ -355,6 +386,7 @@ Array [
     "fullPos": 10,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 11,
   },
   Object {
@@ -362,6 +394,7 @@ Array [
     "end": 13,
     "fullPos": 12,
     "kind": 1,
+    "leadingIndent": 0,
     "pos": 12,
   },
   Object {
@@ -370,6 +403,7 @@ Array [
     "fullPos": 13,
     "id": "z",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 14,
   },
   Object {
@@ -377,6 +411,7 @@ Array [
     "end": 17,
     "fullPos": 15,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 16,
   },
   Object {
@@ -384,6 +419,7 @@ Array [
     "end": 18,
     "fullPos": 17,
     "kind": 4,
+    "leadingIndent": 0,
     "pos": 17,
   },
   Object {
@@ -400,6 +436,7 @@ Array [
     "end": 26,
     "fullPos": 24,
     "kind": 9,
+    "leadingIndent": 4,
     "pos": 25,
   },
   Object {
@@ -408,6 +445,7 @@ Array [
     "fullPos": 26,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 27,
   },
   Object {
@@ -415,6 +453,7 @@ Array [
     "end": 29,
     "fullPos": 28,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 29,
   },
 ]
@@ -428,6 +467,7 @@ Array [
     "fullPos": 0,
     "id": "f",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -435,6 +475,7 @@ Array [
     "end": 2,
     "fullPos": 1,
     "kind": 2,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -442,6 +483,7 @@ Array [
     "end": 4,
     "fullPos": 2,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 2,
     "value": "10",
   },
@@ -450,6 +492,7 @@ Array [
     "end": 5,
     "fullPos": 4,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 4,
   },
   Object {
@@ -457,6 +500,7 @@ Array [
     "end": 5,
     "fullPos": 5,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 5,
   },
 ]
@@ -470,6 +514,7 @@ Array [
     "fullPos": 0,
     "id": "a",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -477,6 +522,7 @@ Array [
     "end": 2,
     "fullPos": 1,
     "kind": 7,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -484,6 +530,7 @@ Array [
     "end": 3,
     "fullPos": 2,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 2,
     "value": "1",
   },
@@ -492,6 +539,7 @@ Array [
     "end": 4,
     "fullPos": 3,
     "kind": 8,
+    "leadingIndent": 0,
     "pos": 3,
   },
   Object {
@@ -499,6 +547,7 @@ Array [
     "end": 4,
     "fullPos": 4,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 4,
   },
 ]
@@ -511,6 +560,7 @@ Array [
     "end": 3,
     "fullPos": 0,
     "kind": 26,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -519,7 +569,7 @@ Array [
     "fullPos": 3,
     "id": "x",
     "kind": 21,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 4,
   },
   Object {
@@ -527,6 +577,7 @@ Array [
     "end": 7,
     "fullPos": 5,
     "kind": 6,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -534,6 +585,7 @@ Array [
     "end": 10,
     "fullPos": 7,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 8,
     "value": "42",
   },
@@ -542,6 +594,7 @@ Array [
     "end": 10,
     "fullPos": 10,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 10,
   },
 ]
@@ -554,6 +607,7 @@ Array [
     "end": 2,
     "fullPos": 0,
     "kind": 28,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -562,7 +616,7 @@ Array [
     "fullPos": 2,
     "id": "x",
     "kind": 21,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 3,
   },
   Object {
@@ -570,6 +624,7 @@ Array [
     "end": 5,
     "fullPos": 4,
     "kind": 4,
+    "leadingIndent": 0,
     "pos": 4,
   },
   Object {
@@ -585,6 +640,7 @@ Array [
     "end": 17,
     "fullPos": 16,
     "kind": 2,
+    "leadingIndent": 4,
     "pos": 16,
   },
   Object {
@@ -592,6 +648,7 @@ Array [
     "end": 20,
     "fullPos": 17,
     "kind": 20,
+    "leadingIndent": 4,
     "pos": 17,
     "value": "A",
   },
@@ -600,6 +657,7 @@ Array [
     "end": 21,
     "fullPos": 20,
     "kind": 3,
+    "leadingIndent": 4,
     "pos": 20,
   },
   Object {
@@ -607,6 +665,7 @@ Array [
     "end": 26,
     "fullPos": 21,
     "kind": 29,
+    "leadingIndent": 0,
     "pos": 22,
   },
   Object {
@@ -614,6 +673,7 @@ Array [
     "end": 27,
     "fullPos": 26,
     "kind": 4,
+    "leadingIndent": 0,
     "pos": 26,
   },
   Object {
@@ -629,6 +689,7 @@ Array [
     "end": 39,
     "fullPos": 38,
     "kind": 2,
+    "leadingIndent": 4,
     "pos": 38,
   },
   Object {
@@ -636,6 +697,7 @@ Array [
     "end": 42,
     "fullPos": 39,
     "kind": 20,
+    "leadingIndent": 4,
     "pos": 39,
     "value": "B",
   },
@@ -644,6 +706,7 @@ Array [
     "end": 43,
     "fullPos": 42,
     "kind": 3,
+    "leadingIndent": 4,
     "pos": 42,
   },
   Object {
@@ -651,6 +714,7 @@ Array [
     "end": 44,
     "fullPos": 43,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 44,
   },
 ]
@@ -663,6 +727,7 @@ Array [
     "end": 2,
     "fullPos": 0,
     "kind": 28,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -671,7 +736,7 @@ Array [
     "fullPos": 2,
     "id": "x",
     "kind": 21,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 3,
   },
   Object {
@@ -679,6 +744,7 @@ Array [
     "end": 5,
     "fullPos": 4,
     "kind": 4,
+    "leadingIndent": 0,
     "pos": 4,
   },
   Object {
@@ -694,6 +760,7 @@ Array [
     "end": 17,
     "fullPos": 16,
     "kind": 2,
+    "leadingIndent": 4,
     "pos": 16,
   },
   Object {
@@ -701,6 +768,7 @@ Array [
     "end": 20,
     "fullPos": 17,
     "kind": 20,
+    "leadingIndent": 4,
     "pos": 17,
     "value": "A",
   },
@@ -709,6 +777,7 @@ Array [
     "end": 21,
     "fullPos": 20,
     "kind": 3,
+    "leadingIndent": 4,
     "pos": 20,
   },
   Object {
@@ -716,6 +785,7 @@ Array [
     "end": 22,
     "fullPos": 21,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 22,
   },
 ]
@@ -728,6 +798,7 @@ Array [
     "end": 1,
     "fullPos": 0,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 0,
     "value": "1",
   },
@@ -736,6 +807,7 @@ Array [
     "end": 1,
     "fullPos": 1,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 1,
   },
 ]
@@ -749,6 +821,7 @@ Array [
     "fullPos": 0,
     "id": "f",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -756,6 +829,7 @@ Array [
     "end": 2,
     "fullPos": 1,
     "kind": 2,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -764,6 +838,7 @@ Array [
     "fullPos": 2,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 2,
   },
   Object {
@@ -771,6 +846,7 @@ Array [
     "end": 4,
     "fullPos": 3,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 3,
   },
   Object {
@@ -778,6 +854,7 @@ Array [
     "end": 4,
     "fullPos": 4,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 4,
   },
 ]
@@ -790,6 +867,7 @@ Array [
     "end": 3,
     "fullPos": 0,
     "kind": 26,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -798,7 +876,7 @@ Array [
     "fullPos": 3,
     "id": "x",
     "kind": 21,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 4,
   },
   Object {
@@ -806,6 +884,7 @@ Array [
     "end": 7,
     "fullPos": 5,
     "kind": 6,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -813,6 +892,7 @@ Array [
     "end": 10,
     "fullPos": 7,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 8,
     "value": "42",
   },
@@ -821,6 +901,7 @@ Array [
     "end": 10,
     "fullPos": 10,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 10,
   },
 ]
@@ -834,6 +915,7 @@ Array [
     "fullPos": 0,
     "id": "o",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -841,6 +923,7 @@ Array [
     "end": 2,
     "fullPos": 1,
     "kind": 5,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -849,6 +932,7 @@ Array [
     "fullPos": 2,
     "id": "f",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 2,
   },
   Object {
@@ -856,6 +940,7 @@ Array [
     "end": 4,
     "fullPos": 3,
     "kind": 2,
+    "leadingIndent": 0,
     "pos": 3,
   },
   Object {
@@ -863,6 +948,7 @@ Array [
     "end": 6,
     "fullPos": 4,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 4,
     "value": "10",
   },
@@ -871,6 +957,7 @@ Array [
     "end": 7,
     "fullPos": 6,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -878,6 +965,7 @@ Array [
     "end": 7,
     "fullPos": 7,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 7,
   },
 ]
@@ -890,6 +978,7 @@ Array [
     "end": 4,
     "fullPos": 0,
     "kind": 24,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -897,6 +986,7 @@ Array [
     "end": 4,
     "fullPos": 4,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 4,
   },
 ]
@@ -909,6 +999,7 @@ Array [
     "end": 6,
     "fullPos": 0,
     "kind": 25,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -916,6 +1007,7 @@ Array [
     "end": 7,
     "fullPos": 6,
     "kind": 2,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -924,6 +1016,7 @@ Array [
     "fullPos": 7,
     "id": "p",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 7,
   },
   Object {
@@ -931,6 +1024,7 @@ Array [
     "end": 9,
     "fullPos": 8,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 8,
   },
   Object {
@@ -938,6 +1032,7 @@ Array [
     "end": 10,
     "fullPos": 9,
     "kind": 4,
+    "leadingIndent": 0,
     "pos": 9,
   },
   Object {
@@ -954,6 +1049,7 @@ Array [
     "fullPos": 18,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 19,
   },
   Object {
@@ -961,6 +1057,7 @@ Array [
     "end": 22,
     "fullPos": 20,
     "kind": 6,
+    "leadingIndent": 4,
     "pos": 21,
   },
   Object {
@@ -968,6 +1065,7 @@ Array [
     "end": 25,
     "fullPos": 22,
     "kind": 19,
+    "leadingIndent": 4,
     "pos": 23,
     "value": "10",
   },
@@ -985,6 +1083,7 @@ Array [
     "fullPos": 36,
     "id": "f",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 37,
   },
   Object {
@@ -992,6 +1091,7 @@ Array [
     "end": 39,
     "fullPos": 38,
     "kind": 2,
+    "leadingIndent": 4,
     "pos": 38,
   },
   Object {
@@ -999,6 +1099,7 @@ Array [
     "end": 40,
     "fullPos": 39,
     "kind": 3,
+    "leadingIndent": 4,
     "pos": 39,
   },
   Object {
@@ -1006,6 +1107,7 @@ Array [
     "end": 41,
     "fullPos": 40,
     "kind": 4,
+    "leadingIndent": 4,
     "pos": 40,
   },
   Object {
@@ -1021,6 +1123,7 @@ Array [
     "end": 55,
     "fullPos": 54,
     "kind": 5,
+    "leadingIndent": 8,
     "pos": 54,
   },
   Object {
@@ -1029,6 +1132,7 @@ Array [
     "fullPos": 55,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 8,
     "pos": 55,
   },
   Object {
@@ -1036,6 +1140,7 @@ Array [
     "end": 57,
     "fullPos": 56,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 57,
   },
 ]
@@ -1048,6 +1153,7 @@ Array [
     "end": 6,
     "fullPos": 0,
     "kind": 25,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1055,6 +1161,7 @@ Array [
     "end": 7,
     "fullPos": 6,
     "kind": 2,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -1063,6 +1170,7 @@ Array [
     "fullPos": 7,
     "id": "p",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 7,
   },
   Object {
@@ -1070,6 +1178,7 @@ Array [
     "end": 9,
     "fullPos": 8,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 8,
   },
   Object {
@@ -1077,6 +1186,7 @@ Array [
     "end": 10,
     "fullPos": 9,
     "kind": 4,
+    "leadingIndent": 0,
     "pos": 9,
   },
   Object {
@@ -1093,6 +1203,7 @@ Array [
     "fullPos": 18,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 19,
   },
   Object {
@@ -1100,6 +1211,7 @@ Array [
     "end": 22,
     "fullPos": 20,
     "kind": 6,
+    "leadingIndent": 4,
     "pos": 21,
   },
   Object {
@@ -1107,6 +1219,7 @@ Array [
     "end": 25,
     "fullPos": 22,
     "kind": 19,
+    "leadingIndent": 4,
     "pos": 23,
     "value": "10",
   },
@@ -1124,6 +1237,7 @@ Array [
     "fullPos": 36,
     "id": "f",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 37,
   },
   Object {
@@ -1131,6 +1245,7 @@ Array [
     "end": 39,
     "fullPos": 38,
     "kind": 2,
+    "leadingIndent": 4,
     "pos": 38,
   },
   Object {
@@ -1139,6 +1254,7 @@ Array [
     "fullPos": 39,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 39,
   },
   Object {
@@ -1146,6 +1262,7 @@ Array [
     "end": 41,
     "fullPos": 40,
     "kind": 1,
+    "leadingIndent": 4,
     "pos": 40,
   },
   Object {
@@ -1154,6 +1271,7 @@ Array [
     "fullPos": 41,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 42,
   },
   Object {
@@ -1161,6 +1279,7 @@ Array [
     "end": 44,
     "fullPos": 43,
     "kind": 1,
+    "leadingIndent": 4,
     "pos": 43,
   },
   Object {
@@ -1169,6 +1288,7 @@ Array [
     "fullPos": 44,
     "id": "z",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 45,
   },
   Object {
@@ -1176,6 +1296,7 @@ Array [
     "end": 47,
     "fullPos": 46,
     "kind": 3,
+    "leadingIndent": 4,
     "pos": 46,
   },
   Object {
@@ -1183,6 +1304,7 @@ Array [
     "end": 48,
     "fullPos": 47,
     "kind": 4,
+    "leadingIndent": 4,
     "pos": 47,
   },
   Object {
@@ -1198,6 +1320,7 @@ Array [
     "end": 62,
     "fullPos": 61,
     "kind": 5,
+    "leadingIndent": 8,
     "pos": 61,
   },
   Object {
@@ -1206,6 +1329,7 @@ Array [
     "fullPos": 62,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 8,
     "pos": 62,
   },
   Object {
@@ -1213,6 +1337,7 @@ Array [
     "end": 65,
     "fullPos": 63,
     "kind": 9,
+    "leadingIndent": 8,
     "pos": 64,
   },
   Object {
@@ -1221,6 +1346,7 @@ Array [
     "fullPos": 65,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 8,
     "pos": 66,
   },
   Object {
@@ -1228,6 +1354,7 @@ Array [
     "end": 69,
     "fullPos": 67,
     "kind": 9,
+    "leadingIndent": 8,
     "pos": 68,
   },
   Object {
@@ -1236,6 +1363,7 @@ Array [
     "fullPos": 69,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 8,
     "pos": 70,
   },
   Object {
@@ -1243,6 +1371,7 @@ Array [
     "end": 73,
     "fullPos": 71,
     "kind": 9,
+    "leadingIndent": 8,
     "pos": 72,
   },
   Object {
@@ -1251,6 +1380,7 @@ Array [
     "fullPos": 73,
     "id": "z",
     "kind": 21,
+    "leadingIndent": 8,
     "pos": 74,
   },
   Object {
@@ -1258,6 +1388,7 @@ Array [
     "end": 76,
     "fullPos": 75,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 76,
   },
 ]
@@ -1270,6 +1401,7 @@ Array [
     "end": 6,
     "fullPos": 0,
     "kind": 25,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1277,6 +1409,7 @@ Array [
     "end": 7,
     "fullPos": 6,
     "kind": 4,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -1293,6 +1426,7 @@ Array [
     "fullPos": 15,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 16,
   },
   Object {
@@ -1300,6 +1434,7 @@ Array [
     "end": 19,
     "fullPos": 17,
     "kind": 6,
+    "leadingIndent": 4,
     "pos": 18,
   },
   Object {
@@ -1307,6 +1442,7 @@ Array [
     "end": 22,
     "fullPos": 19,
     "kind": 19,
+    "leadingIndent": 4,
     "pos": 20,
     "value": "10",
   },
@@ -1324,6 +1460,7 @@ Array [
     "fullPos": 33,
     "id": "f",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 34,
   },
   Object {
@@ -1331,6 +1468,7 @@ Array [
     "end": 36,
     "fullPos": 35,
     "kind": 2,
+    "leadingIndent": 4,
     "pos": 35,
   },
   Object {
@@ -1338,6 +1476,7 @@ Array [
     "end": 37,
     "fullPos": 36,
     "kind": 3,
+    "leadingIndent": 4,
     "pos": 36,
   },
   Object {
@@ -1345,6 +1484,7 @@ Array [
     "end": 38,
     "fullPos": 37,
     "kind": 4,
+    "leadingIndent": 4,
     "pos": 37,
   },
   Object {
@@ -1360,6 +1500,7 @@ Array [
     "end": 52,
     "fullPos": 51,
     "kind": 5,
+    "leadingIndent": 8,
     "pos": 51,
   },
   Object {
@@ -1368,6 +1509,7 @@ Array [
     "fullPos": 52,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 8,
     "pos": 52,
   },
   Object {
@@ -1375,6 +1517,7 @@ Array [
     "end": 54,
     "fullPos": 53,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 54,
   },
 ]
@@ -1387,6 +1530,7 @@ Array [
     "end": 6,
     "fullPos": 0,
     "kind": 22,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1394,7 +1538,7 @@ Array [
     "end": 8,
     "fullPos": 6,
     "kind": 2,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 7,
   },
   Object {
@@ -1402,6 +1546,7 @@ Array [
     "end": 26,
     "fullPos": 8,
     "kind": 20,
+    "leadingIndent": 0,
     "pos": 8,
     "value": " My age is ~. n ",
   },
@@ -1410,6 +1555,7 @@ Array [
     "end": 28,
     "fullPos": 26,
     "kind": 1,
+    "leadingIndent": 0,
     "pos": 27,
   },
   Object {
@@ -1417,6 +1563,7 @@ Array [
     "end": 30,
     "fullPos": 28,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 29,
     "value": "8",
   },
@@ -1425,6 +1572,7 @@ Array [
     "end": 31,
     "fullPos": 30,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 30,
   },
   Object {
@@ -1432,6 +1580,7 @@ Array [
     "end": 31,
     "fullPos": 31,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 31,
   },
 ]
@@ -1445,6 +1594,7 @@ Array [
     "fullPos": 0,
     "id": "a",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1452,6 +1602,7 @@ Array [
     "end": 2,
     "fullPos": 1,
     "kind": 7,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -1459,6 +1610,7 @@ Array [
     "end": 3,
     "fullPos": 2,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 2,
     "value": "1",
   },
@@ -1467,6 +1619,7 @@ Array [
     "end": 4,
     "fullPos": 3,
     "kind": 8,
+    "leadingIndent": 0,
     "pos": 3,
   },
   Object {
@@ -1474,7 +1627,7 @@ Array [
     "end": 6,
     "fullPos": 4,
     "kind": 6,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 5,
   },
   Object {
@@ -1482,6 +1635,7 @@ Array [
     "end": 8,
     "fullPos": 6,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 7,
     "value": "0",
   },
@@ -1490,6 +1644,7 @@ Array [
     "end": 8,
     "fullPos": 8,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 8,
   },
 ]
@@ -1503,6 +1658,7 @@ Array [
     "fullPos": 0,
     "id": "o",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1510,6 +1666,7 @@ Array [
     "end": 2,
     "fullPos": 1,
     "kind": 5,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -1518,6 +1675,7 @@ Array [
     "fullPos": 2,
     "id": "field",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 2,
   },
   Object {
@@ -1525,7 +1683,7 @@ Array [
     "end": 9,
     "fullPos": 7,
     "kind": 6,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 8,
   },
   Object {
@@ -1533,6 +1691,7 @@ Array [
     "end": 12,
     "fullPos": 9,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 10,
     "value": "42",
   },
@@ -1541,6 +1700,7 @@ Array [
     "end": 12,
     "fullPos": 12,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 12,
   },
 ]
@@ -1554,6 +1714,7 @@ Array [
     "fullPos": 0,
     "id": "o",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1561,6 +1722,7 @@ Array [
     "end": 2,
     "fullPos": 1,
     "kind": 5,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -1569,6 +1731,7 @@ Array [
     "fullPos": 2,
     "id": "field",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 2,
   },
   Object {
@@ -1576,6 +1739,7 @@ Array [
     "end": 7,
     "fullPos": 7,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 7,
   },
 ]
@@ -1588,6 +1752,7 @@ Array [
     "end": 1,
     "fullPos": 0,
     "kind": 2,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1596,7 +1761,7 @@ Array [
     "fullPos": 1,
     "id": "s1",
     "kind": 21,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 2,
   },
   Object {
@@ -1604,6 +1769,7 @@ Array [
     "end": 5,
     "fullPos": 4,
     "kind": 1,
+    "leadingIndent": 0,
     "pos": 4,
   },
   Object {
@@ -1612,6 +1778,7 @@ Array [
     "fullPos": 5,
     "id": "s2",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -1619,6 +1786,7 @@ Array [
     "end": 9,
     "fullPos": 8,
     "kind": 1,
+    "leadingIndent": 0,
     "pos": 8,
   },
   Object {
@@ -1627,6 +1795,7 @@ Array [
     "fullPos": 9,
     "id": "s3",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 10,
   },
   Object {
@@ -1634,6 +1803,7 @@ Array [
     "end": 14,
     "fullPos": 12,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 13,
   },
   Object {
@@ -1641,6 +1811,7 @@ Array [
     "end": 14,
     "fullPos": 14,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 14,
   },
 ]
@@ -1654,6 +1825,7 @@ Array [
     "fullPos": 0,
     "id": "f",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1661,6 +1833,7 @@ Array [
     "end": 2,
     "fullPos": 1,
     "kind": 2,
+    "leadingIndent": 0,
     "pos": 1,
   },
   Object {
@@ -1669,6 +1842,7 @@ Array [
     "fullPos": 2,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 2,
   },
   Object {
@@ -1676,6 +1850,7 @@ Array [
     "end": 4,
     "fullPos": 3,
     "kind": 3,
+    "leadingIndent": 0,
     "pos": 3,
   },
   Object {
@@ -1683,6 +1858,7 @@ Array [
     "end": 4,
     "fullPos": 4,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 4,
   },
 ]
@@ -1696,6 +1872,7 @@ Array [
     "fullPos": 0,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1703,7 +1880,7 @@ Array [
     "end": 3,
     "fullPos": 1,
     "kind": 6,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 2,
   },
   Object {
@@ -1711,6 +1888,7 @@ Array [
     "end": 6,
     "fullPos": 3,
     "kind": 19,
+    "leadingIndent": 0,
     "pos": 4,
     "value": "42",
   },
@@ -1719,6 +1897,7 @@ Array [
     "end": 6,
     "fullPos": 6,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 6,
   },
 ]
@@ -1732,6 +1911,7 @@ Array [
     "fullPos": 0,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1739,6 +1919,7 @@ Array [
     "end": 1,
     "fullPos": 1,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 1,
   },
 ]
@@ -1751,6 +1932,7 @@ Array [
     "end": 5,
     "fullPos": 0,
     "kind": 30,
+    "leadingIndent": 0,
     "pos": 0,
   },
   Object {
@@ -1759,7 +1941,7 @@ Array [
     "fullPos": 5,
     "id": "x",
     "kind": 21,
-    "leadingIndent": 1,
+    "leadingIndent": 0,
     "pos": 6,
   },
   Object {
@@ -1767,6 +1949,7 @@ Array [
     "end": 8,
     "fullPos": 7,
     "kind": 4,
+    "leadingIndent": 0,
     "pos": 7,
   },
   Object {
@@ -1783,6 +1966,7 @@ Array [
     "end": 16,
     "fullPos": 14,
     "kind": 6,
+    "leadingIndent": 4,
     "pos": 15,
   },
   Object {
@@ -1791,6 +1975,7 @@ Array [
     "fullPos": 16,
     "id": "x",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 17,
   },
   Object {
@@ -1798,6 +1983,7 @@ Array [
     "end": 20,
     "fullPos": 18,
     "kind": 9,
+    "leadingIndent": 4,
     "pos": 19,
   },
   Object {
@@ -1806,6 +1992,7 @@ Array [
     "fullPos": 20,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 4,
     "pos": 21,
   },
   Object {
@@ -1813,6 +2000,7 @@ Array [
     "end": 23,
     "fullPos": 22,
     "kind": 33,
+    "leadingIndent": 0,
     "pos": 23,
   },
 ]
