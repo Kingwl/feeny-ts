@@ -1,0 +1,4 @@
+defn main () :
+   printf("Hello World\n")
+
+main()

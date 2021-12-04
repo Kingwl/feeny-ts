@@ -1,0 +1,85 @@
+var nil = object :
+   method nil? () :
+      1
+   method print () :
+      printf("()")
+   method length () :
+      0
+   method append (b) :
+      b
+   method reverse () :
+      this
+
+defn cons (a, b) :
+   object :
+      var head = a
+      var tail = b
+      method nil? () :
+         0
+         
+      method print () :
+         printf("(~", this.head)
+         var rest = this.tail
+         while rest.nil?() == 0 :
+            printf(" ~", rest.head)
+            rest = rest.tail
+         printf(")")
+         
+      method length () :
+         1 + this.tail.length()
+
+      method append (b) :
+         cons(this.head, this.tail.append(b))
+
+      method reverse () :
+         this.tail.reverse().append(cons(this.head, nil))
+
+defn nl () :
+   printf("\n")
+      
+defn main () :
+   printf("List A\n")
+   var a = cons(1, cons(2, cons(3, cons(4, nil))))
+   a.print()
+   nl()
+
+   printf("List B\n")
+   var b = cons(10, cons(9, cons(8, cons(7, cons(6, cons(5, nil))))))
+   b.print()
+   nl()
+
+   printf("a.length() = ~\n", a.length())
+   printf("b.length() = ~\n", b.length())
+
+   var c = a.append(b)
+   printf("a.append(b) = ")
+   c.print()
+   nl()
+
+   var ar = a.reverse()
+   var br = b.reverse()
+   printf("a reversed = ")
+   ar.print()
+   nl()
+   printf("b reversed = ")
+   br.print()
+   nl()
+
+main()
+
+
+
+
+;============================================================
+;====================== Output ==============================
+;============================================================
+;
+;List A
+;(1 2 3 4)
+;List B
+;(10 9 8 7 6 5)
+;a.length() = 4
+;b.length() = 6
+;a.append(b) = (1 2 3 4 10 9 8 7 6 5)
+;a reversed = (4 3 2 1)
+;b reversed = (5 6 7 8 9 10)

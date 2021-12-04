@@ -1,0 +1,7 @@
+defn main () :
+   var i = 0
+   while i :
+      printf("Do one iteration\n")
+      i = null
+
+main()

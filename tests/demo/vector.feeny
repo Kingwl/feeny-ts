@@ -1,0 +1,93 @@
+defn copy-array (dst, src, i, n) :
+   var j = 0
+   while j < n :
+      dst[i + j] = src[i + j]
+      j = j + 1
+   dst
+
+defn max (a, b) :
+   if a < b : b
+   else : a
+
+defn ensure-capacity (v, c) :
+   var n = v.array.length()
+   if n < c :
+      var sz = max(c, n * 2)
+      var a = array(sz, 0)
+      copy-array(a, v.array, 0, v.size)
+      v.array = a
+
+defn vector () :
+   object :
+      var array = array(4, 0)
+      var size = 0
+      method add (x) :
+         ensure-capacity(this, this.size + 1)
+         this.array[this.size] = x
+         this.size = this.size + 1
+      method get (i) :
+         this.array[i]
+      method set (i, x) :
+         if i == this.size :
+            this.add(x)
+         else :   
+            this.array[i] = x               
+      method length () :
+         this.size
+      method print () :
+         if this.size == 0 :
+            printf("[]")
+         else :   
+            printf("[~", this.array[0])
+            var i = 1
+            while i < this.size :
+               printf(", ~", this.array[i])
+               i = i + 1
+            printf("]")
+
+defn main () :
+   printf("Create empty vector.\n")
+   var v = vector()
+   v.print()
+   printf("\n")
+   
+   printf("Add some elements.\n")
+   v.add(2)
+   v.add(10)
+   v.add(22)
+   v.add(17)
+   v.add(23)
+   v.add(2)
+   v.add(7)
+   v.print()
+   printf("\n")
+
+   printf("Retrieving some elements.\n")
+   printf("v[~] = ~.\n", 2, v[2])
+   printf("v[~] = ~.\n", 4, v[4])
+   printf("v[~] = ~.\n", 1, v[1])
+
+   printf("Setting first 3 elements to 0.\n")
+   v[0] = 0
+   v[1] = 0
+   v[2] = 0
+   v.print()
+   printf("\n")
+
+main()
+      
+
+;============================================================
+;====================== Output ==============================
+;============================================================
+;
+;Create empty vector.
+;[]
+;Add some elements.
+;[2, 10, 22, 17, 23, 2, 7]
+;Retrieving some elements.
+;v[2] = 22.
+;v[4] = 23.
+;v[1] = 10.
+;Setting first 3 elements to 0.
+;[0, 0, 0, 17, 23, 2, 7]

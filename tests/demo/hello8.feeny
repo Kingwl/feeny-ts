@@ -1,0 +1,12 @@
+defn main () :
+   if null :
+      printf("Hello")
+   else :
+      printf("World")
+
+   if 0 :
+      printf("Hello\n")
+   else :
+      printf("World\n")
+
+main()

@@ -1,0 +1,66 @@
+defn cplx (r, i) :
+   object :
+      var real = r
+      var imag = i
+      method add (c) :
+         cplx(this.real + c.real,
+              this.imag + c.imag)
+      method sub (c) :
+         cplx(this.real - c.real,
+              this.imag - c.imag)
+      method mul (c) :        
+         cplx(this.real * c.real - this.imag * c.imag,
+              this.real * c.imag + this.imag * c.real)
+      method div (c) :
+         var d = c.real * c.real + c.imag * c.imag
+         cplx((this.real * c.real + this.imag * c.imag) / d,
+              (this.imag * c.real - this.real * c.imag) / d)
+      method print () :
+         if this.imag < 0 :
+            printf("~ - ~i", this.real, 0 - this.imag)
+         else if this.imag == 0 :
+            printf("~", this.real)
+         else :
+            printf("~ + ~i", this.real, this.imag)
+
+defn main () :
+   var a = cplx(2, 5)
+   printf("a = ")
+   a.print()
+   printf("\n")
+   
+   var b = cplx(-4, 2)   
+   printf("b = ")
+   b.print()
+   printf("\n")
+   
+   printf("a + b = ")
+   (a + b).print()
+   printf("\n")
+
+   printf("a - b = ")
+   (a - b).print()
+   printf("\n")
+
+   printf("a * b = ")
+   (a * b).print()
+   printf("\n")
+
+   printf("a / b = ")
+   (a / b).print()
+   printf("\n")
+
+main()
+
+
+
+;============================================================
+;====================== OUTPUT ==============================
+;============================================================
+;
+;a = 2 + 5i
+;b = -4 + 2i
+;a + b = -2 + 7i
+;a - b = 6 + 3i
+;a * b = -18 - 16i
+;a / b = 0 - 1i
