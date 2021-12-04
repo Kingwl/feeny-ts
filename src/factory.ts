@@ -1,5 +1,5 @@
-import { Expression, FunctionStatement, GlobalVariableStatement, LocalStatement, NodeArray, NullToken, ObjectSlot, SequenceOfStatements, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
-import { ArraysExpression, ASTNode, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, NullExpression, ObjectsExpression, PrintingExpression, SourceFile, TextSpan, Token, VariableSlot } from "./types";
+import { BinaryShorthandTokenSyntaxKind, Expression, FunctionStatement, GlobalVariableStatement, IfExpression, LocalStatement, MethodSlot, NodeArray, NullToken, ObjectSlot, PrimaryExpression, SequenceOfStatements, SlotLookupExpression, Statement, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
+import { ArraysExpression, ASTNode, BinaryShorthand, FunctionCallExpression, GetShorthand, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, PrintingExpression, SetShorthand, SlotAssignmentExpression, SourceFile, TextSpan, Token, VariableAssignmentExpression, VariableSlot, WhileExpression } from "./types";
 import { IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
 
 
@@ -128,5 +128,88 @@ export function createFunctionStatement(name: IdentifierToken, params: NodeArray
     node.name = name;
     node.params = params;
     node.body = body;
+    return node;
+}
+
+export function createMethodSlot(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: LocalStatement): MethodSlot {
+    const node = createNode<MethodSlot>(SyntaxKind.MethodSlot)
+    node.name = name;
+    node.params = params;
+    node.body = body;
+    return node;
+}
+
+export function createIfExpression(condition: Expression, thenStatement: LocalStatement, elseStatement?: LocalStatement): IfExpression {
+    const node = createNode<IfExpression>(SyntaxKind.IfExpression)
+    node.condition = condition;
+    node.thenStatement = thenStatement;
+    node.elseStatement = elseStatement;
+    return node;
+}
+
+export function createWhileExpression(condition: Expression, body: LocalStatement): WhileExpression {
+    const node = createNode<WhileExpression>(SyntaxKind.WhileExpression);
+    node.condition = condition;
+    node.body = body;
+    return node;
+}
+
+export function createSlotLookupExpression(expression: PrimaryExpression, name: IdentifierToken): SlotLookupExpression {
+    const node = createNode<SlotLookupExpression>(SyntaxKind.SlotLookupExpression)
+    node.expression = expression;
+    node.name = name;
+    return node;
+}
+
+export function createSlotAssignmentExpression(expression: PrimaryExpression, name: IdentifierToken, value: Expression): SlotAssignmentExpression {
+    const node = createNode<SlotAssignmentExpression>(SyntaxKind.SlotAssignmentExpression)
+    node.expression = expression;
+    node.name = name;
+    node.value = value;
+    return node;
+}
+
+export function createGetShorthand(expression: PrimaryExpression, argExpression: Expression): GetShorthand {
+    const node = createNode<GetShorthand>(SyntaxKind.GetShorthand);
+    node.expression = expression;
+    node.argExpression = argExpression;
+    return node;
+}
+
+export function createSetShorthand(expression: PrimaryExpression, argExpression: Expression, value: Expression): SetShorthand {
+    const node = createNode<SetShorthand>(SyntaxKind.SetShorthand);
+    node.expression = expression;
+    node.argExpression = argExpression;
+    node.value = value;
+    return node;
+}
+
+export function createVariableAssignmentExpression(expression: PrimaryExpression, value: Expression): VariableAssignmentExpression {
+    const node = createNode<VariableAssignmentExpression>(SyntaxKind.VariableAssignmentExpression)
+    node.expression = expression;
+    node.value = value;
+    return node;
+}
+
+export function createMethodCallExpression(expression: PrimaryExpression, name: IdentifierToken, args: NodeArray<Expression>): MethodCallExpression {
+    const node = createNode<MethodCallExpression>(SyntaxKind.MethodCallExpression)
+    node.expression = expression;
+    node.name = name;
+    node.args = args;
+    return node;
+}
+
+export function createFunctionCallExpression(expression: PrimaryExpression, args: NodeArray<Expression>): FunctionCallExpression {
+    const node = createNode<FunctionCallExpression>(SyntaxKind.FunctionCallExpression)
+    node.expression = expression;
+    node.args = args;
+    return node;
+}
+
+export function createBinaryShorthand(left: Expression, operator: Token<BinaryShorthandTokenSyntaxKind>, right: Expression): BinaryShorthand {
+    const node = createNode<BinaryShorthand>(SyntaxKind.BinaryShorthand)
+    node.left = left;
+    node.operator = operator;
+    node.right = right;
     return node;
 }

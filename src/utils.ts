@@ -1,4 +1,5 @@
-import { ASTNode, SyntaxKind, NodeArray} from "./types";
+import { BinaryShorthand, Token } from ".";
+import { ASTNode, SyntaxKind, NodeArray, BinaryShorthandTokenSyntaxKind, BinaryShorthandToken} from "./types";
 
 export function finishNode<T extends ASTNode> (node: T, pos: number, end: number): T {
     node.pos = pos;
@@ -91,6 +92,28 @@ export function isKeyword(value: string): value is Keywords {
         default:
             return false;
     }
+}
+
+export function isBinaryShorthandTokenSyntaxKind(kind: SyntaxKind): kind is BinaryShorthandTokenSyntaxKind {
+    switch (kind) {
+        case SyntaxKind.AddToken:
+        case SyntaxKind.SubToken:
+        case SyntaxKind.MulToken:
+        case SyntaxKind.DivToken:
+        case SyntaxKind.ModToken:
+        case SyntaxKind.LessThanToken:
+        case SyntaxKind.GreaterThanToken:
+        case SyntaxKind.LessEqualsThanToken:
+        case SyntaxKind.GreaterEqualsThanToken:
+        case SyntaxKind.EqualsEqualsToken:
+            return true;
+        default:
+            return false;
+    }
+}
+
+export function isBinaryShorthandToken(token: Token): token is BinaryShorthandToken {
+    return isBinaryShorthandTokenSyntaxKind(token.kind);
 }
 
 export const CharsToTokenKind = {

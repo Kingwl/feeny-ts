@@ -91,7 +91,7 @@ export type KeywordSyntaxKind =
     | SyntaxKind.MethodKeyword
     | SyntaxKind.DefnKeyword
 
-export type BinaryShorthandToken =
+export type BinaryShorthandTokenSyntaxKind =
     | SyntaxKind.AddToken
     | SyntaxKind.SubToken
     | SyntaxKind.MulToken
@@ -102,6 +102,8 @@ export type BinaryShorthandToken =
     | SyntaxKind.LessEqualsThanToken
     | SyntaxKind.GreaterEqualsThanToken
     | SyntaxKind.EqualsEqualsToken;
+
+export type BinaryShorthandToken = Token<BinaryShorthandTokenSyntaxKind>
 
 export interface TextSpan {
     fullPos: number;
@@ -126,7 +128,7 @@ export interface SourceFile extends ASTNode {
     statements: NodeArray<TopLevelStatement>
 }
 
-export interface Token<K extends SyntaxKind> extends ASTNode {
+export interface Token<K extends SyntaxKind = SyntaxKind> extends ASTNode {
     _tokenBrand: never
     kind: K
 }
@@ -251,66 +253,67 @@ export interface ObjectsExpression extends Expression {
 
 export interface MethodCallExpression extends Expression {
     kind: SyntaxKind.MethodCallExpression
-    lookup: SlotLookupExpression
-    args: Expression[]
+    expression: PrimaryExpression
+    name: IdentifierToken
+    args: NodeArray<Expression>
 }
 
 export interface SlotLookupExpression extends Expression {
     kind: SyntaxKind.SlotLookupExpression
-    expr: Expression
-    name: VariableReferenceExpression
+    expression: PrimaryExpression
+    name: IdentifierToken
 }
 
 export interface SlotAssignmentExpression extends Expression {
     kind: SyntaxKind.SlotAssignmentExpression
-    expr: Expression
-    name: VariableReferenceExpression
-    initializer: Expression
+    expression: PrimaryExpression
+    name: IdentifierToken
+    value: Expression
 }
 
 export interface FunctionCallExpression extends Expression {
     kind: SyntaxKind.FunctionCallExpression
-    expr: Expression
-    args: Expression[]
+    expression: PrimaryExpression
+    args: NodeArray<Expression>
 }
 
 export interface VariableAssignmentExpression extends Expression {
     kind: SyntaxKind.VariableAssignmentExpression
-    name: VariableReferenceExpression
-    initializer: Expression
+    expression: PrimaryExpression
+    value: Expression
 }
 
 export interface IfExpression extends Expression {
     kind: SyntaxKind.IfExpression
     condition: Expression
-    then: Expression
-    else?: Expression
+    thenStatement: LocalStatement
+    elseStatement?: LocalStatement
 }
 
 export interface WhileExpression extends Expression {
     kind: SyntaxKind.WhileExpression
     condition: Expression
-    body: Expression
+    body: Statement
 }
 
 export interface BinaryShorthand extends Expression {
     kind: SyntaxKind.BinaryShorthand
-    token: BinaryShorthandToken
+    operator: Token<BinaryShorthandTokenSyntaxKind>
     left: Expression
     right: Expression
 }
 
-export interface GetShortHand extends Expression {
+export interface GetShorthand extends Expression {
     kind: SyntaxKind.GetShorthand
-    expr: Expression
-    name: Expression
+    expression: PrimaryExpression
+    argExpression: Expression
 }
 
 export interface SetShorthand extends Expression {
     kind: SyntaxKind.SetShorthand
-    expr: Expression
-    name: Expression
-    initializer: Expression
+    expression: PrimaryExpression
+    argExpression: Expression
+    value: Expression
 }
 
 export interface ObjectSlot extends ASTNode {
@@ -326,7 +329,7 @@ export interface VariableSlot extends ObjectSlot {
 export interface MethodSlot extends ObjectSlot {
     kind: SyntaxKind.MethodSlot
     name: IdentifierToken
-    args: IdentifierToken[]
+    params: NodeArray<IdentifierToken>
     body: Statement
 }
 export interface Statement extends ASTNode {
@@ -366,6 +369,16 @@ export interface TopLevelExpressionStatement extends Statement {
     kind: SyntaxKind.TopLevelExpressionStatement
     expression: Expression
 }
+
+export type PrimaryExpression =
+    | IntegerLiteralExpression
+    | VariableReferenceExpression
+    | PrintingExpression
+    | ArraysExpression
+    | NullExpression
+    | ObjectsExpression
+    | IfExpression
+    | WhileExpression
 
 export type TopLevelStatement =
     | GlobalVariableStatement
