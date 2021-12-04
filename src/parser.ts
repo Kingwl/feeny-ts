@@ -4,7 +4,7 @@ import { createScanner } from "./scanner"
 import { finishNode, finishNodeArray, isBinaryShorthandToken } from './utils'
 import { GlobalVariableStatement, NodeArray, TopLevelStatement } from "./types";
 import { AllTokens, Expression, FunctionStatement, IdentifierToken, IntegerLiteralExpression, IntegerLiteralToken, SequenceOfStatements, Token, TopLevelExpressionStatement, VariableReferenceExpression } from "./types";
-import { BinaryShorthand, createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createIfExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNullExpression, createObjectsExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createVariableAssignmentExpression, createVariableSlot, createWhileExpression, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrimaryExpression, PrintingExpression, StringLiteralToken, VariableSlot } from ".";
+import { BinaryShorthand, createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createIfExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNullExpression, createObjectsExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createThisExpression, createVariableAssignmentExpression, createVariableSlot, createWhileExpression, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrimaryExpression, PrintingExpression, StringLiteralToken, VariableSlot } from ".";
 
 export function createParser(text: string) {
     const scanner = createScanner(text);
@@ -307,7 +307,7 @@ export function createParser(text: string) {
         if (parseOptionalToken(SyntaxKind.EqualsToken)) {
             const value = parseExpression();
             return finishNode(
-                createSlotAssignment(
+                createSlotAssignmentExpression(
                     expression,
                     name,
                     value
@@ -329,7 +329,7 @@ export function createParser(text: string) {
             )
         }
         return finishNode(
-            createSlotLookup(
+            createSlotLookupExpression(
                 expression,
                 name
             ),
@@ -403,9 +403,21 @@ export function createParser(text: string) {
                 return parseIfExpression();
             case SyntaxKind.WhileKeyword:
                 return parseWhileExpression();
+            case SyntaxKind.ThisKeyword:
+                return parseThisExpression();
             default:
                 throw new Error(token.__debugKind);
         }
+    }
+
+    function parseThisExpression() {
+        const pos = scanner.getTokenStart();
+        parseExpectdToken(SyntaxKind.ThisKeyword);
+        return finishNode(
+            createThisExpression(),
+            pos,
+            scanner.getCurrentPos()
+        )
     }
 
     function parseIfExpression() {
@@ -598,13 +610,4 @@ export function createParser(text: string) {
             scanner.getCurrentPos()
         )
     }
-}
-
-function createSlotAssignment(expression: PrimaryExpression, name: IdentifierToken, value: Expression): any {
-    throw new Error("Function not implemented.");
-}
-
-
-function createSlotLookup(expression: PrimaryExpression, name: IdentifierToken): any {
-    throw new Error("Function not implemented.");
 }

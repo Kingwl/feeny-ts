@@ -1,5 +1,5 @@
 import { BinaryShorthandTokenSyntaxKind, Expression, FunctionStatement, GlobalVariableStatement, IfExpression, LocalStatement, MethodSlot, NodeArray, NullToken, ObjectSlot, PrimaryExpression, SequenceOfStatements, SlotLookupExpression, Statement, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
-import { ArraysExpression, ASTNode, BinaryShorthand, FunctionCallExpression, GetShorthand, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, PrintingExpression, SetShorthand, SlotAssignmentExpression, SourceFile, TextSpan, Token, VariableAssignmentExpression, VariableSlot, WhileExpression } from "./types";
+import { ArraysExpression, ASTNode, BinaryShorthand, FunctionCallExpression, GetShorthand, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, PrintingExpression, SetShorthand, SlotAssignmentExpression, SourceFile, TextSpan, ThisExpression, Token, VariableAssignmentExpression, VariableSlot, WhileExpression } from "./types";
 import { IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
 
 
@@ -199,7 +199,7 @@ export function createMethodCallExpression(expression: PrimaryExpression, name: 
     return node;
 }
 
-export function createFunctionCallExpression(expression: PrimaryExpression, args: NodeArray<Expression>): FunctionCallExpression {
+export function createFunctionCallExpression(expression: Expression, args: NodeArray<Expression>): FunctionCallExpression {
     const node = createNode<FunctionCallExpression>(SyntaxKind.FunctionCallExpression)
     node.expression = expression;
     node.args = args;
@@ -211,5 +211,10 @@ export function createBinaryShorthand(left: Expression, operator: Token<BinarySh
     node.left = left;
     node.operator = operator;
     node.right = right;
+    return node;
+}
+
+export function createThisExpression() {
+    const node = createNode<ThisExpression>(SyntaxKind.ThisExpression)
     return node;
 }

@@ -27,7 +27,6 @@ export enum SyntaxKind {
     Identifier,
 
     // Syntax
-
     PrintfKeyword,
     ArraysKeyword,
     NullKeyword,
@@ -57,6 +56,7 @@ export enum SyntaxKind {
     VariableAssignmentExpression,
     IfExpression,
     WhileExpression,
+    ThisExpression,
 
     // Object slot
     VariableSlot,
@@ -273,7 +273,7 @@ export interface SlotAssignmentExpression extends Expression {
 
 export interface FunctionCallExpression extends Expression {
     kind: SyntaxKind.FunctionCallExpression
-    expression: PrimaryExpression
+    expression: Expression
     args: NodeArray<Expression>
 }
 
@@ -294,6 +294,10 @@ export interface WhileExpression extends Expression {
     kind: SyntaxKind.WhileExpression
     condition: Expression
     body: Statement
+}
+
+export interface ThisExpression extends Expression {
+    kind: SyntaxKind.ThisExpression
 }
 
 export interface BinaryShorthand extends Expression {
@@ -379,6 +383,7 @@ export type PrimaryExpression =
     | ObjectsExpression
     | IfExpression
     | WhileExpression
+    | ThisExpression
 
 export type TopLevelStatement =
     | GlobalVariableStatement

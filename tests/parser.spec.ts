@@ -75,4 +75,26 @@ defn f(x, y, z ):
         const file = parseCode(code);
         expect(file).toMatchSnapshot();
     })
+
+    it('Should work with method slot', () => {
+        const code = 
+`object(p):
+    var x = 10
+    method f():
+        this.x
+`
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
+
+    it('Should work with arguments', () => {
+        const code = 
+`object(p):
+    var x = 10
+    method f(x, y, z):
+        this.x + x + y + z
+`
+        const file = parseCode(code);
+        expect(file).toMatchSnapshot();
+    })
 })

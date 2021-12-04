@@ -59,7 +59,7 @@ describe('Scanner', () => {
 `object:
     var x = 10
     method f():
-        this . x
+        this.x
 `
         const tokens = scanCode(code);
         expect(tokens).toMatchSnapshot();
