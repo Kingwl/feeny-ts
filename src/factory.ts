@@ -123,7 +123,7 @@ export function createSequenceOfStatements<T extends LocalStatement | TopLevelSt
     return node;
 }
 
-export function createFunctionStatement(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements): FunctionStatement {
+export function createFunctionStatement(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement): FunctionStatement {
     const node = createNode<FunctionStatement>(SyntaxKind.FunctionStatement)
     node.name = name;
     node.params = params;
@@ -131,7 +131,7 @@ export function createFunctionStatement(name: IdentifierToken, params: NodeArray
     return node;
 }
 
-export function createMethodSlot(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements): MethodSlot {
+export function createMethodSlot(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement): MethodSlot {
     const node = createNode<MethodSlot>(SyntaxKind.MethodSlot)
     node.name = name;
     node.params = params;
@@ -139,7 +139,7 @@ export function createMethodSlot(name: IdentifierToken, params: NodeArray<Identi
     return node;
 }
 
-export function createIfExpression(condition: Expression, thenStatement: SequenceOfStatements, elseStatement?: SequenceOfStatements): IfExpression {
+export function createIfExpression(condition: Expression, thenStatement: SequenceOfStatements<LocalStatement> | LocalExpressionStatement, elseStatement?: SequenceOfStatements<LocalStatement> | LocalExpressionStatement): IfExpression {
     const node = createNode<IfExpression>(SyntaxKind.IfExpression)
     node.condition = condition;
     node.thenStatement = thenStatement;
@@ -147,7 +147,7 @@ export function createIfExpression(condition: Expression, thenStatement: Sequenc
     return node;
 }
 
-export function createWhileExpression(condition: Expression, body: SequenceOfStatements): WhileExpression {
+export function createWhileExpression(condition: Expression, body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement): WhileExpression {
     const node = createNode<WhileExpression>(SyntaxKind.WhileExpression);
     node.condition = condition;
     node.body = body;

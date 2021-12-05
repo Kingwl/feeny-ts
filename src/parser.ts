@@ -428,7 +428,7 @@ export function createParser(text: string) {
         if (colonToken && scanner.currentTokenhasLineFeed()) {
             return parseSequenceOfStatements(colonToken.leadingIndent, parseLocalStatement)
         }
-        return parseLocalStatement();
+        return parseLocalExpressionStatement();
     }
 
     function parseIfExpression() {
@@ -438,7 +438,7 @@ export function createParser(text: string) {
 
         const thenStatement = parseLocalSequenceOfStatements();
        
-        let elseStatement: SequenceOfStatements | Expression | undefined;
+        let elseStatement: SequenceOfStatements<LocalStatement> | LocalExpressionStatement | undefined;
         const elseToken = parseOptionalToken(SyntaxKind.ElseKeyword);
         if (elseToken) {
             elseStatement = parseLocalSequenceOfStatements();

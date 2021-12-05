@@ -8,11 +8,15 @@ Array [
 ]
 `;
 
+exports[`Interpreter should-work-with-arrays 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-global-variable 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-integer 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-local-variable 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-null 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-printf 1`] = `
 Array [

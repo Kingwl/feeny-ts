@@ -201,12 +201,20 @@ export function createInterpreter(file: SourceFile) {
         }
     }
 
+    function evaluateLocalStatementOrLocalSequenceOfStatements (stmt: LocalExpressionStatement | SequenceOfStatements<LocalStatement>): BaseValue {
+        if (stmt.kind === SyntaxKind.SequenceOfStatements) {
+            return evaluateLocalSequenceOfStatements(stmt);
+        } else {
+            return evaluateLocalExpressionStatement(stmt)
+        }
+    }
+
     function evaluateIfExpression(expr: IfExpression) {
         const condition = evaluateExpression(expr.condition);
         if (!condition.isNull()) {
-            return evaluateLocalSequenceOfStatements(expr.thenStatement);
+            return evaluateLocalStatementOrLocalSequenceOfStatements(expr.thenStatement);
         } else if(expr.elseStatement) {
-            return evaluateLocalSequenceOfStatements(expr.elseStatement);
+            return evaluateLocalStatementOrLocalSequenceOfStatements(expr.elseStatement);
         } else {
             return new NullValue()
         }
