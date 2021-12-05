@@ -1,5 +1,6 @@
-import { ASTNode, LocalStatement, SyntaxKind } from ".";
-import { SequenceOfStatements, SourceFile, Statement, TopLevelStatement } from "./types";
+import { ASTNode, Expression, LocalStatement, PrintingExpression, SyntaxKind } from ".";
+import { GlobalVariableStatement, IntegerLiteralExpression, SequenceOfStatements, SourceFile, Statement, TopLevelExpressionStatement, TopLevelStatement } from "./types";
+import { isExpression, isStatement } from "./utils";
 
 enum ValueType {
     Null,
@@ -81,6 +82,10 @@ class MethodValue extends BaseValue {
 class IntegerValue extends BaseValue {
     get type () { return ValueType.Integer }
 
+    constructor (public value: number) {
+        super();
+    }
+
     isInteger(): true {
         return true;
     }
@@ -125,12 +130,63 @@ export function createIntepreter(file: SourceFile) {
     const globalEnv = new Environment()
     const envStack = [globalEnv];
 
-    evaluate(file);
+    return {
+        evaluate
+    }
 
-    function evaluate(node: ASTNode) {
-        switch (node.kind) {
-            case SyntaxKind.SourceFile:
+    function evaluate () {
+        evaluateSourceFile(file);
+    }
 
+    function evaluateSourceFile(sourceFile: SourceFile) {
+        evaluateStatement(sourceFile.body)
+    }
+
+    function evaluateStatement(stmt: Statement) {
+        switch(stmt.kind) {
+            case SyntaxKind.SequenceOfStatements:
+                return evaluateSequenceOfStatements(stmt as SequenceOfStatements<LocalStatement | TopLevelStatement>)
+            case SyntaxKind.GlobalVariableStatement:
+                return evaluateGlobalVariableStatement(stmt as GlobalVariableStatement)
+            case SyntaxKind.TopLevelExpressionStatement:
+                return evaluateTopLevelExpressionStatement(stmt as TopLevelExpressionStatement)
+            default:
+                throw new Error("Invalid statement")
         }
+    }
+
+    function evaluateExpression(expr: Expression): BaseValue {
+        switch(expr.kind) {
+            case SyntaxKind.IntegerLiteralExpression:
+                return evaluateIntegerLiteralExpression(expr as IntegerLiteralExpression);
+            case SyntaxKind.PrintingExpression:
+                return evaluatePrintingExpression(expr as PrintingExpression);
+            default:
+                throw new Error("Invalid expression")
+        }
+    }
+
+    function evaluatePrintingExpression(expr: PrintingExpression): NullValue {
+        console.log(expr.format.value, ...expr.args.map(evaluateExpression))
+        return new NullValue()
+    }
+
+    function evaluateIntegerLiteralExpression(expr: IntegerLiteralExpression): IntegerValue {
+        const isNegative = !!expr.subToken
+        const value = Number(expr.value.value)
+        return new IntegerValue(value * (isNegative ? -1 : 1))
+    }
+
+    function evaluateSequenceOfStatements(seqs: SequenceOfStatements<LocalStatement | TopLevelStatement>) {
+        seqs.statements.forEach(evaluateStatement)
+    }
+
+    function evaluateGlobalVariableStatement(stmt: GlobalVariableStatement) {
+        const value = evaluateExpression(stmt.initializer)
+        globalEnv.addBinding(stmt.name.id, value)
+    }
+
+    function evaluateTopLevelExpressionStatement(stmt: TopLevelExpressionStatement) {
+        evaluateExpression(stmt.expression)
     }
 }

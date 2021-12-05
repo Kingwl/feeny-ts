@@ -1,4 +1,5 @@
-import { ASTNode,Token, SyntaxKind, NodeArray, BinaryShorthandTokenSyntaxKind, BinaryShorthandToken} from "./types";
+import { ObjectSlot } from ".";
+import { ASTNode,Token, SyntaxKind, NodeArray, BinaryShorthandTokenSyntaxKind, BinaryShorthandToken, Statement, Expression} from "./types";
 
 export function finishNode<T extends ASTNode> (node: T, pos: number, end: number, text: string): T {
     node.pos = pos;
@@ -212,5 +213,52 @@ export function getIndent (ch: string) {
             return 4;
         default:
             return 0;
+    }
+}
+
+export function isStatement (node: ASTNode): node is Statement {
+    switch (node.kind) {
+        case SyntaxKind.SequenceOfStatements:
+        case SyntaxKind.LocalVariableStatement:
+        case SyntaxKind.LocalExpressionStatement:
+        case SyntaxKind.GlobalVariableStatement:
+        case SyntaxKind.TopLevelExpressionStatement:
+        case SyntaxKind.FunctionStatement:
+            return true;
+        default:
+            return false;
+    }
+}
+
+export function isObjectSlot(node: ASTNode): node is ObjectSlot {
+    switch (node.kind) {
+        case SyntaxKind.MethodSlot:
+        case SyntaxKind.VariableSlot:
+            return true
+        default:
+            return false
+    }
+}
+
+export function isExpression(node: ASTNode): node is Expression {
+    switch (node.kind) {
+        case SyntaxKind.IntegerLiteralExpression:
+        case SyntaxKind.VariableReferenceExpression:
+        case SyntaxKind.PrintingExpression:
+        case SyntaxKind.ArraysExpression:
+        case SyntaxKind.NullExpression:
+        case SyntaxKind.ObjectsExpression:
+        case SyntaxKind.MethodCallExpression:
+        case SyntaxKind.SlotLookupExpression:
+        case SyntaxKind.SlotAssignmentExpression:
+        case SyntaxKind.FunctionCallExpression:
+        case SyntaxKind.VariableAssignmentExpression:
+        case SyntaxKind.IfExpression:
+        case SyntaxKind.WhileExpression:
+        case SyntaxKind.ThisExpression:
+        case SyntaxKind.ParenExpression:
+            return true
+        default:
+            return false
     }
 }
