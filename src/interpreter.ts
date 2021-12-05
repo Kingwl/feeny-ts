@@ -1,4 +1,4 @@
-import { BinaryShorthand, BinaryShorthandTokenSyntaxKind, FunctionCallExpression, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, ObjectSlot, ParenExpression, SlotAssignmentExpression, SlotLookupExpression, VariableAssignmentExpression, VariableReferenceExpression, WhileExpression } from ".";
+import { BinaryShorthand, BinaryShorthandTokenSyntaxKind, FunctionCallExpression, GetShorthand, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, ObjectSlot, ParenExpression, SetShorthand, SlotAssignmentExpression, SlotLookupExpression, VariableAssignmentExpression, VariableReferenceExpression, WhileExpression } from ".";
 import { ArraysExpression, Expression, FunctionStatement, IfExpression, LocalExpressionStatement, LocalStatement, MethodSlot, PrintingExpression, SyntaxKind, ThisExpression, VariableSlot } from "./types";
 import { GlobalVariableStatement, IntegerLiteralExpression, SequenceOfStatements, SourceFile, Statement, TopLevelExpressionStatement, TopLevelStatement } from "./types";
 import { assertDef, isDef, last } from "./utils";
@@ -373,9 +373,41 @@ export function createInterpreter(file: SourceFile) {
                 return evaluateBinaryShorthand(expr as BinaryShorthand);
             case SyntaxKind.MethodCallExpression:
                 return evaluateMethodCallExpression(expr as MethodCallExpression);
+            case SyntaxKind.GetShorthand:
+                return evaluateGetShorthand(expr as GetShorthand);
+            case SyntaxKind.SetShorthand:
+                return evaluateSetShorthand(expr as SetShorthand);
             default:
                 throw new Error("Invalid expression: " + expr.__debugKind)
         }
+    }
+
+    function evaluateSetShorthand(expr: SetShorthand) {
+        const left = evaluateExpression(expr.expression);
+        if (!left.isEnvValue()) {
+            throw new Error("Invalid get shorthand")
+        }
+
+        const setFunc = left.env.getBinding("set");
+        assertDef(setFunc)
+
+        const args = expr.args.map(evaluateExpression);
+        const value = evaluateExpression(expr.value);
+
+        return callFunction(left, setFunc, args.concat(value))
+    }
+
+    function evaluateGetShorthand(expr: GetShorthand) {
+        const left = evaluateExpression(expr.expression);
+        if (!left.isEnvValue()) {
+            throw new Error("Invalid get shorthand")
+        }
+
+        const getFunc = left.env.getBinding("get");
+        assertDef(getFunc)
+
+        const args = expr.args.map(evaluateExpression);
+        return callFunction(left, getFunc, args)
     }
 
     function shorthandTokenToOperator(kind: BinaryShorthandTokenSyntaxKind) {

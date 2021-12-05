@@ -1,6 +1,4 @@
-import { casesPath, runCode, runWithConsoleLogHook } from "./utils"
-import * as fs from 'fs'
-import * as path from 'path'
+import { forEachCases, runCode, runWithConsoleLogHook } from "./utils"
 
 describe('Interpreter', () => {
     it('Should work with hello world', () => {
@@ -11,13 +9,7 @@ describe('Interpreter', () => {
         expect(stdout).toMatchSnapshot();
     })
 
-    const fileNames = fs.readdirSync(casesPath);
-
-    fileNames.forEach(fileName => {
-        const baseName = path.basename(fileName, '.feeny');
-        const fileNamePath = path.join(casesPath, fileName);
-        const content = fs.readFileSync(fileNamePath, 'utf8').toString();
-
+    forEachCases((baseName, content) => {
         it(baseName, () => {
             const stdout = runWithConsoleLogHook(() => {
                 runCode(content)

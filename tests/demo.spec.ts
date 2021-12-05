@@ -1,16 +1,8 @@
-import { demoPath, parseCode, scanCode } from './utils'
-import * as path from 'path'
-import * as fs from 'fs'
+import { forEachDemo, parseCode, scanCode } from './utils'
 
 describe('Should work with demo', () => {
 
-    const fileNames = fs.readdirSync(demoPath);
-
-    fileNames.forEach(fileName => {
-        const baseName = path.basename(fileName, '.feeny');
-        const fileNamePath = path.join(demoPath, fileName);
-        const content = fs.readFileSync(fileNamePath, 'utf8').toString();
-
+    forEachDemo((baseName, content) => {
         it(`Scanner - should work with ${baseName}`, () => {
             const tokens = scanCode(content)
             expect(tokens).toMatchSnapshot();

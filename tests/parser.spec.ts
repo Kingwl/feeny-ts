@@ -1,16 +1,8 @@
 import type {} from 'jest'
-import { casesPath, parseCode } from './utils'
-import * as fs from 'fs'
-import * as path from 'path'
+import { forEachCases, parseCode } from './utils'
 
 describe('Parser', () => {
-    const fileNames = fs.readdirSync(casesPath);
-
-    fileNames.forEach(fileName => {
-        const baseName = path.basename(fileName, '.feeny');
-        const fileNamePath = path.join(casesPath, fileName);
-        const content = fs.readFileSync(fileNamePath, 'utf8').toString();
-
+    forEachCases((baseName, content) => {
         it(baseName, () => {
             const file = parseCode(content)
             expect(file).toMatchSnapshot();

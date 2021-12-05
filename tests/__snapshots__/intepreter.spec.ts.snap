@@ -12,6 +12,8 @@ exports[`Interpreter should-work-with-arrays 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-function 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-function-call 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-global-variable 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-integer 1`] = `Array []`;
