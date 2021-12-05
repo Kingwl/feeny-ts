@@ -1,4 +1,8 @@
 import { createScanner, Token, TokenSyntaxKind, createParser, createInterpreter } from "../src";
+import * as path from 'path';
+
+export const casesPath = path.resolve(__dirname, 'cases');
+export const demoPath = path.resolve(__dirname, 'demo');
 
 export function scanCode (text: string) {
     const scanner = createScanner(text);

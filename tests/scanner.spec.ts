@@ -1,9 +1,7 @@
 import type {} from 'jest'
-import { scanCode } from './utils'
+import { casesPath, scanCode } from './utils'
 import * as fs from 'fs'
 import * as path from 'path'
-
-const casesPath = path.resolve(__dirname, 'cases');
 
 describe('Scanner', () => {
     const fileNames = fs.readdirSync(casesPath);

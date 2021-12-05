@@ -1,8 +1,6 @@
-import { parseCode, scanCode } from './utils'
+import { demoPath, parseCode, scanCode } from './utils'
 import * as path from 'path'
 import * as fs from 'fs'
-
-const demoPath = path.resolve(__dirname, 'demo');
 
 describe('Should work with demo', () => {
 

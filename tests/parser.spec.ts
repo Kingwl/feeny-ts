@@ -1,9 +1,7 @@
 import type {} from 'jest'
-import { parseCode } from './utils'
+import { casesPath, parseCode } from './utils'
 import * as fs from 'fs'
 import * as path from 'path'
-
-const casesPath = path.resolve(__dirname, 'cases');
 
 describe('Parser', () => {
     const fileNames = fs.readdirSync(casesPath);
