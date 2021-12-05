@@ -26,3 +26,16 @@ export function runCode (text: string) {
     const interpreter = createInterpreter(file);
     interpreter.evaluate();
 }
+
+export function runWithConsoleLogHook(cb: () => void) {
+    const result: any[][] = []
+
+    const log = console.log
+    console.log = (...args: any[]) => {
+        result.push(args)
+    }
+    
+    cb()
+    console.log = log
+    return result
+}

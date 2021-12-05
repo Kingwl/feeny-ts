@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Interpreter Should work with hello world 1`] = `
+Array [
+  Array [
+    "hello world",
+  ],
+]
+`;
+
+exports[`Interpreter should-work-with-global-variable 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-integer 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-local-variable 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-printf 1`] = `
+Array [
+  Array [
+    " My age is ~.\\\\ n ",
+    IntegerValue {
+      "value": 8,
+    },
+  ],
+]
+`;
