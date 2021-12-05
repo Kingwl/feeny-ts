@@ -1,5 +1,5 @@
-import { LocalVariableStatement, NullExpression, ParenExpression, SlotAssignmentExpression, SlotLookupExpression, VariableAssignmentExpression, VariableReferenceExpression, WhileExpression } from ".";
-import { ArraysExpression, Expression, IfExpression, LocalExpressionStatement, LocalStatement, PrintingExpression, SyntaxKind } from "./types";
+import { BinaryShorthand, BinaryShorthandTokenSyntaxKind, FunctionCallExpression, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, ObjectSlot, ParenExpression, SlotAssignmentExpression, SlotLookupExpression, VariableAssignmentExpression, VariableReferenceExpression, WhileExpression } from ".";
+import { ArraysExpression, Expression, FunctionStatement, IfExpression, LocalExpressionStatement, LocalStatement, MethodSlot, PrintingExpression, SyntaxKind, ThisExpression, VariableSlot } from "./types";
 import { GlobalVariableStatement, IntegerLiteralExpression, SequenceOfStatements, SourceFile, Statement, TopLevelExpressionStatement, TopLevelStatement } from "./types";
 import { assertDef, isDef, last } from "./utils";
 
@@ -29,10 +29,6 @@ abstract class BaseValue {
     }
 
     isFunction(): this is FunctionValue {
-        return false;
-    }
-
-    isMethod(): this is MethodValue {
         return false;
     }
 
@@ -167,6 +163,14 @@ class IntegerValue extends EnvValue {
 class FunctionValue extends BaseValue {
     get type () { return ValueType.Function }
 
+    constructor (
+        public name: string,
+        public params: string[],
+        public body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement,
+    ) {
+        super();
+    }
+
     print(): string {
         return `{[Function function]}`
     }
@@ -174,33 +178,43 @@ class FunctionValue extends BaseValue {
     isFunction(): true {
         return true
     }
+
+    isBuiltin(): this is BuiltinFunction {
+        return false;
+    }
 }
 
-class MethodValue extends FunctionValue {
+class BuiltinFunction extends FunctionValue {
     print(): string {
-        return `{[Function method]}`
+        return `{[Function builtin]}`
     }
 
-    isMethod(): true {
+    isBuiltin(): true {
         return true
     }
 }
 
 type VarValues = IntegerValue | ArrayValue | ObjectValue | NullValue
-type CodeValues = FunctionValue | MethodValue
+type CodeValues = FunctionValue | BuiltinFunction
 type AllValues = VarValues | CodeValues
+
+interface CallFrame {
+    thisValue: BaseValue | undefined;
+    env: Environment;
+}
 
 function isVarValues (value: BaseValue): value is VarValues {
     return value.isInteger() || value.isNull() || value.isObject() || value.isArray();
 }
 
 function isCodeValues (value: BaseValue): value is CodeValues {
-    return value.isFunction() || value.isMethod()
+    return value.isFunction()
 }
 
 export function createInterpreter(file: SourceFile) {
     const globalEnv = new Environment()
     const envStack = [globalEnv];
+    const callFrames: CallFrame[] = []
 
     return {
         evaluate
@@ -208,6 +222,18 @@ export function createInterpreter(file: SourceFile) {
 
     function currentEnv () {
         return last(envStack)
+    }
+
+    function currentCallFrame () {
+        return last(callFrames)
+    }
+
+    function pushCallFrame(callFrame: CallFrame) {
+        callFrames.push(callFrame)
+    }
+
+    function popCallFrame() {
+        return callFrames.pop()
     }
 
     function pushEnv (env: Environment) {
@@ -225,6 +251,49 @@ export function createInterpreter(file: SourceFile) {
         const result = cb();
         popEnv()
         return result
+    }
+
+    function runInFuncEnv<R = void>(thisValue: BaseValue | undefined, params: string[], args: BaseValue[], cb: () => R) {
+        const parent = currentEnv();
+        const env = new Environment(parent);
+        
+        for (let i = 0; i < params.length; i++) {
+            const param = params[i];
+            const arg = args[i];
+            env.addBinding(param, arg)
+        }
+
+        const callFrame: CallFrame = {
+            thisValue,
+            env
+        }
+
+        pushEnv(env);
+        pushCallFrame(callFrame)
+        const result = cb();
+        const lastEnv = popEnv()
+        if (lastEnv !== env) {
+            throw new Error("Invalid environment")
+        }
+        const lastCallFrame = popCallFrame();
+        if (lastCallFrame !== callFrame) {
+            throw new Error("Invalid call frame")
+        }
+        return result
+    }
+
+    function callFunction (thisValue: BaseValue | undefined, value: BaseValue, args: BaseValue[]) {
+        if (!value.isFunction()) {
+            throw new TypeError("Not a function")
+        }
+
+        if (args.length !== value.params.length) {
+            throw new Error("Invalid number of arguments")
+        }
+
+        return runInFuncEnv(thisValue, value.params, args, () => {
+            return evaluateLocalStatementOrLocalSequenceOfStatements(value.body)
+        })
     }
 
     function evaluate () {
@@ -263,6 +332,8 @@ export function createInterpreter(file: SourceFile) {
                 return evaluateLocalExpressionStatement(stmt as LocalExpressionStatement)
             case SyntaxKind.LocalVariableStatement:
                 return evaluateLocalVariableStatement(stmt as LocalVariableStatement)
+            case SyntaxKind.FunctionStatement:
+                return evaluateFunctionStatement(stmt as FunctionStatement);
             default:
                 throw new Error("Invalid statement")
         }
@@ -288,12 +359,91 @@ export function createInterpreter(file: SourceFile) {
                 return evaluateVariableReferenceExpression(expr as VariableReferenceExpression);
             case SyntaxKind.VariableAssignmentExpression:
                 return evaluateVariableAssignmentExpression(expr as VariableAssignmentExpression);
+            case SyntaxKind.ThisExpression:
+                return evaluateThisExpression(expr as ThisExpression);
             case SyntaxKind.SlotLookupExpression:
                 return evaluateSlotLookupExpression(expr as SlotLookupExpression);
             case SyntaxKind.SlotAssignmentExpression:
                 return evaluatSlotAssignmentExpression(expr as SlotAssignmentExpression);
+            case SyntaxKind.ObjectsExpression:
+                return evaluateObjectsExpression(expr as ObjectsExpression);
+            case SyntaxKind.FunctionCallExpression:
+                return evaluateFunctionCallExpression(expr as FunctionCallExpression);
+            case SyntaxKind.BinaryShorthand:
+                return evaluateBinaryShorthand(expr as BinaryShorthand);
+            case SyntaxKind.MethodCallExpression:
+                return evaluateMethodCallExpression(expr as MethodCallExpression);
             default:
                 throw new Error("Invalid expression: " + expr.__debugKind)
+        }
+    }
+
+    function shorthandTokenToOperator(kind: BinaryShorthandTokenSyntaxKind) {
+        switch (kind) {
+            case SyntaxKind.AddToken:
+                return 'add'
+            case SyntaxKind.SubToken:
+                return 'sub'
+            default:
+                throw new Error("Invalid operator")
+        }
+    }
+
+    function evaluateThisExpression(expr: ThisExpression) {
+        const callFrame = currentCallFrame();
+        return callFrame.thisValue ?? new NullValue()
+    }
+
+    function evaluateBinaryShorthand(expr: BinaryShorthand) {
+        const left = evaluateExpression(expr.left);
+        if (!left.isEnvValue()) {
+            throw new TypeError("Left operand must be an environment value")
+        }
+
+        const operator = shorthandTokenToOperator(expr.operator.kind);
+        const callable = left.env.getBinding(operator)
+        assertDef(callable)
+
+        const right = evaluateExpression(expr.right);
+        return callFunction(left, callable, [right])
+    }
+
+    function evaluateFunctionCallExpression(expr: FunctionCallExpression) {
+        const value = evaluateExpression(expr.expression);
+        const args = expr.args.map(evaluateExpression)
+        return callFunction(undefined, value, args);
+    }
+
+    function evaluateMethodCallExpression(expr: MethodCallExpression) {
+        const left = evaluateExpression(expr.expression);
+        if (!left.isEnvValue()) {
+            throw new TypeError("Left operand must be an environment value")
+        }
+        const callable = left.env.getBinding(expr.name.id)
+        assertDef(callable)
+
+        const args = expr.args.map(evaluateExpression)
+        return callFunction(left, callable, args)
+    }
+
+    function evaluateObjectsExpression(expr: ObjectsExpression) {
+        const value = new ObjectValue();
+        expr.slots.forEach(slot => evaluateObjectSlot(value, slot))
+        return value;
+    }
+
+    function evaluateObjectSlot (obj: ObjectValue, slot: ObjectSlot) {
+        if (slot.kind === SyntaxKind.VariableSlot) {
+            const variableSlot = slot as VariableSlot;
+            const initializer = evaluateExpression(variableSlot.initializer);
+            obj.env.addBinding(variableSlot.name.id, initializer);
+        } else if (slot.kind === SyntaxKind.MethodSlot) {
+            const methodSlot = slot as MethodSlot;
+            const params = methodSlot.params.map(x => x.id);
+            const callable = new FunctionValue(methodSlot.name.id, params, methodSlot.body);
+            obj.env.addBinding(methodSlot.name.id, callable);
+        } else {
+            throw new Error("Invalid slot")
         }
     }
 
@@ -413,6 +563,12 @@ export function createInterpreter(file: SourceFile) {
 
     function evaluateTopLevelExpressionStatement(stmt: TopLevelExpressionStatement) {
         evaluateExpression(stmt.expression)
+    }
+
+    function evaluateFunctionStatement(stmt: FunctionStatement) {
+        const params = stmt.params.map(x => x.id);
+        const func = new FunctionValue(stmt.name.id, params, stmt.body);
+        globalEnv.addBinding(stmt.name.id, func)
     }
 
     function evaluateLocalExpressionStatement(stmt: LocalExpressionStatement) {
