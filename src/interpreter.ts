@@ -14,6 +14,8 @@ enum ValueType {
 abstract class BaseValue {
     abstract get type(): ValueType;
 
+    abstract print (): string;
+
     isNull(): this is NullValue {
         return false
     }
@@ -73,6 +75,10 @@ class Environment {
 class NullValue extends BaseValue {
     get type () { return ValueType.Null }
 
+    print(): string {
+        return 'null'
+    }
+
     isNull (): true {
         return true
     }
@@ -107,6 +113,10 @@ class ArrayValue extends EnvValue {
         }
     }
 
+    print(): string {
+        return `[${this.list.map(v => v.print()).join(', ')}]`
+    }
+
     isArray(): true {
         return true;
     }
@@ -120,6 +130,10 @@ class ObjectValue extends EnvValue {
 
     get env () {
         return this._instanceEnv
+    }
+
+    print(): string {
+        return `{[Object object]}`
     }
 
     isObject(): true {
@@ -141,6 +155,10 @@ class IntegerValue extends EnvValue {
         super();
     }
 
+    print(): string {
+        return `${this.value}`
+    }
+
     isInteger(): true {
         return true;
     }
@@ -149,12 +167,19 @@ class IntegerValue extends EnvValue {
 class FunctionValue extends BaseValue {
     get type () { return ValueType.Function }
 
+    print(): string {
+        return `{[Function function]}`
+    }
+
     isFunction(): true {
         return true
     }
 }
 
 class MethodValue extends FunctionValue {
+    print(): string {
+        return `{[Function method]}`
+    }
 
     isMethod(): true {
         return true
@@ -276,7 +301,6 @@ export function createInterpreter(file: SourceFile) {
         const env = currentEnv();
         const value = evaluateExpression(expr.value);
 
-        assertDef(name, "Cannot find reference: " + expr.id.id)
         env.addBinding(expr.id.id, value);
         return value
     }
@@ -366,7 +390,7 @@ export function createInterpreter(file: SourceFile) {
     }
 
     function evaluatePrintingExpression(expr: PrintingExpression): NullValue {
-        console.log(expr.format.value, ...expr.args.map(evaluateExpression))
+        console.log(expr.format.value, ...expr.args.map(evaluateExpression).map(x => x.print()))
         return new NullValue()
     }
 

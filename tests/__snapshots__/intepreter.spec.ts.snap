@@ -22,18 +22,9 @@ exports[`Interpreter should-work-with-printf 1`] = `
 Array [
   Array [
     " My age is ~.\\\\ n ",
-    IntegerValue {
-      "_instanceEnv": Environment {
-        "codeValues": Map {},
-        "parent": Environment {
-          "codeValues": Map {},
-          "parent": undefined,
-          "varValues": Map {},
-        },
-        "varValues": Map {},
-      },
-      "value": 8,
-    },
+    "8",
   ],
 ]
 `;
+
+exports[`Interpreter should-work-with-variable-assignment 1`] = `Array []`;
