@@ -747,22 +747,24 @@ Object {
       "end": 4,
       "expression": Object {
         "__debugKind": "GetShorthand",
-        "argExpression": Object {
-          "__debugKind": "IntegerLiteralExpression",
-          "end": 4,
-          "kind": 35,
-          "pos": 2,
-          "subToken": undefined,
-          "value": Object {
-            "__debugKind": "IntegerLiteralToken",
-            "end": 3,
-            "fullPos": 2,
-            "kind": 19,
-            "leadingIndent": 0,
+        "args": Array [
+          Object {
+            "__debugKind": "IntegerLiteralExpression",
+            "end": 4,
+            "kind": 35,
             "pos": 2,
-            "value": "1",
+            "subToken": undefined,
+            "value": Object {
+              "__debugKind": "IntegerLiteralToken",
+              "end": 3,
+              "fullPos": 2,
+              "kind": 19,
+              "leadingIndent": 0,
+              "pos": 2,
+              "value": "1",
+            },
           },
-        },
+        ],
         "end": 4,
         "expression": Object {
           "__debugKind": "VariableReferenceExpression",
@@ -1753,22 +1755,24 @@ Object {
       "end": 8,
       "expression": Object {
         "__debugKind": "SetShorthand",
-        "argExpression": Object {
-          "__debugKind": "IntegerLiteralExpression",
-          "end": 4,
-          "kind": 35,
-          "pos": 2,
-          "subToken": undefined,
-          "value": Object {
-            "__debugKind": "IntegerLiteralToken",
-            "end": 3,
-            "fullPos": 2,
-            "kind": 19,
-            "leadingIndent": 0,
+        "args": Array [
+          Object {
+            "__debugKind": "IntegerLiteralExpression",
+            "end": 4,
+            "kind": 35,
             "pos": 2,
-            "value": "1",
+            "subToken": undefined,
+            "value": Object {
+              "__debugKind": "IntegerLiteralToken",
+              "end": 3,
+              "fullPos": 2,
+              "kind": 19,
+              "leadingIndent": 0,
+              "pos": 2,
+              "value": "1",
+            },
           },
-        },
+        ],
         "end": 8,
         "expression": Object {
           "__debugKind": "VariableReferenceExpression",

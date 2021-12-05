@@ -4,7 +4,7 @@ import { createScanner } from "./scanner"
 import { createFinishNode, finishNodeArray, isBinaryShorthandToken } from './utils'
 import { GlobalVariableStatement, NodeArray, TopLevelStatement } from "./types";
 import { AllTokens, Expression, FunctionStatement, IdentifierToken, IntegerLiteralExpression, IntegerLiteralToken, SequenceOfStatements, Token, TopLevelExpressionStatement, VariableReferenceExpression } from "./types";
-import { BinaryShorthand, createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createIfExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNullExpression, createObjectsExpression, createParenExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createThisExpression, createVariableAssignmentExpression, createVariableSlot, createWhileExpression, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrimaryExpression, PrintingExpression, Statement, StringLiteralToken, SubToken, VariableSlot } from ".";
+import { BinaryShorthand, createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createIfExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNullExpression, createObjectsExpression, createParenExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createThisExpression, createVariableAssignmentExpression, createVariableSlot, createWhileExpression, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrimaryExpression, PrintingExpression, Statement, StringLiteralToken, SubToken, TokenSyntaxKind, VariableSlot } from ".";
 
 export function createParser(text: string) {
     const scanner = createScanner(text);
@@ -348,16 +348,13 @@ export function createParser(text: string) {
     }
 
     function parseGetShorthandOrGetShorthand (expression: AccessOrAssignmentExpressionOrHigher, pos: number) {
-        parseExpectdToken(SyntaxKind.OpenBracketToken);
-        const argsExpression = parseExpression();
-        parseExpectdToken(SyntaxKind.CloseBracketToken);
-
+        const args = parseArgumentsList(SyntaxKind.OpenBracketToken, SyntaxKind.CloseBracketToken)
         if (parseOptionalToken(SyntaxKind.EqualsToken)) {
             const value = parseExpression();
             return finishNode(
                 createSetShorthand(
                     expression,
-                    argsExpression,
+                    args,
                     value
                 ),
                 pos,
@@ -367,24 +364,24 @@ export function createParser(text: string) {
         return finishNode(
             createGetShorthand(
                 expression,
-                argsExpression
+                args
             ),
             pos,
             scanner.getCurrentPos()
         )
     }
 
-    function parseArgumentsList(): NodeArray<Expression> {
+    function parseArgumentsList(openToken: TokenSyntaxKind = SyntaxKind.OpenParenToken, closeToken: TokenSyntaxKind = SyntaxKind.CloseParenToken): NodeArray<Expression> {
         const pos = scanner.getTokenStart();
-        parseOptionalToken(SyntaxKind.OpenParenToken);
+        parseExpectdToken(openToken);
         const args: Expression[] = [];
-        while (!scanner.isEOF() && scanner.currentToken().kind !== SyntaxKind.CloseParenToken) {
+        while (!scanner.isEOF() && scanner.currentToken().kind !==closeToken) {
             const arg = parseExpression();
             args.push(arg);
 
             parseOptionalToken(SyntaxKind.CommaToken);
         }
-        parseExpectdToken(SyntaxKind.CloseParenToken);
+        parseExpectdToken(closeToken);
 
         return finishNodeArray(
             createNodeArray(args),

@@ -170,17 +170,17 @@ export function createSlotAssignmentExpression(expression: AccessOrAssignmentExp
     return node;
 }
 
-export function createGetShorthand(expression: AccessOrAssignmentExpressionOrHigher, argExpression: Expression): GetShorthand {
+export function createGetShorthand(expression: AccessOrAssignmentExpressionOrHigher, args: NodeArray<Expression>): GetShorthand {
     const node = createNode<GetShorthand>(SyntaxKind.GetShorthand);
     node.expression = expression;
-    node.argExpression = argExpression;
+    node.args = args;
     return node;
 }
 
-export function createSetShorthand(expression: AccessOrAssignmentExpressionOrHigher, argExpression: Expression, value: Expression): SetShorthand {
+export function createSetShorthand(expression: AccessOrAssignmentExpressionOrHigher, args: NodeArray<Expression>, value: Expression): SetShorthand {
     const node = createNode<SetShorthand>(SyntaxKind.SetShorthand);
     node.expression = expression;
-    node.argExpression = argExpression;
+    node.args = args;
     node.value = value;
     return node;
 }

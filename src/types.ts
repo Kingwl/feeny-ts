@@ -317,13 +317,13 @@ export interface BinaryShorthand extends Expression {
 export interface GetShorthand extends Expression {
     kind: SyntaxKind.GetShorthand
     expression: AccessOrAssignmentExpressionOrHigher
-    argExpression: Expression
+    args: NodeArray<Expression>
 }
 
 export interface SetShorthand extends Expression {
     kind: SyntaxKind.SetShorthand
     expression: AccessOrAssignmentExpressionOrHigher
-    argExpression: Expression
+    args: NodeArray<Expression>
     value: Expression
 }
 
