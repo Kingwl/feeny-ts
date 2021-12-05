@@ -23,6 +23,15 @@ Array [
   Array [
     " My age is ~.\\\\ n ",
     IntegerValue {
+      "_instanceEnv": Environment {
+        "codeValues": Map {},
+        "parent": Environment {
+          "codeValues": Map {},
+          "parent": undefined,
+          "varValues": Map {},
+        },
+        "varValues": Map {},
+      },
       "value": 8,
     },
   ],

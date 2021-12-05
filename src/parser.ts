@@ -1,3 +1,4 @@
+import { VariableAssignmentExpression } from '.';
 import { createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createGlobalVariableStatement, createIfExpression, createIntegerLiteralExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNodeArray, createNullExpression, createObjectsExpression, createParenExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createSourceFile, createThisExpression, createTopLevelExpressionStatement, createVariableAssignmentExpression, createVariableReferenceExpression, createVariableSlot, createWhileExpression } from './factory';
 import { createScanner } from "./scanner";
 import { AccessOrAssignmentExpressionOrHigher, AllTokens, ArraysExpression, BinaryShorthand, EndOfFileToken, Expression, FunctionStatement, GlobalVariableStatement, IdentifierToken, IntegerLiteralExpression, IntegerLiteralToken, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NodeArray, NullExpression, NullToken, ObjectsExpression, ObjectSlot, PrimaryExpression, PrintingExpression, SequenceOfStatements, StringLiteralToken, SubToken, SyntaxKind, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression, VariableSlot } from "./types";
@@ -260,12 +261,7 @@ export function createParser(text: string) {
                 continue
             }
             if (scanner.currentToken().kind === SyntaxKind.OpenBracketToken) {
-                expression = parseGetShorthandOrGetShorthand(expression, pos);
-                pos = scanner.getCurrentPos();
-                continue
-            }
-            if (scanner.currentToken().kind === SyntaxKind.EqualsToken) {
-                expression = parseVariableAssignmentExpression(expression, pos);
+                expression = parseGetShorthandOrSetShorthand(expression, pos);
                 pos = scanner.getCurrentPos();
                 continue
             }
@@ -277,12 +273,12 @@ export function createParser(text: string) {
     }
 
 
-    function parseVariableAssignmentExpression(expression: AccessOrAssignmentExpressionOrHigher, pos: number) {
+    function parseVariableAssignmentExpression(id: IdentifierToken, pos: number) {
         parseExpectdToken(SyntaxKind.EqualsToken);
         const value = parseExpression();
         return finishNode(
             createVariableAssignmentExpression(
-                expression,
+                id,
                 value
             ),
             pos,
@@ -328,7 +324,7 @@ export function createParser(text: string) {
         )
     }
 
-    function parseGetShorthandOrGetShorthand (expression: AccessOrAssignmentExpressionOrHigher, pos: number) {
+    function parseGetShorthandOrSetShorthand (expression: AccessOrAssignmentExpressionOrHigher, pos: number) {
         const args = parseArgumentsList(SyntaxKind.OpenBracketToken, SyntaxKind.CloseBracketToken)
         if (parseOptionalToken(SyntaxKind.EqualsToken)) {
             const value = parseExpression();
@@ -378,7 +374,7 @@ export function createParser(text: string) {
             case SyntaxKind.IntegerLiteralToken:
                 return parseIntegerLiteralExpression()
             case SyntaxKind.Identifier:
-                return parseVariableReferenceExpression();
+                return parseVariableReferenceOrAssignmentExpression();
             case SyntaxKind.PrintfKeyword:
                 return parsePrintingExpression();
             case SyntaxKind.ArraysKeyword:
@@ -483,9 +479,22 @@ export function createParser(text: string) {
         )
     }
 
-    function parseVariableReferenceExpression(): VariableReferenceExpression {
+    function parseVariableReferenceOrAssignmentExpression(): VariableReferenceExpression | VariableAssignmentExpression {
         const pos = scanner.getTokenStart();
         const token = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+        if (parseOptionalToken(SyntaxKind.EqualsToken)) {
+            const value = parseExpression();
+
+            return finishNode(
+                createVariableAssignmentExpression(
+                    token,
+                    value
+                ),
+                pos,
+                scanner.getCurrentPos()
+            )
+        }
+
         return finishNode(
             createVariableReferenceExpression(token),
             pos,

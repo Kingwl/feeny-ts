@@ -282,7 +282,7 @@ export interface FunctionCallExpression extends Expression {
 
 export interface VariableAssignmentExpression extends Expression {
     kind: SyntaxKind.VariableAssignmentExpression
-    expression: AccessOrAssignmentExpressionOrHigher
+    id: IdentifierToken
     value: Expression
 }
 
@@ -385,6 +385,7 @@ export interface TopLevelExpressionStatement extends Statement {
 export type PrimaryExpression =
     | IntegerLiteralExpression
     | VariableReferenceExpression
+    | VariableAssignmentExpression
     | PrintingExpression
     | ArraysExpression
     | NullExpression
@@ -401,7 +402,6 @@ export type AccessOrAssignmentExpressionOrHigher =
     | SlotLookupExpression 
     | SetShorthand 
     | GetShorthand 
-    | VariableAssignmentExpression
 
 export type TopLevelStatement =
     | GlobalVariableStatement

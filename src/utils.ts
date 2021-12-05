@@ -47,6 +47,26 @@ export function isDef<T>(v: T): v is NonNullable<T> {
     return v !== undefined && v !== null;
 }
 
+export function assertDef<T>(v: T, message?: string): asserts v is NonNullable<T> {
+    if (!isDef(v)) {
+        throw new Error(message ?? "Must be defined")
+    }
+}
+
+export function first<T>(v?: readonly T[]): T {
+    if (!v?.length) {
+        throw new Error("Index out of range")
+    }
+    return v[0]
+}
+
+export function last<T>(v?: readonly T[]): T {
+    if (!v?.length) {
+        throw new Error("Index out of range")
+    }
+    return v[v.length - 1]
+}
+
 export enum Chars {
     Add = "+",
     Sub = "-",

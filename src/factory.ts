@@ -184,9 +184,9 @@ export function createSetShorthand(expression: AccessOrAssignmentExpressionOrHig
     return node;
 }
 
-export function createVariableAssignmentExpression(expression: AccessOrAssignmentExpressionOrHigher, value: Expression): VariableAssignmentExpression {
+export function createVariableAssignmentExpression(id: IdentifierToken, value: Expression): VariableAssignmentExpression {
     const node = createNode<VariableAssignmentExpression>(SyntaxKind.VariableAssignmentExpression)
-    node.expression = expression;
+    node.id = id;
     node.value = value;
     return node;
 }

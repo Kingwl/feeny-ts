@@ -2561,19 +2561,13 @@ Object {
         "expression": Object {
           "__debugKind": "VariableAssignmentExpression",
           "end": 6,
-          "expression": Object {
-            "__debugKind": "VariableReferenceExpression",
-            "end": 3,
-            "id": Object {
-              "__debugKind": "Identifier",
-              "end": 1,
-              "fullPos": 0,
-              "id": "x",
-              "kind": 21,
-              "leadingIndent": 0,
-              "pos": 0,
-            },
-            "kind": 36,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 1,
+            "fullPos": 0,
+            "id": "x",
+            "kind": 21,
+            "leadingIndent": 0,
             "pos": 0,
           },
           "kind": 45,
@@ -2686,19 +2680,13 @@ Object {
                 "expression": Object {
                   "__debugKind": "VariableAssignmentExpression",
                   "end": 22,
-                  "expression": Object {
-                    "__debugKind": "VariableReferenceExpression",
-                    "end": 16,
-                    "id": Object {
-                      "__debugKind": "Identifier",
-                      "end": 14,
-                      "fullPos": 8,
-                      "id": "x",
-                      "kind": 21,
-                      "leadingIndent": 4,
-                      "pos": 13,
-                    },
-                    "kind": 36,
+                  "id": Object {
+                    "__debugKind": "Identifier",
+                    "end": 14,
+                    "fullPos": 8,
+                    "id": "x",
+                    "kind": 21,
+                    "leadingIndent": 4,
                     "pos": 13,
                   },
                   "kind": 45,
