@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Scanner Should work with arrays 1`] = `
+exports[`Scanner should-work-with-arrays 1`] = `
 Array [
   Object {
     "__debugKind": "ArraysKeyword",
@@ -63,57 +63,337 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with binary shorthand 1`] = `
+exports[`Scanner should-work-with-binary-shorthand 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
-    "end": 2,
+    "end": 1,
     "fullPos": 0,
     "id": "x",
     "kind": 21,
     "leadingIndent": 0,
-    "pos": 1,
+    "pos": 0,
   },
   Object {
     "__debugKind": "AddToken",
-    "end": 4,
-    "fullPos": 2,
+    "end": 3,
+    "fullPos": 1,
     "kind": 9,
     "leadingIndent": 0,
-    "pos": 3,
+    "pos": 2,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 5,
+    "fullPos": 3,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 4,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 7,
+    "fullPos": 5,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "SubToken",
+    "end": 9,
+    "fullPos": 7,
+    "kind": 10,
+    "leadingIndent": 0,
+    "pos": 8,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 11,
+    "fullPos": 9,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 10,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 13,
+    "fullPos": 11,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 12,
+  },
+  Object {
+    "__debugKind": "MulToken",
+    "end": 15,
+    "fullPos": 13,
+    "kind": 11,
+    "leadingIndent": 0,
+    "pos": 14,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 17,
+    "fullPos": 15,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 16,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 19,
+    "fullPos": 17,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 18,
+  },
+  Object {
+    "__debugKind": "DivToken",
+    "end": 21,
+    "fullPos": 19,
+    "kind": 12,
+    "leadingIndent": 0,
+    "pos": 20,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 23,
+    "fullPos": 21,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 22,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 25,
+    "fullPos": 23,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 24,
+  },
+  Object {
+    "__debugKind": "ModToken",
+    "end": 27,
+    "fullPos": 25,
+    "kind": 13,
+    "leadingIndent": 0,
+    "pos": 26,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 29,
+    "fullPos": 27,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 28,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 31,
+    "fullPos": 29,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 30,
+  },
+  Object {
+    "__debugKind": "LessThanToken",
+    "end": 33,
+    "fullPos": 31,
+    "kind": 14,
+    "leadingIndent": 0,
+    "pos": 32,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 35,
+    "fullPos": 33,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 34,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 37,
+    "fullPos": 35,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 36,
+  },
+  Object {
+    "__debugKind": "GreaterThanToken",
+    "end": 39,
+    "fullPos": 37,
+    "kind": 15,
+    "leadingIndent": 0,
+    "pos": 38,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 41,
+    "fullPos": 39,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 40,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 43,
+    "fullPos": 41,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 42,
+  },
+  Object {
+    "__debugKind": "LessEqualsThanToken",
+    "end": 46,
+    "fullPos": 43,
+    "kind": 16,
+    "leadingIndent": 0,
+    "pos": 44,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 48,
+    "fullPos": 46,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 47,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 50,
+    "fullPos": 48,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 49,
+  },
+  Object {
+    "__debugKind": "GreaterEqualsThanToken",
+    "end": 53,
+    "fullPos": 50,
+    "kind": 17,
+    "leadingIndent": 0,
+    "pos": 51,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 55,
+    "fullPos": 53,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 54,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 57,
+    "fullPos": 55,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 56,
+  },
+  Object {
+    "__debugKind": "EqualsEqualsToken",
+    "end": 60,
+    "fullPos": 57,
+    "kind": 18,
+    "leadingIndent": 0,
+    "pos": 58,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 62,
+    "fullPos": 60,
+    "id": "y",
+    "kind": 21,
+    "leadingIndent": 0,
+    "pos": 61,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 63,
+    "fullPos": 62,
+    "kind": 33,
+    "leadingIndent": 0,
+    "pos": 63,
+  },
+]
+`;
+
+exports[`Scanner should-work-with-function 1`] = `
+Array [
+  Object {
+    "__debugKind": "DefnKeyword",
+    "end": 4,
+    "fullPos": 0,
+    "kind": 32,
+    "leadingIndent": 0,
+    "pos": 0,
   },
   Object {
     "__debugKind": "Identifier",
     "end": 6,
     "fullPos": 4,
-    "id": "y",
+    "id": "f",
     "kind": 21,
     "leadingIndent": 0,
     "pos": 5,
   },
   Object {
+    "__debugKind": "OpenParenToken",
+    "end": 7,
+    "fullPos": 6,
+    "kind": 2,
+    "leadingIndent": 0,
+    "pos": 6,
+  },
+  Object {
     "__debugKind": "Identifier",
     "end": 8,
-    "fullPos": 6,
+    "fullPos": 7,
     "id": "x",
     "kind": 21,
     "leadingIndent": 0,
     "pos": 7,
   },
   Object {
-    "__debugKind": "SubToken",
-    "end": 10,
+    "__debugKind": "CommaToken",
+    "end": 9,
     "fullPos": 8,
-    "kind": 10,
+    "kind": 1,
     "leadingIndent": 0,
-    "pos": 9,
+    "pos": 8,
   },
   Object {
     "__debugKind": "Identifier",
-    "end": 12,
-    "fullPos": 10,
+    "end": 11,
+    "fullPos": 9,
     "id": "y",
     "kind": 21,
+    "leadingIndent": 0,
+    "pos": 10,
+  },
+  Object {
+    "__debugKind": "CommaToken",
+    "end": 12,
+    "fullPos": 11,
+    "kind": 1,
     "leadingIndent": 0,
     "pos": 11,
   },
@@ -121,345 +401,65 @@ Array [
     "__debugKind": "Identifier",
     "end": 14,
     "fullPos": 12,
-    "id": "x",
+    "id": "z",
     "kind": 21,
     "leadingIndent": 0,
     "pos": 13,
   },
   Object {
-    "__debugKind": "MulToken",
+    "__debugKind": "CloseParenToken",
     "end": 16,
     "fullPos": 14,
-    "kind": 11,
+    "kind": 3,
     "leadingIndent": 0,
     "pos": 15,
   },
   Object {
-    "__debugKind": "Identifier",
-    "end": 18,
-    "fullPos": 16,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 17,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 20,
-    "fullPos": 18,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 19,
-  },
-  Object {
-    "__debugKind": "DivToken",
-    "end": 22,
-    "fullPos": 20,
-    "kind": 12,
-    "leadingIndent": 0,
-    "pos": 21,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 24,
-    "fullPos": 22,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 23,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 26,
-    "fullPos": 24,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 25,
-  },
-  Object {
-    "__debugKind": "ModToken",
-    "end": 28,
-    "fullPos": 26,
-    "kind": 13,
-    "leadingIndent": 0,
-    "pos": 27,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 30,
-    "fullPos": 28,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 29,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 32,
-    "fullPos": 30,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 31,
-  },
-  Object {
-    "__debugKind": "LessThanToken",
-    "end": 34,
-    "fullPos": 32,
-    "kind": 14,
-    "leadingIndent": 0,
-    "pos": 33,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 36,
-    "fullPos": 34,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 35,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 38,
-    "fullPos": 36,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 37,
-  },
-  Object {
-    "__debugKind": "GreaterThanToken",
-    "end": 40,
-    "fullPos": 38,
-    "kind": 15,
-    "leadingIndent": 0,
-    "pos": 39,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 42,
-    "fullPos": 40,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 41,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 44,
-    "fullPos": 42,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 43,
-  },
-  Object {
-    "__debugKind": "LessEqualsThanToken",
-    "end": 47,
-    "fullPos": 44,
-    "kind": 16,
-    "leadingIndent": 0,
-    "pos": 45,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 49,
-    "fullPos": 47,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 48,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 51,
-    "fullPos": 49,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 50,
-  },
-  Object {
-    "__debugKind": "GreaterEqualsThanToken",
-    "end": 54,
-    "fullPos": 51,
-    "kind": 17,
-    "leadingIndent": 0,
-    "pos": 52,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 56,
-    "fullPos": 54,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 55,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 58,
-    "fullPos": 56,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 57,
-  },
-  Object {
-    "__debugKind": "EqualsEqualsToken",
-    "end": 61,
-    "fullPos": 58,
-    "kind": 18,
-    "leadingIndent": 0,
-    "pos": 59,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 63,
-    "fullPos": 61,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 62,
-  },
-  Object {
-    "__debugKind": "EndOfFileToken",
-    "end": 64,
-    "fullPos": 63,
-    "kind": 33,
-    "leadingIndent": 0,
-    "pos": 64,
-  },
-]
-`;
-
-exports[`Scanner Should work with function 1`] = `
-Array [
-  Object {
-    "__debugKind": "DefnKeyword",
-    "end": 5,
-    "fullPos": 0,
-    "kind": 32,
-    "leadingIndent": 0,
-    "pos": 1,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 7,
-    "fullPos": 5,
-    "id": "f",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 6,
-  },
-  Object {
-    "__debugKind": "OpenParenToken",
-    "end": 8,
-    "fullPos": 7,
-    "kind": 2,
-    "leadingIndent": 0,
-    "pos": 7,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 9,
-    "fullPos": 8,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 8,
-  },
-  Object {
-    "__debugKind": "CommaToken",
-    "end": 10,
-    "fullPos": 9,
-    "kind": 1,
-    "leadingIndent": 0,
-    "pos": 9,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 12,
-    "fullPos": 10,
-    "id": "y",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 11,
-  },
-  Object {
-    "__debugKind": "CommaToken",
-    "end": 13,
-    "fullPos": 12,
-    "kind": 1,
-    "leadingIndent": 0,
-    "pos": 12,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 15,
-    "fullPos": 13,
-    "id": "z",
-    "kind": 21,
-    "leadingIndent": 0,
-    "pos": 14,
-  },
-  Object {
-    "__debugKind": "CloseParenToken",
+    "__debugKind": "ColonToken",
     "end": 17,
-    "fullPos": 15,
-    "kind": 3,
+    "fullPos": 16,
+    "kind": 4,
     "leadingIndent": 0,
     "pos": 16,
   },
   Object {
-    "__debugKind": "ColonToken",
-    "end": 18,
-    "fullPos": 17,
-    "kind": 4,
-    "leadingIndent": 0,
-    "pos": 17,
-  },
-  Object {
     "__debugKind": "Identifier",
-    "end": 24,
-    "fullPos": 18,
+    "end": 23,
+    "fullPos": 17,
     "id": "x",
     "kind": 21,
     "leadingIndent": 4,
-    "pos": 23,
+    "pos": 22,
   },
   Object {
     "__debugKind": "AddToken",
-    "end": 26,
-    "fullPos": 24,
+    "end": 25,
+    "fullPos": 23,
     "kind": 9,
     "leadingIndent": 4,
-    "pos": 25,
+    "pos": 24,
   },
   Object {
     "__debugKind": "Identifier",
-    "end": 28,
-    "fullPos": 26,
+    "end": 27,
+    "fullPos": 25,
     "id": "y",
     "kind": 21,
     "leadingIndent": 4,
-    "pos": 27,
+    "pos": 26,
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 29,
-    "fullPos": 28,
+    "end": 27,
+    "fullPos": 27,
     "kind": 33,
-    "leadingIndent": 0,
-    "pos": 29,
+    "leadingIndent": 4,
+    "pos": 27,
   },
 ]
 `;
 
-exports[`Scanner Should work with function call 1`] = `
+exports[`Scanner should-work-with-function-call 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -506,7 +506,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with get shorthand 1`] = `
+exports[`Scanner should-work-with-get-shorthand 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -553,7 +553,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with global variable 1`] = `
+exports[`Scanner should-work-with-global-variable 1`] = `
 Array [
   Object {
     "__debugKind": "VarKeyword",
@@ -600,7 +600,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with if expression 1`] = `
+exports[`Scanner should-work-with-if-expression 1`] = `
 Array [
   Object {
     "__debugKind": "IfKeyword",
@@ -711,16 +711,16 @@ Array [
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 44,
+    "end": 43,
     "fullPos": 43,
     "kind": 33,
-    "leadingIndent": 0,
-    "pos": 44,
+    "leadingIndent": 4,
+    "pos": 43,
   },
 ]
 `;
 
-exports[`Scanner Should work with if expression with only if 1`] = `
+exports[`Scanner should-work-with-if-expression-with-if-only 1`] = `
 Array [
   Object {
     "__debugKind": "IfKeyword",
@@ -782,16 +782,16 @@ Array [
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 22,
+    "end": 21,
     "fullPos": 21,
     "kind": 33,
-    "leadingIndent": 0,
-    "pos": 22,
+    "leadingIndent": 4,
+    "pos": 21,
   },
 ]
 `;
 
-exports[`Scanner Should work with integer 1`] = `
+exports[`Scanner should-work-with-integer 1`] = `
 Array [
   Object {
     "__debugKind": "IntegerLiteralToken",
@@ -813,7 +813,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with local expression 1`] = `
+exports[`Scanner should-work-with-local-expression 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -860,7 +860,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with local variable 1`] = `
+exports[`Scanner should-work-with-local-variable 1`] = `
 Array [
   Object {
     "__debugKind": "VarKeyword",
@@ -898,16 +898,16 @@ Array [
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 10,
+    "end": 11,
     "fullPos": 10,
     "kind": 33,
     "leadingIndent": 0,
-    "pos": 10,
+    "pos": 11,
   },
 ]
 `;
 
-exports[`Scanner Should work with method call 1`] = `
+exports[`Scanner should-work-with-method-call 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -971,7 +971,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with null 1`] = `
+exports[`Scanner should-work-with-null 1`] = `
 Array [
   Object {
     "__debugKind": "NullKeyword",
@@ -992,7 +992,136 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with object 1`] = `
+exports[`Scanner should-work-with-object-without-extends 1`] = `
+Array [
+  Object {
+    "__debugKind": "ObjectsKeyword",
+    "end": 6,
+    "fullPos": 0,
+    "kind": 25,
+    "leadingIndent": 0,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 7,
+    "fullPos": 6,
+    "kind": 4,
+    "leadingIndent": 0,
+    "pos": 6,
+  },
+  Object {
+    "__debugKind": "VarKeyword",
+    "end": 15,
+    "fullPos": 7,
+    "kind": 26,
+    "leadingIndent": 4,
+    "pos": 12,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 17,
+    "fullPos": 15,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 4,
+    "pos": 16,
+  },
+  Object {
+    "__debugKind": "EqualsToken",
+    "end": 19,
+    "fullPos": 17,
+    "kind": 6,
+    "leadingIndent": 4,
+    "pos": 18,
+  },
+  Object {
+    "__debugKind": "IntegerLiteralToken",
+    "end": 22,
+    "fullPos": 19,
+    "kind": 19,
+    "leadingIndent": 4,
+    "pos": 20,
+    "value": "10",
+  },
+  Object {
+    "__debugKind": "MethodKeyword",
+    "end": 33,
+    "fullPos": 22,
+    "kind": 31,
+    "leadingIndent": 4,
+    "pos": 27,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 35,
+    "fullPos": 33,
+    "id": "f",
+    "kind": 21,
+    "leadingIndent": 4,
+    "pos": 34,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 36,
+    "fullPos": 35,
+    "kind": 2,
+    "leadingIndent": 4,
+    "pos": 35,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 37,
+    "fullPos": 36,
+    "kind": 3,
+    "leadingIndent": 4,
+    "pos": 36,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 38,
+    "fullPos": 37,
+    "kind": 4,
+    "leadingIndent": 4,
+    "pos": 37,
+  },
+  Object {
+    "__debugKind": "ThisKeyword",
+    "end": 51,
+    "fullPos": 38,
+    "kind": 27,
+    "leadingIndent": 8,
+    "pos": 47,
+  },
+  Object {
+    "__debugKind": "DotToken",
+    "end": 52,
+    "fullPos": 51,
+    "kind": 5,
+    "leadingIndent": 8,
+    "pos": 51,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 53,
+    "fullPos": 52,
+    "id": "x",
+    "kind": 21,
+    "leadingIndent": 8,
+    "pos": 52,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 53,
+    "fullPos": 53,
+    "kind": 33,
+    "leadingIndent": 8,
+    "pos": 53,
+  },
+]
+`;
+
+exports[`Scanner should-work-with-objects 1`] = `
 Array [
   Object {
     "__debugKind": "ObjectsKeyword",
@@ -1137,16 +1266,16 @@ Array [
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 57,
+    "end": 56,
     "fullPos": 56,
     "kind": 33,
-    "leadingIndent": 0,
-    "pos": 57,
+    "leadingIndent": 8,
+    "pos": 56,
   },
 ]
 `;
 
-exports[`Scanner Should work with object with slots 1`] = `
+exports[`Scanner should-work-with-objects-and-slots 1`] = `
 Array [
   Object {
     "__debugKind": "ObjectsKeyword",
@@ -1385,145 +1514,16 @@ Array [
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 76,
+    "end": 75,
     "fullPos": 75,
     "kind": 33,
-    "leadingIndent": 0,
-    "pos": 76,
+    "leadingIndent": 8,
+    "pos": 75,
   },
 ]
 `;
 
-exports[`Scanner Should work with object without extends 1`] = `
-Array [
-  Object {
-    "__debugKind": "ObjectsKeyword",
-    "end": 6,
-    "fullPos": 0,
-    "kind": 25,
-    "leadingIndent": 0,
-    "pos": 0,
-  },
-  Object {
-    "__debugKind": "ColonToken",
-    "end": 7,
-    "fullPos": 6,
-    "kind": 4,
-    "leadingIndent": 0,
-    "pos": 6,
-  },
-  Object {
-    "__debugKind": "VarKeyword",
-    "end": 15,
-    "fullPos": 7,
-    "kind": 26,
-    "leadingIndent": 4,
-    "pos": 12,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 17,
-    "fullPos": 15,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 4,
-    "pos": 16,
-  },
-  Object {
-    "__debugKind": "EqualsToken",
-    "end": 19,
-    "fullPos": 17,
-    "kind": 6,
-    "leadingIndent": 4,
-    "pos": 18,
-  },
-  Object {
-    "__debugKind": "IntegerLiteralToken",
-    "end": 22,
-    "fullPos": 19,
-    "kind": 19,
-    "leadingIndent": 4,
-    "pos": 20,
-    "value": "10",
-  },
-  Object {
-    "__debugKind": "MethodKeyword",
-    "end": 33,
-    "fullPos": 22,
-    "kind": 31,
-    "leadingIndent": 4,
-    "pos": 27,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 35,
-    "fullPos": 33,
-    "id": "f",
-    "kind": 21,
-    "leadingIndent": 4,
-    "pos": 34,
-  },
-  Object {
-    "__debugKind": "OpenParenToken",
-    "end": 36,
-    "fullPos": 35,
-    "kind": 2,
-    "leadingIndent": 4,
-    "pos": 35,
-  },
-  Object {
-    "__debugKind": "CloseParenToken",
-    "end": 37,
-    "fullPos": 36,
-    "kind": 3,
-    "leadingIndent": 4,
-    "pos": 36,
-  },
-  Object {
-    "__debugKind": "ColonToken",
-    "end": 38,
-    "fullPos": 37,
-    "kind": 4,
-    "leadingIndent": 4,
-    "pos": 37,
-  },
-  Object {
-    "__debugKind": "ThisKeyword",
-    "end": 51,
-    "fullPos": 38,
-    "kind": 27,
-    "leadingIndent": 8,
-    "pos": 47,
-  },
-  Object {
-    "__debugKind": "DotToken",
-    "end": 52,
-    "fullPos": 51,
-    "kind": 5,
-    "leadingIndent": 8,
-    "pos": 51,
-  },
-  Object {
-    "__debugKind": "Identifier",
-    "end": 53,
-    "fullPos": 52,
-    "id": "x",
-    "kind": 21,
-    "leadingIndent": 8,
-    "pos": 52,
-  },
-  Object {
-    "__debugKind": "EndOfFileToken",
-    "end": 54,
-    "fullPos": 53,
-    "kind": 33,
-    "leadingIndent": 0,
-    "pos": 54,
-  },
-]
-`;
-
-exports[`Scanner Should work with printing 1`] = `
+exports[`Scanner should-work-with-printf 1`] = `
 Array [
   Object {
     "__debugKind": "PrintfKeyword",
@@ -1543,50 +1543,50 @@ Array [
   },
   Object {
     "__debugKind": "StringLiteralToken",
-    "end": 26,
+    "end": 27,
     "fullPos": 8,
     "kind": 20,
     "leadingIndent": 0,
     "pos": 8,
-    "value": " My age is ~. n ",
+    "value": " My age is ~.\\\\ n ",
   },
   Object {
     "__debugKind": "CommaToken",
-    "end": 28,
-    "fullPos": 26,
+    "end": 29,
+    "fullPos": 27,
     "kind": 1,
     "leadingIndent": 0,
-    "pos": 27,
+    "pos": 28,
   },
   Object {
     "__debugKind": "IntegerLiteralToken",
-    "end": 30,
-    "fullPos": 28,
+    "end": 31,
+    "fullPos": 29,
     "kind": 19,
     "leadingIndent": 0,
-    "pos": 29,
+    "pos": 30,
     "value": "8",
   },
   Object {
     "__debugKind": "CloseParenToken",
-    "end": 31,
-    "fullPos": 30,
+    "end": 32,
+    "fullPos": 31,
     "kind": 3,
     "leadingIndent": 0,
-    "pos": 30,
+    "pos": 31,
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 31,
-    "fullPos": 31,
+    "end": 32,
+    "fullPos": 32,
     "kind": 33,
     "leadingIndent": 0,
-    "pos": 31,
+    "pos": 32,
   },
 ]
 `;
 
-exports[`Scanner Should work with set shorthand 1`] = `
+exports[`Scanner should-work-with-set-shorthand 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -1650,7 +1650,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with slot assignment 1`] = `
+exports[`Scanner should-work-with-slot-assignment 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -1706,7 +1706,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with slot lookup 1`] = `
+exports[`Scanner should-work-with-slot-lookup 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -1745,7 +1745,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with top level expression 1`] = `
+exports[`Scanner should-work-with-top-level-expression 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -1792,7 +1792,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with variable assignment 1`] = `
+exports[`Scanner should-work-with-variable-assignment 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -1831,7 +1831,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with variable reference 1`] = `
+exports[`Scanner should-work-with-variable-reference 1`] = `
 Array [
   Object {
     "__debugKind": "Identifier",
@@ -1853,7 +1853,7 @@ Array [
 ]
 `;
 
-exports[`Scanner Should work with while expression 1`] = `
+exports[`Scanner should-work-with-while-expression 1`] = `
 Array [
   Object {
     "__debugKind": "WhileKeyword",
@@ -1925,11 +1925,11 @@ Array [
   },
   Object {
     "__debugKind": "EndOfFileToken",
-    "end": 23,
+    "end": 22,
     "fullPos": 22,
     "kind": 33,
-    "leadingIndent": 0,
-    "pos": 23,
+    "leadingIndent": 4,
+    "pos": 22,
   },
 ]
 `;

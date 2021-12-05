@@ -1,243 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Parser Should work with arguments 1`] = `
-Object {
-  "__debugKind": "SourceFile",
-  "end": 76,
-  "kind": 34,
-  "pos": 0,
-  "statements": Array [
-    Object {
-      "__debugKind": "TopLevelExpressionStatement",
-      "end": 76,
-      "expression": Object {
-        "__debugKind": "ObjectsExpression",
-        "end": 76,
-        "extendsClause": Object {
-          "__debugKind": "VariableReferenceExpression",
-          "end": 9,
-          "id": Object {
-            "__debugKind": "Identifier",
-            "end": 8,
-            "fullPos": 7,
-            "id": "p",
-            "kind": 21,
-            "leadingIndent": 0,
-            "pos": 7,
-          },
-          "kind": 36,
-          "pos": 7,
-        },
-        "kind": 40,
-        "pos": 0,
-        "slots": Array [
-          Object {
-            "__debugKind": "VariableSlot",
-            "end": 36,
-            "initializer": Object {
-              "__debugKind": "IntegerLiteralExpression",
-              "end": 36,
-              "kind": 35,
-              "pos": 23,
-              "subToken": undefined,
-              "value": Object {
-                "__debugKind": "IntegerLiteralToken",
-                "end": 25,
-                "fullPos": 22,
-                "kind": 19,
-                "leadingIndent": 4,
-                "pos": 23,
-                "value": "10",
-              },
-            },
-            "kind": 50,
-            "name": Object {
-              "__debugKind": "Identifier",
-              "end": 20,
-              "fullPos": 18,
-              "id": "x",
-              "kind": 21,
-              "leadingIndent": 4,
-              "pos": 19,
-            },
-            "pos": 15,
-          },
-          Object {
-            "__debugKind": "MethodSlot",
-            "body": Object {
-              "__debugKind": "SequenceOfStatements",
-              "end": 76,
-              "kind": 53,
-              "pos": 57,
-              "statements": Array [
-                Object {
-                  "__debugKind": "LocalExpressionStatement",
-                  "end": 76,
-                  "expression": Object {
-                    "__debugKind": "BinaryShorthand",
-                    "end": 76,
-                    "kind": 58,
-                    "left": Object {
-                      "__debugKind": "SlotLookupExpression",
-                      "end": 65,
-                      "expression": Object {
-                        "__debugKind": "ThisExpression",
-                        "end": 62,
-                        "kind": 48,
-                        "pos": 57,
-                      },
-                      "kind": 42,
-                      "name": Object {
-                        "__debugKind": "Identifier",
-                        "end": 63,
-                        "fullPos": 62,
-                        "id": "x",
-                        "kind": 21,
-                        "leadingIndent": 8,
-                        "pos": 62,
-                      },
-                      "pos": 57,
-                    },
-                    "operator": Object {
-                      "__debugKind": "AddToken",
-                      "end": 65,
-                      "fullPos": 63,
-                      "kind": 9,
-                      "leadingIndent": 8,
-                      "pos": 64,
-                    },
-                    "pos": 57,
-                    "right": Object {
-                      "__debugKind": "BinaryShorthand",
-                      "end": 76,
-                      "kind": 58,
-                      "left": Object {
-                        "__debugKind": "VariableReferenceExpression",
-                        "end": 69,
-                        "id": Object {
-                          "__debugKind": "Identifier",
-                          "end": 67,
-                          "fullPos": 65,
-                          "id": "x",
-                          "kind": 21,
-                          "leadingIndent": 8,
-                          "pos": 66,
-                        },
-                        "kind": 36,
-                        "pos": 66,
-                      },
-                      "operator": Object {
-                        "__debugKind": "AddToken",
-                        "end": 69,
-                        "fullPos": 67,
-                        "kind": 9,
-                        "leadingIndent": 8,
-                        "pos": 68,
-                      },
-                      "pos": 66,
-                      "right": Object {
-                        "__debugKind": "BinaryShorthand",
-                        "end": 76,
-                        "kind": 58,
-                        "left": Object {
-                          "__debugKind": "VariableReferenceExpression",
-                          "end": 73,
-                          "id": Object {
-                            "__debugKind": "Identifier",
-                            "end": 71,
-                            "fullPos": 69,
-                            "id": "y",
-                            "kind": 21,
-                            "leadingIndent": 8,
-                            "pos": 70,
-                          },
-                          "kind": 36,
-                          "pos": 70,
-                        },
-                        "operator": Object {
-                          "__debugKind": "AddToken",
-                          "end": 73,
-                          "fullPos": 71,
-                          "kind": 9,
-                          "leadingIndent": 8,
-                          "pos": 72,
-                        },
-                        "pos": 70,
-                        "right": Object {
-                          "__debugKind": "VariableReferenceExpression",
-                          "end": 76,
-                          "id": Object {
-                            "__debugKind": "Identifier",
-                            "end": 75,
-                            "fullPos": 73,
-                            "id": "z",
-                            "kind": 21,
-                            "leadingIndent": 8,
-                            "pos": 74,
-                          },
-                          "kind": 36,
-                          "pos": 74,
-                        },
-                      },
-                    },
-                  },
-                  "kind": 54,
-                  "pos": 57,
-                },
-              ],
-            },
-            "end": 76,
-            "kind": 51,
-            "name": Object {
-              "__debugKind": "Identifier",
-              "end": 38,
-              "fullPos": 36,
-              "id": "f",
-              "kind": 21,
-              "leadingIndent": 4,
-              "pos": 37,
-            },
-            "params": Array [
-              Object {
-                "__debugKind": "Identifier",
-                "end": 40,
-                "fullPos": 39,
-                "id": "x",
-                "kind": 21,
-                "leadingIndent": 4,
-                "pos": 39,
-              },
-              Object {
-                "__debugKind": "Identifier",
-                "end": 43,
-                "fullPos": 41,
-                "id": "y",
-                "kind": 21,
-                "leadingIndent": 4,
-                "pos": 42,
-              },
-              Object {
-                "__debugKind": "Identifier",
-                "end": 46,
-                "fullPos": 44,
-                "id": "z",
-                "kind": 21,
-                "leadingIndent": 4,
-                "pos": 45,
-              },
-            ],
-            "pos": 30,
-          },
-        ],
-      },
-      "kind": 57,
-      "pos": 0,
-    },
-  ],
-}
-`;
-
-exports[`Parser Should work with arrays 1`] = `
+exports[`Parser should-work-with-arrays 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 14,
@@ -292,601 +55,631 @@ Object {
 }
 `;
 
-exports[`Parser Should work with binary shorthand 1`] = `
+exports[`Parser should-work-with-binary-shorthand 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 64,
+  "end": 63,
   "kind": 34,
-  "pos": 1,
+  "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 8,
+      "end": 7,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 8,
+        "end": 7,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 4,
+          "end": 3,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 2,
+            "end": 1,
             "fullPos": 0,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 1,
+            "pos": 0,
           },
           "kind": 36,
-          "pos": 1,
+          "pos": 0,
         },
         "operator": Object {
           "__debugKind": "AddToken",
-          "end": 4,
-          "fullPos": 2,
+          "end": 3,
+          "fullPos": 1,
           "kind": 9,
           "leadingIndent": 0,
-          "pos": 3,
+          "pos": 2,
         },
-        "pos": 1,
+        "pos": 0,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 8,
+          "end": 7,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 6,
-            "fullPos": 4,
+            "end": 5,
+            "fullPos": 3,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 5,
+            "pos": 4,
           },
           "kind": 36,
-          "pos": 5,
+          "pos": 4,
         },
       },
       "kind": 57,
-      "pos": 1,
+      "pos": 0,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 14,
+      "end": 13,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 14,
+        "end": 13,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 10,
+          "end": 9,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 8,
-            "fullPos": 6,
+            "end": 7,
+            "fullPos": 5,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 7,
+            "pos": 6,
           },
           "kind": 36,
-          "pos": 7,
+          "pos": 6,
         },
         "operator": Object {
           "__debugKind": "SubToken",
-          "end": 10,
-          "fullPos": 8,
+          "end": 9,
+          "fullPos": 7,
           "kind": 10,
           "leadingIndent": 0,
-          "pos": 9,
+          "pos": 8,
         },
-        "pos": 7,
+        "pos": 6,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 14,
+          "end": 13,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 12,
-            "fullPos": 10,
+            "end": 11,
+            "fullPos": 9,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 11,
+            "pos": 10,
           },
           "kind": 36,
-          "pos": 11,
+          "pos": 10,
         },
       },
       "kind": 57,
-      "pos": 7,
+      "pos": 6,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 20,
+      "end": 19,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 20,
+        "end": 19,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 16,
+          "end": 15,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 14,
-            "fullPos": 12,
+            "end": 13,
+            "fullPos": 11,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 13,
+            "pos": 12,
           },
           "kind": 36,
-          "pos": 13,
+          "pos": 12,
         },
         "operator": Object {
           "__debugKind": "MulToken",
-          "end": 16,
-          "fullPos": 14,
+          "end": 15,
+          "fullPos": 13,
           "kind": 11,
           "leadingIndent": 0,
-          "pos": 15,
+          "pos": 14,
         },
-        "pos": 13,
+        "pos": 12,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 20,
+          "end": 19,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 18,
-            "fullPos": 16,
+            "end": 17,
+            "fullPos": 15,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 17,
+            "pos": 16,
           },
           "kind": 36,
-          "pos": 17,
+          "pos": 16,
         },
       },
       "kind": 57,
-      "pos": 13,
+      "pos": 12,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 26,
+      "end": 25,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 26,
+        "end": 25,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 22,
+          "end": 21,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 20,
-            "fullPos": 18,
+            "end": 19,
+            "fullPos": 17,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 19,
+            "pos": 18,
           },
           "kind": 36,
-          "pos": 19,
+          "pos": 18,
         },
         "operator": Object {
           "__debugKind": "DivToken",
-          "end": 22,
-          "fullPos": 20,
+          "end": 21,
+          "fullPos": 19,
           "kind": 12,
           "leadingIndent": 0,
-          "pos": 21,
+          "pos": 20,
         },
-        "pos": 19,
+        "pos": 18,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 26,
+          "end": 25,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 24,
-            "fullPos": 22,
+            "end": 23,
+            "fullPos": 21,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 23,
+            "pos": 22,
           },
           "kind": 36,
-          "pos": 23,
+          "pos": 22,
         },
       },
       "kind": 57,
-      "pos": 19,
+      "pos": 18,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 32,
+      "end": 31,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 32,
+        "end": 31,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 28,
+          "end": 27,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 26,
-            "fullPos": 24,
+            "end": 25,
+            "fullPos": 23,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 25,
+            "pos": 24,
           },
           "kind": 36,
-          "pos": 25,
+          "pos": 24,
         },
         "operator": Object {
           "__debugKind": "ModToken",
-          "end": 28,
-          "fullPos": 26,
+          "end": 27,
+          "fullPos": 25,
           "kind": 13,
           "leadingIndent": 0,
-          "pos": 27,
+          "pos": 26,
         },
-        "pos": 25,
+        "pos": 24,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 32,
+          "end": 31,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 30,
-            "fullPos": 28,
+            "end": 29,
+            "fullPos": 27,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 29,
+            "pos": 28,
           },
           "kind": 36,
-          "pos": 29,
+          "pos": 28,
         },
       },
       "kind": 57,
-      "pos": 25,
+      "pos": 24,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 38,
+      "end": 37,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 38,
+        "end": 37,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 34,
+          "end": 33,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 32,
-            "fullPos": 30,
+            "end": 31,
+            "fullPos": 29,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 31,
+            "pos": 30,
           },
           "kind": 36,
-          "pos": 31,
+          "pos": 30,
         },
         "operator": Object {
           "__debugKind": "LessThanToken",
-          "end": 34,
-          "fullPos": 32,
+          "end": 33,
+          "fullPos": 31,
           "kind": 14,
           "leadingIndent": 0,
-          "pos": 33,
+          "pos": 32,
         },
-        "pos": 31,
+        "pos": 30,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 38,
+          "end": 37,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 36,
-            "fullPos": 34,
+            "end": 35,
+            "fullPos": 33,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 35,
+            "pos": 34,
           },
           "kind": 36,
-          "pos": 35,
+          "pos": 34,
         },
       },
       "kind": 57,
-      "pos": 31,
+      "pos": 30,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 44,
+      "end": 43,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 44,
+        "end": 43,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 40,
+          "end": 39,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 38,
-            "fullPos": 36,
+            "end": 37,
+            "fullPos": 35,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 37,
+            "pos": 36,
           },
           "kind": 36,
-          "pos": 37,
+          "pos": 36,
         },
         "operator": Object {
           "__debugKind": "GreaterThanToken",
-          "end": 40,
-          "fullPos": 38,
+          "end": 39,
+          "fullPos": 37,
           "kind": 15,
           "leadingIndent": 0,
-          "pos": 39,
+          "pos": 38,
         },
-        "pos": 37,
+        "pos": 36,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 44,
+          "end": 43,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 42,
-            "fullPos": 40,
+            "end": 41,
+            "fullPos": 39,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 41,
+            "pos": 40,
           },
           "kind": 36,
-          "pos": 41,
+          "pos": 40,
         },
       },
       "kind": 57,
-      "pos": 37,
+      "pos": 36,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 51,
+      "end": 50,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 51,
+        "end": 50,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 47,
+          "end": 46,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 44,
-            "fullPos": 42,
+            "end": 43,
+            "fullPos": 41,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 43,
+            "pos": 42,
           },
           "kind": 36,
-          "pos": 43,
+          "pos": 42,
         },
         "operator": Object {
           "__debugKind": "LessEqualsThanToken",
-          "end": 47,
-          "fullPos": 44,
+          "end": 46,
+          "fullPos": 43,
           "kind": 16,
           "leadingIndent": 0,
-          "pos": 45,
+          "pos": 44,
         },
-        "pos": 43,
+        "pos": 42,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 51,
+          "end": 50,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 49,
-            "fullPos": 47,
+            "end": 48,
+            "fullPos": 46,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 48,
+            "pos": 47,
           },
           "kind": 36,
-          "pos": 48,
+          "pos": 47,
         },
       },
       "kind": 57,
-      "pos": 43,
+      "pos": 42,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 58,
+      "end": 57,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 58,
+        "end": 57,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 54,
+          "end": 53,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 51,
-            "fullPos": 49,
+            "end": 50,
+            "fullPos": 48,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 50,
+            "pos": 49,
           },
           "kind": 36,
-          "pos": 50,
+          "pos": 49,
         },
         "operator": Object {
           "__debugKind": "GreaterEqualsThanToken",
-          "end": 54,
-          "fullPos": 51,
+          "end": 53,
+          "fullPos": 50,
           "kind": 17,
           "leadingIndent": 0,
-          "pos": 52,
+          "pos": 51,
         },
-        "pos": 50,
+        "pos": 49,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 58,
+          "end": 57,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 56,
-            "fullPos": 54,
+            "end": 55,
+            "fullPos": 53,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 55,
+            "pos": 54,
           },
           "kind": 36,
-          "pos": 55,
+          "pos": 54,
         },
       },
       "kind": 57,
-      "pos": 50,
+      "pos": 49,
     },
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 64,
+      "end": 63,
       "expression": Object {
         "__debugKind": "BinaryShorthand",
-        "end": 64,
+        "end": 63,
         "kind": 58,
         "left": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 61,
+          "end": 60,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 58,
-            "fullPos": 56,
+            "end": 57,
+            "fullPos": 55,
             "id": "x",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 57,
+            "pos": 56,
           },
           "kind": 36,
-          "pos": 57,
+          "pos": 56,
         },
         "operator": Object {
           "__debugKind": "EqualsEqualsToken",
-          "end": 61,
-          "fullPos": 58,
+          "end": 60,
+          "fullPos": 57,
           "kind": 18,
           "leadingIndent": 0,
-          "pos": 59,
+          "pos": 58,
         },
-        "pos": 57,
+        "pos": 56,
         "right": Object {
           "__debugKind": "VariableReferenceExpression",
-          "end": 64,
+          "end": 63,
           "id": Object {
             "__debugKind": "Identifier",
-            "end": 63,
-            "fullPos": 61,
+            "end": 62,
+            "fullPos": 60,
             "id": "y",
             "kind": 21,
             "leadingIndent": 0,
-            "pos": 62,
+            "pos": 61,
           },
           "kind": 36,
-          "pos": 62,
+          "pos": 61,
         },
       },
       "kind": 57,
-      "pos": 57,
+      "pos": 56,
     },
   ],
 }
 `;
 
-exports[`Parser Should work with function 1`] = `
+exports[`Parser should-work-with-function 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 28,
+  "end": 27,
   "kind": 34,
-  "pos": 1,
+  "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "FunctionStatement",
       "body": Object {
         "__debugKind": "SequenceOfStatements",
-        "end": 28,
+        "end": 27,
         "kind": 53,
-        "pos": 23,
+        "pos": 22,
         "statements": Array [
           Object {
             "__debugKind": "LocalExpressionStatement",
-            "end": 28,
+            "end": 27,
             "expression": Object {
-              "__debugKind": "NullExpression",
-              "end": 28,
-              "kind": 39,
-              "pos": 23,
-              "token": Object {
-                "__debugKind": "NullKeyword",
-                "end": 27,
-                "fullPos": 18,
-                "kind": 24,
+              "__debugKind": "BinaryShorthand",
+              "end": 27,
+              "kind": 58,
+              "left": Object {
+                "__debugKind": "VariableReferenceExpression",
+                "end": 25,
+                "id": Object {
+                  "__debugKind": "Identifier",
+                  "end": 23,
+                  "fullPos": 17,
+                  "id": "x",
+                  "kind": 21,
+                  "leadingIndent": 4,
+                  "pos": 22,
+                },
+                "kind": 36,
+                "pos": 22,
+              },
+              "operator": Object {
+                "__debugKind": "AddToken",
+                "end": 25,
+                "fullPos": 23,
+                "kind": 9,
                 "leadingIndent": 4,
-                "pos": 23,
+                "pos": 24,
+              },
+              "pos": 22,
+              "right": Object {
+                "__debugKind": "VariableReferenceExpression",
+                "end": 27,
+                "id": Object {
+                  "__debugKind": "Identifier",
+                  "end": 27,
+                  "fullPos": 25,
+                  "id": "y",
+                  "kind": 21,
+                  "leadingIndent": 4,
+                  "pos": 26,
+                },
+                "kind": 36,
+                "pos": 26,
               },
             },
             "kind": 54,
-            "pos": 23,
+            "pos": 22,
           },
         ],
       },
-      "end": 28,
+      "end": 27,
       "kind": 56,
       "name": Object {
         "__debugKind": "Identifier",
-        "end": 7,
-        "fullPos": 5,
+        "end": 6,
+        "fullPos": 4,
         "id": "f",
         "kind": 21,
         "leadingIndent": 0,
-        "pos": 6,
+        "pos": 5,
       },
       "params": Array [
         Object {
           "__debugKind": "Identifier",
-          "end": 9,
-          "fullPos": 8,
+          "end": 8,
+          "fullPos": 7,
           "id": "x",
           "kind": 21,
           "leadingIndent": 0,
-          "pos": 8,
+          "pos": 7,
         },
         Object {
           "__debugKind": "Identifier",
-          "end": 12,
-          "fullPos": 10,
+          "end": 11,
+          "fullPos": 9,
           "id": "y",
           "kind": 21,
           "leadingIndent": 0,
-          "pos": 11,
+          "pos": 10,
         },
         Object {
           "__debugKind": "Identifier",
-          "end": 15,
-          "fullPos": 13,
+          "end": 14,
+          "fullPos": 12,
           "id": "z",
           "kind": 21,
           "leadingIndent": 0,
-          "pos": 14,
+          "pos": 13,
         },
       ],
-      "pos": 1,
+      "pos": 0,
     },
   ],
 }
 `;
 
-exports[`Parser Should work with function call 1`] = `
+exports[`Parser should-work-with-function-call 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 5,
@@ -942,7 +735,7 @@ Object {
 }
 `;
 
-exports[`Parser Should work with get shorthand 1`] = `
+exports[`Parser should-work-with-get-shorthand 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 4,
@@ -996,16 +789,58 @@ Object {
 }
 `;
 
-exports[`Parser Should work with if expression 1`] = `
+exports[`Parser should-work-with-global-variable 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 44,
+  "end": 10,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "GlobalVariableStatement",
+      "end": 10,
+      "initializer": Object {
+        "__debugKind": "IntegerLiteralExpression",
+        "end": 10,
+        "kind": 35,
+        "pos": 8,
+        "subToken": undefined,
+        "value": Object {
+          "__debugKind": "IntegerLiteralToken",
+          "end": 10,
+          "fullPos": 7,
+          "kind": 19,
+          "leadingIndent": 0,
+          "pos": 8,
+          "value": "42",
+        },
+      },
+      "kind": 55,
+      "name": Object {
+        "__debugKind": "Identifier",
+        "end": 5,
+        "fullPos": 3,
+        "id": "x",
+        "kind": 21,
+        "leadingIndent": 0,
+        "pos": 4,
+      },
+      "pos": 0,
+    },
+  ],
+}
+`;
+
+exports[`Parser should-work-with-if-expression 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 43,
   "kind": 34,
   "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 44,
+      "end": 43,
       "expression": Object {
         "__debugKind": "IfExpression",
         "condition": Object {
@@ -1025,17 +860,17 @@ Object {
         },
         "elseStatement": Object {
           "__debugKind": "SequenceOfStatements",
-          "end": 44,
+          "end": 43,
           "kind": 53,
           "pos": 32,
           "statements": Array [
             Object {
               "__debugKind": "LocalExpressionStatement",
-              "end": 44,
+              "end": 43,
               "expression": Object {
                 "__debugKind": "PrintingExpression",
                 "args": Array [],
-                "end": 44,
+                "end": 43,
                 "format": Object {
                   "__debugKind": "StringLiteralToken",
                   "end": 42,
@@ -1053,7 +888,7 @@ Object {
             },
           ],
         },
-        "end": 44,
+        "end": 43,
         "kind": 46,
         "pos": 0,
         "thenStatement": Object {
@@ -1094,16 +929,16 @@ Object {
 }
 `;
 
-exports[`Parser Should work with if expression with only if 1`] = `
+exports[`Parser should-work-with-if-expression-with-if-only 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 22,
+  "end": 21,
   "kind": 34,
   "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 22,
+      "end": 21,
       "expression": Object {
         "__debugKind": "IfExpression",
         "condition": Object {
@@ -1122,22 +957,22 @@ Object {
           "pos": 3,
         },
         "elseStatement": undefined,
-        "end": 22,
+        "end": 21,
         "kind": 46,
         "pos": 0,
         "thenStatement": Object {
           "__debugKind": "SequenceOfStatements",
-          "end": 22,
+          "end": 21,
           "kind": 53,
           "pos": 10,
           "statements": Array [
             Object {
               "__debugKind": "LocalExpressionStatement",
-              "end": 22,
+              "end": 21,
               "expression": Object {
                 "__debugKind": "PrintingExpression",
                 "args": Array [],
-                "end": 22,
+                "end": 21,
                 "format": Object {
                   "__debugKind": "StringLiteralToken",
                   "end": 20,
@@ -1163,7 +998,7 @@ Object {
 }
 `;
 
-exports[`Parser Should work with integer 1`] = `
+exports[`Parser should-work-with-integer 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 1,
@@ -1196,60 +1031,53 @@ Object {
 }
 `;
 
-exports[`Parser Should work with lookup chains 1`] = `
+exports[`Parser should-work-with-local-expression 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 5,
+  "end": 4,
   "kind": 34,
   "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 5,
+      "end": 4,
       "expression": Object {
-        "__debugKind": "SlotLookupExpression",
-        "end": 5,
-        "expression": Object {
-          "__debugKind": "SlotLookupExpression",
-          "end": 4,
-          "expression": Object {
+        "__debugKind": "FunctionCallExpression",
+        "args": Array [
+          Object {
             "__debugKind": "VariableReferenceExpression",
-            "end": 2,
+            "end": 4,
             "id": Object {
               "__debugKind": "Identifier",
-              "end": 1,
-              "fullPos": 0,
-              "id": "a",
+              "end": 3,
+              "fullPos": 2,
+              "id": "x",
               "kind": 21,
               "leadingIndent": 0,
-              "pos": 0,
+              "pos": 2,
             },
             "kind": 36,
-            "pos": 0,
-          },
-          "kind": 42,
-          "name": Object {
-            "__debugKind": "Identifier",
-            "end": 3,
-            "fullPos": 2,
-            "id": "b",
-            "kind": 21,
-            "leadingIndent": 0,
             "pos": 2,
           },
+        ],
+        "end": 4,
+        "expression": Object {
+          "__debugKind": "VariableReferenceExpression",
+          "end": 2,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 1,
+            "fullPos": 0,
+            "id": "f",
+            "kind": 21,
+            "leadingIndent": 0,
+            "pos": 0,
+          },
+          "kind": 36,
           "pos": 0,
         },
-        "kind": 42,
-        "name": Object {
-          "__debugKind": "Identifier",
-          "end": 5,
-          "fullPos": 4,
-          "id": "c",
-          "kind": 21,
-          "leadingIndent": 0,
-          "pos": 4,
-        },
-        "pos": 4,
+        "kind": 44,
+        "pos": 0,
       },
       "kind": 57,
       "pos": 0,
@@ -1258,7 +1086,49 @@ Object {
 }
 `;
 
-exports[`Parser Should work with method call 1`] = `
+exports[`Parser should-work-with-local-variable 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 11,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "GlobalVariableStatement",
+      "end": 11,
+      "initializer": Object {
+        "__debugKind": "IntegerLiteralExpression",
+        "end": 11,
+        "kind": 35,
+        "pos": 8,
+        "subToken": undefined,
+        "value": Object {
+          "__debugKind": "IntegerLiteralToken",
+          "end": 10,
+          "fullPos": 7,
+          "kind": 19,
+          "leadingIndent": 0,
+          "pos": 8,
+          "value": "42",
+        },
+      },
+      "kind": 55,
+      "name": Object {
+        "__debugKind": "Identifier",
+        "end": 5,
+        "fullPos": 3,
+        "id": "x",
+        "kind": 21,
+        "leadingIndent": 0,
+        "pos": 4,
+      },
+      "pos": 0,
+    },
+  ],
+}
+`;
+
+exports[`Parser should-work-with-method-call 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 7,
@@ -1323,19 +1193,158 @@ Object {
 }
 `;
 
-exports[`Parser Should work with method slot 1`] = `
+exports[`Parser should-work-with-null 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 57,
+  "end": 4,
   "kind": 34,
   "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 57,
+      "end": 4,
+      "expression": Object {
+        "__debugKind": "NullExpression",
+        "end": 4,
+        "kind": 39,
+        "pos": 0,
+        "token": Object {
+          "__debugKind": "NullKeyword",
+          "end": 4,
+          "fullPos": 0,
+          "kind": 24,
+          "leadingIndent": 0,
+          "pos": 0,
+        },
+      },
+      "kind": 57,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
+exports[`Parser should-work-with-object-without-extends 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 53,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 53,
       "expression": Object {
         "__debugKind": "ObjectsExpression",
-        "end": 57,
+        "end": 53,
+        "extendsClause": undefined,
+        "kind": 40,
+        "pos": 0,
+        "slots": Array [
+          Object {
+            "__debugKind": "VariableSlot",
+            "end": 33,
+            "initializer": Object {
+              "__debugKind": "IntegerLiteralExpression",
+              "end": 33,
+              "kind": 35,
+              "pos": 20,
+              "subToken": undefined,
+              "value": Object {
+                "__debugKind": "IntegerLiteralToken",
+                "end": 22,
+                "fullPos": 19,
+                "kind": 19,
+                "leadingIndent": 4,
+                "pos": 20,
+                "value": "10",
+              },
+            },
+            "kind": 50,
+            "name": Object {
+              "__debugKind": "Identifier",
+              "end": 17,
+              "fullPos": 15,
+              "id": "x",
+              "kind": 21,
+              "leadingIndent": 4,
+              "pos": 16,
+            },
+            "pos": 12,
+          },
+          Object {
+            "__debugKind": "MethodSlot",
+            "body": Object {
+              "__debugKind": "SequenceOfStatements",
+              "end": 53,
+              "kind": 53,
+              "pos": 47,
+              "statements": Array [
+                Object {
+                  "__debugKind": "LocalExpressionStatement",
+                  "end": 53,
+                  "expression": Object {
+                    "__debugKind": "SlotLookupExpression",
+                    "end": 53,
+                    "expression": Object {
+                      "__debugKind": "ThisExpression",
+                      "end": 52,
+                      "kind": 48,
+                      "pos": 47,
+                    },
+                    "kind": 42,
+                    "name": Object {
+                      "__debugKind": "Identifier",
+                      "end": 53,
+                      "fullPos": 52,
+                      "id": "x",
+                      "kind": 21,
+                      "leadingIndent": 8,
+                      "pos": 52,
+                    },
+                    "pos": 47,
+                  },
+                  "kind": 54,
+                  "pos": 47,
+                },
+              ],
+            },
+            "end": 53,
+            "kind": 51,
+            "name": Object {
+              "__debugKind": "Identifier",
+              "end": 35,
+              "fullPos": 33,
+              "id": "f",
+              "kind": 21,
+              "leadingIndent": 4,
+              "pos": 34,
+            },
+            "params": Array [],
+            "pos": 27,
+          },
+        ],
+      },
+      "kind": 57,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
+exports[`Parser should-work-with-objects 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 56,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 56,
+      "expression": Object {
+        "__debugKind": "ObjectsExpression",
+        "end": 56,
         "extendsClause": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 9,
@@ -1389,16 +1398,16 @@ Object {
             "__debugKind": "MethodSlot",
             "body": Object {
               "__debugKind": "SequenceOfStatements",
-              "end": 57,
+              "end": 56,
               "kind": 53,
               "pos": 50,
               "statements": Array [
                 Object {
                   "__debugKind": "LocalExpressionStatement",
-                  "end": 57,
+                  "end": 56,
                   "expression": Object {
                     "__debugKind": "SlotLookupExpression",
-                    "end": 57,
+                    "end": 56,
                     "expression": Object {
                       "__debugKind": "ThisExpression",
                       "end": 55,
@@ -1422,7 +1431,7 @@ Object {
                 },
               ],
             },
-            "end": 57,
+            "end": 56,
             "kind": 51,
             "name": Object {
               "__debugKind": "Identifier",
@@ -1445,50 +1454,19 @@ Object {
 }
 `;
 
-exports[`Parser Should work with null 1`] = `
+exports[`Parser should-work-with-objects-and-slots 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 4,
+  "end": 75,
   "kind": 34,
   "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 4,
-      "expression": Object {
-        "__debugKind": "NullExpression",
-        "end": 4,
-        "kind": 39,
-        "pos": 0,
-        "token": Object {
-          "__debugKind": "NullKeyword",
-          "end": 4,
-          "fullPos": 0,
-          "kind": 24,
-          "leadingIndent": 0,
-          "pos": 0,
-        },
-      },
-      "kind": 57,
-      "pos": 0,
-    },
-  ],
-}
-`;
-
-exports[`Parser Should work with object 1`] = `
-Object {
-  "__debugKind": "SourceFile",
-  "end": 26,
-  "kind": 34,
-  "pos": 0,
-  "statements": Array [
-    Object {
-      "__debugKind": "TopLevelExpressionStatement",
-      "end": 26,
+      "end": 75,
       "expression": Object {
         "__debugKind": "ObjectsExpression",
-        "end": 26,
+        "end": 75,
         "extendsClause": Object {
           "__debugKind": "VariableReferenceExpression",
           "end": 9,
@@ -1509,10 +1487,10 @@ Object {
         "slots": Array [
           Object {
             "__debugKind": "VariableSlot",
-            "end": 26,
+            "end": 36,
             "initializer": Object {
               "__debugKind": "IntegerLiteralExpression",
-              "end": 26,
+              "end": 36,
               "kind": 35,
               "pos": 23,
               "subToken": undefined,
@@ -1538,133 +1516,171 @@ Object {
             },
             "pos": 15,
           },
-        ],
-      },
-      "kind": 57,
-      "pos": 0,
-    },
-  ],
-}
-`;
-
-exports[`Parser Should work with object with slots 1`] = `
-Object {
-  "__debugKind": "SourceFile",
-  "end": 26,
-  "kind": 34,
-  "pos": 0,
-  "statements": Array [
-    Object {
-      "__debugKind": "TopLevelExpressionStatement",
-      "end": 26,
-      "expression": Object {
-        "__debugKind": "ObjectsExpression",
-        "end": 26,
-        "extendsClause": Object {
-          "__debugKind": "VariableReferenceExpression",
-          "end": 9,
-          "id": Object {
-            "__debugKind": "Identifier",
-            "end": 8,
-            "fullPos": 7,
-            "id": "p",
-            "kind": 21,
-            "leadingIndent": 0,
-            "pos": 7,
-          },
-          "kind": 36,
-          "pos": 7,
-        },
-        "kind": 40,
-        "pos": 0,
-        "slots": Array [
           Object {
-            "__debugKind": "VariableSlot",
-            "end": 26,
-            "initializer": Object {
-              "__debugKind": "IntegerLiteralExpression",
-              "end": 26,
-              "kind": 35,
-              "pos": 23,
-              "subToken": undefined,
-              "value": Object {
-                "__debugKind": "IntegerLiteralToken",
-                "end": 25,
-                "fullPos": 22,
-                "kind": 19,
-                "leadingIndent": 4,
-                "pos": 23,
-                "value": "10",
-              },
+            "__debugKind": "MethodSlot",
+            "body": Object {
+              "__debugKind": "SequenceOfStatements",
+              "end": 75,
+              "kind": 53,
+              "pos": 57,
+              "statements": Array [
+                Object {
+                  "__debugKind": "LocalExpressionStatement",
+                  "end": 75,
+                  "expression": Object {
+                    "__debugKind": "BinaryShorthand",
+                    "end": 75,
+                    "kind": 58,
+                    "left": Object {
+                      "__debugKind": "SlotLookupExpression",
+                      "end": 65,
+                      "expression": Object {
+                        "__debugKind": "ThisExpression",
+                        "end": 62,
+                        "kind": 48,
+                        "pos": 57,
+                      },
+                      "kind": 42,
+                      "name": Object {
+                        "__debugKind": "Identifier",
+                        "end": 63,
+                        "fullPos": 62,
+                        "id": "x",
+                        "kind": 21,
+                        "leadingIndent": 8,
+                        "pos": 62,
+                      },
+                      "pos": 57,
+                    },
+                    "operator": Object {
+                      "__debugKind": "AddToken",
+                      "end": 65,
+                      "fullPos": 63,
+                      "kind": 9,
+                      "leadingIndent": 8,
+                      "pos": 64,
+                    },
+                    "pos": 57,
+                    "right": Object {
+                      "__debugKind": "BinaryShorthand",
+                      "end": 75,
+                      "kind": 58,
+                      "left": Object {
+                        "__debugKind": "VariableReferenceExpression",
+                        "end": 69,
+                        "id": Object {
+                          "__debugKind": "Identifier",
+                          "end": 67,
+                          "fullPos": 65,
+                          "id": "x",
+                          "kind": 21,
+                          "leadingIndent": 8,
+                          "pos": 66,
+                        },
+                        "kind": 36,
+                        "pos": 66,
+                      },
+                      "operator": Object {
+                        "__debugKind": "AddToken",
+                        "end": 69,
+                        "fullPos": 67,
+                        "kind": 9,
+                        "leadingIndent": 8,
+                        "pos": 68,
+                      },
+                      "pos": 66,
+                      "right": Object {
+                        "__debugKind": "BinaryShorthand",
+                        "end": 75,
+                        "kind": 58,
+                        "left": Object {
+                          "__debugKind": "VariableReferenceExpression",
+                          "end": 73,
+                          "id": Object {
+                            "__debugKind": "Identifier",
+                            "end": 71,
+                            "fullPos": 69,
+                            "id": "y",
+                            "kind": 21,
+                            "leadingIndent": 8,
+                            "pos": 70,
+                          },
+                          "kind": 36,
+                          "pos": 70,
+                        },
+                        "operator": Object {
+                          "__debugKind": "AddToken",
+                          "end": 73,
+                          "fullPos": 71,
+                          "kind": 9,
+                          "leadingIndent": 8,
+                          "pos": 72,
+                        },
+                        "pos": 70,
+                        "right": Object {
+                          "__debugKind": "VariableReferenceExpression",
+                          "end": 75,
+                          "id": Object {
+                            "__debugKind": "Identifier",
+                            "end": 75,
+                            "fullPos": 73,
+                            "id": "z",
+                            "kind": 21,
+                            "leadingIndent": 8,
+                            "pos": 74,
+                          },
+                          "kind": 36,
+                          "pos": 74,
+                        },
+                      },
+                    },
+                  },
+                  "kind": 54,
+                  "pos": 57,
+                },
+              ],
             },
-            "kind": 50,
+            "end": 75,
+            "kind": 51,
             "name": Object {
               "__debugKind": "Identifier",
-              "end": 20,
-              "fullPos": 18,
-              "id": "x",
+              "end": 38,
+              "fullPos": 36,
+              "id": "f",
               "kind": 21,
               "leadingIndent": 4,
-              "pos": 19,
+              "pos": 37,
             },
-            "pos": 15,
-          },
-        ],
-      },
-      "kind": 57,
-      "pos": 0,
-    },
-  ],
-}
-`;
-
-exports[`Parser Should work with object without extends 1`] = `
-Object {
-  "__debugKind": "SourceFile",
-  "end": 23,
-  "kind": 34,
-  "pos": 0,
-  "statements": Array [
-    Object {
-      "__debugKind": "TopLevelExpressionStatement",
-      "end": 23,
-      "expression": Object {
-        "__debugKind": "ObjectsExpression",
-        "end": 23,
-        "extendsClause": undefined,
-        "kind": 40,
-        "pos": 0,
-        "slots": Array [
-          Object {
-            "__debugKind": "VariableSlot",
-            "end": 23,
-            "initializer": Object {
-              "__debugKind": "IntegerLiteralExpression",
-              "end": 23,
-              "kind": 35,
-              "pos": 20,
-              "subToken": undefined,
-              "value": Object {
-                "__debugKind": "IntegerLiteralToken",
-                "end": 22,
-                "fullPos": 19,
-                "kind": 19,
+            "params": Array [
+              Object {
+                "__debugKind": "Identifier",
+                "end": 40,
+                "fullPos": 39,
+                "id": "x",
+                "kind": 21,
                 "leadingIndent": 4,
-                "pos": 20,
-                "value": "10",
+                "pos": 39,
               },
-            },
-            "kind": 50,
-            "name": Object {
-              "__debugKind": "Identifier",
-              "end": 17,
-              "fullPos": 15,
-              "id": "x",
-              "kind": 21,
-              "leadingIndent": 4,
-              "pos": 16,
-            },
-            "pos": 12,
+              Object {
+                "__debugKind": "Identifier",
+                "end": 43,
+                "fullPos": 41,
+                "id": "y",
+                "kind": 21,
+                "leadingIndent": 4,
+                "pos": 42,
+              },
+              Object {
+                "__debugKind": "Identifier",
+                "end": 46,
+                "fullPos": 44,
+                "id": "z",
+                "kind": 21,
+                "leadingIndent": 4,
+                "pos": 45,
+              },
+            ],
+            "pos": 30,
           },
         ],
       },
@@ -1675,45 +1691,45 @@ Object {
 }
 `;
 
-exports[`Parser Should work with printing 1`] = `
+exports[`Parser should-work-with-printf 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 31,
+  "end": 32,
   "kind": 34,
   "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 31,
+      "end": 32,
       "expression": Object {
         "__debugKind": "PrintingExpression",
         "args": Array [
           Object {
             "__debugKind": "IntegerLiteralExpression",
-            "end": 31,
+            "end": 32,
             "kind": 35,
-            "pos": 29,
+            "pos": 30,
             "subToken": undefined,
             "value": Object {
               "__debugKind": "IntegerLiteralToken",
-              "end": 30,
-              "fullPos": 28,
+              "end": 31,
+              "fullPos": 29,
               "kind": 19,
               "leadingIndent": 0,
-              "pos": 29,
+              "pos": 30,
               "value": "8",
             },
           },
         ],
-        "end": 31,
+        "end": 32,
         "format": Object {
           "__debugKind": "StringLiteralToken",
-          "end": 26,
+          "end": 27,
           "fullPos": 8,
           "kind": 20,
           "leadingIndent": 0,
           "pos": 8,
-          "value": " My age is ~. n ",
+          "value": " My age is ~.\\\\ n ",
         },
         "kind": 37,
         "pos": 0,
@@ -1725,7 +1741,7 @@ Object {
 }
 `;
 
-exports[`Parser Should work with set shorthand 1`] = `
+exports[`Parser should-work-with-set-shorthand 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 8,
@@ -1795,7 +1811,7 @@ Object {
 }
 `;
 
-exports[`Parser Should work with slot assignment 1`] = `
+exports[`Parser should-work-with-slot-assignment 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 12,
@@ -1858,7 +1874,7 @@ Object {
 }
 `;
 
-exports[`Parser Should work with slot lookup 1`] = `
+exports[`Parser should-work-with-slot-lookup 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 7,
@@ -1905,7 +1921,62 @@ Object {
 }
 `;
 
-exports[`Parser Should work with variable assignment 1`] = `
+exports[`Parser should-work-with-top-level-expression 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "end": 4,
+  "kind": 34,
+  "pos": 0,
+  "statements": Array [
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 4,
+      "expression": Object {
+        "__debugKind": "FunctionCallExpression",
+        "args": Array [
+          Object {
+            "__debugKind": "VariableReferenceExpression",
+            "end": 4,
+            "id": Object {
+              "__debugKind": "Identifier",
+              "end": 3,
+              "fullPos": 2,
+              "id": "x",
+              "kind": 21,
+              "leadingIndent": 0,
+              "pos": 2,
+            },
+            "kind": 36,
+            "pos": 2,
+          },
+        ],
+        "end": 4,
+        "expression": Object {
+          "__debugKind": "VariableReferenceExpression",
+          "end": 2,
+          "id": Object {
+            "__debugKind": "Identifier",
+            "end": 1,
+            "fullPos": 0,
+            "id": "f",
+            "kind": 21,
+            "leadingIndent": 0,
+            "pos": 0,
+          },
+          "kind": 36,
+          "pos": 0,
+        },
+        "kind": 44,
+        "pos": 0,
+      },
+      "kind": 57,
+      "pos": 0,
+    },
+  ],
+}
+`;
+
+exports[`Parser should-work-with-variable-assignment 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 6,
@@ -1959,7 +2030,7 @@ Object {
 }
 `;
 
-exports[`Parser Should work with variable reference 1`] = `
+exports[`Parser should-work-with-variable-reference 1`] = `
 Object {
   "__debugKind": "SourceFile",
   "end": 1,
@@ -1991,30 +2062,30 @@ Object {
 }
 `;
 
-exports[`Parser Should work with while expression 1`] = `
+exports[`Parser should-work-with-while-expression 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 23,
+  "end": 22,
   "kind": 34,
   "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 23,
+      "end": 22,
       "expression": Object {
         "__debugKind": "WhileExpression",
         "body": Object {
           "__debugKind": "SequenceOfStatements",
-          "end": 23,
+          "end": 22,
           "kind": 53,
           "pos": 13,
           "statements": Array [
             Object {
               "__debugKind": "LocalExpressionStatement",
-              "end": 23,
+              "end": 22,
               "expression": Object {
                 "__debugKind": "VariableAssignmentExpression",
-                "end": 23,
+                "end": 22,
                 "expression": Object {
                   "__debugKind": "VariableReferenceExpression",
                   "end": 16,
@@ -2034,7 +2105,7 @@ Object {
                 "pos": 13,
                 "value": Object {
                   "__debugKind": "BinaryShorthand",
-                  "end": 23,
+                  "end": 22,
                   "kind": 58,
                   "left": Object {
                     "__debugKind": "VariableReferenceExpression",
@@ -2062,7 +2133,7 @@ Object {
                   "pos": 17,
                   "right": Object {
                     "__debugKind": "VariableReferenceExpression",
-                    "end": 23,
+                    "end": 22,
                     "id": Object {
                       "__debugKind": "Identifier",
                       "end": 22,
@@ -2097,7 +2168,7 @@ Object {
           "kind": 36,
           "pos": 6,
         },
-        "end": 23,
+        "end": 22,
         "kind": 47,
         "pos": 0,
       },

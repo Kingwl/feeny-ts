@@ -1,0 +1,4 @@
+object:
+    var x = 10
+    method f():
+        this.x

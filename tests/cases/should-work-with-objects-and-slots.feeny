@@ -1,0 +1,4 @@
+object(p):
+    var x = 10
+    method f(x, y, z):
+        this.x + x + y + z
