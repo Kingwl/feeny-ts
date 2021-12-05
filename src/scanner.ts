@@ -1,6 +1,6 @@
 import { createIdentifier, createNumberLiteralToken, createStringLiteralToken, createToken } from "./factory";
 import { Token, SyntaxKind, TokenSyntaxKind } from "./types";
-import { Chars, CharsToTokenKind, createFinishNode, getIndent, isAlpha, isAlphaOrDigitOrLowDashOrDashOrQuestion, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind, setupDebugInfo } from "./utils";
+import { Chars, CharsToTokenKind, createFinishNode, getIndent, isAlpha, isAlphaOrDigitOrLowDashOrDashOrQuestion, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind } from "./utils";
 
 
 export function createScanner(
