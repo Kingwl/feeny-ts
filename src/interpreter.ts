@@ -1,6 +1,6 @@
-import { Expression, LocalStatement, PrintingExpression, SyntaxKind } from "./types";
+import { NullExpression } from ".";
+import { ArraysExpression, Expression, IfExpression, LocalExpressionStatement, LocalStatement, PrintingExpression, SyntaxKind } from "./types";
 import { GlobalVariableStatement, IntegerLiteralExpression, SequenceOfStatements, SourceFile, Statement, TopLevelExpressionStatement, TopLevelStatement } from "./types";
-import { isExpression, isStatement } from "./utils";
 
 enum ValueType {
     Null,
@@ -49,6 +49,17 @@ class NullValue extends BaseValue {
 
 class ArrayValue extends BaseValue {
     get type () { return ValueType.Array }
+
+    private list: BaseValue[];
+    constructor(private length: IntegerValue, defaultValue?: BaseValue) {
+        super()
+
+        this.list = new Array(length.value);
+
+        if (defaultValue) {
+            this.list.fill(defaultValue)
+        }
+    }
 
     isArray(): true {
         return true;
@@ -139,17 +150,35 @@ export function createInterpreter(file: SourceFile) {
     }
 
     function evaluateSourceFile(sourceFile: SourceFile) {
-        evaluateStatement(sourceFile.body)
+        evaluateTopLevelSequenceOfStatements(sourceFile.body)
+    }
+
+    function evaluateLocalSequenceOfStatements(seqs: SequenceOfStatements<LocalStatement>) {
+        const front = seqs.statements.slice(0, seqs.statements.length - 1)
+        const last = seqs.statements[seqs.statements.length - 1]
+
+        front.forEach(evaluateStatement);
+
+        if (last.kind !== SyntaxKind.LocalExpressionStatement) {
+            throw new Error("Invalid statement")
+        }
+        return evaluateLocalExpressionStatement(last);
+    }
+
+    function evaluateTopLevelSequenceOfStatements(seqs: SequenceOfStatements<TopLevelStatement>) {
+        seqs.statements.forEach(evaluateStatement)
     }
 
     function evaluateStatement(stmt: Statement) {
         switch(stmt.kind) {
             case SyntaxKind.SequenceOfStatements:
-                return evaluateSequenceOfStatements(stmt as SequenceOfStatements<LocalStatement | TopLevelStatement>)
+                return evaluateLocalSequenceOfStatements(stmt as SequenceOfStatements<LocalStatement>)
             case SyntaxKind.GlobalVariableStatement:
                 return evaluateGlobalVariableStatement(stmt as GlobalVariableStatement)
             case SyntaxKind.TopLevelExpressionStatement:
                 return evaluateTopLevelExpressionStatement(stmt as TopLevelExpressionStatement)
+            case SyntaxKind.LocalExpressionStatement:
+                return 
             default:
                 throw new Error("Invalid statement")
         }
@@ -161,9 +190,40 @@ export function createInterpreter(file: SourceFile) {
                 return evaluateIntegerLiteralExpression(expr as IntegerLiteralExpression);
             case SyntaxKind.PrintingExpression:
                 return evaluatePrintingExpression(expr as PrintingExpression);
+            case SyntaxKind.NullExpression:
+                return evaluateNullExpression(expr as NullExpression);
+            case SyntaxKind.ArraysExpression:
+                return evaluateArraysExpression(expr as ArraysExpression);
+            case SyntaxKind.IfExpression:
+                return evaluateIfExpression(expr as IfExpression);
             default:
                 throw new Error("Invalid expression")
         }
+    }
+
+    function evaluateIfExpression(expr: IfExpression) {
+        const condition = evaluateExpression(expr.condition);
+        if (!condition.isNull()) {
+            return evaluateLocalSequenceOfStatements(expr.thenStatement);
+        } else if(expr.elseStatement) {
+            return evaluateLocalSequenceOfStatements(expr.elseStatement);
+        } else {
+            return new NullValue()
+        }
+    }
+
+    function evaluateArraysExpression(expr: ArraysExpression) {
+        const length = evaluateExpression(expr.length);
+        const defaultValue = expr.defaultValue ? evaluateExpression(expr.defaultValue) : undefined;
+        if (!length.isInteger()) {
+            throw new TypeError("Invalid length")
+        }
+
+        return new ArrayValue(length, defaultValue);
+    }
+
+    function evaluateNullExpression(expr: NullExpression) {
+        return new NullValue()
     }
 
     function evaluatePrintingExpression(expr: PrintingExpression): NullValue {
@@ -177,10 +237,6 @@ export function createInterpreter(file: SourceFile) {
         return new IntegerValue(value * (isNegative ? -1 : 1))
     }
 
-    function evaluateSequenceOfStatements(seqs: SequenceOfStatements<LocalStatement | TopLevelStatement>) {
-        seqs.statements.forEach(evaluateStatement)
-    }
-
     function evaluateGlobalVariableStatement(stmt: GlobalVariableStatement) {
         const value = evaluateExpression(stmt.initializer)
         globalEnv.addBinding(stmt.name.id, value)
@@ -188,5 +244,9 @@ export function createInterpreter(file: SourceFile) {
 
     function evaluateTopLevelExpressionStatement(stmt: TopLevelExpressionStatement) {
         evaluateExpression(stmt.expression)
+    }
+
+    function evaluateLocalExpressionStatement(stmt: LocalExpressionStatement) {
+        return evaluateExpression(stmt.expression)
     }
 }

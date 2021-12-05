@@ -289,14 +289,14 @@ export interface VariableAssignmentExpression extends Expression {
 export interface IfExpression extends Expression {
     kind: SyntaxKind.IfExpression
     condition: Expression
-    thenStatement: SequenceOfStatements | Expression
-    elseStatement?: SequenceOfStatements | Expression
+    thenStatement: SequenceOfStatements
+    elseStatement?: SequenceOfStatements
 }
 
 export interface WhileExpression extends Expression {
     kind: SyntaxKind.WhileExpression
     condition: Expression
-    body: SequenceOfStatements | Expression
+    body: SequenceOfStatements
 }
 
 export interface ThisExpression extends Expression {
@@ -342,7 +342,7 @@ export interface MethodSlot extends ObjectSlot {
     kind: SyntaxKind.MethodSlot
     name: IdentifierToken
     params: NodeArray<IdentifierToken>
-    body: SequenceOfStatements<LocalStatement> | Expression
+    body: SequenceOfStatements
 }
 export interface Statement extends ASTNode {
     _statementBrand: never
@@ -374,7 +374,7 @@ export interface FunctionStatement extends Statement {
     kind: SyntaxKind.FunctionStatement
     name: IdentifierToken
     params: NodeArray<IdentifierToken>
-    body: SequenceOfStatements | Expression
+    body: SequenceOfStatements
 }
 
 export interface TopLevelExpressionStatement extends Statement {

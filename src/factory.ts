@@ -123,7 +123,7 @@ export function createSequenceOfStatements<T extends LocalStatement | TopLevelSt
     return node;
 }
 
-export function createFunctionStatement(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements | Expression): FunctionStatement {
+export function createFunctionStatement(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements): FunctionStatement {
     const node = createNode<FunctionStatement>(SyntaxKind.FunctionStatement)
     node.name = name;
     node.params = params;
@@ -131,7 +131,7 @@ export function createFunctionStatement(name: IdentifierToken, params: NodeArray
     return node;
 }
 
-export function createMethodSlot(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements | Expression): MethodSlot {
+export function createMethodSlot(name: IdentifierToken, params: NodeArray<IdentifierToken>, body: SequenceOfStatements): MethodSlot {
     const node = createNode<MethodSlot>(SyntaxKind.MethodSlot)
     node.name = name;
     node.params = params;
@@ -139,7 +139,7 @@ export function createMethodSlot(name: IdentifierToken, params: NodeArray<Identi
     return node;
 }
 
-export function createIfExpression(condition: Expression, thenStatement: SequenceOfStatements | Expression, elseStatement?: SequenceOfStatements | Expression): IfExpression {
+export function createIfExpression(condition: Expression, thenStatement: SequenceOfStatements, elseStatement?: SequenceOfStatements): IfExpression {
     const node = createNode<IfExpression>(SyntaxKind.IfExpression)
     node.condition = condition;
     node.thenStatement = thenStatement;
@@ -147,7 +147,7 @@ export function createIfExpression(condition: Expression, thenStatement: Sequenc
     return node;
 }
 
-export function createWhileExpression(condition: Expression, body: SequenceOfStatements | Expression): WhileExpression {
+export function createWhileExpression(condition: Expression, body: SequenceOfStatements): WhileExpression {
     const node = createNode<WhileExpression>(SyntaxKind.WhileExpression);
     node.condition = condition;
     node.body = body;

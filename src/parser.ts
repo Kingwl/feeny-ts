@@ -128,7 +128,7 @@ export function createParser(text: string) {
         parseExpectdToken(SyntaxKind.DefnKeyword);
         const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
         const params = parseParameterList();
-        const body = parseSequenceOfStatementsOrExpression()
+        const body = parseLocalSequenceOfStatements()
 
         return finishNode(
             createFunctionStatement(
@@ -423,13 +423,12 @@ export function createParser(text: string) {
         )
     }
 
-    function parseSequenceOfStatementsOrExpression() {
+    function parseLocalSequenceOfStatements() {
         const colonToken = parseOptionalToken(SyntaxKind.ColonToken);
         if (colonToken && scanner.currentTokenhasLineFeed()) {
             return parseSequenceOfStatements(colonToken.leadingIndent, parseLocalStatement)
         }
-
-        return parseExpression()
+        return parseLocalStatement();
     }
 
     function parseIfExpression() {
@@ -437,12 +436,12 @@ export function createParser(text: string) {
         parseExpectdToken(SyntaxKind.IfKeyword);
         const condition = parseExpression();
 
-        const thenStatement = parseSequenceOfStatementsOrExpression();
+        const thenStatement = parseLocalSequenceOfStatements();
        
         let elseStatement: SequenceOfStatements | Expression | undefined;
         const elseToken = parseOptionalToken(SyntaxKind.ElseKeyword);
         if (elseToken) {
-            elseStatement = parseSequenceOfStatementsOrExpression();
+            elseStatement = parseLocalSequenceOfStatements();
         }
 
         return finishNode(
@@ -460,7 +459,7 @@ export function createParser(text: string) {
         const pos = scanner.getTokenStart();
         parseExpectdToken(SyntaxKind.WhileKeyword);
         const condition = parseExpression();
-        const body = parseSequenceOfStatementsOrExpression();
+        const body = parseLocalSequenceOfStatements();
 
         return finishNode(
             createWhileExpression(
@@ -596,7 +595,7 @@ export function createParser(text: string) {
         parseExpectdToken(SyntaxKind.MethodKeyword);
         const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
         const params = parseParameterList();
-        const body = parseSequenceOfStatementsOrExpression();
+        const body = parseLocalSequenceOfStatements();
 
         return finishNode(
             createMethodSlot(name, params, body),
