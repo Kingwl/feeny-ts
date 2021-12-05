@@ -364,7 +364,7 @@ Array [
     "fullPos": 62,
     "kind": 33,
     "leadingIndent": 0,
-    "pos": 63,
+    "pos": 62,
   },
 ]
 `;
@@ -979,7 +979,7 @@ Array [
     "fullPos": 10,
     "kind": 33,
     "leadingIndent": 0,
-    "pos": 11,
+    "pos": 10,
   },
 ]
 `;

@@ -4,7 +4,7 @@ import { createScanner } from "./scanner"
 import { createFinishNode, finishNodeArray, isBinaryShorthandToken } from './utils'
 import { GlobalVariableStatement, NodeArray, TopLevelStatement } from "./types";
 import { AllTokens, Expression, FunctionStatement, IdentifierToken, IntegerLiteralExpression, IntegerLiteralToken, SequenceOfStatements, Token, TopLevelExpressionStatement, VariableReferenceExpression } from "./types";
-import { BinaryShorthand, createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createIfExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNullExpression, createObjectsExpression, createParenExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createThisExpression, createVariableAssignmentExpression, createVariableSlot, createWhileExpression, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrimaryExpression, PrintingExpression, Statement, StringLiteralToken, SubToken, TokenSyntaxKind, VariableSlot } from ".";
+import { BinaryShorthand, createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createIfExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNullExpression, createObjectsExpression, createParenExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createThisExpression, createVariableAssignmentExpression, createVariableSlot, createWhileExpression, EndOfFileToken, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NullExpression, NullToken, ObjectSlot, PrimaryExpression, PrintingExpression, Statement, StringLiteralToken, SubToken, TokenSyntaxKind, VariableSlot } from ".";
 
 export function createParser(text: string) {
     const scanner = createScanner(text);
@@ -35,27 +35,11 @@ export function createParser(text: string) {
 
     function parseSourceFile () {
         const pos = scanner.getTokenStart();
-
-        const statements = parseTopLevelStatementList();
+        const body = parseSequenceOfStatements(-Infinity, parseTopLevelStatement);
+        const eof = parseExpectdToken<EndOfFileToken>(SyntaxKind.EndOfFileToken);
         
         return finishNode(
-            createSourceFile(statements),
-            pos,
-            scanner.getCurrentPos()
-        )
-    }
-
-    function parseTopLevelStatementList (): NodeArray<TopLevelStatement> {
-        const statements: TopLevelStatement[] = [];
-        const pos = scanner.getTokenStart();
-
-        while (!scanner.isEOF()) {
-            const stmt = parseTopLevelStatement();
-            statements.push(stmt);
-        }
-        
-        return finishNodeArray(
-            createNodeArray(statements),
+            createSourceFile(body, eof),
             pos,
             scanner.getCurrentPos()
         )
@@ -160,12 +144,12 @@ export function createParser(text: string) {
         )
     }
 
-    function parseIndentStatementList(baseIndent: number): NodeArray<LocalStatement> {
+    function parseIndentStatementList<T extends LocalStatement | TopLevelStatement>(baseIndent: number, factory: () => T): NodeArray<T> {
         const pos = scanner.getTokenStart();
-        const statements: LocalStatement[] = [];
+        const statements: T[] = [];
         const indent = scanner.currentToken().leadingIndent;
         while (!scanner.isEOF() && indent > baseIndent && scanner.currentToken().leadingIndent === indent) {
-            const statement = parseLocalStatement();
+            const statement = factory();
             statements.push(statement);
         }
 
@@ -176,10 +160,10 @@ export function createParser(text: string) {
         )
     }
 
-    function parseSequenceOfStatements(baseIndent: number): SequenceOfStatements {
+    function parseSequenceOfStatements<T extends LocalStatement | TopLevelStatement>(baseIndent: number, factory: () => T): SequenceOfStatements<T> {
         const pos = scanner.getTokenStart();
 
-        const statements = parseIndentStatementList(baseIndent);
+        const statements = parseIndentStatementList(baseIndent, factory);
     
         return finishNode(
             createSequenceOfStatements(statements),
@@ -445,7 +429,7 @@ export function createParser(text: string) {
     function parseSequenceOfStatementsOrExpression() {
         const colonToken = parseOptionalToken(SyntaxKind.ColonToken);
         if (colonToken && scanner.currentTokenhasLineFeed()) {
-            return parseSequenceOfStatements(colonToken.leadingIndent)
+            return parseSequenceOfStatements(colonToken.leadingIndent, parseLocalStatement)
         }
 
         return parseExpression()

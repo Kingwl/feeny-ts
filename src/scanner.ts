@@ -73,7 +73,7 @@ export function createScanner(
 
         function worker () {
             if (current >= text.length) {
-                token = finishNode(createToken(SyntaxKind.EndOfFileToken), current, current);
+                token = finishNode(createToken(SyntaxKind.EndOfFileToken), tokenFullStart, current);
                 return;
             }
     

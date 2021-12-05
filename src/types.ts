@@ -120,13 +120,14 @@ export interface ASTNode extends TextSpan {
 }
 
 export interface NodeArray<T extends ASTNode> extends ReadonlyArray<T>, TextSpan {
-
+    _nodeArrayBrand: never;
 }
 
 export interface SourceFile extends ASTNode {
     _sourceFileBrand: never;
     kind: SyntaxKind.SourceFile;
-    statements: NodeArray<TopLevelStatement>
+    body: SequenceOfStatements<TopLevelStatement>
+    eof: EndOfFileToken
 }
 
 export interface Token<K extends SyntaxKind = SyntaxKind> extends ASTNode {
@@ -341,7 +342,7 @@ export interface MethodSlot extends ObjectSlot {
     kind: SyntaxKind.MethodSlot
     name: IdentifierToken
     params: NodeArray<IdentifierToken>
-    body: SequenceOfStatements | Expression
+    body: SequenceOfStatements<LocalStatement> | Expression
 }
 export interface Statement extends ASTNode {
     _statementBrand: never
@@ -353,9 +354,9 @@ export interface LocalVariableStatement extends Statement {
     initializer: Expression
 }
 
-export interface SequenceOfStatements extends Statement {
+export interface SequenceOfStatements<T extends LocalStatement | TopLevelStatement = LocalStatement> extends Statement {
     kind: SyntaxKind.SequenceOfStatements
-    statements: NodeArray<LocalStatement>
+    statements: NodeArray<T>
 }
 
 export interface LocalExpressionStatement extends Statement {
@@ -404,11 +405,9 @@ export type AccessOrAssignmentExpressionOrHigher =
 
 export type TopLevelStatement =
     | GlobalVariableStatement
-    | SequenceOfStatements
     | FunctionStatement
     | TopLevelExpressionStatement
 
 export type LocalStatement =
     | LocalVariableStatement
-    | SequenceOfStatements
     | LocalExpressionStatement

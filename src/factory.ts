@@ -1,4 +1,4 @@
-import { BinaryShorthandTokenSyntaxKind, Expression, FunctionStatement, GlobalVariableStatement, IfExpression, LocalStatement, MethodSlot, NodeArray, NullToken, ObjectSlot, ParenExpression, PrimaryExpression, SequenceOfStatements, SlotLookupExpression, Statement, SubToken, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
+import { BinaryShorthandTokenSyntaxKind, EndOfFileToken, Expression, FunctionStatement, GlobalVariableStatement, IfExpression, LocalStatement, MethodSlot, NodeArray, NullToken, ObjectSlot, ParenExpression, PrimaryExpression, SequenceOfStatements, SlotLookupExpression, Statement, SubToken, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression } from ".";
 import { AccessOrAssignmentExpressionOrHigher, ArraysExpression, ASTNode, BinaryShorthand, FunctionCallExpression, GetShorthand, IntegerLiteralExpression, LocalExpressionStatement, LocalVariableStatement, MethodCallExpression, NullExpression, ObjectsExpression, PrintingExpression, SetShorthand, SlotAssignmentExpression, SourceFile, TextSpan, ThisExpression, Token, VariableAssignmentExpression, VariableSlot, WhileExpression } from "./types";
 import { IdentifierToken, IntegerLiteralToken, StringLiteralToken, SyntaxKind } from "./types";
 
@@ -39,9 +39,10 @@ export function createIdentifier(id: string): IdentifierToken {
     return token;
 }
 
-export function createSourceFile(statements: NodeArray<TopLevelStatement>): SourceFile {
+export function createSourceFile(body: SequenceOfStatements<TopLevelStatement>, eof: EndOfFileToken): SourceFile {
     const node = createNode<SourceFile>(SyntaxKind.SourceFile);
-    node.statements = statements;
+    node.body = body;
+    node.eof = eof;
     return node;
 }
 
@@ -118,8 +119,8 @@ export function createLocalExpressionStatement(expression: Expression): LocalExp
     return node
 }
 
-export function createSequenceOfStatements(statements: NodeArray<LocalStatement>): SequenceOfStatements {
-    const node = createNode<SequenceOfStatements>(SyntaxKind.SequenceOfStatements)
+export function createSequenceOfStatements<T extends LocalStatement | TopLevelStatement>(statements: NodeArray<T>): SequenceOfStatements<T> {
+    const node = createNode<SequenceOfStatements<T>>(SyntaxKind.SequenceOfStatements)
     node.statements = statements;
     return node;
 }
