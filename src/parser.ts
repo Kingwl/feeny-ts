@@ -222,7 +222,7 @@ export function createParser(text: string) {
     function parseShorthandOrHigher() {
         const pos = scanner.getTokenStart();
         const expression = parseFunctionCallExpressionOrHigher();
-        if (isBinaryShorthandToken(scanner.currentToken())) {
+        if (isBinaryShorthandToken(scanner.currentToken()) && !scanner.currentTokenhasLineFeed()) {
             return parseBinaryShorthand(expression, pos)
         }
         return expression
