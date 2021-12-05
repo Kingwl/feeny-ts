@@ -1,4 +1,4 @@
-import { createScanner, Token, TokenSyntaxKind, createParser, createIntepreter } from "../src";
+import { createScanner, Token, TokenSyntaxKind, createParser, createInterpreter } from "../src";
 
 export function scanCode (text: string) {
     const scanner = createScanner(text);
@@ -19,6 +19,6 @@ export function parseCode (text: string) {
 export function runCode (text: string) {
     const parser = createParser(text);
     const file = parser.parseSourceFile();
-    const interpreter = createIntepreter(file);
+    const interpreter = createInterpreter(file);
     interpreter.evaluate();
 }

@@ -1,4 +1,4 @@
-import { ASTNode, Expression, LocalStatement, PrintingExpression, SyntaxKind } from ".";
+import { Expression, LocalStatement, PrintingExpression, SyntaxKind } from "./types";
 import { GlobalVariableStatement, IntegerLiteralExpression, SequenceOfStatements, SourceFile, Statement, TopLevelExpressionStatement, TopLevelStatement } from "./types";
 import { isExpression, isStatement } from "./utils";
 
@@ -126,7 +126,7 @@ class Environment {
     }
 }
 
-export function createIntepreter(file: SourceFile) {
+export function createInterpreter(file: SourceFile) {
     const globalEnv = new Environment()
     const envStack = [globalEnv];
 
