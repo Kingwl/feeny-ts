@@ -1,6 +1,6 @@
 import { createIdentifier, createNumberLiteralToken, createStringLiteralToken, createToken } from "./factory";
 import { Token, SyntaxKind, TokenSyntaxKind } from "./types";
-import { Chars, CharsToTokenKind, createFinishNode, getIndent, isAlpha, isAlphaOrDigitOrLowDashOrDash, isDef, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind, setupDebugInfo } from "./utils";
+import { Chars, CharsToTokenKind, createFinishNode, getIndent, isAlpha, isAlphaOrDigitOrLowDashOrDashOrQuestion, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind, setupDebugInfo } from "./utils";
 
 
 export function createScanner(
@@ -191,16 +191,11 @@ export function createScanner(
                     token = finishNode(createNumberLiteralToken(value), tokenStart, current);
                     break;
                 }
-
-                case Chars.Question:
-                    current++;
-                    worker();
-                    break;
     
                 default:
                     if (isAlpha(ch)) {
                         let i = 0;
-                        while (current + i < text.length && isAlphaOrDigitOrLowDashOrDash(text[current + i])) {
+                        while (current + i < text.length && isAlphaOrDigitOrLowDashOrDashOrQuestion(text[current + i])) {
                             i++;
                         }
                         current += i;

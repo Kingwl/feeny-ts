@@ -200,8 +200,8 @@ export function isWhiteSpaceOrTab(char: string): boolean {
     return char === Chars.Whitespace || char === Chars.Tab;
 }
 
-export function isAlphaOrDigitOrLowDashOrDash(char: string): boolean {
-    return isAlpha(char) || isDigit(char) || char === Chars.LowDash || char === Chars.Dash;
+export function isAlphaOrDigitOrLowDashOrDashOrQuestion(char: string): boolean {
+    return isAlpha(char) || isDigit(char) || char === Chars.LowDash || char === Chars.Dash || char === Chars.Question;
 }
 
 export function getIndent (ch: string) {
