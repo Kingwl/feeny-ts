@@ -3,13 +3,13 @@
 exports[`Parser should-work-with-arrays 1`] = `
 Object {
   "__debugKind": "SourceFile",
-  "end": 14,
+  "end": 26,
   "kind": 34,
   "pos": 0,
   "statements": Array [
     Object {
       "__debugKind": "TopLevelExpressionStatement",
-      "end": 14,
+      "end": 21,
       "expression": Object {
         "__debugKind": "ArraysExpression",
         "defaultValue": Object {
@@ -28,7 +28,7 @@ Object {
             "value": "0",
           },
         },
-        "end": 14,
+        "end": 21,
         "kind": 38,
         "length": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -50,6 +50,35 @@ Object {
       },
       "kind": 57,
       "pos": 0,
+    },
+    Object {
+      "__debugKind": "TopLevelExpressionStatement",
+      "end": 26,
+      "expression": Object {
+        "__debugKind": "ArraysExpression",
+        "defaultValue": undefined,
+        "end": 26,
+        "kind": 38,
+        "length": Object {
+          "__debugKind": "IntegerLiteralExpression",
+          "end": 26,
+          "kind": 35,
+          "pos": 23,
+          "subToken": undefined,
+          "value": Object {
+            "__debugKind": "IntegerLiteralToken",
+            "end": 25,
+            "fullPos": 23,
+            "kind": 19,
+            "leadingIndent": 0,
+            "pos": 23,
+            "value": "10",
+          },
+        },
+        "pos": 15,
+      },
+      "kind": 57,
+      "pos": 15,
     },
   ],
 }
