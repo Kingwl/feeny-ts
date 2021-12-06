@@ -518,7 +518,13 @@ export function createInterpreter(file: SourceFile) {
     }
 
     function evaluateWhileExpression(expr: WhileExpression) {
+        let i = 0;
         while(!evaluateExpression(expr.condition).isNull()) {
+            if (i > 10000) {
+                throw new Error("Infinite loop")
+            }
+            i++;
+
             runInEnv(() => {
                 return evaluateLocalStatementOrLocalSequenceOfStatements(expr.body);
             })

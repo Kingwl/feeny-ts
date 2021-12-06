@@ -1,4 +1,4 @@
-import { forEachDemo, parseCode, scanCode } from './utils'
+import { forEachDemo, parseCode, runCode, runWithConsoleLogHook, scanCode } from './utils'
 
 describe('Should work with demo', () => {
 
@@ -11,6 +11,13 @@ describe('Should work with demo', () => {
         it(`Parser - should work with ${baseName}`, () => {
             const file = parseCode(content)
             expect(file).toMatchSnapshot();
+        })
+
+        it(`Interpreter - should work with ${baseName}`, () => {
+            const output = runWithConsoleLogHook(() => {
+                runCode(content)
+            });
+            expect(output).toMatchSnapshot();
         })
     })
 })

@@ -10,7 +10,7 @@ export function forEachFeeny(basePath: string, callback: (baseName: string, cont
 
     fileNames.forEach(fileName => {
         const baseName = path.basename(fileName, '.feeny');
-        const fileNamePath = path.join(casesPath, fileName);
+        const fileNamePath = path.join(basePath, fileName);
         const content = fs.readFileSync(fileNamePath, 'utf8').toString();
         callback(baseName, content);
     });

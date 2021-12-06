@@ -1,5 +1,102 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Should work with demo Interpreter - should work with hello 1`] = `
+Array [
+  Array [
+    "Hello World\\\\n",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with hello2 1`] = `
+Array [
+  Array [
+    "Hello ",
+  ],
+  Array [
+    "World\\\\n",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with hello3 1`] = `
+Array [
+  Array [
+    "Hello ",
+  ],
+  Array [
+    "World\\\\n",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with hello4 1`] = `
+Array [
+  Array [
+    "Hello ~ ",
+    "3",
+  ],
+  Array [
+    "World ~ ~\\\\n",
+    "4",
+    "5",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with hello5 1`] = `
+Array [
+  Array [
+    "Hello ~ ",
+    "3",
+  ],
+  Array [
+    "World ~ ~\\\\n",
+    "4",
+    "3",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with hello6 1`] = `
+Array [
+  Array [
+    "Hello ~ ",
+    "3",
+  ],
+  Array [
+    "World ~ ~\\\\n",
+    "4",
+    "10",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with hello7 1`] = `
+Array [
+  Array [
+    "Hello ~ ",
+    "3",
+  ],
+  Array [
+    "World ~ ~\\\\n",
+    "4",
+    "10",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with hello8 1`] = `
+Array [
+  Array [
+    "World",
+  ],
+  Array [
+    "Hello\\\\n",
+  ],
+]
+`;
+
 exports[`Should work with demo Parser - should work with bsearch 1`] = `
 Object {
   "__debugKind": "SourceFile",
