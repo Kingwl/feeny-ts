@@ -62,7 +62,7 @@ abstract class BaseValue {
   }
 
   isString(): this is StringValue {
-      return false;
+    return false;
   }
 
   isObject(): this is ObjectValue {
@@ -273,19 +273,21 @@ class IntegerValue extends EnvValue {
 }
 
 class StringValue extends BaseValue {
-    get type() { return ValueType.String; }
+  get type() {
+    return ValueType.String;
+  }
 
-    constructor(public value: string) {
-        super();
-    }
+  constructor(public value: string) {
+    super();
+  }
 
-    print(): string {
-        return this.value
-    }
+  print(): string {
+    return this.value;
+  }
 
-    isString(): true {
-        return true
-    }
+  isString(): true {
+    return true;
+  }
 }
 
 abstract class FunctionValue extends BaseValue {
@@ -541,7 +543,11 @@ interface CallFrame {
 
 function isVarValues(value: BaseValue): value is VarValues {
   return (
-    value.isInteger() || value.isNull() || value.isObject() || value.isArray() || value.isString()
+    value.isInteger() ||
+    value.isNull() ||
+    value.isObject() ||
+    value.isArray() ||
+    value.isString()
   );
 }
 
@@ -640,7 +646,7 @@ export function createInterpreter(file: SourceFile) {
     if (lastCallFrame !== callFrame) {
       throw new Error('Invalid call frame');
     }
-    
+
     return result;
   }
 
@@ -732,9 +738,7 @@ export function createInterpreter(file: SourceFile) {
           expr as IntegerLiteralExpression
         );
       case SyntaxKind.StringLiteralExpression:
-          return evaluateStringLiteralExpression(
-              expr as StringLiteralExpression
-          )
+        return evaluateStringLiteralExpression(expr as StringLiteralExpression);
       case SyntaxKind.PrintingExpression:
         return evaluatePrintingExpression(expr as PrintingExpression);
       case SyntaxKind.NullExpression:
@@ -1031,9 +1035,7 @@ export function createInterpreter(file: SourceFile) {
   }
 
   function evaluatePrintingExpression(expr: PrintingExpression): NullValue {
-    console.log(
-      ...expr.args.map(evaluateExpression).map(x => x.print())
-    );
+    console.log(...expr.args.map(evaluateExpression).map(x => x.print()));
     return new NullValue();
   }
 
@@ -1046,7 +1048,7 @@ export function createInterpreter(file: SourceFile) {
   }
 
   function evaluateStringLiteralExpression(
-      expr: StringLiteralExpression
+    expr: StringLiteralExpression
   ): StringValue {
     return new StringValue(expr.value.value);
   }

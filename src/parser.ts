@@ -453,7 +453,9 @@ export function createParser(text: string) {
 
   function parseStringLiteralExpression() {
     const pos = scanner.getTokenStart();
-    const token = parseExpectdToken<StringLiteralToken>(SyntaxKind.StringLiteralToken);
+    const token = parseExpectdToken<StringLiteralToken>(
+      SyntaxKind.StringLiteralToken
+    );
     return finishNode(
       createStringLiteralExpression(token),
       pos,

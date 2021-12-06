@@ -108,7 +108,9 @@ export function createIntegerLiteralExpression(
   return node;
 }
 
-export function createStringLiteralExpression(value: StringLiteralToken): StringLiteralExpression {
+export function createStringLiteralExpression(
+  value: StringLiteralToken
+): StringLiteralExpression {
   const node = createNode<StringLiteralExpression>(
     SyntaxKind.StringLiteralExpression
   );
