@@ -79,19 +79,6 @@ export enum SyntaxKind {
     SetShorthand,
 }
 
-export type KeywordSyntaxKind =
-    | SyntaxKind.PrintfKeyword
-    | SyntaxKind.ArraysKeyword
-    | SyntaxKind.NullKeyword
-    | SyntaxKind.ObjectsKeyword
-    | SyntaxKind.VarKeyword
-    | SyntaxKind.ThisKeyword
-    | SyntaxKind.IfKeyword
-    | SyntaxKind.ElseKeyword
-    | SyntaxKind.WhileKeyword
-    | SyntaxKind.MethodKeyword
-    | SyntaxKind.DefnKeyword
-
 export type BinaryShorthandTokenSyntaxKind =
     | SyntaxKind.AddToken
     | SyntaxKind.SubToken
@@ -138,6 +125,7 @@ export interface Token<K extends SyntaxKind = SyntaxKind> extends ASTNode {
 
 export interface IdentifierToken extends Token<SyntaxKind.Identifier> {
     id: string;
+    keyword?: KeywordTokens
 }
 
 export interface StringLiteralToken extends Token<SyntaxKind.StringLiteralToken> {
@@ -149,8 +137,8 @@ export interface IntegerLiteralToken extends Token<SyntaxKind.IntegerLiteralToke
 }
 
 export type EndOfFileToken = Token<SyntaxKind.EndOfFileToken>;
-export type NullToken = Token<SyntaxKind.NullKeyword>;
-export type ArrayKeywordToken = Token<SyntaxKind.ArraysKeyword>;
+export type NullKeywordToken = Token<SyntaxKind.NullKeyword>;
+export type ArraysKeywordToken = Token<SyntaxKind.ArraysKeyword>;
 export type ObjectsKeywordToken = Token<SyntaxKind.ObjectsKeyword>;
 export type VarKeywordToken = Token<SyntaxKind.VarKeyword>;
 export type ThisKeywordToken = Token<SyntaxKind.ThisKeyword>;
@@ -181,8 +169,8 @@ export type EqualsEqualsToken = Token<SyntaxKind.EqualsEqualsToken>;
 
 export type AllTokens =
     | EndOfFileToken
-    | NullToken
-    | ArrayKeywordToken
+    | NullKeywordToken
+    | ArraysKeywordToken
     | ObjectsKeywordToken
     | VarKeywordToken
     | ThisKeywordToken
@@ -216,6 +204,21 @@ export type AllTokens =
 
 export type TokenSyntaxKind = AllTokens['kind']
 
+export type KeywordTokens = 
+    | PrintfKeywordToken
+    | ArraysKeywordToken
+    | NullKeywordToken
+    | ObjectsKeywordToken
+    | VarKeywordToken
+    | ThisKeywordToken
+    | IfKeywordToken
+    | ElseKeywordToken
+    | WhileKeywordToken
+    | MethodKeywordToken
+    | DefnKeywordToken
+
+export type KeywordSyntaxKind = KeywordTokens["kind"]
+
 export interface Expression extends ASTNode {
     _expressionBrand: never
 }
@@ -245,7 +248,7 @@ export interface ArraysExpression extends Expression {
 
 export interface NullExpression extends Expression {
     kind: SyntaxKind.NullExpression
-    token: NullToken
+    token: NullKeywordToken
 }
 
 export interface ObjectsExpression extends Expression {

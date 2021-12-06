@@ -1,5 +1,4 @@
-import { ObjectSlot } from ".";
-import { ASTNode,Token, SyntaxKind, NodeArray, BinaryShorthandTokenSyntaxKind, BinaryShorthandToken, Statement, Expression} from "./types";
+import {  KeywordSyntaxKind, ObjectSlot, ASTNode,Token, SyntaxKind, NodeArray, BinaryShorthandTokenSyntaxKind, BinaryShorthandToken, Statement, Expression} from "./types";
 
 export function finishNode<T extends ASTNode> (node: T, pos: number, end: number, text: string): T {
     node.pos = pos;
@@ -139,6 +138,25 @@ export function isKeyword(value: string): value is Keywords {
     }
 }
 
+export function isKeywordSyntaxKind(kind: SyntaxKind): kind is KeywordSyntaxKind {
+    switch (kind) {
+        case SyntaxKind.PrintfKeyword:
+        case SyntaxKind.ArraysKeyword:
+        case SyntaxKind.NullKeyword:
+        case SyntaxKind.ObjectsKeyword:
+        case SyntaxKind.VarKeyword:
+        case SyntaxKind.ThisKeyword:
+        case SyntaxKind.IfKeyword:
+        case SyntaxKind.ElseKeyword:
+        case SyntaxKind.WhileKeyword:
+        case SyntaxKind.MethodKeyword:
+        case SyntaxKind.DefnKeyword:
+            return true
+        default:
+            return false;
+    }
+}
+
 export function isBinaryShorthandTokenSyntaxKind(kind: SyntaxKind): kind is BinaryShorthandTokenSyntaxKind {
     switch (kind) {
         case SyntaxKind.AddToken:
@@ -191,6 +209,20 @@ export const KeywordsToTokenKind = {
     [Keywords.Method]: SyntaxKind.MethodKeyword,
     [Keywords.Defn]: SyntaxKind.DefnKeyword,
     [Keywords.Printf]: SyntaxKind.PrintfKeyword,
+} as const
+
+export const TokenKindsToKeyword = {
+    [SyntaxKind.NullKeyword]: Keywords.Null,
+    [SyntaxKind.ArraysKeyword]: Keywords.Arrays,
+    [SyntaxKind.ObjectsKeyword]: Keywords.Objects,
+    [SyntaxKind.VarKeyword]: Keywords.Var,
+    [SyntaxKind.ThisKeyword]: Keywords.This,
+    [SyntaxKind.IfKeyword]: Keywords.If,
+    [SyntaxKind.ElseKeyword]: Keywords.Else,
+    [SyntaxKind.WhileKeyword]: Keywords.While,
+    [SyntaxKind.MethodKeyword]: Keywords.Method,
+    [SyntaxKind.DefnKeyword]: Keywords.Defn,
+    [SyntaxKind.PrintfKeyword]: Keywords.Printf,
 } as const
 
 export function isDigit(char: string): boolean {

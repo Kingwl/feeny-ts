@@ -1,5 +1,4 @@
-import { AccessOrAssignmentExpressionOrHigher, ArraysExpression, ASTNode, BinaryShorthand, BinaryShorthandTokenSyntaxKind, EndOfFileToken, Expression, FunctionCallExpression, FunctionStatement, GetShorthand, GlobalVariableStatement, IdentifierToken, IfExpression, IntegerLiteralExpression, IntegerLiteralToken, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodCallExpression, MethodSlot, NodeArray, NullExpression, NullToken, ObjectsExpression, ObjectSlot, ParenExpression, PrintingExpression, SequenceOfStatements, SetShorthand, SlotAssignmentExpression, SlotLookupExpression, SourceFile, StringLiteralToken, SubToken, SyntaxKind, ThisExpression, Token, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableAssignmentExpression, VariableReferenceExpression, VariableSlot, WhileExpression } from "./types";
-
+import { KeywordSyntaxKind, AccessOrAssignmentExpressionOrHigher, ArraysExpression, ASTNode, BinaryShorthand, BinaryShorthandTokenSyntaxKind, EndOfFileToken, Expression, FunctionCallExpression, FunctionStatement, GetShorthand, GlobalVariableStatement, IdentifierToken, IfExpression, IntegerLiteralExpression, IntegerLiteralToken, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodCallExpression, MethodSlot, NodeArray, NullExpression, NullKeywordToken, ObjectsExpression, ObjectSlot, ParenExpression, PrintingExpression, SequenceOfStatements, SetShorthand, SlotAssignmentExpression, SlotLookupExpression, SourceFile, StringLiteralToken, SubToken, SyntaxKind, ThisExpression, Token, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableAssignmentExpression, VariableReferenceExpression, VariableSlot, WhileExpression } from "./types";
 
 export function createNode <T extends ASTNode>(kind: T["kind"]): T {
     const token = { kind } as T
@@ -84,7 +83,7 @@ export function createArraysExpression(length: Expression, defaultValue?: Expres
     return node
 }
 
-export function createNullExpression(token: NullToken): NullExpression {
+export function createNullExpression(token: NullKeywordToken): NullExpression {
     const node = createNode<NullExpression>(SyntaxKind.NullExpression)
     node.token = token;
     return node

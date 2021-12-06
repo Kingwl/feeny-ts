@@ -141,7 +141,7 @@ class ArrayValue extends EnvValue {
         return this._instanceEnv
     }
 
-    constructor(private length: IntegerValue, defaultValue?: BaseValue) {
+    constructor(public length: IntegerValue, defaultValue?: BaseValue) {
         super()
 
         if (defaultValue) {
@@ -387,9 +387,14 @@ const arraysBuiltinFunctionGet = new BuiltinFunction(
         if (args.length !== 1) {
             throw new Error("Arguments mis match")
         }
-        const [index] = args;
-        if (!index.isInteger()) {
+        const [indexValue] = args;
+        if (!indexValue.isInteger()) {
             throw new TypeError("Invalid arguments")
+        }
+
+        const index = indexValue.value;
+        if (index < 0 || index > thisValue.length.value) {
+            throw new Error("Out of index")
         }
         
         const result = thisValue.env.getBinding(`${index}`);

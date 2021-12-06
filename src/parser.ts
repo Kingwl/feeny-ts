@@ -1,8 +1,8 @@
-import { VariableAssignmentExpression } from '.';
+import { createIdentifier, VariableAssignmentExpression } from '.';
 import { createArraysExpression, createBinaryShorthand, createFunctionCallExpression, createFunctionStatement, createGetShorthand, createGlobalVariableStatement, createIfExpression, createIntegerLiteralExpression, createLocalExpressionStatement, createLocalVariableStatement, createMethodCallExpression, createMethodSlot, createNodeArray, createNullExpression, createObjectsExpression, createParenExpression, createPrintingExpression, createSequenceOfStatements, createSetShorthand, createSlotAssignmentExpression, createSlotLookupExpression, createSourceFile, createThisExpression, createTopLevelExpressionStatement, createVariableAssignmentExpression, createVariableReferenceExpression, createVariableSlot, createWhileExpression } from './factory';
 import { createScanner } from "./scanner";
-import { AccessOrAssignmentExpressionOrHigher, AllTokens, ArraysExpression, BinaryShorthand, EndOfFileToken, Expression, FunctionStatement, GlobalVariableStatement, IdentifierToken, IntegerLiteralExpression, IntegerLiteralToken, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NodeArray, NullExpression, NullToken, ObjectsExpression, ObjectSlot, PrimaryExpression, PrintingExpression, SequenceOfStatements, StringLiteralToken, SubToken, SyntaxKind, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression, VariableSlot } from "./types";
-import { createFinishNode, finishNodeArray, isBinaryShorthandToken } from './utils';
+import { AccessOrAssignmentExpressionOrHigher, AllTokens, ArraysExpression, BinaryShorthand, EndOfFileToken, Expression, FunctionStatement, GlobalVariableStatement, IdentifierToken, IntegerLiteralExpression, IntegerLiteralToken, LocalExpressionStatement, LocalStatement, LocalVariableStatement, MethodSlot, NodeArray, NullExpression, NullKeywordToken, ObjectsExpression, ObjectSlot, PrimaryExpression, PrintingExpression, SequenceOfStatements, StringLiteralToken, SubToken, SyntaxKind, TokenSyntaxKind, TopLevelExpressionStatement, TopLevelStatement, VariableReferenceExpression, VariableSlot } from "./types";
+import { createFinishNode, finishNodeArray, isBinaryShorthandToken, isKeywordSyntaxKind, TokenKindsToKeyword } from './utils';
 
 export function createParser(text: string) {
     const scanner = createScanner(text);
@@ -272,23 +272,21 @@ export function createParser(text: string) {
         return expression
     }
 
+    function parseIdentifierName() {
+        const token = scanner.currentToken();
+        if (isKeywordSyntaxKind(token.kind)) {
+            const text = TokenKindsToKeyword[token.kind]
+            const id = createIdentifier(text)
+            scanner.nextToken()
+            return id
+        }
 
-    function parseVariableAssignmentExpression(id: IdentifierToken, pos: number) {
-        parseExpectdToken(SyntaxKind.EqualsToken);
-        const value = parseExpression();
-        return finishNode(
-            createVariableAssignmentExpression(
-                id,
-                value
-            ),
-            pos,
-            scanner.getCurrentPos()
-        )
+        return parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier)
     }
 
     function parseSlotLookupOrAssignment(expression: AccessOrAssignmentExpressionOrHigher, pos: number) {
         parseExpectdToken(SyntaxKind.DotToken);
-        const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+        const name = parseIdentifierName();
 
         if (parseOptionalToken(SyntaxKind.EqualsToken)) {
             const value = parseExpression();
@@ -543,7 +541,7 @@ export function createParser(text: string) {
 
     function parseNullExpression(): NullExpression {
         const pos = scanner.getTokenStart();
-        const token = parseExpectdToken<NullToken>(SyntaxKind.NullKeyword);
+        const token = parseExpectdToken<NullKeywordToken>(SyntaxKind.NullKeyword);
         return finishNode(
             createNullExpression(token),
             pos,
@@ -588,7 +586,7 @@ export function createParser(text: string) {
         const pos = scanner.getTokenStart();
 
         parseExpectdToken(SyntaxKind.VarKeyword);
-        const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+        const name = parseIdentifierName();
         parseExpectdToken(SyntaxKind.EqualsToken);
         const initializer = parseExpression();
 
@@ -602,7 +600,7 @@ export function createParser(text: string) {
     function parseMethodSlot(): MethodSlot {
         const pos = scanner.getTokenStart();
         parseExpectdToken(SyntaxKind.MethodKeyword);
-        const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+        const name = parseIdentifierName();
         const params = parseParameterList();
         const body = parseLocalSequenceOfStatements();
 
