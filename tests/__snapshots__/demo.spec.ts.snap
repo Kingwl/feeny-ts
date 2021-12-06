@@ -1,5 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Should work with demo Interpreter - should work with cplx 1`] = `
+Array [
+  Array [
+    "a = ",
+  ],
+  Array [
+    "~ + ~i",
+    "2",
+    "5",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "b = ",
+  ],
+  Array [
+    "~ + ~i",
+    "-4",
+    "2",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "a + b = ",
+  ],
+  Array [
+    "~ + ~i",
+    "-2",
+    "7",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "a - b = ",
+  ],
+  Array [
+    "~ + ~i",
+    "6",
+    "3",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "a * b = ",
+  ],
+  Array [
+    "~ - ~i",
+    "-28",
+    "36",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "a / b = ",
+  ],
+  Array [
+    "~ + ~i",
+    "-Infinity",
+    "Infinity",
+  ],
+  Array [
+    "\\\\n",
+  ],
+]
+`;
+
 exports[`Should work with demo Interpreter - should work with hello 1`] = `
 Array [
   Array [
