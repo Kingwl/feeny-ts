@@ -1,5 +1,7 @@
-defn foo():
+var m = 1
+defn foo(x):
+    var y = 1
     defn bar(z):
-        z + 1
+        m + x + y + z + 1
     bar
-printf("", foo()(2))
+printf("", foo(1)(1))

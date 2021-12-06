@@ -89,6 +89,13 @@ export function last<T>(v?: readonly T[]): T {
   return v[v.length - 1];
 }
 
+export function lastOrUndefined<T>(v?: readonly T[]): T | undefined {
+  if (!v?.length) {
+    return undefined;
+  }
+  return v[v.length - 1];
+}
+
 export enum Chars {
   Add = '+',
   Sub = '-',

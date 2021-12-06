@@ -46,7 +46,7 @@ exports[`Interpreter should-work-with-nested-function 1`] = `
 Array [
   Array [
     "",
-    "3",
+    "5",
   ],
 ]
 `;

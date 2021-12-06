@@ -295,7 +295,8 @@ class RuntimeFunction extends FunctionValue {
   constructor(
     name: string,
     params: string[],
-    public body: SequenceOfStatements | ExpressionStatement
+    public body: SequenceOfStatements | ExpressionStatement,
+    public closureEnv: Environment
   ) {
     super(name, params);
   }
@@ -509,7 +510,8 @@ type AllValues = VarValues | CodeValues;
 interface CallFrame {
   thisValue: BaseValue | undefined;
   name: string;
-  env: Environment;
+  envStack: Environment[];
+  parent: CallFrame | undefined;
 }
 
 function isVarValues(value: BaseValue): value is VarValues {
@@ -524,15 +526,20 @@ function isCodeValues(value: BaseValue): value is CodeValues {
 
 export function createInterpreter(file: SourceFile) {
   const globalEnv = new Environment();
-  const envStack = [globalEnv];
-  const callFrames: CallFrame[] = [];
+  const globalCallframe: CallFrame = {
+    thisValue: undefined,
+    name: '',
+    envStack: [globalEnv],
+    parent: undefined
+  };
+  const callFrames = [globalCallframe];
 
   return {
     evaluate
   };
 
   function currentEnv() {
-    return last(envStack);
+    return last(currentCallFrame().envStack);
   }
 
   function currentCallFrame() {
@@ -544,15 +551,24 @@ export function createInterpreter(file: SourceFile) {
   }
 
   function popCallFrame() {
-    return callFrames.pop();
+    const result = callFrames.pop();
+    if (!callFrames.length) {
+      throw new Error('Callframe not balanced');
+    }
+    return result;
   }
 
   function pushEnv(env: Environment) {
-    envStack.push(env);
+    currentCallFrame().envStack.push(env);
   }
 
   function popEnv() {
-    return envStack.pop();
+    const envStack = currentCallFrame().envStack;
+    const result = envStack.pop();
+    if (!envStack.length) {
+      throw new Error('EnvStack not balanced');
+    }
+    return result;
   }
 
   function runInEnv<R = void>(cb: () => R) {
@@ -569,10 +585,10 @@ export function createInterpreter(file: SourceFile) {
     thisValue: BaseValue | undefined,
     params: string[],
     args: BaseValue[],
+    parentEnv: Environment | undefined,
     cb: () => R
   ) {
-    const parent = currentEnv();
-    const env = new Environment(parent);
+    const env = new Environment(parentEnv);
 
     for (let i = 0; i < params.length; i++) {
       const param = params[i];
@@ -582,20 +598,21 @@ export function createInterpreter(file: SourceFile) {
 
     const callFrame: CallFrame = {
       thisValue,
-      env,
-      name
+      envStack: [env],
+      name,
+      parent: currentCallFrame()
     };
 
     pushEnv(env);
     pushCallFrame(callFrame);
     const result = cb();
-    const lastEnv = popEnv();
-    if (lastEnv !== env) {
-      throw new Error('Invalid environment');
-    }
     const lastCallFrame = popCallFrame();
     if (lastCallFrame !== callFrame) {
       throw new Error('Invalid call frame');
+    }
+    const lastEnv = popEnv();
+    if (lastEnv !== env) {
+      throw new Error('Invalid environment');
     }
     return result;
   }
@@ -613,15 +630,32 @@ export function createInterpreter(file: SourceFile) {
       throw new Error('Invalid number of arguments');
     }
 
-    return runInFuncEnv(callable.name, thisValue, callable.params, args, () => {
-      if (callable.isBuiltin()) {
-        return callable.fn(thisValue, args);
-      }
-      if (callable.isRuntime()) {
+    if (callable.isBuiltin()) {
+      return runInFuncEnv(
+        callable.name,
+        thisValue,
+        callable.params,
+        args,
+        undefined,
+        () => {
+          return callable.fn(thisValue, args);
+        }
+      );
+    }
+
+    if (!callable.isRuntime()) {
+      throw new Error('Unknown callable');
+    }
+    return runInFuncEnv(
+      callable.name,
+      thisValue,
+      callable.params,
+      args,
+      callable.closureEnv,
+      () => {
         return evaluateExpressionStatementOrSequenceOfStatements(callable.body);
       }
-      throw new Error('Invalid function');
-    });
+    );
   }
 
   function evaluate() {
@@ -822,12 +856,14 @@ export function createInterpreter(file: SourceFile) {
       const initializer = evaluateExpression(variableSlot.initializer);
       obj.env.addBinding(variableSlot.name.id, initializer);
     } else if (slot.kind === SyntaxKind.MethodSlot) {
+      const env = currentEnv();
       const methodSlot = slot as MethodSlot;
       const params = methodSlot.params.map(x => x.id);
       const callable = new RuntimeFunction(
         methodSlot.name.id,
         params,
-        methodSlot.body
+        methodSlot.body,
+        env
       );
       obj.env.addBinding(methodSlot.name.id, callable);
     } else {
@@ -979,7 +1015,7 @@ export function createInterpreter(file: SourceFile) {
   function evaluateFunctionStatement(stmt: FunctionStatement) {
     const env = currentEnv();
     const params = stmt.params.map(x => x.id);
-    const func = new RuntimeFunction(stmt.name.id, params, stmt.body);
+    const func = new RuntimeFunction(stmt.name.id, params, stmt.body, env);
     env.addBinding(stmt.name.id, func);
   }
 
