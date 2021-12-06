@@ -10,6 +10,8 @@ Array [
 
 exports[`Interpreter should-work-with-arrays 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-binary-shorthand 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-function 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-function-call 1`] = `Array []`;
@@ -38,3 +40,5 @@ Array [
 `;
 
 exports[`Interpreter should-work-with-variable-assignment 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-variable-reference 1`] = `Array []`;

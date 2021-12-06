@@ -1,2 +1,5 @@
+var x = 3
+var y = -1
+
 while x:
     x = x + y

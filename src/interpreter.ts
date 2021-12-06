@@ -129,19 +129,27 @@ class ArrayValue extends EnvValue {
         return this._instanceEnv
     }
 
-    private list: BaseValue[];
     constructor(private length: IntegerValue, defaultValue?: BaseValue) {
         super()
 
-        this.list = new Array(length.value);
-
         if (defaultValue) {
-            this.list.fill(defaultValue)
+            for (let i = 0; i < length.value; i++) {
+                this.env.addBinding(`${i}`, defaultValue)
+            }
         }
     }
 
     print(): string {
-        return `[${this.list.map(v => v.print()).join(', ')}]`
+        const list: BaseValue[] = [];
+        for (let i = 0; i < this.length.value; i++) {
+            const value = this.env.getBinding(`${i}`);
+            if (value) {
+                list.push(value)
+            } else {
+                list.push(new NullValue())
+            }
+        }
+        return `[${list.map(v => v.print()).join(', ')}]`
     }
 
     isArray(): true {
@@ -191,13 +199,12 @@ class IntegerValue extends EnvValue {
     }
 }
 
-class FunctionValue extends BaseValue {
+abstract class FunctionValue extends BaseValue {
     get type () { return ValueType.Function }
 
     constructor (
         public name: string,
         public params: string[],
-        public body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement,
     ) {
         super();
     }
@@ -213,9 +220,35 @@ class FunctionValue extends BaseValue {
     isBuiltin(): this is BuiltinFunction {
         return false;
     }
+
+    isRuntime(): this is RuntimeFunction {
+        return false
+    }
+}
+
+class RuntimeFunction extends FunctionValue {
+    constructor (
+        name: string,
+        params: string[],
+        public body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement,
+    ) {
+        super(name, params)
+    }
+
+    isRuntime(): true {
+        return true
+    }
 }
 
 class BuiltinFunction extends FunctionValue {
+    constructor(
+        name: string,
+        params: string[],
+        public fn: (thisValue: BaseValue | undefined, args: BaseValue[]) => BaseValue
+    ) {
+        super(name, params)
+    }
+
     print(): string {
         return `{[Function builtin]}`
     }
@@ -224,6 +257,157 @@ class BuiltinFunction extends FunctionValue {
         return true
     }
 }
+
+function createIntegerValueBuiltinFunction(cb: (a: number, b: number) => BaseValue) {
+    return (thisValue: BaseValue | undefined, args: BaseValue[]) => {
+        assertDef(thisValue, "Cannot find this value")
+
+        if (args.length !== 1) {
+            throw new Error("Arguments mis match")
+        }
+        const [right] = args;
+        if (!thisValue.isInteger() || !right.isInteger()) {
+            throw new TypeError("Invalid arguments")
+        }
+        return cb(thisValue.value, right.value)
+    }
+}
+
+const integerBuiltinFunctionAdd = new BuiltinFunction(
+    "add",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new IntegerValue(a + b)
+    })
+)
+
+const integerBuiltinFunctionSub = new BuiltinFunction(
+    "sub",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new IntegerValue(a - b)
+    })
+)
+
+const integerBuiltinFunctionMul = new BuiltinFunction(
+    "mul",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new IntegerValue(a * b)
+    })
+)
+
+const integerBuiltinFunctionDiv = new BuiltinFunction(
+    "div",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new IntegerValue(a / b)
+    })
+)
+
+const integerBuiltinFunctionMod = new BuiltinFunction(
+    "mod",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new IntegerValue(a % b)
+    })
+)
+
+const integerBuiltinFunctionLt = new BuiltinFunction(
+    "lt",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new BooleanValue(a < b)
+    })
+)
+
+const integerBuiltinFunctionGt = new BuiltinFunction(
+    "gt",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new BooleanValue(a > b)
+    })
+)
+
+const integerBuiltinFunctionLe = new BuiltinFunction(
+    "le",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new BooleanValue(a <= b)
+    })
+)
+
+const integerBuiltinFunctionGe = new BuiltinFunction(
+    "ge",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new BooleanValue(a >= b)
+    })
+)
+
+const integerBuiltinFunctionEq = new BuiltinFunction(
+    "eq",
+    ["b"],
+    createIntegerValueBuiltinFunction((a, b) => {
+        return new BooleanValue(a === b)
+    })
+)
+
+IntegerValue.Env.addBinding("add", integerBuiltinFunctionAdd);
+IntegerValue.Env.addBinding("sub", integerBuiltinFunctionSub);
+IntegerValue.Env.addBinding("mul", integerBuiltinFunctionMul);
+IntegerValue.Env.addBinding("div", integerBuiltinFunctionDiv);
+IntegerValue.Env.addBinding("mod", integerBuiltinFunctionMod);
+IntegerValue.Env.addBinding("lt", integerBuiltinFunctionLt);
+IntegerValue.Env.addBinding("gt", integerBuiltinFunctionGt);
+IntegerValue.Env.addBinding("le", integerBuiltinFunctionLe);
+IntegerValue.Env.addBinding("ge", integerBuiltinFunctionGe);
+IntegerValue.Env.addBinding("eq", integerBuiltinFunctionEq);
+
+const arraysBuiltinFunctionGet = new BuiltinFunction(
+    'get',
+    ['index'],
+    (thisValue: BaseValue | undefined, args: BaseValue[]) => {
+        assertDef(thisValue, "Cannot find this value")
+        if (!thisValue.isArray()) {
+            throw new TypeError("Invalid arguments")
+        }
+        if (args.length !== 1) {
+            throw new Error("Arguments mis match")
+        }
+        const [index] = args;
+        if (!index.isInteger()) {
+            throw new TypeError("Invalid arguments")
+        }
+        
+        const result = thisValue.env.getBinding(`${index}`);
+        assertDef(result, "Cannot find index")
+        return result;
+    }
+)
+
+const arraysBuiltinFunctionSet = new BuiltinFunction(
+    'set',
+    ['index', 'value'],
+    (thisValue: BaseValue | undefined, args: BaseValue[]) => {
+        assertDef(thisValue, "Cannot find this value")
+        if (!thisValue.isArray()) {
+            throw new TypeError("Invalid arguments")
+        }
+        if (args.length !== 2) {
+            throw new Error("Arguments mis match")
+        }
+        const [index, value] = args;
+        if (!index.isInteger()) {
+            throw new TypeError("Invalid arguments")
+        }
+        thisValue.env.addBinding(`${index}`, value);
+        return thisValue;
+    }
+)
+
+ArrayValue.Env.addBinding('get', arraysBuiltinFunctionGet)
+ArrayValue.Env.addBinding('set', arraysBuiltinFunctionSet)
 
 type VarValues = IntegerValue | ArrayValue | ObjectValue | NullValue | BooleanValue
 type CodeValues = FunctionValue | BuiltinFunction
@@ -315,17 +499,23 @@ export function createInterpreter(file: SourceFile) {
         return result
     }
 
-    function callFunction (thisValue: BaseValue | undefined, value: BaseValue, args: BaseValue[]) {
-        if (!value.isFunction()) {
+    function callFunction (thisValue: BaseValue | undefined, callable: BaseValue, args: BaseValue[]) {
+        if (!callable.isFunction()) {
             throw new TypeError("Not a function")
         }
 
-        if (args.length !== value.params.length) {
+        if (args.length !== callable.params.length) {
             throw new Error("Invalid number of arguments")
         }
 
-        return runInFuncEnv(value.name, thisValue, value.params, args, () => {
-            return evaluateLocalStatementOrLocalSequenceOfStatements(value.body)
+        return runInFuncEnv(callable.name, thisValue, callable.params, args, () => {
+            if (callable.isBuiltin()) {
+                return callable.fn(thisValue, args)
+            }
+            if (callable.isRuntime()) {
+                return evaluateLocalStatementOrLocalSequenceOfStatements(callable.body)
+            }
+            throw new Error("Invalid function")
         })
     }
 
@@ -521,7 +711,7 @@ export function createInterpreter(file: SourceFile) {
         } else if (slot.kind === SyntaxKind.MethodSlot) {
             const methodSlot = slot as MethodSlot;
             const params = methodSlot.params.map(x => x.id);
-            const callable = new FunctionValue(methodSlot.name.id, params, methodSlot.body);
+            const callable = new RuntimeFunction(methodSlot.name.id, params, methodSlot.body);
             obj.env.addBinding(methodSlot.name.id, callable);
         } else {
             throw new Error("Invalid slot")
@@ -667,7 +857,7 @@ export function createInterpreter(file: SourceFile) {
 
     function evaluateFunctionStatement(stmt: FunctionStatement) {
         const params = stmt.params.map(x => x.id);
-        const func = new FunctionValue(stmt.name.id, params, stmt.body);
+        const func = new RuntimeFunction(stmt.name.id, params, stmt.body);
         globalEnv.addBinding(stmt.name.id, func)
     }
 
