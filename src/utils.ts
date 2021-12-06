@@ -210,7 +210,9 @@ export enum BinaryShorthandPriority {
   MulOrDiv = 7
 }
 
-export function getBinaryShorthandPriority (kind: BinaryShorthandTokenSyntaxKind) {
+export function getBinaryShorthandPriority(
+  kind: BinaryShorthandTokenSyntaxKind
+) {
   switch (kind) {
     case SyntaxKind.LessThanToken:
     case SyntaxKind.LessEqualsThanToken:
@@ -219,15 +221,15 @@ export function getBinaryShorthandPriority (kind: BinaryShorthandTokenSyntaxKind
     case SyntaxKind.EqualsEqualsToken:
       return BinaryShorthandPriority.Comparison;
     case SyntaxKind.ModToken:
-      return BinaryShorthandPriority.Mod
+      return BinaryShorthandPriority.Mod;
     case SyntaxKind.AddToken:
     case SyntaxKind.SubToken:
-      return BinaryShorthandPriority.AddOrSub
+      return BinaryShorthandPriority.AddOrSub;
     case SyntaxKind.MulToken:
     case SyntaxKind.DivToken:
-      return BinaryShorthandPriority.MulOrDiv
+      return BinaryShorthandPriority.MulOrDiv;
     default:
-      throw new Error("Invalid kind: " + kind)
+      throw new Error('Invalid kind: ' + kind);
   }
 }
 

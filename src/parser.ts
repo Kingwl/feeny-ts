@@ -267,13 +267,19 @@ export function createParser(text: string) {
     return parseBinaryShorthandOrHigher();
   }
 
-  function parseBinaryShorthandOrHigher(priority = BinaryShorthandPriority.Lowest): BinaryShorthand | Expression {
+  function parseBinaryShorthandOrHigher(
+    priority = BinaryShorthandPriority.Lowest
+  ): BinaryShorthand | Expression {
     const pos = scanner.getTokenStart();
     const expression = parseFunctionCallExpressionOrHigher();
     return parseBinaryShorthandRest(expression, pos, priority);
   }
 
-  function parseBinaryShorthandRest(expression: Expression, pos: number, priority: BinaryShorthandPriority ) {
+  function parseBinaryShorthandRest(
+    expression: Expression,
+    pos: number,
+    priority: BinaryShorthandPriority
+  ) {
     while (true) {
       const operator = scanner.currentToken();
       if (
@@ -283,9 +289,9 @@ export function createParser(text: string) {
         break;
       }
 
-      const currentPriority = getBinaryShorthandPriority(operator.kind)
+      const currentPriority = getBinaryShorthandPriority(operator.kind);
       if (currentPriority <= priority) {
-        break
+        break;
       }
 
       scanner.nextToken();
@@ -298,7 +304,7 @@ export function createParser(text: string) {
       );
     }
 
-    return expression
+    return expression;
   }
 
   function parseFunctionCallExpressionOrHigher() {
