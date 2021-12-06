@@ -1,15 +1,13 @@
-import { createIdentifier, VariableAssignmentExpression } from '.';
 import {
+  createVariableStatement,
+  createIdentifier,
   createArraysExpression,
   createBinaryShorthand,
   createFunctionCallExpression,
   createFunctionStatement,
   createGetShorthand,
-  createGlobalVariableStatement,
   createIfExpression,
   createIntegerLiteralExpression,
-  createLocalExpressionStatement,
-  createLocalVariableStatement,
   createMethodCallExpression,
   createMethodSlot,
   createNodeArray,
@@ -23,11 +21,11 @@ import {
   createSlotLookupExpression,
   createSourceFile,
   createThisExpression,
-  createTopLevelExpressionStatement,
   createVariableAssignmentExpression,
   createVariableReferenceExpression,
   createVariableSlot,
-  createWhileExpression
+  createWhileExpression,
+  createExpressionStatement
 } from './factory';
 import { createScanner } from './scanner';
 import {
@@ -38,13 +36,11 @@ import {
   EndOfFileToken,
   Expression,
   FunctionStatement,
-  GlobalVariableStatement,
   IdentifierToken,
   IntegerLiteralExpression,
   IntegerLiteralToken,
-  LocalExpressionStatement,
-  LocalStatement,
-  LocalVariableStatement,
+  ExpressionStatement,
+  VariableStatement,
   MethodSlot,
   NodeArray,
   NullExpression,
@@ -58,10 +54,10 @@ import {
   SubToken,
   SyntaxKind,
   TokenSyntaxKind,
-  TopLevelExpressionStatement,
-  TopLevelStatement,
+  VariableAssignmentExpression,
   VariableReferenceExpression,
-  VariableSlot
+  VariableSlot,
+  Statement
 } from './types';
 import {
   BinaryShorthandPriority,
@@ -104,7 +100,7 @@ export function createParser(text: string) {
 
   function parseSourceFile() {
     const pos = scanner.getTokenStart();
-    const body = parseSequenceOfStatements(-Infinity, parseTopLevelStatement);
+    const body = parseSequenceOfStatements(-Infinity, false);
     const eof = parseExpectdToken<EndOfFileToken>(SyntaxKind.EndOfFileToken);
 
     return finishNode(
@@ -114,56 +110,35 @@ export function createParser(text: string) {
     );
   }
 
-  function parseLocalStatement(): LocalStatement {
-    const token = scanner.currentToken();
-
-    switch (token.kind) {
-      case SyntaxKind.VarKeyword:
-        return parseLocalVariableStatement();
-      default:
-        return parseLocalExpressionStatement();
-    }
-  }
-
-  function parseLocalVariableStatement(): LocalVariableStatement {
-    return parseVariableStatementLike(createLocalVariableStatement);
-  }
-
-  function parseLocalExpressionStatement(): LocalExpressionStatement {
+  function parseExpressionStatement(): ExpressionStatement {
     const pos = scanner.getTokenStart();
     const expr = parseExpression();
     return finishNode(
-      createLocalExpressionStatement(expr),
+      createExpressionStatement(expr),
       pos,
       scanner.getCurrentPos()
     );
   }
 
-  function parseTopLevelStatement(): TopLevelStatement {
+  function parseStatement(): Statement {
     const token = scanner.currentToken();
     switch (token.kind) {
       case SyntaxKind.VarKeyword:
-        return parseGlobalVarStatement();
+        return parseVariableStatement();
       case SyntaxKind.DefnKeyword:
         return parseFunctionStatement();
       default:
-        return parseTopLevelExpressionStatement();
+        return parseExpressionStatement();
     }
   }
 
-  function parseVariableStatementLike<
-    T extends GlobalVariableStatement | LocalVariableStatement
-  >(factory: (name: IdentifierToken, initializer: Expression) => T) {
+  function parseVariableStatement() {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.VarKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     parseExpectdToken(SyntaxKind.EqualsToken);
     const initializer = parseExpression();
-    return finishNode(factory(name, initializer), pos, scanner.getCurrentPos());
-  }
-
-  function parseGlobalVarStatement(): GlobalVariableStatement {
-    return parseVariableStatementLike(createGlobalVariableStatement);
+    return finishNode(createVariableStatement(name, initializer), pos, scanner.getCurrentPos());
   }
 
   function parseParameterList(): NodeArray<IdentifierToken> {
@@ -193,7 +168,7 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.DefnKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     const params = parseParameterList();
-    const body = parseLocalSequenceOfStatements();
+    const body = parseExpressionStatementOrSequenceOfStatements();
 
     return finishNode(
       createFunctionStatement(name, params, body),
@@ -202,18 +177,16 @@ export function createParser(text: string) {
     );
   }
 
-  function parseIndentStatementList<
-    T extends LocalStatement | TopLevelStatement
-  >(baseIndent: number, factory: () => T): NodeArray<T> {
+  function parseIndentStatementList(baseIndent: number): NodeArray<Statement> {
     const pos = scanner.getTokenStart();
-    const statements: T[] = [];
+    const statements: Statement[] = [];
     const indent = scanner.currentToken().leadingIndent;
     while (
       !scanner.isEOF() &&
       indent > baseIndent &&
       scanner.currentToken().leadingIndent === indent
     ) {
-      const statement = factory();
+      const statement = parseStatement();
       statements.push(statement);
     }
 
@@ -224,24 +197,13 @@ export function createParser(text: string) {
     );
   }
 
-  function parseSequenceOfStatements<
-    T extends LocalStatement | TopLevelStatement
-  >(baseIndent: number, factory: () => T): SequenceOfStatements<T> {
+  function parseSequenceOfStatements(baseIndent: number, isExpression: boolean): SequenceOfStatements {
     const pos = scanner.getTokenStart();
 
-    const statements = parseIndentStatementList(baseIndent, factory);
+    const statements = parseIndentStatementList(baseIndent);
 
     return finishNode(
-      createSequenceOfStatements(statements),
-      pos,
-      scanner.getCurrentPos()
-    );
-  }
-
-  function parseTopLevelExpressionStatement(): TopLevelExpressionStatement {
-    const pos = scanner.getTokenStart();
-    return finishNode(
-      createTopLevelExpressionStatement(parseExpression()),
+      createSequenceOfStatements(statements, isExpression),
       pos,
       scanner.getCurrentPos()
     );
@@ -483,15 +445,15 @@ export function createParser(text: string) {
     return finishNode(createThisExpression(), pos, scanner.getCurrentPos());
   }
 
-  function parseLocalSequenceOfStatements() {
+  function parseExpressionStatementOrSequenceOfStatements() {
     const colonToken = parseOptionalToken(SyntaxKind.ColonToken);
     if (colonToken && scanner.currentTokenhasLineFeed()) {
       return parseSequenceOfStatements(
         colonToken.leadingIndent,
-        parseLocalStatement
+        true
       );
     }
-    return parseLocalExpressionStatement();
+    return parseExpressionStatement();
   }
 
   function parseIfExpression() {
@@ -499,15 +461,15 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.IfKeyword);
     const condition = parseExpression();
 
-    const thenStatement = parseLocalSequenceOfStatements();
+    const thenStatement = parseExpressionStatementOrSequenceOfStatements();
 
     let elseStatement:
-      | SequenceOfStatements<LocalStatement>
-      | LocalExpressionStatement
+      | SequenceOfStatements
+      | ExpressionStatement
       | undefined;
     const elseToken = parseOptionalToken(SyntaxKind.ElseKeyword);
     if (elseToken) {
-      elseStatement = parseLocalSequenceOfStatements();
+      elseStatement = parseExpressionStatementOrSequenceOfStatements();
     }
 
     return finishNode(
@@ -521,7 +483,7 @@ export function createParser(text: string) {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.WhileKeyword);
     const condition = parseExpression();
-    const body = parseLocalSequenceOfStatements();
+    const body = parseExpressionStatementOrSequenceOfStatements();
 
     return finishNode(
       createWhileExpression(condition, body),
@@ -678,7 +640,7 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.MethodKeyword);
     const name = parseIdentifierName();
     const params = parseParameterList();
-    const body = parseLocalSequenceOfStatements();
+    const body = parseExpressionStatementOrSequenceOfStatements();
 
     return finishNode(
       createMethodSlot(name, params, body),

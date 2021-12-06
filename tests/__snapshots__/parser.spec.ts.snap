@@ -6,11 +6,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 24,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 19,
         "expression": Object {
           "__debugKind": "ArraysExpression",
@@ -50,11 +51,11 @@ Object {
           },
           "pos": 0,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 24,
         "expression": Object {
           "__debugKind": "ArraysExpression",
@@ -79,7 +80,7 @@ Object {
           },
           "pos": 14,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 14,
       },
     ],
@@ -104,11 +105,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 84,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 13,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -126,7 +128,7 @@ Object {
             "value": "1",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -139,7 +141,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 22,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -157,7 +159,7 @@ Object {
             "value": "2",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 15,
@@ -170,12 +172,12 @@ Object {
         "pos": 10,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 28,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 28,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 24,
@@ -216,16 +218,16 @@ Object {
             "pos": 25,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 21,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 34,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 34,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 30,
@@ -266,16 +268,16 @@ Object {
             "pos": 31,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 27,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 40,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 40,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 36,
@@ -316,16 +318,16 @@ Object {
             "pos": 37,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 33,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 46,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 46,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 42,
@@ -366,16 +368,16 @@ Object {
             "pos": 43,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 39,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 52,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 52,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 48,
@@ -416,16 +418,16 @@ Object {
             "pos": 49,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 45,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 58,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 58,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 54,
@@ -466,16 +468,16 @@ Object {
             "pos": 55,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 51,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 64,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 64,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 60,
@@ -516,16 +518,16 @@ Object {
             "pos": 61,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 57,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 71,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 71,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 67,
@@ -566,16 +568,16 @@ Object {
             "pos": 68,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 63,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 78,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 78,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 74,
@@ -616,16 +618,16 @@ Object {
             "pos": 75,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 70,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 84,
         "expression": Object {
           "__debugKind": "BinaryShorthand",
           "end": 84,
-          "kind": 58,
+          "kind": 56,
           "left": Object {
             "__debugKind": "VariableReferenceExpression",
             "end": 81,
@@ -666,7 +668,7 @@ Object {
             "pos": 82,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 77,
       },
     ],
@@ -691,6 +693,7 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 27,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
@@ -699,16 +702,17 @@ Object {
         "body": Object {
           "__debugKind": "SequenceOfStatements",
           "end": 27,
+          "isExpression": true,
           "kind": 53,
           "pos": 22,
           "statements": Array [
             Object {
-              "__debugKind": "LocalExpressionStatement",
+              "__debugKind": "ExpressionStatement",
               "end": 27,
               "expression": Object {
                 "__debugKind": "BinaryShorthand",
                 "end": 27,
-                "kind": 58,
+                "kind": 56,
                 "left": Object {
                   "__debugKind": "VariableReferenceExpression",
                   "end": 25,
@@ -755,7 +759,7 @@ Object {
           ],
         },
         "end": 27,
-        "kind": 56,
+        "kind": 55,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 6,
@@ -818,6 +822,7 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 23,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
@@ -826,11 +831,12 @@ Object {
         "body": Object {
           "__debugKind": "SequenceOfStatements",
           "end": 19,
+          "isExpression": true,
           "kind": 53,
           "pos": 15,
           "statements": Array [
             Object {
-              "__debugKind": "LocalExpressionStatement",
+              "__debugKind": "ExpressionStatement",
               "end": 19,
               "expression": Object {
                 "__debugKind": "VariableReferenceExpression",
@@ -853,7 +859,7 @@ Object {
           ],
         },
         "end": 19,
-        "kind": 56,
+        "kind": 55,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 6,
@@ -877,7 +883,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 23,
         "expression": Object {
           "__debugKind": "FunctionCallExpression",
@@ -918,7 +924,7 @@ Object {
           "kind": 44,
           "pos": 18,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 18,
       },
     ],
@@ -943,11 +949,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 22,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 19,
         "initializer": Object {
           "__debugKind": "ArraysExpression",
@@ -972,7 +979,7 @@ Object {
           },
           "pos": 8,
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -985,7 +992,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 22,
         "expression": Object {
           "__debugKind": "GetShorthand",
@@ -1023,10 +1030,10 @@ Object {
             "kind": 36,
             "pos": 18,
           },
-          "kind": 59,
+          "kind": 57,
           "pos": 18,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 18,
       },
     ],
@@ -1051,11 +1058,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 10,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 10,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -1073,7 +1081,7 @@ Object {
             "value": "42",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -1107,11 +1115,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 54,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 13,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -1129,7 +1138,7 @@ Object {
             "value": "1",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -1142,7 +1151,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 54,
         "expression": Object {
           "__debugKind": "IfExpression",
@@ -1164,11 +1173,12 @@ Object {
           "elseStatement": Object {
             "__debugKind": "SequenceOfStatements",
             "end": 54,
+            "isExpression": true,
             "kind": 53,
             "pos": 43,
             "statements": Array [
               Object {
-                "__debugKind": "LocalExpressionStatement",
+                "__debugKind": "ExpressionStatement",
                 "end": 54,
                 "expression": Object {
                   "__debugKind": "PrintingExpression",
@@ -1197,11 +1207,12 @@ Object {
           "thenStatement": Object {
             "__debugKind": "SequenceOfStatements",
             "end": 37,
+            "isExpression": true,
             "kind": 53,
             "pos": 21,
             "statements": Array [
               Object {
-                "__debugKind": "LocalExpressionStatement",
+                "__debugKind": "ExpressionStatement",
                 "end": 37,
                 "expression": Object {
                   "__debugKind": "PrintingExpression",
@@ -1225,7 +1236,7 @@ Object {
             ],
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 11,
       },
     ],
@@ -1250,11 +1261,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 32,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 13,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -1272,7 +1284,7 @@ Object {
             "value": "1",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -1285,7 +1297,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 32,
         "expression": Object {
           "__debugKind": "IfExpression",
@@ -1311,11 +1323,12 @@ Object {
           "thenStatement": Object {
             "__debugKind": "SequenceOfStatements",
             "end": 32,
+            "isExpression": true,
             "kind": 53,
             "pos": 21,
             "statements": Array [
               Object {
-                "__debugKind": "LocalExpressionStatement",
+                "__debugKind": "ExpressionStatement",
                 "end": 32,
                 "expression": Object {
                   "__debugKind": "PrintingExpression",
@@ -1339,7 +1352,7 @@ Object {
             ],
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 11,
       },
     ],
@@ -1364,11 +1377,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 20,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 4,
         "expression": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -1386,11 +1400,11 @@ Object {
             "value": "1",
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 15,
         "expression": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -1408,11 +1422,11 @@ Object {
             "value": "42",
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 2,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 17,
         "expression": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -1430,11 +1444,11 @@ Object {
             "value": "2333333333",
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 5,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 20,
         "expression": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -1459,11 +1473,11 @@ Object {
             "value": "1",
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 16,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 20,
         "expression": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -1481,7 +1495,7 @@ Object {
             "value": "0",
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 19,
       },
     ],
@@ -1506,6 +1520,7 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 27,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
@@ -1514,11 +1529,12 @@ Object {
         "body": Object {
           "__debugKind": "SequenceOfStatements",
           "end": 27,
+          "isExpression": true,
           "kind": 53,
           "pos": 16,
           "statements": Array [
             Object {
-              "__debugKind": "LocalVariableStatement",
+              "__debugKind": "VariableStatement",
               "end": 27,
               "initializer": Object {
                 "__debugKind": "IntegerLiteralExpression",
@@ -1551,7 +1567,7 @@ Object {
           ],
         },
         "end": 27,
-        "kind": 56,
+        "kind": 55,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 8,
@@ -1586,11 +1602,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 51,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 45,
         "initializer": Object {
           "__debugKind": "ObjectsExpression",
@@ -1604,11 +1621,12 @@ Object {
               "body": Object {
                 "__debugKind": "SequenceOfStatements",
                 "end": 45,
+                "isExpression": true,
                 "kind": 53,
                 "pos": 41,
                 "statements": Array [
                   Object {
-                    "__debugKind": "LocalExpressionStatement",
+                    "__debugKind": "ExpressionStatement",
                     "end": 45,
                     "expression": Object {
                       "__debugKind": "VariableReferenceExpression",
@@ -1656,7 +1674,7 @@ Object {
             },
           ],
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -1669,7 +1687,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 51,
         "expression": Object {
           "__debugKind": "MethodCallExpression",
@@ -1719,7 +1737,7 @@ Object {
           },
           "pos": 44,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 44,
       },
     ],
@@ -1744,11 +1762,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 4,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 4,
         "expression": Object {
           "__debugKind": "NullExpression",
@@ -1764,7 +1783,7 @@ Object {
             "pos": 0,
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 0,
       },
     ],
@@ -1789,11 +1808,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 53,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 53,
         "expression": Object {
           "__debugKind": "ObjectsExpression",
@@ -1838,11 +1858,12 @@ Object {
               "body": Object {
                 "__debugKind": "SequenceOfStatements",
                 "end": 53,
+                "isExpression": true,
                 "kind": 53,
                 "pos": 47,
                 "statements": Array [
                   Object {
-                    "__debugKind": "LocalExpressionStatement",
+                    "__debugKind": "ExpressionStatement",
                     "end": 53,
                     "expression": Object {
                       "__debugKind": "SlotLookupExpression",
@@ -1886,7 +1907,7 @@ Object {
             },
           ],
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 0,
       },
     ],
@@ -1911,11 +1932,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 88,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 38,
         "initializer": Object {
           "__debugKind": "ObjectsExpression",
@@ -1957,7 +1979,7 @@ Object {
             },
           ],
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -1970,7 +1992,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 88,
         "expression": Object {
           "__debugKind": "ObjectsExpression",
@@ -2029,11 +2051,12 @@ Object {
               "body": Object {
                 "__debugKind": "SequenceOfStatements",
                 "end": 88,
+                "isExpression": true,
                 "kind": 53,
                 "pos": 82,
                 "statements": Array [
                   Object {
-                    "__debugKind": "LocalExpressionStatement",
+                    "__debugKind": "ExpressionStatement",
                     "end": 88,
                     "expression": Object {
                       "__debugKind": "SlotLookupExpression",
@@ -2077,7 +2100,7 @@ Object {
             },
           ],
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 32,
       },
     ],
@@ -2102,11 +2125,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 107,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 38,
         "initializer": Object {
           "__debugKind": "ObjectsExpression",
@@ -2148,7 +2172,7 @@ Object {
             },
           ],
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -2161,7 +2185,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 107,
         "expression": Object {
           "__debugKind": "ObjectsExpression",
@@ -2220,24 +2244,25 @@ Object {
               "body": Object {
                 "__debugKind": "SequenceOfStatements",
                 "end": 107,
+                "isExpression": true,
                 "kind": 53,
                 "pos": 89,
                 "statements": Array [
                   Object {
-                    "__debugKind": "LocalExpressionStatement",
+                    "__debugKind": "ExpressionStatement",
                     "end": 107,
                     "expression": Object {
                       "__debugKind": "BinaryShorthand",
                       "end": 107,
-                      "kind": 58,
+                      "kind": 56,
                       "left": Object {
                         "__debugKind": "BinaryShorthand",
                         "end": 105,
-                        "kind": 58,
+                        "kind": 56,
                         "left": Object {
                           "__debugKind": "BinaryShorthand",
                           "end": 101,
-                          "kind": 58,
+                          "kind": 56,
                           "left": Object {
                             "__debugKind": "SlotLookupExpression",
                             "end": 97,
@@ -2383,7 +2408,7 @@ Object {
             },
           ],
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 32,
       },
     ],
@@ -2408,11 +2433,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 32,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 32,
         "expression": Object {
           "__debugKind": "PrintingExpression",
@@ -2447,7 +2473,7 @@ Object {
           "kind": 37,
           "pos": 0,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 0,
       },
     ],
@@ -2472,11 +2498,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 27,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 20,
         "initializer": Object {
           "__debugKind": "ArraysExpression",
@@ -2501,7 +2528,7 @@ Object {
           },
           "pos": 8,
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -2514,7 +2541,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 27,
         "expression": Object {
           "__debugKind": "SetShorthand",
@@ -2552,7 +2579,7 @@ Object {
             "kind": 36,
             "pos": 19,
           },
-          "kind": 60,
+          "kind": 58,
           "pos": 19,
           "value": Object {
             "__debugKind": "IntegerLiteralExpression",
@@ -2571,7 +2598,7 @@ Object {
             },
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 19,
       },
     ],
@@ -2596,11 +2623,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 144,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 38,
         "initializer": Object {
           "__debugKind": "ObjectsExpression",
@@ -2642,7 +2670,7 @@ Object {
             },
           ],
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -2655,7 +2683,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 119,
         "initializer": Object {
           "__debugKind": "ObjectsExpression",
@@ -2745,7 +2773,7 @@ Object {
             },
           ],
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 40,
@@ -2758,7 +2786,7 @@ Object {
         "pos": 35,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 133,
         "expression": Object {
           "__debugKind": "SlotAssignmentExpression",
@@ -2806,11 +2834,11 @@ Object {
             },
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 118,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 144,
         "expression": Object {
           "__debugKind": "SlotAssignmentExpression",
@@ -2888,7 +2916,7 @@ Object {
             },
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 132,
       },
     ],
@@ -2913,11 +2941,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 135,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 38,
         "initializer": Object {
           "__debugKind": "ObjectsExpression",
@@ -2959,7 +2988,7 @@ Object {
             },
           ],
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -2972,7 +3001,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 120,
         "initializer": Object {
           "__debugKind": "ObjectsExpression",
@@ -3062,7 +3091,7 @@ Object {
             },
           ],
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 40,
@@ -3075,7 +3104,7 @@ Object {
         "pos": 35,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 129,
         "expression": Object {
           "__debugKind": "SlotLookupExpression",
@@ -3107,11 +3136,11 @@ Object {
           },
           "pos": 119,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 119,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 135,
         "expression": Object {
           "__debugKind": "SlotLookupExpression",
@@ -3173,7 +3202,7 @@ Object {
           },
           "pos": 134,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 128,
       },
     ],
@@ -3198,11 +3227,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 17,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 12,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -3220,7 +3250,7 @@ Object {
             "value": "1",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -3233,7 +3263,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 17,
         "expression": Object {
           "__debugKind": "VariableAssignmentExpression",
@@ -3266,7 +3296,7 @@ Object {
             },
           },
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 11,
       },
     ],
@@ -3291,11 +3321,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 11,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 11,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -3313,7 +3344,7 @@ Object {
             "value": "1",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -3326,7 +3357,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 11,
         "expression": Object {
           "__debugKind": "VariableReferenceExpression",
@@ -3343,7 +3374,7 @@ Object {
           "kind": 36,
           "pos": 10,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 10,
       },
     ],
@@ -3368,11 +3399,12 @@ Object {
   "body": Object {
     "__debugKind": "SequenceOfStatements",
     "end": 44,
+    "isExpression": false,
     "kind": 53,
     "pos": 0,
     "statements": Array [
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 13,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -3390,7 +3422,7 @@ Object {
             "value": "3",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 5,
@@ -3403,7 +3435,7 @@ Object {
         "pos": 0,
       },
       Object {
-        "__debugKind": "GlobalVariableStatement",
+        "__debugKind": "VariableStatement",
         "end": 27,
         "initializer": Object {
           "__debugKind": "IntegerLiteralExpression",
@@ -3428,7 +3460,7 @@ Object {
             "value": "1",
           },
         },
-        "kind": 55,
+        "kind": 52,
         "name": Object {
           "__debugKind": "Identifier",
           "end": 15,
@@ -3441,18 +3473,19 @@ Object {
         "pos": 10,
       },
       Object {
-        "__debugKind": "TopLevelExpressionStatement",
+        "__debugKind": "ExpressionStatement",
         "end": 44,
         "expression": Object {
           "__debugKind": "WhileExpression",
           "body": Object {
             "__debugKind": "SequenceOfStatements",
             "end": 44,
+            "isExpression": true,
             "kind": 53,
             "pos": 35,
             "statements": Array [
               Object {
-                "__debugKind": "LocalExpressionStatement",
+                "__debugKind": "ExpressionStatement",
                 "end": 44,
                 "expression": Object {
                   "__debugKind": "VariableAssignmentExpression",
@@ -3471,7 +3504,7 @@ Object {
                   "value": Object {
                     "__debugKind": "BinaryShorthand",
                     "end": 44,
-                    "kind": 58,
+                    "kind": 56,
                     "left": Object {
                       "__debugKind": "VariableReferenceExpression",
                       "end": 42,
@@ -3537,7 +3570,7 @@ Object {
           "kind": 47,
           "pos": 22,
         },
-        "kind": 57,
+        "kind": 54,
         "pos": 22,
       },
     ],

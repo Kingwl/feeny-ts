@@ -63,15 +63,11 @@ export enum SyntaxKind {
   VariableSlot,
   MethodSlot,
 
-  // Local Statements
-  LocalVariableStatement,
+  // Statements
+  VariableStatement,
   SequenceOfStatements,
-  LocalExpressionStatement,
-
-  // Top Level Statement
-  GlobalVariableStatement,
+  ExpressionStatement,
   FunctionStatement,
-  TopLevelExpressionStatement,
 
   // Shorthand
   BinaryShorthand,
@@ -115,7 +111,7 @@ export interface NodeArray<T extends ASTNode>
 export interface SourceFile extends ASTNode {
   _sourceFileBrand: never;
   kind: SyntaxKind.SourceFile;
-  body: SequenceOfStatements<TopLevelStatement>;
+  body: SequenceOfStatements;
   eof: EndOfFileToken;
 }
 
@@ -296,17 +292,17 @@ export interface IfExpression extends Expression {
   kind: SyntaxKind.IfExpression;
   condition: Expression;
   thenStatement:
-    | SequenceOfStatements<LocalStatement>
-    | LocalExpressionStatement;
+    | SequenceOfStatements
+    | ExpressionStatement;
   elseStatement?:
-    | SequenceOfStatements<LocalStatement>
-    | LocalExpressionStatement;
+    | SequenceOfStatements
+    | ExpressionStatement;
 }
 
 export interface WhileExpression extends Expression {
   kind: SyntaxKind.WhileExpression;
   condition: Expression;
-  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement;
+  body: SequenceOfStatements | ExpressionStatement;
 }
 
 export interface ThisExpression extends Expression {
@@ -352,47 +348,36 @@ export interface MethodSlot extends ObjectSlot {
   kind: SyntaxKind.MethodSlot;
   name: IdentifierToken;
   params: NodeArray<IdentifierToken>;
-  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement;
+  body: SequenceOfStatements | ExpressionStatement;
 }
 export interface Statement extends ASTNode {
   _statementBrand: never;
 }
 
-export interface LocalVariableStatement extends Statement {
-  kind: SyntaxKind.LocalVariableStatement;
+export interface VariableStatement extends Statement {
+  kind: SyntaxKind.VariableStatement;
   name: IdentifierToken;
   initializer: Expression;
 }
 
-export interface SequenceOfStatements<
-  T extends LocalStatement | TopLevelStatement
-> extends Statement {
+export interface SequenceOfStatements extends Statement {
   kind: SyntaxKind.SequenceOfStatements;
-  statements: NodeArray<T>;
+  statements: NodeArray<Statement>;
+  isExpression: boolean
 }
 
-export interface LocalExpressionStatement extends Statement {
-  kind: SyntaxKind.LocalExpressionStatement;
+export interface ExpressionStatement extends Statement {
+  kind: SyntaxKind.ExpressionStatement;
   expression: Expression;
-}
-
-export interface GlobalVariableStatement extends Statement {
-  kind: SyntaxKind.GlobalVariableStatement;
-  name: IdentifierToken;
-  initializer: Expression;
 }
 
 export interface FunctionStatement extends Statement {
   kind: SyntaxKind.FunctionStatement;
   name: IdentifierToken;
   params: NodeArray<IdentifierToken>;
-  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement;
+  body: SequenceOfStatements | ExpressionStatement;
 }
 
-export interface TopLevelExpressionStatement extends Statement {
-  kind: SyntaxKind.TopLevelExpressionStatement;
-  expression: Expression;
-}
 
 export type PrimaryExpression =
   | IntegerLiteralExpression
@@ -415,9 +400,8 @@ export type AccessOrAssignmentExpressionOrHigher =
   | SetShorthand
   | GetShorthand;
 
-export type TopLevelStatement =
-  | GlobalVariableStatement
+export type AllStatement =
+  | VariableStatement
+  | SequenceOfStatements
+  | ExpressionStatement
   | FunctionStatement
-  | TopLevelExpressionStatement;
-
-export type LocalStatement = LocalVariableStatement | LocalExpressionStatement;

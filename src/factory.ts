@@ -1,5 +1,5 @@
 import {
-  KeywordSyntaxKind,
+  Statement,
   AccessOrAssignmentExpressionOrHigher,
   ArraysExpression,
   ASTNode,
@@ -7,17 +7,14 @@ import {
   BinaryShorthandTokenSyntaxKind,
   EndOfFileToken,
   Expression,
+  ExpressionStatement,
   FunctionCallExpression,
   FunctionStatement,
   GetShorthand,
-  GlobalVariableStatement,
   IdentifierToken,
   IfExpression,
   IntegerLiteralExpression,
   IntegerLiteralToken,
-  LocalExpressionStatement,
-  LocalStatement,
-  LocalVariableStatement,
   MethodCallExpression,
   MethodSlot,
   NodeArray,
@@ -38,11 +35,10 @@ import {
   ThisExpression,
   Token,
   TokenSyntaxKind,
-  TopLevelExpressionStatement,
-  TopLevelStatement,
   VariableAssignmentExpression,
   VariableReferenceExpression,
   VariableSlot,
+  VariableStatement,
   WhileExpression
 } from './types';
 
@@ -89,34 +85,12 @@ export function createIdentifier(id: string): IdentifierToken {
 }
 
 export function createSourceFile(
-  body: SequenceOfStatements<TopLevelStatement>,
+  body: SequenceOfStatements,
   eof: EndOfFileToken
 ): SourceFile {
   const node = createNode<SourceFile>(SyntaxKind.SourceFile);
   node.body = body;
   node.eof = eof;
-  return node;
-}
-
-export function createGlobalVariableStatement(
-  name: IdentifierToken,
-  initializer: Expression
-): GlobalVariableStatement {
-  const node = createNode<GlobalVariableStatement>(
-    SyntaxKind.GlobalVariableStatement
-  );
-  node.name = name;
-  node.initializer = initializer;
-  return node;
-}
-
-export function createTopLevelExpressionStatement(
-  expression: Expression
-): TopLevelExpressionStatement {
-  const node = createNode<TopLevelExpressionStatement>(
-    SyntaxKind.TopLevelExpressionStatement
-  );
-  node.expression = expression;
   return node;
 }
 
@@ -188,42 +162,39 @@ export function createVariableSlot(
   return node;
 }
 
-export function createLocalVariableStatement(
+export function createVariableStatement(
   name: IdentifierToken,
   initializer: Expression
-): LocalVariableStatement {
-  const node = createNode<LocalVariableStatement>(
-    SyntaxKind.LocalVariableStatement
+): VariableStatement {
+  const node = createNode<VariableStatement>(
+    SyntaxKind.VariableStatement
   );
   node.name = name;
   node.initializer = initializer;
   return node;
 }
 
-export function createLocalExpressionStatement(
+export function createExpressionStatement(
   expression: Expression
-): LocalExpressionStatement {
-  const node = createNode<LocalExpressionStatement>(
-    SyntaxKind.LocalExpressionStatement
+): ExpressionStatement {
+  const node = createNode<ExpressionStatement>(
+    SyntaxKind.ExpressionStatement
   );
   node.expression = expression;
   return node;
 }
 
-export function createSequenceOfStatements<
-  T extends LocalStatement | TopLevelStatement
->(statements: NodeArray<T>): SequenceOfStatements<T> {
-  const node = createNode<SequenceOfStatements<T>>(
-    SyntaxKind.SequenceOfStatements
-  );
+export function createSequenceOfStatements(statements: NodeArray<Statement>, isExpression: boolean): SequenceOfStatements {
+  const node = createNode<SequenceOfStatements>(SyntaxKind.SequenceOfStatements);
   node.statements = statements;
+  node.isExpression = isExpression;
   return node;
 }
 
 export function createFunctionStatement(
   name: IdentifierToken,
   params: NodeArray<IdentifierToken>,
-  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
+  body: SequenceOfStatements | ExpressionStatement
 ): FunctionStatement {
   const node = createNode<FunctionStatement>(SyntaxKind.FunctionStatement);
   node.name = name;
@@ -235,7 +206,7 @@ export function createFunctionStatement(
 export function createMethodSlot(
   name: IdentifierToken,
   params: NodeArray<IdentifierToken>,
-  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
+  body: SequenceOfStatements | ExpressionStatement
 ): MethodSlot {
   const node = createNode<MethodSlot>(SyntaxKind.MethodSlot);
   node.name = name;
@@ -247,11 +218,11 @@ export function createMethodSlot(
 export function createIfExpression(
   condition: Expression,
   thenStatement:
-    | SequenceOfStatements<LocalStatement>
-    | LocalExpressionStatement,
+    | SequenceOfStatements
+    | ExpressionStatement,
   elseStatement?:
-    | SequenceOfStatements<LocalStatement>
-    | LocalExpressionStatement
+    | SequenceOfStatements
+    | ExpressionStatement
 ): IfExpression {
   const node = createNode<IfExpression>(SyntaxKind.IfExpression);
   node.condition = condition;
@@ -262,7 +233,7 @@ export function createIfExpression(
 
 export function createWhileExpression(
   condition: Expression,
-  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
+  body: SequenceOfStatements | ExpressionStatement
 ): WhileExpression {
   const node = createNode<WhileExpression>(SyntaxKind.WhileExpression);
   node.condition = condition;

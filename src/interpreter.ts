@@ -1,9 +1,19 @@
 import {
+  ArraysExpression,
+  Expression,
+  FunctionStatement,
+  IfExpression,
+  ExpressionStatement,
+  MethodSlot,
+  PrintingExpression,
+  SyntaxKind,
+  ThisExpression,
+  VariableSlot,
   BinaryShorthand,
   BinaryShorthandTokenSyntaxKind,
   FunctionCallExpression,
   GetShorthand,
-  LocalVariableStatement,
+  VariableStatement,
   MethodCallExpression,
   NullExpression,
   ObjectsExpression,
@@ -14,31 +24,13 @@ import {
   SlotLookupExpression,
   VariableAssignmentExpression,
   VariableReferenceExpression,
-  WhileExpression
-} from '.';
-import {
-  ArraysExpression,
-  Expression,
-  FunctionStatement,
-  IfExpression,
-  LocalExpressionStatement,
-  LocalStatement,
-  MethodSlot,
-  PrintingExpression,
-  SyntaxKind,
-  ThisExpression,
-  VariableSlot
-} from './types';
-import {
-  GlobalVariableStatement,
+  WhileExpression,
   IntegerLiteralExpression,
   SequenceOfStatements,
   SourceFile,
   Statement,
-  TopLevelExpressionStatement,
-  TopLevelStatement
 } from './types';
-import { assertDef, isDef, last } from './utils';
+import { assertDef, last } from './utils';
 
 enum ValueType {
   Null,
@@ -303,7 +295,7 @@ class RuntimeFunction extends FunctionValue {
   constructor(
     name: string,
     params: string[],
-    public body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
+    public body: SequenceOfStatements | ExpressionStatement
   ) {
     super(name, params);
   }
@@ -626,7 +618,7 @@ export function createInterpreter(file: SourceFile) {
         return callable.fn(thisValue, args);
       }
       if (callable.isRuntime()) {
-        return evaluateLocalStatementOrLocalSequenceOfStatements(callable.body);
+        return evaluateExpressionStatementOrSequenceOfStatements(callable.body);
       }
       throw new Error('Invalid function');
     });
@@ -637,47 +629,40 @@ export function createInterpreter(file: SourceFile) {
   }
 
   function evaluateSourceFile(sourceFile: SourceFile) {
-    evaluateTopLevelSequenceOfStatements(sourceFile.body);
+    evaluateSequenceOfStatements(sourceFile.body);
   }
 
-  function evaluateLocalSequenceOfStatements(
-    seqs: SequenceOfStatements<LocalStatement>
+  function evaluateSequenceOfStatements(
+    seqs: SequenceOfStatements
   ) {
     const front = seqs.statements.slice(0, seqs.statements.length - 1);
     const last = seqs.statements[seqs.statements.length - 1];
 
     front.forEach(evaluateStatement);
 
-    if (last.kind !== SyntaxKind.LocalExpressionStatement) {
+    if (!seqs.isExpression) {
+      evaluateStatement(last)
+      return new NullValue();
+    }
+
+    if (last.kind !== SyntaxKind.ExpressionStatement) {
       throw new Error('Invalid statement');
     }
-    return evaluateLocalExpressionStatement(last);
-  }
-
-  function evaluateTopLevelSequenceOfStatements(
-    seqs: SequenceOfStatements<TopLevelStatement>
-  ) {
-    seqs.statements.forEach(evaluateStatement);
+    return evaluateExpressionStatement(last as ExpressionStatement);
   }
 
   function evaluateStatement(stmt: Statement) {
     switch (stmt.kind) {
       case SyntaxKind.SequenceOfStatements:
-        return evaluateLocalSequenceOfStatements(
-          stmt as SequenceOfStatements<LocalStatement>
+        return evaluateSequenceOfStatements(
+          stmt as SequenceOfStatements
         );
-      case SyntaxKind.GlobalVariableStatement:
-        return evaluateGlobalVariableStatement(stmt as GlobalVariableStatement);
-      case SyntaxKind.TopLevelExpressionStatement:
-        return evaluateTopLevelExpressionStatement(
-          stmt as TopLevelExpressionStatement
+      case SyntaxKind.ExpressionStatement:
+        return evaluateExpressionStatement(
+          stmt as ExpressionStatement
         );
-      case SyntaxKind.LocalExpressionStatement:
-        return evaluateLocalExpressionStatement(
-          stmt as LocalExpressionStatement
-        );
-      case SyntaxKind.LocalVariableStatement:
-        return evaluateLocalVariableStatement(stmt as LocalVariableStatement);
+      case SyntaxKind.VariableStatement:
+        return evaluateVariableStatement(stmt as VariableStatement);
       case SyntaxKind.FunctionStatement:
         return evaluateFunctionStatement(stmt as FunctionStatement);
       default:
@@ -920,7 +905,7 @@ export function createInterpreter(file: SourceFile) {
       i++;
 
       runInEnv(() => {
-        return evaluateLocalStatementOrLocalSequenceOfStatements(expr.body);
+        return evaluateExpressionStatementOrSequenceOfStatements(expr.body);
       });
     }
 
@@ -931,13 +916,13 @@ export function createInterpreter(file: SourceFile) {
     return evaluateExpression(expr.expression);
   }
 
-  function evaluateLocalStatementOrLocalSequenceOfStatements(
-    stmt: LocalExpressionStatement | SequenceOfStatements<LocalStatement>
+  function evaluateExpressionStatementOrSequenceOfStatements(
+    stmt: ExpressionStatement | SequenceOfStatements
   ): BaseValue {
     if (stmt.kind === SyntaxKind.SequenceOfStatements) {
-      return evaluateLocalSequenceOfStatements(stmt);
+      return evaluateSequenceOfStatements(stmt);
     } else {
-      return evaluateLocalExpressionStatement(stmt);
+      return evaluateExpressionStatement(stmt);
     }
   }
 
@@ -948,11 +933,11 @@ export function createInterpreter(file: SourceFile) {
 
     if (toBooleanValue(condition).value) {
       return runInEnv(() => {
-        return evaluateLocalStatementOrLocalSequenceOfStatements(thenStatement);
+        return evaluateExpressionStatementOrSequenceOfStatements(thenStatement);
       });
     } else if (elseStatement) {
       return runInEnv(() => {
-        return evaluateLocalStatementOrLocalSequenceOfStatements(elseStatement);
+        return evaluateExpressionStatementOrSequenceOfStatements(elseStatement);
       });
     } else {
       return new NullValue();
@@ -991,21 +976,10 @@ export function createInterpreter(file: SourceFile) {
     return new IntegerValue(value * (isNegative ? -1 : 1));
   }
 
-  function evaluateGlobalVariableStatement(stmt: GlobalVariableStatement) {
-    const value = evaluateExpression(stmt.initializer);
-    globalEnv.addBinding(stmt.name.id, value);
-  }
-
-  function evaluateLocalVariableStatement(stmt: LocalVariableStatement) {
+  function evaluateVariableStatement(stmt: VariableStatement) {
     const env = currentEnv();
     const value = evaluateExpression(stmt.initializer);
     env.addBinding(stmt.name.id, value);
-  }
-
-  function evaluateTopLevelExpressionStatement(
-    stmt: TopLevelExpressionStatement
-  ) {
-    evaluateExpression(stmt.expression);
   }
 
   function evaluateFunctionStatement(stmt: FunctionStatement) {
@@ -1014,7 +988,7 @@ export function createInterpreter(file: SourceFile) {
     globalEnv.addBinding(stmt.name.id, func);
   }
 
-  function evaluateLocalExpressionStatement(stmt: LocalExpressionStatement) {
+  function evaluateExpressionStatement(stmt: ExpressionStatement) {
     return evaluateExpression(stmt.expression);
   }
 }

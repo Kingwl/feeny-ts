@@ -339,10 +339,8 @@ export function getIndent(ch: string) {
 export function isStatement(node: ASTNode): node is Statement {
   switch (node.kind) {
     case SyntaxKind.SequenceOfStatements:
-    case SyntaxKind.LocalVariableStatement:
-    case SyntaxKind.LocalExpressionStatement:
-    case SyntaxKind.GlobalVariableStatement:
-    case SyntaxKind.TopLevelExpressionStatement:
+    case SyntaxKind.VariableStatement:
+    case SyntaxKind.ExpressionStatement:
     case SyntaxKind.FunctionStatement:
       return true;
     default:
