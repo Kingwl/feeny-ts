@@ -5,6 +5,7 @@ import { assertDef, isDef, last } from "./utils";
 
 enum ValueType {
     Null,
+    Boolean,
     Array,
     Object,
     Function,
@@ -18,6 +19,10 @@ abstract class BaseValue {
 
     isNull(): this is NullValue {
         return false
+    }
+
+    isBoolean(): this is BooleanValue {
+        return false;
     }
 
     isArray(): this is ArrayValue {
@@ -85,6 +90,32 @@ abstract class EnvValue extends BaseValue {
 
     isEnvValue (): true {
         return true
+    }
+}
+
+class BooleanValue extends EnvValue {
+    get type () { return ValueType.Boolean }
+
+    static True = new BooleanValue(true)
+    static False = new BooleanValue(false)
+
+    static Env = new Environment()
+    private _instanceEnv = new Environment(BooleanValue.Env);
+
+    get env () {
+        return this._instanceEnv
+    }
+
+    constructor(public value: boolean) {
+        super()
+    }
+
+    isBoolean (): true {
+        return true
+    }
+
+    print(): string {
+        return `${this.value}`
     }
 }
 
@@ -194,12 +225,13 @@ class BuiltinFunction extends FunctionValue {
     }
 }
 
-type VarValues = IntegerValue | ArrayValue | ObjectValue | NullValue
+type VarValues = IntegerValue | ArrayValue | ObjectValue | NullValue | BooleanValue
 type CodeValues = FunctionValue | BuiltinFunction
 type AllValues = VarValues | CodeValues
 
 interface CallFrame {
     thisValue: BaseValue | undefined;
+    name: string;
     env: Environment;
 }
 
@@ -253,7 +285,7 @@ export function createInterpreter(file: SourceFile) {
         return result
     }
 
-    function runInFuncEnv<R = void>(thisValue: BaseValue | undefined, params: string[], args: BaseValue[], cb: () => R) {
+    function runInFuncEnv<R = void>(name: string, thisValue: BaseValue | undefined, params: string[], args: BaseValue[], cb: () => R) {
         const parent = currentEnv();
         const env = new Environment(parent);
         
@@ -265,7 +297,8 @@ export function createInterpreter(file: SourceFile) {
 
         const callFrame: CallFrame = {
             thisValue,
-            env
+            env,
+            name
         }
 
         pushEnv(env);
@@ -291,7 +324,7 @@ export function createInterpreter(file: SourceFile) {
             throw new Error("Invalid number of arguments")
         }
 
-        return runInFuncEnv(thisValue, value.params, args, () => {
+        return runInFuncEnv(value.name, thisValue, value.params, args, () => {
             return evaluateLocalStatementOrLocalSequenceOfStatements(value.body)
         })
     }
@@ -389,7 +422,7 @@ export function createInterpreter(file: SourceFile) {
         }
 
         const setFunc = left.env.getBinding("set");
-        assertDef(setFunc)
+        assertDef(setFunc, "set shorthand not found");
 
         const args = expr.args.map(evaluateExpression);
         const value = evaluateExpression(expr.value);
@@ -404,7 +437,7 @@ export function createInterpreter(file: SourceFile) {
         }
 
         const getFunc = left.env.getBinding("get");
-        assertDef(getFunc)
+        assertDef(getFunc, 'get shorthand not found');
 
         const args = expr.args.map(evaluateExpression);
         return callFunction(left, getFunc, args)
@@ -416,6 +449,22 @@ export function createInterpreter(file: SourceFile) {
                 return 'add'
             case SyntaxKind.SubToken:
                 return 'sub'
+            case SyntaxKind.MulToken:
+                return 'mul'
+            case SyntaxKind.DivToken:
+                return 'div'
+            case SyntaxKind.ModToken:
+                return 'mod'
+            case SyntaxKind.LessThanToken:
+                return 'lt'
+            case SyntaxKind.GreaterThanToken:
+                return 'gt'
+            case SyntaxKind.LessEqualsThanToken:
+                return 'le'
+            case SyntaxKind.GreaterEqualsThanToken:
+                return 'ge'
+            case SyntaxKind.EqualsEqualsToken:
+                return 'eq'
             default:
                 throw new Error("Invalid operator")
         }
@@ -434,7 +483,7 @@ export function createInterpreter(file: SourceFile) {
 
         const operator = shorthandTokenToOperator(expr.operator.kind);
         const callable = left.env.getBinding(operator)
-        assertDef(callable)
+        assertDef(callable, "Operator not found: " + operator);
 
         const right = evaluateExpression(expr.right);
         return callFunction(left, callable, [right])
@@ -452,7 +501,7 @@ export function createInterpreter(file: SourceFile) {
             throw new TypeError("Left operand must be an environment value")
         }
         const callable = left.env.getBinding(expr.name.id)
-        assertDef(callable)
+        assertDef(callable, "Method not found")
 
         const args = expr.args.map(evaluateExpression)
         return callFunction(left, callable, args)
@@ -505,7 +554,7 @@ export function createInterpreter(file: SourceFile) {
         }
         
         const result = left.env.getBinding(expr.name.id)
-        assertDef(result);
+        assertDef(result, "Slot not found");
         return result
     }
 
@@ -517,9 +566,22 @@ export function createInterpreter(file: SourceFile) {
         return value
     }
 
+    function toBooleanValue (value: BaseValue) {
+        if (value.isNull()) {
+            return new BooleanValue(false)
+        } 
+        if (value.isBoolean()) {
+            return value
+        }
+        if (value.isInteger()) {
+            return value.value === 0 ? BooleanValue.False : BooleanValue.True;
+        }
+        throw new TypeError("Invalid type: " + value.type)
+    }
+
     function evaluateWhileExpression(expr: WhileExpression) {
         let i = 0;
-        while(!evaluateExpression(expr.condition).isNull()) {
+        while(toBooleanValue(evaluateExpression(expr.condition)).value) {
             if (i > 10000) {
                 throw new Error("Infinite loop")
             }
@@ -550,7 +612,7 @@ export function createInterpreter(file: SourceFile) {
         const thenStatement = expr.thenStatement;
         const elseStatement = expr.elseStatement;
 
-        if (!condition.isNull()) {
+        if (toBooleanValue(condition).value) {
             return runInEnv(() => {
                 return evaluateLocalStatementOrLocalSequenceOfStatements(thenStatement)
             });

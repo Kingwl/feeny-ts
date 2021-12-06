@@ -92,10 +92,12 @@ Array [
     "World",
   ],
   Array [
-    "Hello\\\\n",
+    "World\\\\n",
   ],
 ]
 `;
+
+exports[`Should work with demo Interpreter - should work with hello9 1`] = `Array []`;
 
 exports[`Should work with demo Parser - should work with bsearch 1`] = `
 Object {
