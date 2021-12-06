@@ -1,7 +1,6 @@
 import { forEachDemo, parseCode, runCode, runWithConsoleLogHook, scanCode } from './utils'
 
 describe('Should work with demo', () => {
-
     forEachDemo((baseName, content) => {
         it(`Scanner - should work with ${baseName}`, () => {
             const tokens = scanCode(content)

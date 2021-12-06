@@ -81,7 +81,7 @@ Array [
   ],
   Array [
     "~ - ~i",
-    "-28",
+    "-26",
     "36",
   ],
   Array [
@@ -91,9 +91,9 @@ Array [
     "a / b = ",
   ],
   Array [
-    "~ + ~i",
-    "-Infinity",
-    "Infinity",
+    "~ - ~i",
+    "-1",
+    "2",
   ],
   Array [
     "\\\\n",
@@ -499,6 +499,989 @@ Array [
   ],
   Array [
     ")",
+  ],
+  Array [
+    "\\\\n",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with sudoku 1`] = `
+Array [
+  Array [
+    "=== Given Puzzle ===\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "\\\\n=== Solution ===\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
+  ],
+  Array [
+    " ",
+  ],
+  Array [
+    "_",
   ],
   Array [
     "\\\\n",
@@ -1561,34 +2544,34 @@ Object {
                             "end": 144,
                             "kind": 58,
                             "left": Object {
-                              "__debugKind": "VariableReferenceExpression",
-                              "end": 136,
-                              "id": Object {
-                                "__debugKind": "Identifier",
-                                "end": 134,
-                                "fullPos": 133,
-                                "id": "i",
-                                "kind": 21,
-                                "leadingIndent": 6,
-                                "pos": 133,
-                              },
-                              "kind": 36,
-                              "pos": 133,
-                            },
-                            "operator": Object {
-                              "__debugKind": "AddToken",
-                              "end": 136,
-                              "fullPos": 134,
-                              "kind": 9,
-                              "leadingIndent": 6,
-                              "pos": 135,
-                            },
-                            "pos": 133,
-                            "right": Object {
                               "__debugKind": "BinaryShorthand",
-                              "end": 144,
+                              "end": 141,
                               "kind": 58,
                               "left": Object {
+                                "__debugKind": "VariableReferenceExpression",
+                                "end": 136,
+                                "id": Object {
+                                  "__debugKind": "Identifier",
+                                  "end": 134,
+                                  "fullPos": 133,
+                                  "id": "i",
+                                  "kind": 21,
+                                  "leadingIndent": 6,
+                                  "pos": 133,
+                                },
+                                "kind": 36,
+                                "pos": 133,
+                              },
+                              "operator": Object {
+                                "__debugKind": "AddToken",
+                                "end": 136,
+                                "fullPos": 134,
+                                "kind": 9,
+                                "leadingIndent": 6,
+                                "pos": 135,
+                              },
+                              "pos": 133,
+                              "right": Object {
                                 "__debugKind": "VariableReferenceExpression",
                                 "end": 141,
                                 "id": Object {
@@ -1603,30 +2586,30 @@ Object {
                                 "kind": 36,
                                 "pos": 137,
                               },
-                              "operator": Object {
-                                "__debugKind": "SubToken",
-                                "end": 141,
-                                "fullPos": 139,
-                                "kind": 10,
+                            },
+                            "operator": Object {
+                              "__debugKind": "SubToken",
+                              "end": 141,
+                              "fullPos": 139,
+                              "kind": 10,
+                              "leadingIndent": 6,
+                              "pos": 140,
+                            },
+                            "pos": 140,
+                            "right": Object {
+                              "__debugKind": "IntegerLiteralExpression",
+                              "end": 144,
+                              "kind": 35,
+                              "pos": 142,
+                              "subToken": undefined,
+                              "value": Object {
+                                "__debugKind": "IntegerLiteralToken",
+                                "end": 143,
+                                "fullPos": 141,
+                                "kind": 19,
                                 "leadingIndent": 6,
-                                "pos": 140,
-                              },
-                              "pos": 137,
-                              "right": Object {
-                                "__debugKind": "IntegerLiteralExpression",
-                                "end": 144,
-                                "kind": 35,
                                 "pos": 142,
-                                "subToken": undefined,
-                                "value": Object {
-                                  "__debugKind": "IntegerLiteralToken",
-                                  "end": 143,
-                                  "fullPos": 141,
-                                  "kind": 19,
-                                  "leadingIndent": 6,
-                                  "pos": 142,
-                                  "value": "1",
-                                },
+                                "value": "1",
                               },
                             },
                           },
@@ -3925,68 +4908,73 @@ Object {
                                 "end": 336,
                                 "kind": 58,
                                 "left": Object {
-                                  "__debugKind": "SlotLookupExpression",
-                                  "end": 307,
-                                  "expression": Object {
-                                    "__debugKind": "ThisExpression",
-                                    "end": 301,
-                                    "kind": 48,
-                                    "pos": 296,
-                                  },
-                                  "kind": 42,
-                                  "name": Object {
-                                    "__debugKind": "Identifier",
-                                    "end": 305,
-                                    "fullPos": 301,
-                                    "id": "real",
-                                    "kind": 21,
-                                    "leadingIndent": 9,
-                                    "pos": 301,
-                                  },
-                                  "pos": 296,
-                                },
-                                "operator": Object {
-                                  "__debugKind": "MulToken",
-                                  "end": 307,
-                                  "fullPos": 305,
-                                  "kind": 11,
-                                  "leadingIndent": 9,
-                                  "pos": 306,
-                                },
-                                "pos": 296,
-                                "right": Object {
                                   "__debugKind": "BinaryShorthand",
-                                  "end": 336,
+                                  "end": 328,
                                   "kind": 58,
                                   "left": Object {
-                                    "__debugKind": "SlotLookupExpression",
+                                    "__debugKind": "BinaryShorthand",
                                     "end": 316,
-                                    "expression": Object {
-                                      "__debugKind": "VariableReferenceExpression",
-                                      "end": 310,
-                                      "id": Object {
+                                    "kind": 58,
+                                    "left": Object {
+                                      "__debugKind": "SlotLookupExpression",
+                                      "end": 307,
+                                      "expression": Object {
+                                        "__debugKind": "ThisExpression",
+                                        "end": 301,
+                                        "kind": 48,
+                                        "pos": 296,
+                                      },
+                                      "kind": 42,
+                                      "name": Object {
                                         "__debugKind": "Identifier",
-                                        "end": 309,
-                                        "fullPos": 307,
-                                        "id": "c",
+                                        "end": 305,
+                                        "fullPos": 301,
+                                        "id": "real",
                                         "kind": 21,
                                         "leadingIndent": 9,
+                                        "pos": 301,
+                                      },
+                                      "pos": 296,
+                                    },
+                                    "operator": Object {
+                                      "__debugKind": "MulToken",
+                                      "end": 307,
+                                      "fullPos": 305,
+                                      "kind": 11,
+                                      "leadingIndent": 9,
+                                      "pos": 306,
+                                    },
+                                    "pos": 296,
+                                    "right": Object {
+                                      "__debugKind": "SlotLookupExpression",
+                                      "end": 316,
+                                      "expression": Object {
+                                        "__debugKind": "VariableReferenceExpression",
+                                        "end": 310,
+                                        "id": Object {
+                                          "__debugKind": "Identifier",
+                                          "end": 309,
+                                          "fullPos": 307,
+                                          "id": "c",
+                                          "kind": 21,
+                                          "leadingIndent": 9,
+                                          "pos": 308,
+                                        },
+                                        "kind": 36,
                                         "pos": 308,
                                       },
-                                      "kind": 36,
+                                      "kind": 42,
+                                      "name": Object {
+                                        "__debugKind": "Identifier",
+                                        "end": 314,
+                                        "fullPos": 310,
+                                        "id": "real",
+                                        "kind": 21,
+                                        "leadingIndent": 9,
+                                        "pos": 310,
+                                      },
                                       "pos": 308,
                                     },
-                                    "kind": 42,
-                                    "name": Object {
-                                      "__debugKind": "Identifier",
-                                      "end": 314,
-                                      "fullPos": 310,
-                                      "id": "real",
-                                      "kind": 21,
-                                      "leadingIndent": 9,
-                                      "pos": 310,
-                                    },
-                                    "pos": 308,
                                   },
                                   "operator": Object {
                                     "__debugKind": "SubToken",
@@ -3996,72 +4984,67 @@ Object {
                                     "leadingIndent": 9,
                                     "pos": 315,
                                   },
-                                  "pos": 308,
+                                  "pos": 315,
                                   "right": Object {
-                                    "__debugKind": "BinaryShorthand",
-                                    "end": 336,
-                                    "kind": 58,
-                                    "left": Object {
-                                      "__debugKind": "SlotLookupExpression",
-                                      "end": 328,
-                                      "expression": Object {
-                                        "__debugKind": "ThisExpression",
-                                        "end": 322,
-                                        "kind": 48,
-                                        "pos": 317,
-                                      },
-                                      "kind": 42,
-                                      "name": Object {
-                                        "__debugKind": "Identifier",
-                                        "end": 326,
-                                        "fullPos": 322,
-                                        "id": "imag",
-                                        "kind": 21,
-                                        "leadingIndent": 9,
-                                        "pos": 322,
-                                      },
+                                    "__debugKind": "SlotLookupExpression",
+                                    "end": 328,
+                                    "expression": Object {
+                                      "__debugKind": "ThisExpression",
+                                      "end": 322,
+                                      "kind": 48,
                                       "pos": 317,
                                     },
-                                    "operator": Object {
-                                      "__debugKind": "MulToken",
-                                      "end": 328,
-                                      "fullPos": 326,
-                                      "kind": 11,
+                                    "kind": 42,
+                                    "name": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 326,
+                                      "fullPos": 322,
+                                      "id": "imag",
+                                      "kind": 21,
                                       "leadingIndent": 9,
-                                      "pos": 327,
+                                      "pos": 322,
                                     },
                                     "pos": 317,
-                                    "right": Object {
-                                      "__debugKind": "SlotLookupExpression",
-                                      "end": 336,
-                                      "expression": Object {
-                                        "__debugKind": "VariableReferenceExpression",
-                                        "end": 331,
-                                        "id": Object {
-                                          "__debugKind": "Identifier",
-                                          "end": 330,
-                                          "fullPos": 328,
-                                          "id": "c",
-                                          "kind": 21,
-                                          "leadingIndent": 9,
-                                          "pos": 329,
-                                        },
-                                        "kind": 36,
-                                        "pos": 329,
-                                      },
-                                      "kind": 42,
-                                      "name": Object {
-                                        "__debugKind": "Identifier",
-                                        "end": 335,
-                                        "fullPos": 331,
-                                        "id": "imag",
-                                        "kind": 21,
-                                        "leadingIndent": 9,
-                                        "pos": 331,
-                                      },
+                                  },
+                                },
+                                "operator": Object {
+                                  "__debugKind": "MulToken",
+                                  "end": 328,
+                                  "fullPos": 326,
+                                  "kind": 11,
+                                  "leadingIndent": 9,
+                                  "pos": 327,
+                                },
+                                "pos": 327,
+                                "right": Object {
+                                  "__debugKind": "SlotLookupExpression",
+                                  "end": 336,
+                                  "expression": Object {
+                                    "__debugKind": "VariableReferenceExpression",
+                                    "end": 331,
+                                    "id": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 330,
+                                      "fullPos": 328,
+                                      "id": "c",
+                                      "kind": 21,
+                                      "leadingIndent": 9,
                                       "pos": 329,
                                     },
+                                    "kind": 36,
+                                    "pos": 329,
                                   },
+                                  "kind": 42,
+                                  "name": Object {
+                                    "__debugKind": "Identifier",
+                                    "end": 335,
+                                    "fullPos": 331,
+                                    "id": "imag",
+                                    "kind": 21,
+                                    "leadingIndent": 9,
+                                    "pos": 331,
+                                  },
+                                  "pos": 329,
                                 },
                               },
                               Object {
@@ -4069,68 +5052,73 @@ Object {
                                 "end": 391,
                                 "kind": 58,
                                 "left": Object {
-                                  "__debugKind": "SlotLookupExpression",
-                                  "end": 362,
-                                  "expression": Object {
-                                    "__debugKind": "ThisExpression",
-                                    "end": 356,
-                                    "kind": 48,
-                                    "pos": 351,
-                                  },
-                                  "kind": 42,
-                                  "name": Object {
-                                    "__debugKind": "Identifier",
-                                    "end": 360,
-                                    "fullPos": 356,
-                                    "id": "real",
-                                    "kind": 21,
-                                    "leadingIndent": 14,
-                                    "pos": 356,
-                                  },
-                                  "pos": 351,
-                                },
-                                "operator": Object {
-                                  "__debugKind": "MulToken",
-                                  "end": 362,
-                                  "fullPos": 360,
-                                  "kind": 11,
-                                  "leadingIndent": 14,
-                                  "pos": 361,
-                                },
-                                "pos": 351,
-                                "right": Object {
                                   "__debugKind": "BinaryShorthand",
-                                  "end": 391,
+                                  "end": 383,
                                   "kind": 58,
                                   "left": Object {
-                                    "__debugKind": "SlotLookupExpression",
+                                    "__debugKind": "BinaryShorthand",
                                     "end": 371,
-                                    "expression": Object {
-                                      "__debugKind": "VariableReferenceExpression",
-                                      "end": 365,
-                                      "id": Object {
+                                    "kind": 58,
+                                    "left": Object {
+                                      "__debugKind": "SlotLookupExpression",
+                                      "end": 362,
+                                      "expression": Object {
+                                        "__debugKind": "ThisExpression",
+                                        "end": 356,
+                                        "kind": 48,
+                                        "pos": 351,
+                                      },
+                                      "kind": 42,
+                                      "name": Object {
                                         "__debugKind": "Identifier",
-                                        "end": 364,
-                                        "fullPos": 362,
-                                        "id": "c",
+                                        "end": 360,
+                                        "fullPos": 356,
+                                        "id": "real",
                                         "kind": 21,
                                         "leadingIndent": 14,
+                                        "pos": 356,
+                                      },
+                                      "pos": 351,
+                                    },
+                                    "operator": Object {
+                                      "__debugKind": "MulToken",
+                                      "end": 362,
+                                      "fullPos": 360,
+                                      "kind": 11,
+                                      "leadingIndent": 14,
+                                      "pos": 361,
+                                    },
+                                    "pos": 351,
+                                    "right": Object {
+                                      "__debugKind": "SlotLookupExpression",
+                                      "end": 371,
+                                      "expression": Object {
+                                        "__debugKind": "VariableReferenceExpression",
+                                        "end": 365,
+                                        "id": Object {
+                                          "__debugKind": "Identifier",
+                                          "end": 364,
+                                          "fullPos": 362,
+                                          "id": "c",
+                                          "kind": 21,
+                                          "leadingIndent": 14,
+                                          "pos": 363,
+                                        },
+                                        "kind": 36,
                                         "pos": 363,
                                       },
-                                      "kind": 36,
+                                      "kind": 42,
+                                      "name": Object {
+                                        "__debugKind": "Identifier",
+                                        "end": 369,
+                                        "fullPos": 365,
+                                        "id": "imag",
+                                        "kind": 21,
+                                        "leadingIndent": 14,
+                                        "pos": 365,
+                                      },
                                       "pos": 363,
                                     },
-                                    "kind": 42,
-                                    "name": Object {
-                                      "__debugKind": "Identifier",
-                                      "end": 369,
-                                      "fullPos": 365,
-                                      "id": "imag",
-                                      "kind": 21,
-                                      "leadingIndent": 14,
-                                      "pos": 365,
-                                    },
-                                    "pos": 363,
                                   },
                                   "operator": Object {
                                     "__debugKind": "AddToken",
@@ -4140,72 +5128,67 @@ Object {
                                     "leadingIndent": 14,
                                     "pos": 370,
                                   },
-                                  "pos": 363,
+                                  "pos": 370,
                                   "right": Object {
-                                    "__debugKind": "BinaryShorthand",
-                                    "end": 391,
-                                    "kind": 58,
-                                    "left": Object {
-                                      "__debugKind": "SlotLookupExpression",
-                                      "end": 383,
-                                      "expression": Object {
-                                        "__debugKind": "ThisExpression",
-                                        "end": 377,
-                                        "kind": 48,
-                                        "pos": 372,
-                                      },
-                                      "kind": 42,
-                                      "name": Object {
-                                        "__debugKind": "Identifier",
-                                        "end": 381,
-                                        "fullPos": 377,
-                                        "id": "imag",
-                                        "kind": 21,
-                                        "leadingIndent": 14,
-                                        "pos": 377,
-                                      },
+                                    "__debugKind": "SlotLookupExpression",
+                                    "end": 383,
+                                    "expression": Object {
+                                      "__debugKind": "ThisExpression",
+                                      "end": 377,
+                                      "kind": 48,
                                       "pos": 372,
                                     },
-                                    "operator": Object {
-                                      "__debugKind": "MulToken",
-                                      "end": 383,
-                                      "fullPos": 381,
-                                      "kind": 11,
+                                    "kind": 42,
+                                    "name": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 381,
+                                      "fullPos": 377,
+                                      "id": "imag",
+                                      "kind": 21,
                                       "leadingIndent": 14,
-                                      "pos": 382,
+                                      "pos": 377,
                                     },
                                     "pos": 372,
-                                    "right": Object {
-                                      "__debugKind": "SlotLookupExpression",
-                                      "end": 391,
-                                      "expression": Object {
-                                        "__debugKind": "VariableReferenceExpression",
-                                        "end": 386,
-                                        "id": Object {
-                                          "__debugKind": "Identifier",
-                                          "end": 385,
-                                          "fullPos": 383,
-                                          "id": "c",
-                                          "kind": 21,
-                                          "leadingIndent": 14,
-                                          "pos": 384,
-                                        },
-                                        "kind": 36,
-                                        "pos": 384,
-                                      },
-                                      "kind": 42,
-                                      "name": Object {
-                                        "__debugKind": "Identifier",
-                                        "end": 390,
-                                        "fullPos": 386,
-                                        "id": "real",
-                                        "kind": 21,
-                                        "leadingIndent": 14,
-                                        "pos": 386,
-                                      },
+                                  },
+                                },
+                                "operator": Object {
+                                  "__debugKind": "MulToken",
+                                  "end": 383,
+                                  "fullPos": 381,
+                                  "kind": 11,
+                                  "leadingIndent": 14,
+                                  "pos": 382,
+                                },
+                                "pos": 382,
+                                "right": Object {
+                                  "__debugKind": "SlotLookupExpression",
+                                  "end": 391,
+                                  "expression": Object {
+                                    "__debugKind": "VariableReferenceExpression",
+                                    "end": 386,
+                                    "id": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 385,
+                                      "fullPos": 383,
+                                      "id": "c",
+                                      "kind": 21,
+                                      "leadingIndent": 14,
                                       "pos": 384,
                                     },
+                                    "kind": 36,
+                                    "pos": 384,
                                   },
+                                  "kind": 42,
+                                  "name": Object {
+                                    "__debugKind": "Identifier",
+                                    "end": 390,
+                                    "fullPos": 386,
+                                    "id": "real",
+                                    "kind": 21,
+                                    "leadingIndent": 14,
+                                    "pos": 386,
+                                  },
+                                  "pos": 384,
                                 },
                               },
                             ],
@@ -4273,77 +5256,82 @@ Object {
                             "end": 479,
                             "kind": 58,
                             "left": Object {
-                              "__debugKind": "SlotLookupExpression",
-                              "end": 440,
-                              "expression": Object {
-                                "__debugKind": "VariableReferenceExpression",
-                                "end": 434,
-                                "id": Object {
-                                  "__debugKind": "Identifier",
-                                  "end": 433,
-                                  "fullPos": 431,
-                                  "id": "c",
-                                  "kind": 21,
-                                  "leadingIndent": 9,
-                                  "pos": 432,
-                                },
-                                "kind": 36,
-                                "pos": 432,
-                              },
-                              "kind": 42,
-                              "name": Object {
-                                "__debugKind": "Identifier",
-                                "end": 438,
-                                "fullPos": 434,
-                                "id": "real",
-                                "kind": 21,
-                                "leadingIndent": 9,
-                                "pos": 434,
-                              },
-                              "pos": 432,
-                            },
-                            "operator": Object {
-                              "__debugKind": "MulToken",
-                              "end": 440,
-                              "fullPos": 438,
-                              "kind": 11,
-                              "leadingIndent": 9,
-                              "pos": 439,
-                            },
-                            "pos": 432,
-                            "right": Object {
                               "__debugKind": "BinaryShorthand",
-                              "end": 479,
+                              "end": 458,
                               "kind": 58,
                               "left": Object {
-                                "__debugKind": "SlotLookupExpression",
+                                "__debugKind": "BinaryShorthand",
                                 "end": 449,
-                                "expression": Object {
-                                  "__debugKind": "VariableReferenceExpression",
-                                  "end": 443,
-                                  "id": Object {
+                                "kind": 58,
+                                "left": Object {
+                                  "__debugKind": "SlotLookupExpression",
+                                  "end": 440,
+                                  "expression": Object {
+                                    "__debugKind": "VariableReferenceExpression",
+                                    "end": 434,
+                                    "id": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 433,
+                                      "fullPos": 431,
+                                      "id": "c",
+                                      "kind": 21,
+                                      "leadingIndent": 9,
+                                      "pos": 432,
+                                    },
+                                    "kind": 36,
+                                    "pos": 432,
+                                  },
+                                  "kind": 42,
+                                  "name": Object {
                                     "__debugKind": "Identifier",
-                                    "end": 442,
-                                    "fullPos": 440,
-                                    "id": "c",
+                                    "end": 438,
+                                    "fullPos": 434,
+                                    "id": "real",
                                     "kind": 21,
                                     "leadingIndent": 9,
+                                    "pos": 434,
+                                  },
+                                  "pos": 432,
+                                },
+                                "operator": Object {
+                                  "__debugKind": "MulToken",
+                                  "end": 440,
+                                  "fullPos": 438,
+                                  "kind": 11,
+                                  "leadingIndent": 9,
+                                  "pos": 439,
+                                },
+                                "pos": 432,
+                                "right": Object {
+                                  "__debugKind": "SlotLookupExpression",
+                                  "end": 449,
+                                  "expression": Object {
+                                    "__debugKind": "VariableReferenceExpression",
+                                    "end": 443,
+                                    "id": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 442,
+                                      "fullPos": 440,
+                                      "id": "c",
+                                      "kind": 21,
+                                      "leadingIndent": 9,
+                                      "pos": 441,
+                                    },
+                                    "kind": 36,
                                     "pos": 441,
                                   },
-                                  "kind": 36,
+                                  "kind": 42,
+                                  "name": Object {
+                                    "__debugKind": "Identifier",
+                                    "end": 447,
+                                    "fullPos": 443,
+                                    "id": "real",
+                                    "kind": 21,
+                                    "leadingIndent": 9,
+                                    "pos": 443,
+                                  },
                                   "pos": 441,
                                 },
-                                "kind": 42,
-                                "name": Object {
-                                  "__debugKind": "Identifier",
-                                  "end": 447,
-                                  "fullPos": 443,
-                                  "id": "real",
-                                  "kind": 21,
-                                  "leadingIndent": 9,
-                                  "pos": 443,
-                                },
-                                "pos": 441,
                               },
                               "operator": Object {
                                 "__debugKind": "AddToken",
@@ -4353,81 +5341,76 @@ Object {
                                 "leadingIndent": 9,
                                 "pos": 448,
                               },
-                              "pos": 441,
+                              "pos": 448,
                               "right": Object {
-                                "__debugKind": "BinaryShorthand",
-                                "end": 479,
-                                "kind": 58,
-                                "left": Object {
-                                  "__debugKind": "SlotLookupExpression",
-                                  "end": 458,
-                                  "expression": Object {
-                                    "__debugKind": "VariableReferenceExpression",
-                                    "end": 452,
-                                    "id": Object {
-                                      "__debugKind": "Identifier",
-                                      "end": 451,
-                                      "fullPos": 449,
-                                      "id": "c",
-                                      "kind": 21,
-                                      "leadingIndent": 9,
-                                      "pos": 450,
-                                    },
-                                    "kind": 36,
+                                "__debugKind": "SlotLookupExpression",
+                                "end": 458,
+                                "expression": Object {
+                                  "__debugKind": "VariableReferenceExpression",
+                                  "end": 452,
+                                  "id": Object {
+                                    "__debugKind": "Identifier",
+                                    "end": 451,
+                                    "fullPos": 449,
+                                    "id": "c",
+                                    "kind": 21,
+                                    "leadingIndent": 9,
                                     "pos": 450,
                                   },
-                                  "kind": 42,
-                                  "name": Object {
-                                    "__debugKind": "Identifier",
-                                    "end": 456,
-                                    "fullPos": 452,
-                                    "id": "imag",
-                                    "kind": 21,
-                                    "leadingIndent": 9,
-                                    "pos": 452,
-                                  },
+                                  "kind": 36,
                                   "pos": 450,
                                 },
-                                "operator": Object {
-                                  "__debugKind": "MulToken",
-                                  "end": 458,
-                                  "fullPos": 456,
-                                  "kind": 11,
+                                "kind": 42,
+                                "name": Object {
+                                  "__debugKind": "Identifier",
+                                  "end": 456,
+                                  "fullPos": 452,
+                                  "id": "imag",
+                                  "kind": 21,
                                   "leadingIndent": 9,
-                                  "pos": 457,
+                                  "pos": 452,
                                 },
                                 "pos": 450,
-                                "right": Object {
-                                  "__debugKind": "SlotLookupExpression",
-                                  "end": 479,
-                                  "expression": Object {
-                                    "__debugKind": "VariableReferenceExpression",
-                                    "end": 461,
-                                    "id": Object {
-                                      "__debugKind": "Identifier",
-                                      "end": 460,
-                                      "fullPos": 458,
-                                      "id": "c",
-                                      "kind": 21,
-                                      "leadingIndent": 9,
-                                      "pos": 459,
-                                    },
-                                    "kind": 36,
-                                    "pos": 459,
-                                  },
-                                  "kind": 42,
-                                  "name": Object {
-                                    "__debugKind": "Identifier",
-                                    "end": 465,
-                                    "fullPos": 461,
-                                    "id": "imag",
-                                    "kind": 21,
-                                    "leadingIndent": 9,
-                                    "pos": 461,
-                                  },
+                              },
+                            },
+                            "operator": Object {
+                              "__debugKind": "MulToken",
+                              "end": 458,
+                              "fullPos": 456,
+                              "kind": 11,
+                              "leadingIndent": 9,
+                              "pos": 457,
+                            },
+                            "pos": 457,
+                            "right": Object {
+                              "__debugKind": "SlotLookupExpression",
+                              "end": 479,
+                              "expression": Object {
+                                "__debugKind": "VariableReferenceExpression",
+                                "end": 461,
+                                "id": Object {
+                                  "__debugKind": "Identifier",
+                                  "end": 460,
+                                  "fullPos": 458,
+                                  "id": "c",
+                                  "kind": 21,
+                                  "leadingIndent": 9,
                                   "pos": 459,
                                 },
+                                "kind": 36,
+                                "pos": 459,
                               },
+                              "kind": 42,
+                              "name": Object {
+                                "__debugKind": "Identifier",
+                                "end": 465,
+                                "fullPos": 461,
+                                "id": "imag",
+                                "kind": 21,
+                                "leadingIndent": 9,
+                                "pos": 461,
+                              },
+                              "pos": 459,
                             },
                           },
                           "kind": 52,
@@ -4460,68 +5443,73 @@ Object {
                                     "end": 521,
                                     "kind": 58,
                                     "left": Object {
-                                      "__debugKind": "SlotLookupExpression",
-                                      "end": 492,
-                                      "expression": Object {
-                                        "__debugKind": "ThisExpression",
-                                        "end": 486,
-                                        "kind": 48,
-                                        "pos": 481,
-                                      },
-                                      "kind": 42,
-                                      "name": Object {
-                                        "__debugKind": "Identifier",
-                                        "end": 490,
-                                        "fullPos": 486,
-                                        "id": "real",
-                                        "kind": 21,
-                                        "leadingIndent": 9,
-                                        "pos": 486,
-                                      },
-                                      "pos": 481,
-                                    },
-                                    "operator": Object {
-                                      "__debugKind": "MulToken",
-                                      "end": 492,
-                                      "fullPos": 490,
-                                      "kind": 11,
-                                      "leadingIndent": 9,
-                                      "pos": 491,
-                                    },
-                                    "pos": 481,
-                                    "right": Object {
                                       "__debugKind": "BinaryShorthand",
-                                      "end": 521,
+                                      "end": 513,
                                       "kind": 58,
                                       "left": Object {
-                                        "__debugKind": "SlotLookupExpression",
+                                        "__debugKind": "BinaryShorthand",
                                         "end": 501,
-                                        "expression": Object {
-                                          "__debugKind": "VariableReferenceExpression",
-                                          "end": 495,
-                                          "id": Object {
+                                        "kind": 58,
+                                        "left": Object {
+                                          "__debugKind": "SlotLookupExpression",
+                                          "end": 492,
+                                          "expression": Object {
+                                            "__debugKind": "ThisExpression",
+                                            "end": 486,
+                                            "kind": 48,
+                                            "pos": 481,
+                                          },
+                                          "kind": 42,
+                                          "name": Object {
                                             "__debugKind": "Identifier",
-                                            "end": 494,
-                                            "fullPos": 492,
-                                            "id": "c",
+                                            "end": 490,
+                                            "fullPos": 486,
+                                            "id": "real",
                                             "kind": 21,
                                             "leadingIndent": 9,
+                                            "pos": 486,
+                                          },
+                                          "pos": 481,
+                                        },
+                                        "operator": Object {
+                                          "__debugKind": "MulToken",
+                                          "end": 492,
+                                          "fullPos": 490,
+                                          "kind": 11,
+                                          "leadingIndent": 9,
+                                          "pos": 491,
+                                        },
+                                        "pos": 481,
+                                        "right": Object {
+                                          "__debugKind": "SlotLookupExpression",
+                                          "end": 501,
+                                          "expression": Object {
+                                            "__debugKind": "VariableReferenceExpression",
+                                            "end": 495,
+                                            "id": Object {
+                                              "__debugKind": "Identifier",
+                                              "end": 494,
+                                              "fullPos": 492,
+                                              "id": "c",
+                                              "kind": 21,
+                                              "leadingIndent": 9,
+                                              "pos": 493,
+                                            },
+                                            "kind": 36,
                                             "pos": 493,
                                           },
-                                          "kind": 36,
+                                          "kind": 42,
+                                          "name": Object {
+                                            "__debugKind": "Identifier",
+                                            "end": 499,
+                                            "fullPos": 495,
+                                            "id": "real",
+                                            "kind": 21,
+                                            "leadingIndent": 9,
+                                            "pos": 495,
+                                          },
                                           "pos": 493,
                                         },
-                                        "kind": 42,
-                                        "name": Object {
-                                          "__debugKind": "Identifier",
-                                          "end": 499,
-                                          "fullPos": 495,
-                                          "id": "real",
-                                          "kind": 21,
-                                          "leadingIndent": 9,
-                                          "pos": 495,
-                                        },
-                                        "pos": 493,
                                       },
                                       "operator": Object {
                                         "__debugKind": "AddToken",
@@ -4531,72 +5519,67 @@ Object {
                                         "leadingIndent": 9,
                                         "pos": 500,
                                       },
-                                      "pos": 493,
+                                      "pos": 500,
                                       "right": Object {
-                                        "__debugKind": "BinaryShorthand",
-                                        "end": 521,
-                                        "kind": 58,
-                                        "left": Object {
-                                          "__debugKind": "SlotLookupExpression",
-                                          "end": 513,
-                                          "expression": Object {
-                                            "__debugKind": "ThisExpression",
-                                            "end": 507,
-                                            "kind": 48,
-                                            "pos": 502,
-                                          },
-                                          "kind": 42,
-                                          "name": Object {
-                                            "__debugKind": "Identifier",
-                                            "end": 511,
-                                            "fullPos": 507,
-                                            "id": "imag",
-                                            "kind": 21,
-                                            "leadingIndent": 9,
-                                            "pos": 507,
-                                          },
+                                        "__debugKind": "SlotLookupExpression",
+                                        "end": 513,
+                                        "expression": Object {
+                                          "__debugKind": "ThisExpression",
+                                          "end": 507,
+                                          "kind": 48,
                                           "pos": 502,
                                         },
-                                        "operator": Object {
-                                          "__debugKind": "MulToken",
-                                          "end": 513,
-                                          "fullPos": 511,
-                                          "kind": 11,
+                                        "kind": 42,
+                                        "name": Object {
+                                          "__debugKind": "Identifier",
+                                          "end": 511,
+                                          "fullPos": 507,
+                                          "id": "imag",
+                                          "kind": 21,
                                           "leadingIndent": 9,
-                                          "pos": 512,
+                                          "pos": 507,
                                         },
                                         "pos": 502,
-                                        "right": Object {
-                                          "__debugKind": "SlotLookupExpression",
-                                          "end": 521,
-                                          "expression": Object {
-                                            "__debugKind": "VariableReferenceExpression",
-                                            "end": 516,
-                                            "id": Object {
-                                              "__debugKind": "Identifier",
-                                              "end": 515,
-                                              "fullPos": 513,
-                                              "id": "c",
-                                              "kind": 21,
-                                              "leadingIndent": 9,
-                                              "pos": 514,
-                                            },
-                                            "kind": 36,
-                                            "pos": 514,
-                                          },
-                                          "kind": 42,
-                                          "name": Object {
-                                            "__debugKind": "Identifier",
-                                            "end": 520,
-                                            "fullPos": 516,
-                                            "id": "imag",
-                                            "kind": 21,
-                                            "leadingIndent": 9,
-                                            "pos": 516,
-                                          },
+                                      },
+                                    },
+                                    "operator": Object {
+                                      "__debugKind": "MulToken",
+                                      "end": 513,
+                                      "fullPos": 511,
+                                      "kind": 11,
+                                      "leadingIndent": 9,
+                                      "pos": 512,
+                                    },
+                                    "pos": 512,
+                                    "right": Object {
+                                      "__debugKind": "SlotLookupExpression",
+                                      "end": 521,
+                                      "expression": Object {
+                                        "__debugKind": "VariableReferenceExpression",
+                                        "end": 516,
+                                        "id": Object {
+                                          "__debugKind": "Identifier",
+                                          "end": 515,
+                                          "fullPos": 513,
+                                          "id": "c",
+                                          "kind": 21,
+                                          "leadingIndent": 9,
                                           "pos": 514,
                                         },
+                                        "kind": 36,
+                                        "pos": 514,
                                       },
+                                      "kind": 42,
+                                      "name": Object {
+                                        "__debugKind": "Identifier",
+                                        "end": 520,
+                                        "fullPos": 516,
+                                        "id": "imag",
+                                        "kind": 21,
+                                        "leadingIndent": 9,
+                                        "pos": 516,
+                                      },
+                                      "pos": 514,
                                     },
                                   },
                                   "kind": 49,
@@ -4639,68 +5622,73 @@ Object {
                                     "end": 582,
                                     "kind": 58,
                                     "left": Object {
-                                      "__debugKind": "SlotLookupExpression",
-                                      "end": 553,
-                                      "expression": Object {
-                                        "__debugKind": "ThisExpression",
-                                        "end": 547,
-                                        "kind": 48,
-                                        "pos": 542,
-                                      },
-                                      "kind": 42,
-                                      "name": Object {
-                                        "__debugKind": "Identifier",
-                                        "end": 551,
-                                        "fullPos": 547,
-                                        "id": "imag",
-                                        "kind": 21,
-                                        "leadingIndent": 14,
-                                        "pos": 547,
-                                      },
-                                      "pos": 542,
-                                    },
-                                    "operator": Object {
-                                      "__debugKind": "MulToken",
-                                      "end": 553,
-                                      "fullPos": 551,
-                                      "kind": 11,
-                                      "leadingIndent": 14,
-                                      "pos": 552,
-                                    },
-                                    "pos": 542,
-                                    "right": Object {
                                       "__debugKind": "BinaryShorthand",
-                                      "end": 582,
+                                      "end": 574,
                                       "kind": 58,
                                       "left": Object {
-                                        "__debugKind": "SlotLookupExpression",
+                                        "__debugKind": "BinaryShorthand",
                                         "end": 562,
-                                        "expression": Object {
-                                          "__debugKind": "VariableReferenceExpression",
-                                          "end": 556,
-                                          "id": Object {
+                                        "kind": 58,
+                                        "left": Object {
+                                          "__debugKind": "SlotLookupExpression",
+                                          "end": 553,
+                                          "expression": Object {
+                                            "__debugKind": "ThisExpression",
+                                            "end": 547,
+                                            "kind": 48,
+                                            "pos": 542,
+                                          },
+                                          "kind": 42,
+                                          "name": Object {
                                             "__debugKind": "Identifier",
-                                            "end": 555,
-                                            "fullPos": 553,
-                                            "id": "c",
+                                            "end": 551,
+                                            "fullPos": 547,
+                                            "id": "imag",
                                             "kind": 21,
                                             "leadingIndent": 14,
+                                            "pos": 547,
+                                          },
+                                          "pos": 542,
+                                        },
+                                        "operator": Object {
+                                          "__debugKind": "MulToken",
+                                          "end": 553,
+                                          "fullPos": 551,
+                                          "kind": 11,
+                                          "leadingIndent": 14,
+                                          "pos": 552,
+                                        },
+                                        "pos": 542,
+                                        "right": Object {
+                                          "__debugKind": "SlotLookupExpression",
+                                          "end": 562,
+                                          "expression": Object {
+                                            "__debugKind": "VariableReferenceExpression",
+                                            "end": 556,
+                                            "id": Object {
+                                              "__debugKind": "Identifier",
+                                              "end": 555,
+                                              "fullPos": 553,
+                                              "id": "c",
+                                              "kind": 21,
+                                              "leadingIndent": 14,
+                                              "pos": 554,
+                                            },
+                                            "kind": 36,
                                             "pos": 554,
                                           },
-                                          "kind": 36,
+                                          "kind": 42,
+                                          "name": Object {
+                                            "__debugKind": "Identifier",
+                                            "end": 560,
+                                            "fullPos": 556,
+                                            "id": "real",
+                                            "kind": 21,
+                                            "leadingIndent": 14,
+                                            "pos": 556,
+                                          },
                                           "pos": 554,
                                         },
-                                        "kind": 42,
-                                        "name": Object {
-                                          "__debugKind": "Identifier",
-                                          "end": 560,
-                                          "fullPos": 556,
-                                          "id": "real",
-                                          "kind": 21,
-                                          "leadingIndent": 14,
-                                          "pos": 556,
-                                        },
-                                        "pos": 554,
                                       },
                                       "operator": Object {
                                         "__debugKind": "SubToken",
@@ -4710,72 +5698,67 @@ Object {
                                         "leadingIndent": 14,
                                         "pos": 561,
                                       },
-                                      "pos": 554,
+                                      "pos": 561,
                                       "right": Object {
-                                        "__debugKind": "BinaryShorthand",
-                                        "end": 582,
-                                        "kind": 58,
-                                        "left": Object {
-                                          "__debugKind": "SlotLookupExpression",
-                                          "end": 574,
-                                          "expression": Object {
-                                            "__debugKind": "ThisExpression",
-                                            "end": 568,
-                                            "kind": 48,
-                                            "pos": 563,
-                                          },
-                                          "kind": 42,
-                                          "name": Object {
-                                            "__debugKind": "Identifier",
-                                            "end": 572,
-                                            "fullPos": 568,
-                                            "id": "real",
-                                            "kind": 21,
-                                            "leadingIndent": 14,
-                                            "pos": 568,
-                                          },
+                                        "__debugKind": "SlotLookupExpression",
+                                        "end": 574,
+                                        "expression": Object {
+                                          "__debugKind": "ThisExpression",
+                                          "end": 568,
+                                          "kind": 48,
                                           "pos": 563,
                                         },
-                                        "operator": Object {
-                                          "__debugKind": "MulToken",
-                                          "end": 574,
-                                          "fullPos": 572,
-                                          "kind": 11,
+                                        "kind": 42,
+                                        "name": Object {
+                                          "__debugKind": "Identifier",
+                                          "end": 572,
+                                          "fullPos": 568,
+                                          "id": "real",
+                                          "kind": 21,
                                           "leadingIndent": 14,
-                                          "pos": 573,
+                                          "pos": 568,
                                         },
                                         "pos": 563,
-                                        "right": Object {
-                                          "__debugKind": "SlotLookupExpression",
-                                          "end": 582,
-                                          "expression": Object {
-                                            "__debugKind": "VariableReferenceExpression",
-                                            "end": 577,
-                                            "id": Object {
-                                              "__debugKind": "Identifier",
-                                              "end": 576,
-                                              "fullPos": 574,
-                                              "id": "c",
-                                              "kind": 21,
-                                              "leadingIndent": 14,
-                                              "pos": 575,
-                                            },
-                                            "kind": 36,
-                                            "pos": 575,
-                                          },
-                                          "kind": 42,
-                                          "name": Object {
-                                            "__debugKind": "Identifier",
-                                            "end": 581,
-                                            "fullPos": 577,
-                                            "id": "imag",
-                                            "kind": 21,
-                                            "leadingIndent": 14,
-                                            "pos": 577,
-                                          },
+                                      },
+                                    },
+                                    "operator": Object {
+                                      "__debugKind": "MulToken",
+                                      "end": 574,
+                                      "fullPos": 572,
+                                      "kind": 11,
+                                      "leadingIndent": 14,
+                                      "pos": 573,
+                                    },
+                                    "pos": 573,
+                                    "right": Object {
+                                      "__debugKind": "SlotLookupExpression",
+                                      "end": 582,
+                                      "expression": Object {
+                                        "__debugKind": "VariableReferenceExpression",
+                                        "end": 577,
+                                        "id": Object {
+                                          "__debugKind": "Identifier",
+                                          "end": 576,
+                                          "fullPos": 574,
+                                          "id": "c",
+                                          "kind": 21,
+                                          "leadingIndent": 14,
                                           "pos": 575,
                                         },
+                                        "kind": 36,
+                                        "pos": 575,
                                       },
+                                      "kind": 42,
+                                      "name": Object {
+                                        "__debugKind": "Identifier",
+                                        "end": 581,
+                                        "fullPos": 577,
+                                        "id": "imag",
+                                        "kind": 21,
+                                        "leadingIndent": 14,
+                                        "pos": 577,
+                                      },
+                                      "pos": 575,
                                     },
                                   },
                                   "kind": 49,
@@ -15147,34 +16130,34 @@ Object {
                                 "end": 1088,
                                 "kind": 58,
                                 "left": Object {
-                                  "__debugKind": "VariableReferenceExpression",
-                                  "end": 1081,
-                                  "id": Object {
-                                    "__debugKind": "Identifier",
-                                    "end": 1079,
-                                    "fullPos": 1078,
-                                    "id": "r",
-                                    "kind": 21,
-                                    "leadingIndent": 9,
-                                    "pos": 1078,
-                                  },
-                                  "kind": 36,
-                                  "pos": 1078,
-                                },
-                                "operator": Object {
-                                  "__debugKind": "MulToken",
-                                  "end": 1081,
-                                  "fullPos": 1079,
-                                  "kind": 11,
-                                  "leadingIndent": 9,
-                                  "pos": 1080,
-                                },
-                                "pos": 1078,
-                                "right": Object {
                                   "__debugKind": "BinaryShorthand",
-                                  "end": 1088,
+                                  "end": 1085,
                                   "kind": 58,
                                   "left": Object {
+                                    "__debugKind": "VariableReferenceExpression",
+                                    "end": 1081,
+                                    "id": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 1079,
+                                      "fullPos": 1078,
+                                      "id": "r",
+                                      "kind": 21,
+                                      "leadingIndent": 9,
+                                      "pos": 1078,
+                                    },
+                                    "kind": 36,
+                                    "pos": 1078,
+                                  },
+                                  "operator": Object {
+                                    "__debugKind": "MulToken",
+                                    "end": 1081,
+                                    "fullPos": 1079,
+                                    "kind": 11,
+                                    "leadingIndent": 9,
+                                    "pos": 1080,
+                                  },
+                                  "pos": 1078,
+                                  "right": Object {
                                     "__debugKind": "IntegerLiteralExpression",
                                     "end": 1085,
                                     "kind": 35,
@@ -15190,30 +16173,30 @@ Object {
                                       "value": "9",
                                     },
                                   },
-                                  "operator": Object {
-                                    "__debugKind": "AddToken",
-                                    "end": 1085,
-                                    "fullPos": 1083,
-                                    "kind": 9,
+                                },
+                                "operator": Object {
+                                  "__debugKind": "AddToken",
+                                  "end": 1085,
+                                  "fullPos": 1083,
+                                  "kind": 9,
+                                  "leadingIndent": 9,
+                                  "pos": 1084,
+                                },
+                                "pos": 1084,
+                                "right": Object {
+                                  "__debugKind": "VariableReferenceExpression",
+                                  "end": 1088,
+                                  "id": Object {
+                                    "__debugKind": "Identifier",
+                                    "end": 1087,
+                                    "fullPos": 1085,
+                                    "id": "c",
+                                    "kind": 21,
                                     "leadingIndent": 9,
-                                    "pos": 1084,
-                                  },
-                                  "pos": 1082,
-                                  "right": Object {
-                                    "__debugKind": "VariableReferenceExpression",
-                                    "end": 1088,
-                                    "id": Object {
-                                      "__debugKind": "Identifier",
-                                      "end": 1087,
-                                      "fullPos": 1085,
-                                      "id": "c",
-                                      "kind": 21,
-                                      "leadingIndent": 9,
-                                      "pos": 1086,
-                                    },
-                                    "kind": 36,
                                     "pos": 1086,
                                   },
+                                  "kind": 36,
+                                  "pos": 1086,
                                 },
                               },
                             ],
@@ -15296,34 +16279,34 @@ Object {
                                 "end": 1148,
                                 "kind": 58,
                                 "left": Object {
-                                  "__debugKind": "VariableReferenceExpression",
-                                  "end": 1141,
-                                  "id": Object {
-                                    "__debugKind": "Identifier",
-                                    "end": 1139,
-                                    "fullPos": 1138,
-                                    "id": "r",
-                                    "kind": 21,
-                                    "leadingIndent": 9,
-                                    "pos": 1138,
-                                  },
-                                  "kind": 36,
-                                  "pos": 1138,
-                                },
-                                "operator": Object {
-                                  "__debugKind": "MulToken",
-                                  "end": 1141,
-                                  "fullPos": 1139,
-                                  "kind": 11,
-                                  "leadingIndent": 9,
-                                  "pos": 1140,
-                                },
-                                "pos": 1138,
-                                "right": Object {
                                   "__debugKind": "BinaryShorthand",
-                                  "end": 1148,
+                                  "end": 1145,
                                   "kind": 58,
                                   "left": Object {
+                                    "__debugKind": "VariableReferenceExpression",
+                                    "end": 1141,
+                                    "id": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 1139,
+                                      "fullPos": 1138,
+                                      "id": "r",
+                                      "kind": 21,
+                                      "leadingIndent": 9,
+                                      "pos": 1138,
+                                    },
+                                    "kind": 36,
+                                    "pos": 1138,
+                                  },
+                                  "operator": Object {
+                                    "__debugKind": "MulToken",
+                                    "end": 1141,
+                                    "fullPos": 1139,
+                                    "kind": 11,
+                                    "leadingIndent": 9,
+                                    "pos": 1140,
+                                  },
+                                  "pos": 1138,
+                                  "right": Object {
                                     "__debugKind": "IntegerLiteralExpression",
                                     "end": 1145,
                                     "kind": 35,
@@ -15339,30 +16322,30 @@ Object {
                                       "value": "9",
                                     },
                                   },
-                                  "operator": Object {
-                                    "__debugKind": "AddToken",
-                                    "end": 1145,
-                                    "fullPos": 1143,
-                                    "kind": 9,
+                                },
+                                "operator": Object {
+                                  "__debugKind": "AddToken",
+                                  "end": 1145,
+                                  "fullPos": 1143,
+                                  "kind": 9,
+                                  "leadingIndent": 9,
+                                  "pos": 1144,
+                                },
+                                "pos": 1144,
+                                "right": Object {
+                                  "__debugKind": "VariableReferenceExpression",
+                                  "end": 1148,
+                                  "id": Object {
+                                    "__debugKind": "Identifier",
+                                    "end": 1147,
+                                    "fullPos": 1145,
+                                    "id": "c",
+                                    "kind": 21,
                                     "leadingIndent": 9,
-                                    "pos": 1144,
-                                  },
-                                  "pos": 1142,
-                                  "right": Object {
-                                    "__debugKind": "VariableReferenceExpression",
-                                    "end": 1148,
-                                    "id": Object {
-                                      "__debugKind": "Identifier",
-                                      "end": 1147,
-                                      "fullPos": 1145,
-                                      "id": "c",
-                                      "kind": 21,
-                                      "leadingIndent": 9,
-                                      "pos": 1146,
-                                    },
-                                    "kind": 36,
                                     "pos": 1146,
                                   },
+                                  "kind": 36,
+                                  "pos": 1146,
                                 },
                               },
                             ],
@@ -17616,34 +18599,34 @@ Object {
                                               "end": 2347,
                                               "kind": 58,
                                               "left": Object {
-                                                "__debugKind": "VariableReferenceExpression",
-                                                "end": 2339,
-                                                "id": Object {
-                                                  "__debugKind": "Identifier",
-                                                  "end": 2337,
-                                                  "fullPos": 2334,
-                                                  "id": "ci",
-                                                  "kind": 21,
-                                                  "leadingIndent": 15,
-                                                  "pos": 2335,
-                                                },
-                                                "kind": 36,
-                                                "pos": 2335,
-                                              },
-                                              "operator": Object {
-                                                "__debugKind": "LessThanToken",
-                                                "end": 2339,
-                                                "fullPos": 2337,
-                                                "kind": 14,
-                                                "leadingIndent": 15,
-                                                "pos": 2338,
-                                              },
-                                              "pos": 2335,
-                                              "right": Object {
                                                 "__debugKind": "BinaryShorthand",
-                                                "end": 2347,
+                                                "end": 2343,
                                                 "kind": 58,
                                                 "left": Object {
+                                                  "__debugKind": "VariableReferenceExpression",
+                                                  "end": 2339,
+                                                  "id": Object {
+                                                    "__debugKind": "Identifier",
+                                                    "end": 2337,
+                                                    "fullPos": 2334,
+                                                    "id": "ci",
+                                                    "kind": 21,
+                                                    "leadingIndent": 15,
+                                                    "pos": 2335,
+                                                  },
+                                                  "kind": 36,
+                                                  "pos": 2335,
+                                                },
+                                                "operator": Object {
+                                                  "__debugKind": "LessThanToken",
+                                                  "end": 2339,
+                                                  "fullPos": 2337,
+                                                  "kind": 14,
+                                                  "leadingIndent": 15,
+                                                  "pos": 2338,
+                                                },
+                                                "pos": 2335,
+                                                "right": Object {
                                                   "__debugKind": "VariableReferenceExpression",
                                                   "end": 2343,
                                                   "id": Object {
@@ -17658,30 +18641,30 @@ Object {
                                                   "kind": 36,
                                                   "pos": 2340,
                                                 },
-                                                "operator": Object {
-                                                  "__debugKind": "AddToken",
-                                                  "end": 2343,
-                                                  "fullPos": 2341,
-                                                  "kind": 9,
+                                              },
+                                              "operator": Object {
+                                                "__debugKind": "AddToken",
+                                                "end": 2343,
+                                                "fullPos": 2341,
+                                                "kind": 9,
+                                                "leadingIndent": 15,
+                                                "pos": 2342,
+                                              },
+                                              "pos": 2342,
+                                              "right": Object {
+                                                "__debugKind": "IntegerLiteralExpression",
+                                                "end": 2347,
+                                                "kind": 35,
+                                                "pos": 2344,
+                                                "subToken": undefined,
+                                                "value": Object {
+                                                  "__debugKind": "IntegerLiteralToken",
+                                                  "end": 2345,
+                                                  "fullPos": 2343,
+                                                  "kind": 19,
                                                   "leadingIndent": 15,
-                                                  "pos": 2342,
-                                                },
-                                                "pos": 2340,
-                                                "right": Object {
-                                                  "__debugKind": "IntegerLiteralExpression",
-                                                  "end": 2347,
-                                                  "kind": 35,
                                                   "pos": 2344,
-                                                  "subToken": undefined,
-                                                  "value": Object {
-                                                    "__debugKind": "IntegerLiteralToken",
-                                                    "end": 2345,
-                                                    "fullPos": 2343,
-                                                    "kind": 19,
-                                                    "leadingIndent": 15,
-                                                    "pos": 2344,
-                                                    "value": "3",
-                                                  },
+                                                  "value": "3",
                                                 },
                                               },
                                             },
@@ -17765,34 +18748,34 @@ Object {
                                       "end": 2287,
                                       "kind": 58,
                                       "left": Object {
-                                        "__debugKind": "VariableReferenceExpression",
-                                        "end": 2279,
-                                        "id": Object {
-                                          "__debugKind": "Identifier",
-                                          "end": 2277,
-                                          "fullPos": 2274,
-                                          "id": "ri",
-                                          "kind": 21,
-                                          "leadingIndent": 12,
-                                          "pos": 2275,
-                                        },
-                                        "kind": 36,
-                                        "pos": 2275,
-                                      },
-                                      "operator": Object {
-                                        "__debugKind": "LessThanToken",
-                                        "end": 2279,
-                                        "fullPos": 2277,
-                                        "kind": 14,
-                                        "leadingIndent": 12,
-                                        "pos": 2278,
-                                      },
-                                      "pos": 2275,
-                                      "right": Object {
                                         "__debugKind": "BinaryShorthand",
-                                        "end": 2287,
+                                        "end": 2283,
                                         "kind": 58,
                                         "left": Object {
+                                          "__debugKind": "VariableReferenceExpression",
+                                          "end": 2279,
+                                          "id": Object {
+                                            "__debugKind": "Identifier",
+                                            "end": 2277,
+                                            "fullPos": 2274,
+                                            "id": "ri",
+                                            "kind": 21,
+                                            "leadingIndent": 12,
+                                            "pos": 2275,
+                                          },
+                                          "kind": 36,
+                                          "pos": 2275,
+                                        },
+                                        "operator": Object {
+                                          "__debugKind": "LessThanToken",
+                                          "end": 2279,
+                                          "fullPos": 2277,
+                                          "kind": 14,
+                                          "leadingIndent": 12,
+                                          "pos": 2278,
+                                        },
+                                        "pos": 2275,
+                                        "right": Object {
                                           "__debugKind": "VariableReferenceExpression",
                                           "end": 2283,
                                           "id": Object {
@@ -17807,30 +18790,30 @@ Object {
                                           "kind": 36,
                                           "pos": 2280,
                                         },
-                                        "operator": Object {
-                                          "__debugKind": "AddToken",
-                                          "end": 2283,
-                                          "fullPos": 2281,
-                                          "kind": 9,
+                                      },
+                                      "operator": Object {
+                                        "__debugKind": "AddToken",
+                                        "end": 2283,
+                                        "fullPos": 2281,
+                                        "kind": 9,
+                                        "leadingIndent": 12,
+                                        "pos": 2282,
+                                      },
+                                      "pos": 2282,
+                                      "right": Object {
+                                        "__debugKind": "IntegerLiteralExpression",
+                                        "end": 2287,
+                                        "kind": 35,
+                                        "pos": 2284,
+                                        "subToken": undefined,
+                                        "value": Object {
+                                          "__debugKind": "IntegerLiteralToken",
+                                          "end": 2285,
+                                          "fullPos": 2283,
+                                          "kind": 19,
                                           "leadingIndent": 12,
-                                          "pos": 2282,
-                                        },
-                                        "pos": 2280,
-                                        "right": Object {
-                                          "__debugKind": "IntegerLiteralExpression",
-                                          "end": 2287,
-                                          "kind": 35,
                                           "pos": 2284,
-                                          "subToken": undefined,
-                                          "value": Object {
-                                            "__debugKind": "IntegerLiteralToken",
-                                            "end": 2285,
-                                            "fullPos": 2283,
-                                            "kind": 19,
-                                            "leadingIndent": 12,
-                                            "pos": 2284,
-                                            "value": "3",
-                                          },
+                                          "value": "3",
                                         },
                                       },
                                     },
@@ -27110,34 +28093,34 @@ Object {
                                 "end": 1088,
                                 "kind": 58,
                                 "left": Object {
-                                  "__debugKind": "VariableReferenceExpression",
-                                  "end": 1081,
-                                  "id": Object {
-                                    "__debugKind": "Identifier",
-                                    "end": 1079,
-                                    "fullPos": 1078,
-                                    "id": "r",
-                                    "kind": 21,
-                                    "leadingIndent": 9,
-                                    "pos": 1078,
-                                  },
-                                  "kind": 36,
-                                  "pos": 1078,
-                                },
-                                "operator": Object {
-                                  "__debugKind": "MulToken",
-                                  "end": 1081,
-                                  "fullPos": 1079,
-                                  "kind": 11,
-                                  "leadingIndent": 9,
-                                  "pos": 1080,
-                                },
-                                "pos": 1078,
-                                "right": Object {
                                   "__debugKind": "BinaryShorthand",
-                                  "end": 1088,
+                                  "end": 1085,
                                   "kind": 58,
                                   "left": Object {
+                                    "__debugKind": "VariableReferenceExpression",
+                                    "end": 1081,
+                                    "id": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 1079,
+                                      "fullPos": 1078,
+                                      "id": "r",
+                                      "kind": 21,
+                                      "leadingIndent": 9,
+                                      "pos": 1078,
+                                    },
+                                    "kind": 36,
+                                    "pos": 1078,
+                                  },
+                                  "operator": Object {
+                                    "__debugKind": "MulToken",
+                                    "end": 1081,
+                                    "fullPos": 1079,
+                                    "kind": 11,
+                                    "leadingIndent": 9,
+                                    "pos": 1080,
+                                  },
+                                  "pos": 1078,
+                                  "right": Object {
                                     "__debugKind": "IntegerLiteralExpression",
                                     "end": 1085,
                                     "kind": 35,
@@ -27153,30 +28136,30 @@ Object {
                                       "value": "9",
                                     },
                                   },
-                                  "operator": Object {
-                                    "__debugKind": "AddToken",
-                                    "end": 1085,
-                                    "fullPos": 1083,
-                                    "kind": 9,
+                                },
+                                "operator": Object {
+                                  "__debugKind": "AddToken",
+                                  "end": 1085,
+                                  "fullPos": 1083,
+                                  "kind": 9,
+                                  "leadingIndent": 9,
+                                  "pos": 1084,
+                                },
+                                "pos": 1084,
+                                "right": Object {
+                                  "__debugKind": "VariableReferenceExpression",
+                                  "end": 1088,
+                                  "id": Object {
+                                    "__debugKind": "Identifier",
+                                    "end": 1087,
+                                    "fullPos": 1085,
+                                    "id": "c",
+                                    "kind": 21,
                                     "leadingIndent": 9,
-                                    "pos": 1084,
-                                  },
-                                  "pos": 1082,
-                                  "right": Object {
-                                    "__debugKind": "VariableReferenceExpression",
-                                    "end": 1088,
-                                    "id": Object {
-                                      "__debugKind": "Identifier",
-                                      "end": 1087,
-                                      "fullPos": 1085,
-                                      "id": "c",
-                                      "kind": 21,
-                                      "leadingIndent": 9,
-                                      "pos": 1086,
-                                    },
-                                    "kind": 36,
                                     "pos": 1086,
                                   },
+                                  "kind": 36,
+                                  "pos": 1086,
                                 },
                               },
                             ],
@@ -27259,34 +28242,34 @@ Object {
                                 "end": 1148,
                                 "kind": 58,
                                 "left": Object {
-                                  "__debugKind": "VariableReferenceExpression",
-                                  "end": 1141,
-                                  "id": Object {
-                                    "__debugKind": "Identifier",
-                                    "end": 1139,
-                                    "fullPos": 1138,
-                                    "id": "r",
-                                    "kind": 21,
-                                    "leadingIndent": 9,
-                                    "pos": 1138,
-                                  },
-                                  "kind": 36,
-                                  "pos": 1138,
-                                },
-                                "operator": Object {
-                                  "__debugKind": "MulToken",
-                                  "end": 1141,
-                                  "fullPos": 1139,
-                                  "kind": 11,
-                                  "leadingIndent": 9,
-                                  "pos": 1140,
-                                },
-                                "pos": 1138,
-                                "right": Object {
                                   "__debugKind": "BinaryShorthand",
-                                  "end": 1148,
+                                  "end": 1145,
                                   "kind": 58,
                                   "left": Object {
+                                    "__debugKind": "VariableReferenceExpression",
+                                    "end": 1141,
+                                    "id": Object {
+                                      "__debugKind": "Identifier",
+                                      "end": 1139,
+                                      "fullPos": 1138,
+                                      "id": "r",
+                                      "kind": 21,
+                                      "leadingIndent": 9,
+                                      "pos": 1138,
+                                    },
+                                    "kind": 36,
+                                    "pos": 1138,
+                                  },
+                                  "operator": Object {
+                                    "__debugKind": "MulToken",
+                                    "end": 1141,
+                                    "fullPos": 1139,
+                                    "kind": 11,
+                                    "leadingIndent": 9,
+                                    "pos": 1140,
+                                  },
+                                  "pos": 1138,
+                                  "right": Object {
                                     "__debugKind": "IntegerLiteralExpression",
                                     "end": 1145,
                                     "kind": 35,
@@ -27302,30 +28285,30 @@ Object {
                                       "value": "9",
                                     },
                                   },
-                                  "operator": Object {
-                                    "__debugKind": "AddToken",
-                                    "end": 1145,
-                                    "fullPos": 1143,
-                                    "kind": 9,
+                                },
+                                "operator": Object {
+                                  "__debugKind": "AddToken",
+                                  "end": 1145,
+                                  "fullPos": 1143,
+                                  "kind": 9,
+                                  "leadingIndent": 9,
+                                  "pos": 1144,
+                                },
+                                "pos": 1144,
+                                "right": Object {
+                                  "__debugKind": "VariableReferenceExpression",
+                                  "end": 1148,
+                                  "id": Object {
+                                    "__debugKind": "Identifier",
+                                    "end": 1147,
+                                    "fullPos": 1145,
+                                    "id": "c",
+                                    "kind": 21,
                                     "leadingIndent": 9,
-                                    "pos": 1144,
-                                  },
-                                  "pos": 1142,
-                                  "right": Object {
-                                    "__debugKind": "VariableReferenceExpression",
-                                    "end": 1148,
-                                    "id": Object {
-                                      "__debugKind": "Identifier",
-                                      "end": 1147,
-                                      "fullPos": 1145,
-                                      "id": "c",
-                                      "kind": 21,
-                                      "leadingIndent": 9,
-                                      "pos": 1146,
-                                    },
-                                    "kind": 36,
                                     "pos": 1146,
                                   },
+                                  "kind": 36,
+                                  "pos": 1146,
                                 },
                               },
                             ],
@@ -29579,34 +30562,34 @@ Object {
                                               "end": 2347,
                                               "kind": 58,
                                               "left": Object {
-                                                "__debugKind": "VariableReferenceExpression",
-                                                "end": 2339,
-                                                "id": Object {
-                                                  "__debugKind": "Identifier",
-                                                  "end": 2337,
-                                                  "fullPos": 2334,
-                                                  "id": "ci",
-                                                  "kind": 21,
-                                                  "leadingIndent": 15,
-                                                  "pos": 2335,
-                                                },
-                                                "kind": 36,
-                                                "pos": 2335,
-                                              },
-                                              "operator": Object {
-                                                "__debugKind": "LessThanToken",
-                                                "end": 2339,
-                                                "fullPos": 2337,
-                                                "kind": 14,
-                                                "leadingIndent": 15,
-                                                "pos": 2338,
-                                              },
-                                              "pos": 2335,
-                                              "right": Object {
                                                 "__debugKind": "BinaryShorthand",
-                                                "end": 2347,
+                                                "end": 2343,
                                                 "kind": 58,
                                                 "left": Object {
+                                                  "__debugKind": "VariableReferenceExpression",
+                                                  "end": 2339,
+                                                  "id": Object {
+                                                    "__debugKind": "Identifier",
+                                                    "end": 2337,
+                                                    "fullPos": 2334,
+                                                    "id": "ci",
+                                                    "kind": 21,
+                                                    "leadingIndent": 15,
+                                                    "pos": 2335,
+                                                  },
+                                                  "kind": 36,
+                                                  "pos": 2335,
+                                                },
+                                                "operator": Object {
+                                                  "__debugKind": "LessThanToken",
+                                                  "end": 2339,
+                                                  "fullPos": 2337,
+                                                  "kind": 14,
+                                                  "leadingIndent": 15,
+                                                  "pos": 2338,
+                                                },
+                                                "pos": 2335,
+                                                "right": Object {
                                                   "__debugKind": "VariableReferenceExpression",
                                                   "end": 2343,
                                                   "id": Object {
@@ -29621,30 +30604,30 @@ Object {
                                                   "kind": 36,
                                                   "pos": 2340,
                                                 },
-                                                "operator": Object {
-                                                  "__debugKind": "AddToken",
-                                                  "end": 2343,
-                                                  "fullPos": 2341,
-                                                  "kind": 9,
+                                              },
+                                              "operator": Object {
+                                                "__debugKind": "AddToken",
+                                                "end": 2343,
+                                                "fullPos": 2341,
+                                                "kind": 9,
+                                                "leadingIndent": 15,
+                                                "pos": 2342,
+                                              },
+                                              "pos": 2342,
+                                              "right": Object {
+                                                "__debugKind": "IntegerLiteralExpression",
+                                                "end": 2347,
+                                                "kind": 35,
+                                                "pos": 2344,
+                                                "subToken": undefined,
+                                                "value": Object {
+                                                  "__debugKind": "IntegerLiteralToken",
+                                                  "end": 2345,
+                                                  "fullPos": 2343,
+                                                  "kind": 19,
                                                   "leadingIndent": 15,
-                                                  "pos": 2342,
-                                                },
-                                                "pos": 2340,
-                                                "right": Object {
-                                                  "__debugKind": "IntegerLiteralExpression",
-                                                  "end": 2347,
-                                                  "kind": 35,
                                                   "pos": 2344,
-                                                  "subToken": undefined,
-                                                  "value": Object {
-                                                    "__debugKind": "IntegerLiteralToken",
-                                                    "end": 2345,
-                                                    "fullPos": 2343,
-                                                    "kind": 19,
-                                                    "leadingIndent": 15,
-                                                    "pos": 2344,
-                                                    "value": "3",
-                                                  },
+                                                  "value": "3",
                                                 },
                                               },
                                             },
@@ -29728,34 +30711,34 @@ Object {
                                       "end": 2287,
                                       "kind": 58,
                                       "left": Object {
-                                        "__debugKind": "VariableReferenceExpression",
-                                        "end": 2279,
-                                        "id": Object {
-                                          "__debugKind": "Identifier",
-                                          "end": 2277,
-                                          "fullPos": 2274,
-                                          "id": "ri",
-                                          "kind": 21,
-                                          "leadingIndent": 12,
-                                          "pos": 2275,
-                                        },
-                                        "kind": 36,
-                                        "pos": 2275,
-                                      },
-                                      "operator": Object {
-                                        "__debugKind": "LessThanToken",
-                                        "end": 2279,
-                                        "fullPos": 2277,
-                                        "kind": 14,
-                                        "leadingIndent": 12,
-                                        "pos": 2278,
-                                      },
-                                      "pos": 2275,
-                                      "right": Object {
                                         "__debugKind": "BinaryShorthand",
-                                        "end": 2287,
+                                        "end": 2283,
                                         "kind": 58,
                                         "left": Object {
+                                          "__debugKind": "VariableReferenceExpression",
+                                          "end": 2279,
+                                          "id": Object {
+                                            "__debugKind": "Identifier",
+                                            "end": 2277,
+                                            "fullPos": 2274,
+                                            "id": "ri",
+                                            "kind": 21,
+                                            "leadingIndent": 12,
+                                            "pos": 2275,
+                                          },
+                                          "kind": 36,
+                                          "pos": 2275,
+                                        },
+                                        "operator": Object {
+                                          "__debugKind": "LessThanToken",
+                                          "end": 2279,
+                                          "fullPos": 2277,
+                                          "kind": 14,
+                                          "leadingIndent": 12,
+                                          "pos": 2278,
+                                        },
+                                        "pos": 2275,
+                                        "right": Object {
                                           "__debugKind": "VariableReferenceExpression",
                                           "end": 2283,
                                           "id": Object {
@@ -29770,30 +30753,30 @@ Object {
                                           "kind": 36,
                                           "pos": 2280,
                                         },
-                                        "operator": Object {
-                                          "__debugKind": "AddToken",
-                                          "end": 2283,
-                                          "fullPos": 2281,
-                                          "kind": 9,
+                                      },
+                                      "operator": Object {
+                                        "__debugKind": "AddToken",
+                                        "end": 2283,
+                                        "fullPos": 2281,
+                                        "kind": 9,
+                                        "leadingIndent": 12,
+                                        "pos": 2282,
+                                      },
+                                      "pos": 2282,
+                                      "right": Object {
+                                        "__debugKind": "IntegerLiteralExpression",
+                                        "end": 2287,
+                                        "kind": 35,
+                                        "pos": 2284,
+                                        "subToken": undefined,
+                                        "value": Object {
+                                          "__debugKind": "IntegerLiteralToken",
+                                          "end": 2285,
+                                          "fullPos": 2283,
+                                          "kind": 19,
                                           "leadingIndent": 12,
-                                          "pos": 2282,
-                                        },
-                                        "pos": 2280,
-                                        "right": Object {
-                                          "__debugKind": "IntegerLiteralExpression",
-                                          "end": 2287,
-                                          "kind": 35,
                                           "pos": 2284,
-                                          "subToken": undefined,
-                                          "value": Object {
-                                            "__debugKind": "IntegerLiteralToken",
-                                            "end": 2285,
-                                            "fullPos": 2283,
-                                            "kind": 19,
-                                            "leadingIndent": 12,
-                                            "pos": 2284,
-                                            "value": "3",
-                                          },
+                                          "value": "3",
                                         },
                                       },
                                     },

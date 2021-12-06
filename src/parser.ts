@@ -198,36 +198,38 @@ export function createParser(text: string) {
     }
 
     function parseExpression(): Expression {
-        return parseShorthandOrHigher();
+        return parseBinaryShorthandOrHigher();
     }
 
-    function parseShorthandOrHigher() {
+    function parseBinaryShorthandOrHigher(): BinaryShorthand | Expression {
         const pos = scanner.getTokenStart();
         const expression = parseFunctionCallExpressionOrHigher();
-        if (isBinaryShorthandToken(scanner.currentToken()) && !scanner.currentTokenhasLineFeed()) {
-            return parseBinaryShorthand(expression, pos)
-        }
-        return expression
+        return parseBinaryShorthandRest(expression, pos)
     }
 
+    function parseBinaryShorthandRest(expression: Expression, pos: number) {
+        while (true) {
+            const operator = scanner.currentToken();
+            if (!isBinaryShorthandToken(operator) || scanner.currentTokenhasLineFeed()) {
+                break
+            }
 
-    function parseBinaryShorthand(left: Expression, pos: number): BinaryShorthand {
-        const operator = scanner.currentToken();
-        if (!isBinaryShorthandToken(operator)) {
-            throw new Error(`Expected binary shorthand token, got ${operator.kind}`);
+            scanner.nextToken();
+            const right = parseFunctionCallExpressionOrHigher();
+
+            expression = finishNode(
+                createBinaryShorthand(
+                    expression,
+                    operator,
+                    right
+                ),
+                pos,
+                scanner.getCurrentPos()
+            )
+            pos = scanner.getTokenStart();
         }
-        scanner.nextToken();
-        const right = parseExpression();
 
-        return finishNode(
-            createBinaryShorthand(
-                left,
-                operator,
-                right
-            ),
-            pos,
-            scanner.getCurrentPos()
-        )
+        return expression
     }
 
     function parseFunctionCallExpressionOrHigher() {
