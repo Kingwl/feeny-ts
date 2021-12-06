@@ -40,7 +40,8 @@ import {
   VariableReferenceExpression,
   VariableSlot,
   VariableStatement,
-  WhileExpression
+  WhileExpression,
+  StringLiteralExpression
 } from './types';
 
 export function createNode<T extends ASTNode>(kind: T['kind']): T {
@@ -107,6 +108,14 @@ export function createIntegerLiteralExpression(
   return node;
 }
 
+export function createStringLiteralExpression(value: StringLiteralToken): StringLiteralExpression {
+  const node = createNode<StringLiteralExpression>(
+    SyntaxKind.StringLiteralExpression
+  );
+  node.value = value;
+  return node;
+}
+
 export function createVariableReferenceExpression(
   id: IdentifierToken
 ): VariableReferenceExpression {
@@ -118,11 +127,9 @@ export function createVariableReferenceExpression(
 }
 
 export function createPrintingExpression(
-  value: StringLiteralToken,
   args: NodeArray<Expression>
 ): PrintingExpression {
   const node = createNode<PrintingExpression>(SyntaxKind.PrintingExpression);
-  node.format = value;
   node.args = args;
   return node;
 }

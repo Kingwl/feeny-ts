@@ -1,8 +1,8 @@
-import { FunctionExpression } from '.';
 import {
   ArraysExpression,
   Expression,
   FunctionStatement,
+  FunctionExpression,
   IfExpression,
   ExpressionStatement,
   MethodSlot,
@@ -29,7 +29,8 @@ import {
   IntegerLiteralExpression,
   SequenceOfStatements,
   SourceFile,
-  Statement
+  Statement,
+  StringLiteralExpression
 } from './types';
 import { assertDef, last } from './utils';
 
@@ -39,7 +40,8 @@ enum ValueType {
   Array,
   Object,
   Function,
-  Integer
+  Integer,
+  String
 }
 
 abstract class BaseValue {
@@ -57,6 +59,10 @@ abstract class BaseValue {
 
   isArray(): this is ArrayValue {
     return false;
+  }
+
+  isString(): this is StringValue {
+      return false;
   }
 
   isObject(): this is ObjectValue {
@@ -264,6 +270,22 @@ class IntegerValue extends EnvValue {
   isInteger(): true {
     return true;
   }
+}
+
+class StringValue extends BaseValue {
+    get type() { return ValueType.String; }
+
+    constructor(public value: string) {
+        super();
+    }
+
+    print(): string {
+        return this.value
+    }
+
+    isString(): true {
+        return true
+    }
 }
 
 abstract class FunctionValue extends BaseValue {
@@ -705,6 +727,10 @@ export function createInterpreter(file: SourceFile) {
         return evaluateIntegerLiteralExpression(
           expr as IntegerLiteralExpression
         );
+      case SyntaxKind.StringLiteralExpression:
+          return evaluateStringLiteralExpression(
+              expr as StringLiteralExpression
+          )
       case SyntaxKind.PrintingExpression:
         return evaluatePrintingExpression(expr as PrintingExpression);
       case SyntaxKind.NullExpression:
@@ -1002,7 +1028,6 @@ export function createInterpreter(file: SourceFile) {
 
   function evaluatePrintingExpression(expr: PrintingExpression): NullValue {
     console.log(
-      expr.format.value,
       ...expr.args.map(evaluateExpression).map(x => x.print())
     );
     return new NullValue();
@@ -1014,6 +1039,12 @@ export function createInterpreter(file: SourceFile) {
     const isNegative = !!expr.subToken;
     const value = Number(expr.value.value);
     return new IntegerValue(value * (isNegative ? -1 : 1));
+  }
+
+  function evaluateStringLiteralExpression(
+      expr: StringLiteralExpression
+  ): StringValue {
+    return new StringValue(expr.value.value);
   }
 
   function evaluateVariableStatement(stmt: VariableStatement) {

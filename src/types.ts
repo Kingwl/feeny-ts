@@ -44,6 +44,7 @@ export enum SyntaxKind {
 
   // Expression
   IntegerLiteralExpression,
+  StringLiteralExpression,
   VariableReferenceExpression,
   PrintingExpression,
   ArraysExpression,
@@ -229,6 +230,11 @@ export interface IntegerLiteralExpression extends Expression {
   subToken?: SubToken;
 }
 
+export interface StringLiteralExpression extends Expression {
+  kind: SyntaxKind.StringLiteralExpression;
+  value: StringLiteralToken;
+}
+
 export interface VariableReferenceExpression extends Expression {
   kind: SyntaxKind.VariableReferenceExpression;
   id: IdentifierToken;
@@ -236,7 +242,6 @@ export interface VariableReferenceExpression extends Expression {
 
 export interface PrintingExpression extends Expression {
   kind: SyntaxKind.PrintingExpression;
-  format: StringLiteralToken;
   args: NodeArray<Expression>;
 }
 
@@ -384,6 +389,7 @@ export interface FunctionStatement extends Statement, FunctionBase {
 
 export type PrimaryExpression =
   | IntegerLiteralExpression
+  | StringLiteralExpression
   | VariableReferenceExpression
   | VariableAssignmentExpression
   | PrintingExpression

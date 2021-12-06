@@ -1,4 +1,5 @@
 import {
+  createStringLiteralExpression,
   createVariableStatement,
   createIdentifier,
   createArraysExpression,
@@ -423,6 +424,8 @@ export function createParser(text: string) {
       case SyntaxKind.SubToken:
       case SyntaxKind.IntegerLiteralToken:
         return parseIntegerLiteralExpression();
+      case SyntaxKind.StringLiteralToken:
+        return parseStringLiteralExpression();
       case SyntaxKind.Identifier:
         return parseVariableReferenceOrAssignmentExpression();
       case SyntaxKind.PrintfKeyword:
@@ -446,6 +449,16 @@ export function createParser(text: string) {
       default:
         throw new Error(token.__debugKind);
     }
+  }
+
+  function parseStringLiteralExpression() {
+    const pos = scanner.getTokenStart();
+    const token = parseExpectdToken<StringLiteralToken>(SyntaxKind.StringLiteralToken);
+    return finishNode(
+      createStringLiteralExpression(token),
+      pos,
+      scanner.getCurrentPos()
+    );
   }
 
   function parseFunctionExpression() {
@@ -562,15 +575,9 @@ export function createParser(text: string) {
   function parsePrintingExpression(): PrintingExpression {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.PrintfKeyword);
-    parseExpectdToken(SyntaxKind.OpenParenToken);
-    const format = parseExpectdToken<StringLiteralToken>(
-      SyntaxKind.StringLiteralToken
-    );
-    parseOptionalToken(SyntaxKind.CommaToken);
-    const args = parseExpressionList(SyntaxKind.CloseParenToken);
-    parseExpectdToken(SyntaxKind.CloseParenToken);
+    const args = parseArgumentsList();
     return finishNode(
-      createPrintingExpression(format, args),
+      createPrintingExpression(args),
       pos,
       scanner.getCurrentPos()
     );
