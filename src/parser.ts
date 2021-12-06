@@ -282,9 +282,15 @@ export function createParser(text: string) {
     return parseFunctionCallExpressionRest(expression, pos);
   }
 
-  function parseFunctionCallExpressionRest(expression: Expression, pos: number) {
+  function parseFunctionCallExpressionRest(
+    expression: Expression,
+    pos: number
+  ) {
     while (true) {
-      if (scanner.currentTokenhasLineFeed() || scanner.currentToken().kind !== SyntaxKind.OpenParenToken) {
+      if (
+        scanner.currentTokenhasLineFeed() ||
+        scanner.currentToken().kind !== SyntaxKind.OpenParenToken
+      ) {
         break;
       }
 
@@ -294,7 +300,7 @@ export function createParser(text: string) {
         pos,
         scanner.getCurrentPos()
       );
-      expression = parseFunctionCallExpressionRest(callExpression, pos)
+      expression = parseFunctionCallExpressionRest(callExpression, pos);
     }
     return expression;
   }
