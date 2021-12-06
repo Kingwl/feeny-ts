@@ -28,7 +28,7 @@ import {
   IntegerLiteralExpression,
   SequenceOfStatements,
   SourceFile,
-  Statement,
+  Statement
 } from './types';
 import { assertDef, last } from './utils';
 
@@ -632,16 +632,14 @@ export function createInterpreter(file: SourceFile) {
     evaluateSequenceOfStatements(sourceFile.body);
   }
 
-  function evaluateSequenceOfStatements(
-    seqs: SequenceOfStatements
-  ) {
+  function evaluateSequenceOfStatements(seqs: SequenceOfStatements) {
     const front = seqs.statements.slice(0, seqs.statements.length - 1);
     const last = seqs.statements[seqs.statements.length - 1];
 
     front.forEach(evaluateStatement);
 
     if (!seqs.isExpression) {
-      evaluateStatement(last)
+      evaluateStatement(last);
       return new NullValue();
     }
 
@@ -654,13 +652,9 @@ export function createInterpreter(file: SourceFile) {
   function evaluateStatement(stmt: Statement) {
     switch (stmt.kind) {
       case SyntaxKind.SequenceOfStatements:
-        return evaluateSequenceOfStatements(
-          stmt as SequenceOfStatements
-        );
+        return evaluateSequenceOfStatements(stmt as SequenceOfStatements);
       case SyntaxKind.ExpressionStatement:
-        return evaluateExpressionStatement(
-          stmt as ExpressionStatement
-        );
+        return evaluateExpressionStatement(stmt as ExpressionStatement);
       case SyntaxKind.VariableStatement:
         return evaluateVariableStatement(stmt as VariableStatement);
       case SyntaxKind.FunctionStatement:

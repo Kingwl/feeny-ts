@@ -138,7 +138,11 @@ export function createParser(text: string) {
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     parseExpectdToken(SyntaxKind.EqualsToken);
     const initializer = parseExpression();
-    return finishNode(createVariableStatement(name, initializer), pos, scanner.getCurrentPos());
+    return finishNode(
+      createVariableStatement(name, initializer),
+      pos,
+      scanner.getCurrentPos()
+    );
   }
 
   function parseParameterList(): NodeArray<IdentifierToken> {
@@ -197,7 +201,10 @@ export function createParser(text: string) {
     );
   }
 
-  function parseSequenceOfStatements(baseIndent: number, isExpression: boolean): SequenceOfStatements {
+  function parseSequenceOfStatements(
+    baseIndent: number,
+    isExpression: boolean
+  ): SequenceOfStatements {
     const pos = scanner.getTokenStart();
 
     const statements = parseIndentStatementList(baseIndent);
@@ -448,10 +455,7 @@ export function createParser(text: string) {
   function parseExpressionStatementOrSequenceOfStatements() {
     const colonToken = parseOptionalToken(SyntaxKind.ColonToken);
     if (colonToken && scanner.currentTokenhasLineFeed()) {
-      return parseSequenceOfStatements(
-        colonToken.leadingIndent,
-        true
-      );
+      return parseSequenceOfStatements(colonToken.leadingIndent, true);
     }
     return parseExpressionStatement();
   }
@@ -463,10 +467,7 @@ export function createParser(text: string) {
 
     const thenStatement = parseExpressionStatementOrSequenceOfStatements();
 
-    let elseStatement:
-      | SequenceOfStatements
-      | ExpressionStatement
-      | undefined;
+    let elseStatement: SequenceOfStatements | ExpressionStatement | undefined;
     const elseToken = parseOptionalToken(SyntaxKind.ElseKeyword);
     if (elseToken) {
       elseStatement = parseExpressionStatementOrSequenceOfStatements();

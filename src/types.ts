@@ -291,12 +291,8 @@ export interface VariableAssignmentExpression extends Expression {
 export interface IfExpression extends Expression {
   kind: SyntaxKind.IfExpression;
   condition: Expression;
-  thenStatement:
-    | SequenceOfStatements
-    | ExpressionStatement;
-  elseStatement?:
-    | SequenceOfStatements
-    | ExpressionStatement;
+  thenStatement: SequenceOfStatements | ExpressionStatement;
+  elseStatement?: SequenceOfStatements | ExpressionStatement;
 }
 
 export interface WhileExpression extends Expression {
@@ -363,7 +359,7 @@ export interface VariableStatement extends Statement {
 export interface SequenceOfStatements extends Statement {
   kind: SyntaxKind.SequenceOfStatements;
   statements: NodeArray<Statement>;
-  isExpression: boolean
+  isExpression: boolean;
 }
 
 export interface ExpressionStatement extends Statement {
@@ -377,7 +373,6 @@ export interface FunctionStatement extends Statement {
   params: NodeArray<IdentifierToken>;
   body: SequenceOfStatements | ExpressionStatement;
 }
-
 
 export type PrimaryExpression =
   | IntegerLiteralExpression
@@ -404,4 +399,4 @@ export type AllStatement =
   | VariableStatement
   | SequenceOfStatements
   | ExpressionStatement
-  | FunctionStatement
+  | FunctionStatement;

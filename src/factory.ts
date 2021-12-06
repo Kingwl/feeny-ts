@@ -166,9 +166,7 @@ export function createVariableStatement(
   name: IdentifierToken,
   initializer: Expression
 ): VariableStatement {
-  const node = createNode<VariableStatement>(
-    SyntaxKind.VariableStatement
-  );
+  const node = createNode<VariableStatement>(SyntaxKind.VariableStatement);
   node.name = name;
   node.initializer = initializer;
   return node;
@@ -177,15 +175,18 @@ export function createVariableStatement(
 export function createExpressionStatement(
   expression: Expression
 ): ExpressionStatement {
-  const node = createNode<ExpressionStatement>(
-    SyntaxKind.ExpressionStatement
-  );
+  const node = createNode<ExpressionStatement>(SyntaxKind.ExpressionStatement);
   node.expression = expression;
   return node;
 }
 
-export function createSequenceOfStatements(statements: NodeArray<Statement>, isExpression: boolean): SequenceOfStatements {
-  const node = createNode<SequenceOfStatements>(SyntaxKind.SequenceOfStatements);
+export function createSequenceOfStatements(
+  statements: NodeArray<Statement>,
+  isExpression: boolean
+): SequenceOfStatements {
+  const node = createNode<SequenceOfStatements>(
+    SyntaxKind.SequenceOfStatements
+  );
   node.statements = statements;
   node.isExpression = isExpression;
   return node;
@@ -217,12 +218,8 @@ export function createMethodSlot(
 
 export function createIfExpression(
   condition: Expression,
-  thenStatement:
-    | SequenceOfStatements
-    | ExpressionStatement,
-  elseStatement?:
-    | SequenceOfStatements
-    | ExpressionStatement
+  thenStatement: SequenceOfStatements | ExpressionStatement,
+  elseStatement?: SequenceOfStatements | ExpressionStatement
 ): IfExpression {
   const node = createNode<IfExpression>(SyntaxKind.IfExpression);
   node.condition = condition;
