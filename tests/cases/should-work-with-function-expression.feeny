@@ -1,0 +1,4 @@
+var fn = defn foo(x):
+    x + 1
+
+printf("", fn(2))

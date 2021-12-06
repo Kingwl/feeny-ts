@@ -16,6 +16,15 @@ exports[`Interpreter should-work-with-function 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-function-call 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-function-expression 1`] = `
+Array [
+  Array [
+    "",
+    "3",
+  ],
+]
+`;
+
 exports[`Interpreter should-work-with-get-shorthand 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-global-variable 1`] = `Array []`;

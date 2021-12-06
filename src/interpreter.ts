@@ -1,3 +1,4 @@
+import { FunctionExpression } from '.';
 import {
   ArraysExpression,
   Expression,
@@ -744,9 +745,18 @@ export function createInterpreter(file: SourceFile) {
         return evaluateGetShorthand(expr as GetShorthand);
       case SyntaxKind.SetShorthand:
         return evaluateSetShorthand(expr as SetShorthand);
+      case SyntaxKind.FunctionExpression:
+        return evaluateFunctionExpression(expr as FunctionExpression);
       default:
         throw new Error('Invalid expression: ' + expr.__debugKind);
     }
+  }
+
+  function evaluateFunctionExpression(expr: FunctionExpression) {
+    const env = currentEnv();
+    const params = expr.params.map(x => x.id);
+    const func = new RuntimeFunction(expr.name.id, params, expr.body, env);
+    return func;
   }
 
   function evaluateSetShorthand(expr: SetShorthand) {

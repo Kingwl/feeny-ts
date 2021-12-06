@@ -58,6 +58,7 @@ export enum SyntaxKind {
   WhileExpression,
   ThisExpression,
   ParenExpression,
+  FunctionExpression,
 
   // Object slot
   VariableSlot,
@@ -330,6 +331,16 @@ export interface SetShorthand extends Expression {
   value: Expression;
 }
 
+export interface FunctionBase {
+  name: IdentifierToken;
+  params: NodeArray<IdentifierToken>;
+  body: SequenceOfStatements | ExpressionStatement;
+}
+
+export interface FunctionExpression extends Expression, FunctionBase {
+  kind: SyntaxKind.FunctionExpression;
+}
+
 export interface ObjectSlot extends ASTNode {
   _objectSlotBrand: never;
 }
@@ -367,11 +378,8 @@ export interface ExpressionStatement extends Statement {
   expression: Expression;
 }
 
-export interface FunctionStatement extends Statement {
+export interface FunctionStatement extends Statement, FunctionBase {
   kind: SyntaxKind.FunctionStatement;
-  name: IdentifierToken;
-  params: NodeArray<IdentifierToken>;
-  body: SequenceOfStatements | ExpressionStatement;
 }
 
 export type PrimaryExpression =
@@ -380,6 +388,7 @@ export type PrimaryExpression =
   | VariableAssignmentExpression
   | PrintingExpression
   | ArraysExpression
+  | FunctionExpression
   | NullExpression
   | ObjectsExpression
   | IfExpression

@@ -25,7 +25,8 @@ import {
   createVariableReferenceExpression,
   createVariableSlot,
   createWhileExpression,
-  createExpressionStatement
+  createExpressionStatement,
+  createFunctionExpression
 } from './factory';
 import { createScanner } from './scanner';
 import {
@@ -440,9 +441,25 @@ export function createParser(text: string) {
         return parseThisExpression();
       case SyntaxKind.OpenParenToken:
         return parseParenExpression();
+      case SyntaxKind.DefnKeyword:
+        return parseFunctionExpression();
       default:
         throw new Error(token.__debugKind);
     }
+  }
+
+  function parseFunctionExpression() {
+    const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.DefnKeyword);
+    const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+    const params = parseParameterList();
+    const body = parseExpressionStatementOrSequenceOfStatements();
+
+    return finishNode(
+      createFunctionExpression(name, params, body),
+      pos,
+      scanner.getCurrentPos()
+    );
   }
 
   function parseParenExpression() {

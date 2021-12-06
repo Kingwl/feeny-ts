@@ -10,6 +10,7 @@ import {
   ExpressionStatement,
   FunctionCallExpression,
   FunctionStatement,
+  FunctionExpression,
   GetShorthand,
   IdentifierToken,
   IfExpression,
@@ -321,6 +322,18 @@ export function createFunctionCallExpression(
   );
   node.expression = expression;
   node.args = args;
+  return node;
+}
+
+export function createFunctionExpression(
+  name: IdentifierToken,
+  params: NodeArray<IdentifierToken>,
+  body: SequenceOfStatements | ExpressionStatement
+) {
+  const node = createNode<FunctionExpression>(SyntaxKind.FunctionExpression);
+  node.name = name;
+  node.params = params;
+  node.body = body;
   return node;
 }
 
