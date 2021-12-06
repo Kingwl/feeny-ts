@@ -326,7 +326,7 @@ const integerBuiltinFunctionDiv = new BuiltinFunction(
     "div",
     ["b"],
     createIntegerValueBuiltinFunction((a, b) => {
-        return new IntegerValue(a / b)
+        return new IntegerValue(Math.floor(a / b))
     })
 )
 
@@ -435,8 +435,22 @@ const arraysBuiltinFunctionSet = new BuiltinFunction(
     }
 )
 
+const arraysBuiltinFunctionLength = new BuiltinFunction(
+    'length',
+    [],
+    (thisValue: BaseValue | undefined, args: BaseValue[]) => {
+        assertDef(thisValue, "Cannot find this value")
+        if (!thisValue.isArray()) {
+            throw new TypeError("Invalid arguments")
+        }
+
+        return thisValue.length
+    }
+)
+
 ArrayValue.Env.addBinding('get', arraysBuiltinFunctionGet)
 ArrayValue.Env.addBinding('set', arraysBuiltinFunctionSet)
+ArrayValue.Env.addBinding('length', arraysBuiltinFunctionLength)
 
 type VarValues = IntegerValue | ArrayValue | ObjectValue | NullValue | BooleanValue
 type CodeValues = FunctionValue | BuiltinFunction

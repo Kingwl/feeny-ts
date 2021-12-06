@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Should work with demo Interpreter - should work with bsearch 1`] = `
+Array [
+  Array [
+    "The index of ~ in a is ~.\\\\n",
+    "13",
+    "-1",
+  ],
+  Array [
+    "The index of ~ in a is ~.\\\\n",
+    "14",
+    "-1",
+  ],
+  Array [
+    "The index of ~ in a is ~.\\\\n",
+    "15",
+    "-1",
+  ],
+  Array [
+    "The index of ~ in a is ~.\\\\n",
+    "29",
+    "-1",
+  ],
+  Array [
+    "The index of ~ in a is ~.\\\\n",
+    "30",
+    "-1",
+  ],
+]
+`;
+
 exports[`Should work with demo Interpreter - should work with cplx 1`] = `
 Array [
   Array [
@@ -1277,6 +1307,112 @@ Array [
   Array [
     "Puzzle ~\\\\n",
     "199",
+  ],
+]
+`;
+
+exports[`Should work with demo Interpreter - should work with vector 1`] = `
+Array [
+  Array [
+    "Create empty vector.\\\\n",
+  ],
+  Array [
+    "[]",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "Add some elements.\\\\n",
+  ],
+  Array [
+    "[~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    "]",
+  ],
+  Array [
+    "\\\\n",
+  ],
+  Array [
+    "Retrieving some elements.\\\\n",
+  ],
+  Array [
+    "v[~] = ~.\\\\n",
+    "2",
+    "0",
+  ],
+  Array [
+    "v[~] = ~.\\\\n",
+    "4",
+    "0",
+  ],
+  Array [
+    "v[~] = ~.\\\\n",
+    "1",
+    "0",
+  ],
+  Array [
+    "Setting first 3 elements to 0.\\\\n",
+  ],
+  Array [
+    "[~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    ", ~",
+    "0",
+  ],
+  Array [
+    "]",
+  ],
+  Array [
+    "\\\\n",
   ],
 ]
 `;
