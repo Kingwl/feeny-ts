@@ -279,16 +279,22 @@ export function createParser(text: string) {
   function parseFunctionCallExpressionOrHigher() {
     const pos = scanner.getTokenStart();
     const expression = parseAccessOrAssignmentExpressionOrHigher();
-    if (
-      !scanner.currentTokenhasLineFeed() &&
-      scanner.currentToken().kind === SyntaxKind.OpenParenToken
-    ) {
+    return parseFunctionCallExpressionRest(expression, pos);
+  }
+
+  function parseFunctionCallExpressionRest(expression: Expression, pos: number) {
+    while (true) {
+      if (scanner.currentTokenhasLineFeed() || scanner.currentToken().kind !== SyntaxKind.OpenParenToken) {
+        break;
+      }
+
       const args = parseArgumentsList();
-      return finishNode(
+      const callExpression = finishNode(
         createFunctionCallExpression(expression, args),
         pos,
         scanner.getCurrentPos()
       );
+      expression = parseFunctionCallExpressionRest(callExpression, pos)
     }
     return expression;
   }
@@ -512,7 +518,8 @@ export function createParser(text: string) {
     | VariableAssignmentExpression {
     const pos = scanner.getTokenStart();
     const token = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
-    if (parseOptionalToken(SyntaxKind.EqualsToken)) {
+    if (scanner.currentToken().kind === SyntaxKind.EqualsToken) {
+      parseExpectdToken(SyntaxKind.EqualsToken);
       const value = parseExpression();
 
       return finishNode(

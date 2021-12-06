@@ -42,6 +42,15 @@ exports[`Interpreter should-work-with-local-variable 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-method-call 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-nested-function 1`] = `
+Array [
+  Array [
+    "",
+    "3",
+  ],
+]
+`;
+
 exports[`Interpreter should-work-with-null 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-object-without-extends 1`] = `Array []`;

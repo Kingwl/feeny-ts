@@ -1,0 +1,5 @@
+defn foo():
+    defn bar(z):
+        z + 1
+    bar
+printf("", foo()(2))

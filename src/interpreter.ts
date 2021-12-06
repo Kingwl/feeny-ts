@@ -977,9 +977,10 @@ export function createInterpreter(file: SourceFile) {
   }
 
   function evaluateFunctionStatement(stmt: FunctionStatement) {
+    const env = currentEnv()
     const params = stmt.params.map(x => x.id);
     const func = new RuntimeFunction(stmt.name.id, params, stmt.body);
-    globalEnv.addBinding(stmt.name.id, func);
+    env.addBinding(stmt.name.id, func);
   }
 
   function evaluateExpressionStatement(stmt: ExpressionStatement) {
