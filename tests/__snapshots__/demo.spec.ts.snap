@@ -275,6 +275,29 @@ Array [
 
 exports[`Should work with demo Interpreter - should work with hello9 1`] = `Array []`;
 
+exports[`Should work with demo Interpreter - should work with inheritance 1`] = `
+Array [
+  Array [
+    "Do a binary operation on ~ and ~.\\\\n",
+    "11",
+    "7",
+  ],
+  Array [
+    "Result = ~.\\\\n",
+    "18",
+  ],
+  Array [
+    "Do a binary operation on ~ and ~.\\\\n",
+    "11",
+    "7",
+  ],
+  Array [
+    "Result = ~.\\\\n",
+    "77",
+  ],
+]
+`;
+
 exports[`Should work with demo Interpreter - should work with lists 1`] = `
 Array [
   Array [

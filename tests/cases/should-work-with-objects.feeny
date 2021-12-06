@@ -1,3 +1,6 @@
+var p = object:
+    var y = 42
+
 object(p):
     var x = 10
     method f():

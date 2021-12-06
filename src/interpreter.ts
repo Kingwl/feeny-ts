@@ -172,11 +172,24 @@ class ArrayValue extends EnvValue {
 class ObjectValue extends EnvValue {
     get type () { return ValueType.Object }
 
-    static Env = new Environment()
-    private _instanceEnv = new Environment(ObjectValue.Env);
+    private _instanceEnv: Environment
 
     get env () {
         return this._instanceEnv
+    }
+
+    constructor (parent?: BaseValue) {
+        super();
+
+        if (parent) {
+            if (!parent.isEnvValue()) {
+                throw new TypeError("Invalid extends")
+            }
+
+            this._instanceEnv = new Environment(parent.env);
+        } else {
+            this._instanceEnv = new Environment();
+        }
     }
 
     print(): string {
@@ -393,8 +406,8 @@ const arraysBuiltinFunctionGet = new BuiltinFunction(
         }
 
         const index = indexValue.value;
-        if (index < 0 || index > thisValue.length.value) {
-            throw new Error("Out of index")
+        if (index < 0 || index >= thisValue.length.value) {
+            throw new Error("Index out of range")
         }
         
         const result = thisValue.env.getBinding(`${index}`);
@@ -418,7 +431,7 @@ const arraysBuiltinFunctionSet = new BuiltinFunction(
             throw new TypeError("Invalid arguments")
         }
         thisValue.env.addBinding(`${index}`, value);
-        return thisValue;
+        return new NullValue();
     }
 )
 
@@ -714,7 +727,8 @@ export function createInterpreter(file: SourceFile) {
     }
 
     function evaluateObjectsExpression(expr: ObjectsExpression) {
-        const value = new ObjectValue();
+        const inheritValue = expr.extendsClause ? evaluateExpression(expr.extendsClause) : undefined
+        const value = new ObjectValue(inheritValue);
         expr.slots.forEach(slot => evaluateObjectSlot(value, slot))
         return value;
     }
