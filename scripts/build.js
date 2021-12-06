@@ -12,7 +12,7 @@ esbuild.build({
 
 esbuild.build({
     entryPoints: [
-        './src/bin.ts'
+        './src/cli.ts'
     ],
     bundle: true,
     format: 'cjs',
