@@ -16,11 +16,31 @@ exports[`Interpreter should-work-with-function 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-function-call 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-get-shorthand 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-global-variable 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-if-expression 1`] = `
+Array [
+  Array [
+    "A",
+  ],
+]
+`;
+
+exports[`Interpreter should-work-with-if-expression-with-if-only 1`] = `
+Array [
+  Array [
+    "A",
+  ],
+]
+`;
 
 exports[`Interpreter should-work-with-integer 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-local-variable 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-method-call 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-null 1`] = `Array []`;
 
@@ -39,6 +59,14 @@ Array [
 ]
 `;
 
+exports[`Interpreter should-work-with-set-shorthand 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-slot-assignment 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-slot-lookup 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-variable-assignment 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-variable-reference 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-while-expression 1`] = `Array []`;

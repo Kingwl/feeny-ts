@@ -54,17 +54,29 @@ class Environment {
 
     }
 
-    hasBinding(name: string): boolean {
-        return this.varValues.has(name) || this.codeValues.has(name) || !!this.parent?.hasBinding(name)
-    }
-
-    addBinding(name: string, value: BaseValue) {
+    private setValues(name: string, value: BaseValue) {
         if (isVarValues(value)) {
             this.varValues.set(name, value)
         } else if (isCodeValues(value)) {
             this.codeValues.set(name, value)
         } else {
             throw new Error("Invalid value type")
+        }
+    }
+
+    hasBinding(name: string): boolean {
+        return this.varValues.has(name) || this.codeValues.has(name)
+    }
+
+    addBinding(name: string, value: BaseValue) {
+        this.setValues(name, value)
+    }
+
+    setBinding(name: string, value: BaseValue) {
+        if (!this.hasBinding(name)) {
+            this.parent?.setBinding(name, value)
+        } else {
+            this.setValues(name, value)
         }
     }
 
@@ -381,8 +393,7 @@ const arraysBuiltinFunctionGet = new BuiltinFunction(
         }
         
         const result = thisValue.env.getBinding(`${index}`);
-        assertDef(result, "Cannot find index")
-        return result;
+        return result ?? new NullValue();
     }
 )
 
@@ -722,7 +733,7 @@ export function createInterpreter(file: SourceFile) {
         const env = currentEnv();
         const value = evaluateExpression(expr.value);
 
-        env.addBinding(expr.id.id, value);
+        env.setBinding(expr.id.id, value);
         return value
     }
 
@@ -733,7 +744,7 @@ export function createInterpreter(file: SourceFile) {
         }
 
         const right = evaluateExpression(expr.value);
-        left.env.addBinding(expr.name.id, right)
+        left.env.setBinding(expr.name.id, right)
         return right;
     }
 

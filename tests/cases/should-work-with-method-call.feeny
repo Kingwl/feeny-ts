@@ -1,1 +1,5 @@
+var o = object:
+    method f(x):
+        x
+
 o.f(10)

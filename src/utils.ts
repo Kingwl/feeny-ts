@@ -108,7 +108,7 @@ export enum Chars {
 
 export enum Keywords {
     Null = 'null',
-    Arrays = 'arrays',
+    Arrays = 'array',
     Objects = 'object',
     Var = 'var',
     This = 'this',

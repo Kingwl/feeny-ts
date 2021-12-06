@@ -2,7 +2,6 @@ import { createIdentifier, createNumberLiteralToken, createStringLiteralToken, c
 import { Token, SyntaxKind, TokenSyntaxKind } from "./types";
 import { Chars, CharsToTokenKind, createFinishNode, getIndent, isAlpha, isAlphaOrDigitOrLowDashOrDashOrQuestion, isDigit, isKeyword, isWhiteSpaceOrTab, KeywordsToTokenKind } from "./utils";
 
-
 export function createScanner(
     text: string
 ) {
