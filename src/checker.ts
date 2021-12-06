@@ -1,3 +1,1 @@
-export function createChecker () {
-
-}
+export function createChecker() {}

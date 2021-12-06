@@ -1,139 +1,142 @@
 export enum SyntaxKind {
-    Unknown,
+  Unknown,
 
-    // Token
-    CommaToken,
-    OpenParenToken,
-    CloseParenToken,
-    ColonToken,
-    DotToken,
-    EqualsToken,
-    OpenBracketToken,
-    CloseBracketToken,
+  // Token
+  CommaToken,
+  OpenParenToken,
+  CloseParenToken,
+  ColonToken,
+  DotToken,
+  EqualsToken,
+  OpenBracketToken,
+  CloseBracketToken,
 
-    AddToken,
-    SubToken,
-    MulToken,
-    DivToken,
-    ModToken,
-    LessThanToken,
-    GreaterThanToken,
-    LessEqualsThanToken,
-    GreaterEqualsThanToken,
-    EqualsEqualsToken,
+  AddToken,
+  SubToken,
+  MulToken,
+  DivToken,
+  ModToken,
+  LessThanToken,
+  GreaterThanToken,
+  LessEqualsThanToken,
+  GreaterEqualsThanToken,
+  EqualsEqualsToken,
 
-    IntegerLiteralToken,
-    StringLiteralToken,
-    Identifier,
+  IntegerLiteralToken,
+  StringLiteralToken,
+  Identifier,
 
-    // Syntax
-    PrintfKeyword,
-    ArraysKeyword,
-    NullKeyword,
-    ObjectsKeyword,
-    VarKeyword,
-    ThisKeyword,
-    IfKeyword,
-    ElseKeyword,
-    WhileKeyword,
-    MethodKeyword,
-    DefnKeyword,
+  // Syntax
+  PrintfKeyword,
+  ArraysKeyword,
+  NullKeyword,
+  ObjectsKeyword,
+  VarKeyword,
+  ThisKeyword,
+  IfKeyword,
+  ElseKeyword,
+  WhileKeyword,
+  MethodKeyword,
+  DefnKeyword,
 
-    EndOfFileToken,
-    SourceFile,
+  EndOfFileToken,
+  SourceFile,
 
-    // Expression
-    IntegerLiteralExpression,
-    VariableReferenceExpression,
-    PrintingExpression,
-    ArraysExpression,
-    NullExpression,
-    ObjectsExpression,
-    MethodCallExpression,
-    SlotLookupExpression,
-    SlotAssignmentExpression,
-    FunctionCallExpression,
-    VariableAssignmentExpression,
-    IfExpression,
-    WhileExpression,
-    ThisExpression,
-    ParenExpression,
+  // Expression
+  IntegerLiteralExpression,
+  VariableReferenceExpression,
+  PrintingExpression,
+  ArraysExpression,
+  NullExpression,
+  ObjectsExpression,
+  MethodCallExpression,
+  SlotLookupExpression,
+  SlotAssignmentExpression,
+  FunctionCallExpression,
+  VariableAssignmentExpression,
+  IfExpression,
+  WhileExpression,
+  ThisExpression,
+  ParenExpression,
 
-    // Object slot
-    VariableSlot,
-    MethodSlot,
+  // Object slot
+  VariableSlot,
+  MethodSlot,
 
-    // Local Statements
-    LocalVariableStatement,
-    SequenceOfStatements,
-    LocalExpressionStatement,
+  // Local Statements
+  LocalVariableStatement,
+  SequenceOfStatements,
+  LocalExpressionStatement,
 
-    // Top Level Statement
-    GlobalVariableStatement,
-    FunctionStatement,
-    TopLevelExpressionStatement,
+  // Top Level Statement
+  GlobalVariableStatement,
+  FunctionStatement,
+  TopLevelExpressionStatement,
 
-    // Shorthand
-    BinaryShorthand,
-    GetShorthand,
-    SetShorthand,
+  // Shorthand
+  BinaryShorthand,
+  GetShorthand,
+  SetShorthand
 }
 
 export type BinaryShorthandTokenSyntaxKind =
-    | SyntaxKind.AddToken
-    | SyntaxKind.SubToken
-    | SyntaxKind.MulToken
-    | SyntaxKind.DivToken
-    | SyntaxKind.ModToken
-    | SyntaxKind.LessThanToken
-    | SyntaxKind.GreaterThanToken
-    | SyntaxKind.LessEqualsThanToken
-    | SyntaxKind.GreaterEqualsThanToken
-    | SyntaxKind.EqualsEqualsToken;
+  | SyntaxKind.AddToken
+  | SyntaxKind.SubToken
+  | SyntaxKind.MulToken
+  | SyntaxKind.DivToken
+  | SyntaxKind.ModToken
+  | SyntaxKind.LessThanToken
+  | SyntaxKind.GreaterThanToken
+  | SyntaxKind.LessEqualsThanToken
+  | SyntaxKind.GreaterEqualsThanToken
+  | SyntaxKind.EqualsEqualsToken;
 
-export type BinaryShorthandToken = Token<BinaryShorthandTokenSyntaxKind>
+export type BinaryShorthandToken = Token<BinaryShorthandTokenSyntaxKind>;
 
 export interface TextSpan {
-    fullPos: number;
-    pos: number;
-    end: number;
+  fullPos: number;
+  pos: number;
+  end: number;
 }
 
 export interface ASTNode extends TextSpan {
-    kind: SyntaxKind;
-    __debugKind?: string
+  kind: SyntaxKind;
+  __debugKind?: string;
 
-    leadingIndent: number;
+  leadingIndent: number;
 }
 
-export interface NodeArray<T extends ASTNode> extends ReadonlyArray<T>, TextSpan {
-    _nodeArrayBrand: never;
+export interface NodeArray<T extends ASTNode>
+  extends ReadonlyArray<T>,
+    TextSpan {
+  _nodeArrayBrand: never;
 }
 
 export interface SourceFile extends ASTNode {
-    _sourceFileBrand: never;
-    kind: SyntaxKind.SourceFile;
-    body: SequenceOfStatements<TopLevelStatement>
-    eof: EndOfFileToken
+  _sourceFileBrand: never;
+  kind: SyntaxKind.SourceFile;
+  body: SequenceOfStatements<TopLevelStatement>;
+  eof: EndOfFileToken;
 }
 
 export interface Token<K extends SyntaxKind = SyntaxKind> extends ASTNode {
-    _tokenBrand: never
-    kind: K
+  _tokenBrand: never;
+  kind: K;
 }
-
 
 export interface IdentifierToken extends Token<SyntaxKind.Identifier> {
-    id: string;
-    keyword?: KeywordTokens
+  id: string;
+  keyword?: KeywordTokens;
 }
 
-export interface StringLiteralToken extends Token<SyntaxKind.StringLiteralToken> {
-    value: string;
+export interface StringLiteralToken
+  extends Token<SyntaxKind.StringLiteralToken> {
+  value: string;
 }
 
-export interface IntegerLiteralToken extends Token<SyntaxKind.IntegerLiteralToken> {
-    value: string;
+export interface IntegerLiteralToken
+  extends Token<SyntaxKind.IntegerLiteralToken> {
+  value: string;
 }
 
 export type EndOfFileToken = Token<SyntaxKind.EndOfFileToken>;
@@ -168,249 +171,253 @@ export type GreaterEqualsThanToken = Token<SyntaxKind.GreaterEqualsThanToken>;
 export type EqualsEqualsToken = Token<SyntaxKind.EqualsEqualsToken>;
 
 export type AllTokens =
-    | EndOfFileToken
-    | NullKeywordToken
-    | ArraysKeywordToken
-    | ObjectsKeywordToken
-    | VarKeywordToken
-    | ThisKeywordToken
-    | IfKeywordToken
-    | ElseKeywordToken
-    | WhileKeywordToken
-    | MethodKeywordToken
-    | DefnKeywordToken
-    | PrintfKeywordToken
-    | OpenParenToken
-    | CloseParenToken
-    | CommaToken
-    | ColonToken
-    | DotToken
-    | EqualsToken
-    | OpenBracketToken
-    | CloseBracketToken
-    | AddToken
-    | SubToken
-    | MulToken
-    | DivToken
-    | ModToken
-    | LessThanToken
-    | GreaterThanToken
-    | LessEqualsThanToken
-    | GreaterEqualsThanToken
-    | EqualsEqualsToken
-    | IdentifierToken
-    | StringLiteralToken
-    | IntegerLiteralToken
+  | EndOfFileToken
+  | NullKeywordToken
+  | ArraysKeywordToken
+  | ObjectsKeywordToken
+  | VarKeywordToken
+  | ThisKeywordToken
+  | IfKeywordToken
+  | ElseKeywordToken
+  | WhileKeywordToken
+  | MethodKeywordToken
+  | DefnKeywordToken
+  | PrintfKeywordToken
+  | OpenParenToken
+  | CloseParenToken
+  | CommaToken
+  | ColonToken
+  | DotToken
+  | EqualsToken
+  | OpenBracketToken
+  | CloseBracketToken
+  | AddToken
+  | SubToken
+  | MulToken
+  | DivToken
+  | ModToken
+  | LessThanToken
+  | GreaterThanToken
+  | LessEqualsThanToken
+  | GreaterEqualsThanToken
+  | EqualsEqualsToken
+  | IdentifierToken
+  | StringLiteralToken
+  | IntegerLiteralToken;
 
-export type TokenSyntaxKind = AllTokens['kind']
+export type TokenSyntaxKind = AllTokens['kind'];
 
-export type KeywordTokens = 
-    | PrintfKeywordToken
-    | ArraysKeywordToken
-    | NullKeywordToken
-    | ObjectsKeywordToken
-    | VarKeywordToken
-    | ThisKeywordToken
-    | IfKeywordToken
-    | ElseKeywordToken
-    | WhileKeywordToken
-    | MethodKeywordToken
-    | DefnKeywordToken
+export type KeywordTokens =
+  | PrintfKeywordToken
+  | ArraysKeywordToken
+  | NullKeywordToken
+  | ObjectsKeywordToken
+  | VarKeywordToken
+  | ThisKeywordToken
+  | IfKeywordToken
+  | ElseKeywordToken
+  | WhileKeywordToken
+  | MethodKeywordToken
+  | DefnKeywordToken;
 
-export type KeywordSyntaxKind = KeywordTokens["kind"]
+export type KeywordSyntaxKind = KeywordTokens['kind'];
 
 export interface Expression extends ASTNode {
-    _expressionBrand: never
+  _expressionBrand: never;
 }
 
 export interface IntegerLiteralExpression extends Expression {
-    kind: SyntaxKind.IntegerLiteralExpression
-    value: IntegerLiteralToken
-    subToken?: SubToken
+  kind: SyntaxKind.IntegerLiteralExpression;
+  value: IntegerLiteralToken;
+  subToken?: SubToken;
 }
 
 export interface VariableReferenceExpression extends Expression {
-    kind: SyntaxKind.VariableReferenceExpression
-    id: IdentifierToken
+  kind: SyntaxKind.VariableReferenceExpression;
+  id: IdentifierToken;
 }
 
 export interface PrintingExpression extends Expression {
-    kind: SyntaxKind.PrintingExpression
-    format: StringLiteralToken
-    args: NodeArray<Expression>
+  kind: SyntaxKind.PrintingExpression;
+  format: StringLiteralToken;
+  args: NodeArray<Expression>;
 }
 
 export interface ArraysExpression extends Expression {
-    kind: SyntaxKind.ArraysExpression
-    length: Expression
-    defaultValue?: Expression
+  kind: SyntaxKind.ArraysExpression;
+  length: Expression;
+  defaultValue?: Expression;
 }
 
 export interface NullExpression extends Expression {
-    kind: SyntaxKind.NullExpression
-    token: NullKeywordToken
+  kind: SyntaxKind.NullExpression;
+  token: NullKeywordToken;
 }
 
 export interface ObjectsExpression extends Expression {
-    kind: SyntaxKind.ObjectsExpression
-    extendsClause?: Expression;
-    slots: NodeArray<ObjectSlot>
+  kind: SyntaxKind.ObjectsExpression;
+  extendsClause?: Expression;
+  slots: NodeArray<ObjectSlot>;
 }
 
 export interface MethodCallExpression extends Expression {
-    kind: SyntaxKind.MethodCallExpression
-    expression: AccessOrAssignmentExpressionOrHigher
-    name: IdentifierToken
-    args: NodeArray<Expression>
+  kind: SyntaxKind.MethodCallExpression;
+  expression: AccessOrAssignmentExpressionOrHigher;
+  name: IdentifierToken;
+  args: NodeArray<Expression>;
 }
 
 export interface SlotLookupExpression extends Expression {
-    kind: SyntaxKind.SlotLookupExpression
-    expression: AccessOrAssignmentExpressionOrHigher
-    name: IdentifierToken
+  kind: SyntaxKind.SlotLookupExpression;
+  expression: AccessOrAssignmentExpressionOrHigher;
+  name: IdentifierToken;
 }
 
 export interface SlotAssignmentExpression extends Expression {
-    kind: SyntaxKind.SlotAssignmentExpression
-    expression: AccessOrAssignmentExpressionOrHigher
-    name: IdentifierToken
-    value: Expression
+  kind: SyntaxKind.SlotAssignmentExpression;
+  expression: AccessOrAssignmentExpressionOrHigher;
+  name: IdentifierToken;
+  value: Expression;
 }
 
 export interface FunctionCallExpression extends Expression {
-    kind: SyntaxKind.FunctionCallExpression
-    expression: Expression
-    args: NodeArray<Expression>
+  kind: SyntaxKind.FunctionCallExpression;
+  expression: Expression;
+  args: NodeArray<Expression>;
 }
 
 export interface VariableAssignmentExpression extends Expression {
-    kind: SyntaxKind.VariableAssignmentExpression
-    id: IdentifierToken
-    value: Expression
+  kind: SyntaxKind.VariableAssignmentExpression;
+  id: IdentifierToken;
+  value: Expression;
 }
 
 export interface IfExpression extends Expression {
-    kind: SyntaxKind.IfExpression
-    condition: Expression
-    thenStatement: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
-    elseStatement?: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
+  kind: SyntaxKind.IfExpression;
+  condition: Expression;
+  thenStatement:
+    | SequenceOfStatements<LocalStatement>
+    | LocalExpressionStatement;
+  elseStatement?:
+    | SequenceOfStatements<LocalStatement>
+    | LocalExpressionStatement;
 }
 
 export interface WhileExpression extends Expression {
-    kind: SyntaxKind.WhileExpression
-    condition: Expression
-    body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
+  kind: SyntaxKind.WhileExpression;
+  condition: Expression;
+  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement;
 }
 
 export interface ThisExpression extends Expression {
-    kind: SyntaxKind.ThisExpression
+  kind: SyntaxKind.ThisExpression;
 }
 
 export interface ParenExpression extends Expression {
-    kind: SyntaxKind.ParenExpression
-    expression: Expression
+  kind: SyntaxKind.ParenExpression;
+  expression: Expression;
 }
 
 export interface BinaryShorthand extends Expression {
-    kind: SyntaxKind.BinaryShorthand
-    operator: Token<BinaryShorthandTokenSyntaxKind>
-    left: Expression
-    right: Expression
+  kind: SyntaxKind.BinaryShorthand;
+  operator: Token<BinaryShorthandTokenSyntaxKind>;
+  left: Expression;
+  right: Expression;
 }
 
 export interface GetShorthand extends Expression {
-    kind: SyntaxKind.GetShorthand
-    expression: AccessOrAssignmentExpressionOrHigher
-    args: NodeArray<Expression>
+  kind: SyntaxKind.GetShorthand;
+  expression: AccessOrAssignmentExpressionOrHigher;
+  args: NodeArray<Expression>;
 }
 
 export interface SetShorthand extends Expression {
-    kind: SyntaxKind.SetShorthand
-    expression: AccessOrAssignmentExpressionOrHigher
-    args: NodeArray<Expression>
-    value: Expression
+  kind: SyntaxKind.SetShorthand;
+  expression: AccessOrAssignmentExpressionOrHigher;
+  args: NodeArray<Expression>;
+  value: Expression;
 }
 
 export interface ObjectSlot extends ASTNode {
-    _objectSlotBrand: never
+  _objectSlotBrand: never;
 }
 
 export interface VariableSlot extends ObjectSlot {
-    kind: SyntaxKind.VariableSlot
-    name: IdentifierToken
-    initializer: Expression
+  kind: SyntaxKind.VariableSlot;
+  name: IdentifierToken;
+  initializer: Expression;
 }
 
 export interface MethodSlot extends ObjectSlot {
-    kind: SyntaxKind.MethodSlot
-    name: IdentifierToken
-    params: NodeArray<IdentifierToken>
-    body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
+  kind: SyntaxKind.MethodSlot;
+  name: IdentifierToken;
+  params: NodeArray<IdentifierToken>;
+  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement;
 }
 export interface Statement extends ASTNode {
-    _statementBrand: never
+  _statementBrand: never;
 }
 
 export interface LocalVariableStatement extends Statement {
-    kind: SyntaxKind.LocalVariableStatement
-    name: IdentifierToken
-    initializer: Expression
+  kind: SyntaxKind.LocalVariableStatement;
+  name: IdentifierToken;
+  initializer: Expression;
 }
 
-export interface SequenceOfStatements<T extends LocalStatement | TopLevelStatement> extends Statement {
-    kind: SyntaxKind.SequenceOfStatements
-    statements: NodeArray<T>
+export interface SequenceOfStatements<
+  T extends LocalStatement | TopLevelStatement
+> extends Statement {
+  kind: SyntaxKind.SequenceOfStatements;
+  statements: NodeArray<T>;
 }
 
 export interface LocalExpressionStatement extends Statement {
-    kind: SyntaxKind.LocalExpressionStatement
-    expression: Expression
+  kind: SyntaxKind.LocalExpressionStatement;
+  expression: Expression;
 }
 
 export interface GlobalVariableStatement extends Statement {
-    kind: SyntaxKind.GlobalVariableStatement
-    name: IdentifierToken
-    initializer: Expression
+  kind: SyntaxKind.GlobalVariableStatement;
+  name: IdentifierToken;
+  initializer: Expression;
 }
 
 export interface FunctionStatement extends Statement {
-    kind: SyntaxKind.FunctionStatement
-    name: IdentifierToken
-    params: NodeArray<IdentifierToken>
-    body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement
+  kind: SyntaxKind.FunctionStatement;
+  name: IdentifierToken;
+  params: NodeArray<IdentifierToken>;
+  body: SequenceOfStatements<LocalStatement> | LocalExpressionStatement;
 }
 
 export interface TopLevelExpressionStatement extends Statement {
-    kind: SyntaxKind.TopLevelExpressionStatement
-    expression: Expression
+  kind: SyntaxKind.TopLevelExpressionStatement;
+  expression: Expression;
 }
 
 export type PrimaryExpression =
-    | IntegerLiteralExpression
-    | VariableReferenceExpression
-    | VariableAssignmentExpression
-    | PrintingExpression
-    | ArraysExpression
-    | NullExpression
-    | ObjectsExpression
-    | IfExpression
-    | WhileExpression
-    | ThisExpression
-    | ParenExpression
+  | IntegerLiteralExpression
+  | VariableReferenceExpression
+  | VariableAssignmentExpression
+  | PrintingExpression
+  | ArraysExpression
+  | NullExpression
+  | ObjectsExpression
+  | IfExpression
+  | WhileExpression
+  | ThisExpression
+  | ParenExpression;
 
 export type AccessOrAssignmentExpressionOrHigher =
-    | PrimaryExpression
-    | SlotAssignmentExpression 
-    | MethodCallExpression 
-    | SlotLookupExpression 
-    | SetShorthand 
-    | GetShorthand 
+  | PrimaryExpression
+  | SlotAssignmentExpression
+  | MethodCallExpression
+  | SlotLookupExpression
+  | SetShorthand
+  | GetShorthand;
 
 export type TopLevelStatement =
-    | GlobalVariableStatement
-    | FunctionStatement
-    | TopLevelExpressionStatement
+  | GlobalVariableStatement
+  | FunctionStatement
+  | TopLevelExpressionStatement;
 
-export type LocalStatement =
-    | LocalVariableStatement
-    | LocalExpressionStatement
+export type LocalStatement = LocalVariableStatement | LocalExpressionStatement;

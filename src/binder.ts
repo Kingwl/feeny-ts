@@ -1,3 +1,1 @@
-export function createBinder () {
-
-}
+export function createBinder() {}
