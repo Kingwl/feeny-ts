@@ -13,10 +13,6 @@ describe('Should work with demo', () => {
         })
 
         it(`Interpreter - should work with ${baseName}`, () => {
-            if (baseName !== 'cplx') {
-                return
-            }
-
             const output = runWithConsoleLogHook(() => {
                 runCode(content)
             });
