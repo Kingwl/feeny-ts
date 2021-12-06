@@ -395,7 +395,7 @@ const integerBuiltinFunctionDiv = new BuiltinFunction(
   'div',
   ['b'],
   createIntegerValueBuiltinFunction((a, b) => {
-    return new IntegerValue(Math.floor(a / b));
+    return new IntegerValue(Math.trunc(a / b));
   })
 );
 
@@ -495,10 +495,12 @@ const arraysBuiltinFunctionSet = new BuiltinFunction(
     if (args.length !== 2) {
       throw new Error('Arguments mis match');
     }
-    const [index, value] = args;
-    if (!index.isInteger()) {
+    const [indexValue, value] = args;
+    if (!indexValue.isInteger()) {
       throw new TypeError('Invalid arguments');
     }
+
+    const index = indexValue.value;
     thisValue.env.addBinding(`${index}`, value);
     return new NullValue();
   }
@@ -539,7 +541,7 @@ interface CallFrame {
 
 function isVarValues(value: BaseValue): value is VarValues {
   return (
-    value.isInteger() || value.isNull() || value.isObject() || value.isArray()
+    value.isInteger() || value.isNull() || value.isObject() || value.isArray() || value.isString()
   );
 }
 
@@ -587,10 +589,11 @@ export function createInterpreter(file: SourceFile) {
 
   function popEnv() {
     const envStack = currentCallFrame().envStack;
-    const result = envStack.pop();
     if (!envStack.length) {
       throw new Error('EnvStack not balanced');
     }
+
+    const result = envStack.pop();
     return result;
   }
 
@@ -621,22 +624,23 @@ export function createInterpreter(file: SourceFile) {
 
     const callFrame: CallFrame = {
       thisValue,
-      envStack: [env],
+      envStack: [],
       name,
       parent: currentCallFrame()
     };
 
-    pushEnv(env);
     pushCallFrame(callFrame);
+    pushEnv(env);
     const result = cb();
-    const lastCallFrame = popCallFrame();
-    if (lastCallFrame !== callFrame) {
-      throw new Error('Invalid call frame');
-    }
     const lastEnv = popEnv();
     if (lastEnv !== env) {
       throw new Error('Invalid environment');
     }
+    const lastCallFrame = popCallFrame();
+    if (lastCallFrame !== callFrame) {
+      throw new Error('Invalid call frame');
+    }
+    
     return result;
   }
 

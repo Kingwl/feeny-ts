@@ -25,26 +25,7 @@ defn cplx (r, i) :
 
 defn main () :
    var a = cplx(2, 5)
-   printf("a = ")
-   a.print()
-   printf("\n")
-   
    var b = cplx(-4, 2)   
-   printf("b = ")
-   b.print()
-   printf("\n")
-   
-   printf("a + b = ")
-   (a + b).print()
-   printf("\n")
-
-   printf("a - b = ")
-   (a - b).print()
-   printf("\n")
-
-   printf("a * b = ")
-   (a * b).print()
-   printf("\n")
 
    printf("a / b = ")
    (a / b).print()
