@@ -202,6 +202,35 @@ export function isBinaryShorthandTokenSyntaxKind(
   }
 }
 
+export enum BinaryShorthandPriority {
+  Lowest = 0,
+  Comparison = 4,
+  Mod = 5,
+  AddOrSub = 6,
+  MulOrDiv = 7
+}
+
+export function getBinaryShorthandPriority (kind: BinaryShorthandTokenSyntaxKind) {
+  switch (kind) {
+    case SyntaxKind.LessThanToken:
+    case SyntaxKind.LessEqualsThanToken:
+    case SyntaxKind.GreaterThanToken:
+    case SyntaxKind.GreaterEqualsThanToken:
+    case SyntaxKind.EqualsEqualsToken:
+      return BinaryShorthandPriority.Comparison;
+    case SyntaxKind.ModToken:
+      return BinaryShorthandPriority.Mod
+    case SyntaxKind.AddToken:
+    case SyntaxKind.SubToken:
+      return BinaryShorthandPriority.AddOrSub
+    case SyntaxKind.MulToken:
+    case SyntaxKind.DivToken:
+      return BinaryShorthandPriority.MulOrDiv
+    default:
+      throw new Error("Invalid kind: " + kind)
+  }
+}
+
 export function isBinaryShorthandToken(
   token: Token
 ): token is BinaryShorthandToken {

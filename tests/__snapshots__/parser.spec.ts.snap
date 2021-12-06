@@ -2292,7 +2292,7 @@ Object {
                           "leadingIndent": 8,
                           "pos": 100,
                         },
-                        "pos": 100,
+                        "pos": 89,
                         "right": Object {
                           "__debugKind": "VariableReferenceExpression",
                           "end": 105,
@@ -2317,7 +2317,7 @@ Object {
                         "leadingIndent": 8,
                         "pos": 104,
                       },
-                      "pos": 104,
+                      "pos": 89,
                       "right": Object {
                         "__debugKind": "VariableReferenceExpression",
                         "end": 107,

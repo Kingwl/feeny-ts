@@ -64,8 +64,10 @@ import {
   VariableSlot
 } from './types';
 import {
+  BinaryShorthandPriority,
   createFinishNode,
   finishNodeArray,
+  getBinaryShorthandPriority,
   isBinaryShorthandToken,
   isKeywordSyntaxKind,
   TokenKindsToKeyword
@@ -265,13 +267,13 @@ export function createParser(text: string) {
     return parseBinaryShorthandOrHigher();
   }
 
-  function parseBinaryShorthandOrHigher(): BinaryShorthand | Expression {
+  function parseBinaryShorthandOrHigher(priority = BinaryShorthandPriority.Lowest): BinaryShorthand | Expression {
     const pos = scanner.getTokenStart();
     const expression = parseFunctionCallExpressionOrHigher();
-    return parseBinaryShorthandRest(expression, pos);
+    return parseBinaryShorthandRest(expression, pos, priority);
   }
 
-  function parseBinaryShorthandRest(expression: Expression, pos: number) {
+  function parseBinaryShorthandRest(expression: Expression, pos: number, priority: BinaryShorthandPriority ) {
     while (true) {
       const operator = scanner.currentToken();
       if (
@@ -281,18 +283,22 @@ export function createParser(text: string) {
         break;
       }
 
+      const currentPriority = getBinaryShorthandPriority(operator.kind)
+      if (currentPriority <= priority) {
+        break
+      }
+
       scanner.nextToken();
-      const right = parseFunctionCallExpressionOrHigher();
+      const right = parseBinaryShorthandOrHigher(currentPriority);
 
       expression = finishNode(
         createBinaryShorthand(expression, operator, right),
         pos,
         scanner.getCurrentPos()
       );
-      pos = scanner.getTokenStart();
     }
 
-    return expression;
+    return expression
   }
 
   function parseFunctionCallExpressionOrHigher() {
