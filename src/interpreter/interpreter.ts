@@ -215,7 +215,7 @@ export function createInterpreter(file: SourceFile, context: Context) {
       args,
       callable.closureEnv,
       () => {
-        return evaluateExpressionStatementOrSequenceOfStatements(callable.body);
+        return callable.body();
       }
     );
   }
@@ -338,7 +338,12 @@ export function createInterpreter(file: SourceFile, context: Context) {
   function evaluateFunctionExpression(expr: FunctionExpression) {
     const env = currentEnv();
     const params = expr.params.map(x => x.id);
-    const func = new RuntimeFunction(expr.name.id, params, expr.body, env);
+    const func = new RuntimeFunction(
+      expr.name.id,
+      params,
+      () => evaluateExpressionStatementOrSequenceOfStatements(expr.body),
+      env
+    );
     return func;
   }
 
@@ -455,7 +460,8 @@ export function createInterpreter(file: SourceFile, context: Context) {
       const callable = new RuntimeFunction(
         methodSlot.name.id,
         params,
-        methodSlot.body,
+        () =>
+          evaluateExpressionStatementOrSequenceOfStatements(methodSlot.body),
         env
       );
       obj.env.addBinding(methodSlot.name.id, callable);
@@ -591,7 +597,7 @@ export function createInterpreter(file: SourceFile, context: Context) {
       throw new TypeError('Invalid length arguments, expected integer');
     }
 
-    return new ArrayValue(length, defaultValue);
+    return new ArrayValue(length.value, defaultValue);
   }
 
   function evaluateNullExpression(expr: NullExpression) {
@@ -631,7 +637,12 @@ export function createInterpreter(file: SourceFile, context: Context) {
   function evaluateFunctionStatement(stmt: FunctionStatement) {
     const env = currentEnv();
     const params = stmt.params.map(x => x.id);
-    const func = new RuntimeFunction(stmt.name.id, params, stmt.body, env);
+    const func = new RuntimeFunction(
+      stmt.name.id,
+      params,
+      () => evaluateExpressionStatementOrSequenceOfStatements(stmt.body),
+      env
+    );
     env.addBinding(stmt.name.id, func);
   }
 

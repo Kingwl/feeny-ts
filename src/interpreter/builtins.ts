@@ -136,7 +136,7 @@ export function setupBuiltin() {
       }
 
       const index = indexValue.value;
-      if (index < 0 || index >= thisValue.length.value) {
+      if (index < 0 || index >= thisValue.length) {
         throw new Error('Index out of range');
       }
 
@@ -177,7 +177,7 @@ export function setupBuiltin() {
         throw new TypeError('Invalid this value, expected Array');
       }
 
-      return thisValue.length;
+      return new IntegerValue(thisValue.length);
     }
   );
 

@@ -1,4 +1,3 @@
-import { SequenceOfStatements, ExpressionStatement } from '../types';
 import { Environment, ValueType } from './types';
 
 export abstract class BaseValue {
@@ -103,11 +102,11 @@ export class ArrayValue extends EnvValue {
     return this._instanceEnv;
   }
 
-  constructor(public length: IntegerValue, defaultValue?: BaseValue) {
+  constructor(public length: number, defaultValue?: BaseValue) {
     super();
 
     if (defaultValue) {
-      for (let i = 0; i < length.value; i++) {
+      for (let i = 0; i < length; i++) {
         this.env.addBinding(`${i}`, defaultValue);
       }
     }
@@ -115,7 +114,7 @@ export class ArrayValue extends EnvValue {
 
   print(): string {
     const list: BaseValue[] = [];
-    for (let i = 0; i < this.length.value; i++) {
+    for (let i = 0; i < this.length; i++) {
       const value = this.env.getBinding(`${i}`);
       if (value) {
         list.push(value);
@@ -238,7 +237,7 @@ export class RuntimeFunction extends FunctionValue {
   constructor(
     name: string,
     params: string[],
-    public body: SequenceOfStatements | ExpressionStatement,
+    public body: () => BaseValue,
     public closureEnv: Environment
   ) {
     super(name, params);
