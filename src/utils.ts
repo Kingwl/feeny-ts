@@ -8,7 +8,8 @@ import {
   BinaryShorthandTokenSyntaxKind,
   BinaryShorthandToken,
   Statement,
-  Expression
+  Expression,
+  Declaration
 } from './types';
 
 export function finishNode<T extends ASTNode>(
@@ -73,6 +74,16 @@ export function assertDef<T>(
   if (!isDef(v)) {
     throw new Error(message ?? 'Must be defined');
   }
+}
+
+export function assert(v: any, message?: string): asserts v {
+  if (!v) {
+    throw new Error(message ?? 'Assertion failed');
+  }
+}
+
+export function assertKind<T extends ASTNode>(node: ASTNode): asserts node is T {
+
 }
 
 export function first<T>(v?: readonly T[]): T {
@@ -396,6 +407,20 @@ export function isExpression(node: ASTNode): node is Expression {
     case SyntaxKind.SetShorthand:
     case SyntaxKind.BreakExpression:
     case SyntaxKind.ContinueExpression:
+      return true;
+    default:
+      return false;
+  }
+}
+
+export function isDeclaration(node: ASTNode): node is Declaration {
+  switch (node.kind) {
+    case SyntaxKind.VariableStatement:
+    case SyntaxKind.FunctionStatement:
+    case SyntaxKind.VariableSlot:
+    case SyntaxKind.MethodSlot:
+    case SyntaxKind.Parameter:
+    case SyntaxKind.ObjectsExpression:
       return true;
     default:
       return false;

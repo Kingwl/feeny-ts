@@ -1,7 +1,8 @@
-import { createScanner, Token, TokenSyntaxKind, createParser, createInterpreter } from "../src";
+import { createScanner, createBinder, Token, TokenSyntaxKind, createParser, createInterpreter, forEachChild, ASTNode, Symbol } from "../src";
 import * as path from 'path';
 import * as fs from 'fs';
 import { Context } from "../src/interpreter/types";
+import { isDeclaration } from "../src/utils";
 
 export const casesPath = path.resolve(__dirname, 'cases');
 export const demoPath = path.resolve(__dirname, 'demo');
@@ -39,6 +40,68 @@ export function parseCode (text: string) {
     const parser = createParser(text);
     const file = parser.parseSourceFile();
     return file;
+}
+
+interface SymbolSignature {
+    declarationPos: number;
+    name?: string;
+    flags: string | number;
+}
+
+interface SymbolContainer {
+    pos: number;
+    kind: string | number;
+    symbols: SymbolSignature[];
+}
+
+export function bindCode (text: string) {
+    const parser = createParser(text);
+    const file = parser.parseSourceFile();
+    const binder = createBinder(file);
+    const result = binder.bindFile();
+
+    const localsResult: SymbolContainer[] = [];
+    const membersResult: SymbolContainer[] = [];
+
+    visitor(file);
+
+    return {
+        localsResult,
+        membersResult
+    }
+    
+    function visitor (node: ASTNode) {
+        const locals = result.getLocalsFromNode(node);
+        if (locals) {
+            localsResult.push({
+                pos: node.pos,
+                kind: node.__debugKind ?? node.kind,
+                symbols: Array.from(locals.values()).map(symbolToSignature)
+            })
+        }
+
+        if (isDeclaration(node)) {
+            const declaration = result.getSymbolFromDeclaration(node);
+            if (declaration) {
+                const members = declaration.members ?? new Map();
+                membersResult.push({
+                    pos: node.pos,
+                    kind: node.__debugKind ?? node.kind,
+                    symbols: Array.from(members.values()).map(symbolToSignature)
+                })
+            }
+        }
+
+        forEachChild(node, visitor)
+    }
+
+    function symbolToSignature(symbol: Symbol): SymbolSignature {
+        return {
+            declarationPos: symbol.declaration.pos,
+            name: symbol.name,
+            flags: symbol.flags.toString()
+        }
+    }
 }
 
 export function createNodeContext(): Context {

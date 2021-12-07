@@ -42,6 +42,7 @@ export enum SyntaxKind {
   ContinueKeyword,
 
   EndOfFileToken,
+
   SourceFile,
 
   // Expression
@@ -75,6 +76,7 @@ export enum SyntaxKind {
   ExpressionStatement,
   FunctionStatement,
   
+  // Declaration
   Parameter,
 
   // Shorthand
@@ -269,7 +271,7 @@ export interface NullExpression extends Expression {
   token: NullKeywordToken;
 }
 
-export interface ObjectsExpression extends Expression {
+export interface ObjectsExpression extends Expression, Declaration {
   kind: SyntaxKind.ObjectsExpression;
   extendsClause?: Expression;
   slots: NodeArray<ObjectSlot>;
@@ -364,10 +366,13 @@ export interface FunctionExpression extends Expression, FunctionBase {
 
 export interface Declaration extends ASTNode {
   _declarationBrand: never
+}
+
+export interface NamedDeclaration extends Declaration {
   name: IdentifierToken;
 }
 
-export interface Parameter extends Declaration {
+export interface Parameter extends NamedDeclaration {
   kind: SyntaxKind.Parameter;
 }
 
@@ -380,21 +385,19 @@ export interface ObjectSlot extends ASTNode {
   _objectSlotBrand: never;
 }
 
-export interface VariableSlot extends Declaration, ObjectSlot {
+export interface VariableSlot extends NamedDeclaration, ObjectSlot {
   kind: SyntaxKind.VariableSlot;
   initializer: Expression;
 }
 
-export interface MethodSlot extends Declaration, ObjectSlot {
+export interface MethodSlot extends NamedDeclaration, ObjectSlot, FunctionBase {
   kind: SyntaxKind.MethodSlot;
-  params: NodeArray<Parameter>;
-  body: SequenceOfStatements | ExpressionStatement;
 }
 export interface Statement extends ASTNode {
   _statementBrand: never;
 }
 
-export interface VariableStatement extends Declaration, Statement {
+export interface VariableStatement extends NamedDeclaration, Statement {
   kind: SyntaxKind.VariableStatement;
   initializer: Expression;
 }
@@ -410,7 +413,7 @@ export interface ExpressionStatement extends Statement {
   expression: Expression;
 }
 
-export interface FunctionStatement extends Statement, Declaration, FunctionBase {
+export interface FunctionStatement extends Statement, NamedDeclaration, FunctionBase {
   kind: SyntaxKind.FunctionStatement;
 }
 
@@ -451,3 +454,4 @@ export type AllDeclaration =
   | VariableSlot
   | MethodSlot
   | Parameter
+  | ObjectsExpression

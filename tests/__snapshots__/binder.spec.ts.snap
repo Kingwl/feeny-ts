@@ -1,0 +1,1008 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Binder should-work-with-arrays - locals 1`] = `Array []`;
+
+exports[`Binder should-work-with-arrays - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-binary-shorthand - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "x",
+      },
+      Object {
+        "declarationPos": 10,
+        "flags": "1",
+        "name": "y",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-binary-shorthand - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 10,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-break-and-continue - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "x",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-break-and-continue - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-function - locals 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "4",
+        "name": "f",
+      },
+      Object {
+        "declarationPos": 7,
+        "flags": "2",
+        "name": "x",
+      },
+      Object {
+        "declarationPos": 10,
+        "flags": "2",
+        "name": "y",
+      },
+      Object {
+        "declarationPos": 13,
+        "flags": "2",
+        "name": "z",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-function - members 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "Parameter",
+    "pos": 7,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "Parameter",
+    "pos": 10,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "Parameter",
+    "pos": 13,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-function-call - locals 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "4",
+        "name": "f",
+      },
+      Object {
+        "declarationPos": 7,
+        "flags": "2",
+        "name": "v",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-function-call - members 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "Parameter",
+    "pos": 7,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-function-expression - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "fn",
+      },
+    ],
+  },
+  Object {
+    "kind": "FunctionExpression",
+    "pos": 9,
+    "symbols": Array [
+      Object {
+        "declarationPos": 18,
+        "flags": "2",
+        "name": "x",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-function-expression - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "Parameter",
+    "pos": 18,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-get-shorthand - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-get-shorthand - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-global-variable - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "x",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-global-variable - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-if-expression - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "x",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-if-expression - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-if-expression-with-if-only - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "x",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-if-expression-with-if-only - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-integer - locals 1`] = `Array []`;
+
+exports[`Binder should-work-with-integer - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-local-variable - locals 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "4",
+        "name": "foo",
+      },
+    ],
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 16,
+    "symbols": Array [
+      Object {
+        "declarationPos": 16,
+        "flags": "1",
+        "name": "x",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-local-variable - members 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 16,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-method-call - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "o",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-method-call - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "symbols": Array [
+      Object {
+        "declarationPos": 20,
+        "flags": "16",
+        "name": "f",
+      },
+    ],
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 20,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-nested-function - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "m",
+      },
+    ],
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 10,
+    "symbols": Array [
+      Object {
+        "declarationPos": 10,
+        "flags": "4",
+        "name": "foo",
+      },
+      Object {
+        "declarationPos": 19,
+        "flags": "2",
+        "name": "x",
+      },
+    ],
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 27,
+    "symbols": Array [
+      Object {
+        "declarationPos": 27,
+        "flags": "1",
+        "name": "y",
+      },
+    ],
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 41,
+    "symbols": Array [
+      Object {
+        "declarationPos": 41,
+        "flags": "4",
+        "name": "bar",
+      },
+      Object {
+        "declarationPos": 50,
+        "flags": "2",
+        "name": "z",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-nested-function - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 10,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "Parameter",
+    "pos": 19,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 27,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 41,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "Parameter",
+    "pos": 50,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-null - locals 1`] = `Array []`;
+
+exports[`Binder should-work-with-null - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-object-without-extends - locals 1`] = `Array []`;
+
+exports[`Binder should-work-with-object-without-extends - members 1`] = `
+Array [
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 12,
+        "flags": "8",
+        "name": "x",
+      },
+      Object {
+        "declarationPos": 27,
+        "flags": "16",
+        "name": "f",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 12,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 27,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-objects - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "p",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-objects - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "symbols": Array [
+      Object {
+        "declarationPos": 20,
+        "flags": "8",
+        "name": "y",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 32,
+    "symbols": Array [
+      Object {
+        "declarationPos": 47,
+        "flags": "8",
+        "name": "x",
+      },
+      Object {
+        "declarationPos": 62,
+        "flags": "16",
+        "name": "f",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 47,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 62,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-objects-and-slots - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "p",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-objects-and-slots - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "symbols": Array [
+      Object {
+        "declarationPos": 20,
+        "flags": "8",
+        "name": "y",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 32,
+    "symbols": Array [
+      Object {
+        "declarationPos": 47,
+        "flags": "8",
+        "name": "x",
+      },
+      Object {
+        "declarationPos": 62,
+        "flags": "16",
+        "name": "f",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 47,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 62,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-printf - locals 1`] = `Array []`;
+
+exports[`Binder should-work-with-printf - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-set-shorthand - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-set-shorthand - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-slot-assignment - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "o",
+      },
+      Object {
+        "declarationPos": 35,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-slot-assignment - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "symbols": Array [
+      Object {
+        "declarationPos": 20,
+        "flags": "8",
+        "name": "field",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 35,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 43,
+    "symbols": Array [
+      Object {
+        "declarationPos": 55,
+        "flags": "8",
+        "name": "b",
+      },
+      Object {
+        "declarationPos": 79,
+        "flags": "8",
+        "name": "c",
+      },
+      Object {
+        "declarationPos": 107,
+        "flags": "8",
+        "name": "d",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 55,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 63,
+    "symbols": Array [
+      Object {
+        "declarationPos": 79,
+        "flags": "8",
+        "name": "c",
+      },
+      Object {
+        "declarationPos": 107,
+        "flags": "8",
+        "name": "d",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 79,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 87,
+    "symbols": Array [
+      Object {
+        "declarationPos": 107,
+        "flags": "8",
+        "name": "d",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 107,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-slot-lookup - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "o",
+      },
+      Object {
+        "declarationPos": 35,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-slot-lookup - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "symbols": Array [
+      Object {
+        "declarationPos": 20,
+        "flags": "8",
+        "name": "field",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 35,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 43,
+    "symbols": Array [
+      Object {
+        "declarationPos": 55,
+        "flags": "8",
+        "name": "b",
+      },
+      Object {
+        "declarationPos": 79,
+        "flags": "8",
+        "name": "c",
+      },
+      Object {
+        "declarationPos": 107,
+        "flags": "8",
+        "name": "d",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 55,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 63,
+    "symbols": Array [
+      Object {
+        "declarationPos": 79,
+        "flags": "8",
+        "name": "c",
+      },
+      Object {
+        "declarationPos": 107,
+        "flags": "8",
+        "name": "d",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 79,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 87,
+    "symbols": Array [
+      Object {
+        "declarationPos": 107,
+        "flags": "8",
+        "name": "d",
+      },
+    ],
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 107,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-variable-assignment - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "x",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-variable-assignment - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-variable-reference - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "x",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-variable-reference - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+]
+`;
+
+exports[`Binder should-work-with-while-expression - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "x",
+      },
+      Object {
+        "declarationPos": 10,
+        "flags": "1",
+        "name": "y",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-while-expression - members 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "symbols": Array [],
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 10,
+    "symbols": Array [],
+  },
+]
+`;
