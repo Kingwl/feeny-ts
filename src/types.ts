@@ -74,6 +74,8 @@ export enum SyntaxKind {
   SequenceOfStatements,
   ExpressionStatement,
   FunctionStatement,
+  
+  Parameter,
 
   // Shorthand
   BinaryShorthand,
@@ -355,39 +357,45 @@ export interface SetShorthand extends Expression {
   value: Expression;
 }
 
-export interface FunctionBase {
-  name: IdentifierToken;
-  params: NodeArray<IdentifierToken>;
-  body: SequenceOfStatements | ExpressionStatement;
-}
-
 export interface FunctionExpression extends Expression, FunctionBase {
   kind: SyntaxKind.FunctionExpression;
+  name: IdentifierToken;
+}
+
+export interface Declaration extends ASTNode {
+  _declarationBrand: never
+  name: IdentifierToken;
+}
+
+export interface Parameter extends Declaration {
+  kind: SyntaxKind.Parameter;
+}
+
+export interface FunctionBase {
+  params: NodeArray<Parameter>;
+  body: SequenceOfStatements | ExpressionStatement;
 }
 
 export interface ObjectSlot extends ASTNode {
   _objectSlotBrand: never;
 }
 
-export interface VariableSlot extends ObjectSlot {
+export interface VariableSlot extends Declaration, ObjectSlot {
   kind: SyntaxKind.VariableSlot;
-  name: IdentifierToken;
   initializer: Expression;
 }
 
-export interface MethodSlot extends ObjectSlot {
+export interface MethodSlot extends Declaration, ObjectSlot {
   kind: SyntaxKind.MethodSlot;
-  name: IdentifierToken;
-  params: NodeArray<IdentifierToken>;
+  params: NodeArray<Parameter>;
   body: SequenceOfStatements | ExpressionStatement;
 }
 export interface Statement extends ASTNode {
   _statementBrand: never;
 }
 
-export interface VariableStatement extends Statement {
+export interface VariableStatement extends Declaration, Statement {
   kind: SyntaxKind.VariableStatement;
-  name: IdentifierToken;
   initializer: Expression;
 }
 
@@ -402,7 +410,7 @@ export interface ExpressionStatement extends Statement {
   expression: Expression;
 }
 
-export interface FunctionStatement extends Statement, FunctionBase {
+export interface FunctionStatement extends Statement, Declaration, FunctionBase {
   kind: SyntaxKind.FunctionStatement;
 }
 
@@ -436,3 +444,10 @@ export type AllStatement =
   | SequenceOfStatements
   | ExpressionStatement
   | FunctionStatement;
+
+export type AllDeclaration =
+  | VariableStatement
+  | FunctionStatement
+  | VariableSlot
+  | MethodSlot
+  | Parameter

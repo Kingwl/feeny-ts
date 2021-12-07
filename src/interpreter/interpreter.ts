@@ -337,7 +337,7 @@ export function createInterpreter(file: SourceFile, context: Context) {
 
   function evaluateFunctionExpression(expr: FunctionExpression) {
     const env = currentEnv();
-    const params = expr.params.map(x => x.id);
+    const params = expr.params.map(x => x.name.id);
     const func = new RuntimeFunction(
       expr.name.id,
       params,
@@ -456,7 +456,7 @@ export function createInterpreter(file: SourceFile, context: Context) {
     } else if (slot.kind === SyntaxKind.MethodSlot) {
       const env = currentEnv();
       const methodSlot = slot as MethodSlot;
-      const params = methodSlot.params.map(x => x.id);
+      const params = methodSlot.params.map(x => x.name.id);
       const callable = new RuntimeFunction(
         methodSlot.name.id,
         params,
@@ -636,7 +636,7 @@ export function createInterpreter(file: SourceFile, context: Context) {
 
   function evaluateFunctionStatement(stmt: FunctionStatement) {
     const env = currentEnv();
-    const params = stmt.params.map(x => x.id);
+    const params = stmt.params.map(x => x.name.id);
     const func = new RuntimeFunction(
       stmt.name.id,
       params,

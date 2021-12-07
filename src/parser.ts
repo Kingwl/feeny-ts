@@ -29,7 +29,8 @@ import {
   createVariableSlot,
   createWhileExpression,
   createExpressionStatement,
-  createFunctionExpression
+  createFunctionExpression,
+  createParameter
 } from './factory';
 import { createScanner } from './scanner';
 import {
@@ -60,7 +61,8 @@ import {
   VariableAssignmentExpression,
   VariableReferenceExpression,
   VariableSlot,
-  Statement
+  Statement,
+  Parameter
 } from './types';
 import {
   BinaryShorthandPriority,
@@ -148,15 +150,25 @@ export function createParser(text: string) {
     );
   }
 
-  function parseParameterList(): NodeArray<IdentifierToken> {
+  function parseParameter(): Parameter {
+    const pos = scanner.getTokenStart();
+    const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+    return finishNode(
+      createParameter(name),
+      pos,
+      scanner.getCurrentPos()
+    );
+  }
+
+  function parseParameterList(): NodeArray<Parameter> {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.OpenParenToken);
-    const params: IdentifierToken[] = [];
+    const params: Parameter[] = [];
     while (
       !scanner.isEOF() &&
       scanner.currentToken().kind === SyntaxKind.Identifier
     ) {
-      const param = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+      const param = parseParameter();
       params.push(param);
 
       parseOptionalToken(SyntaxKind.CommaToken);
