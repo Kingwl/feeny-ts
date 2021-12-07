@@ -110,6 +110,8 @@ export interface ASTNode extends TextSpan {
   __debugKind?: string;
 
   leadingIndent: number;
+
+  locals?: SymbolTable;
 }
 
 export interface NodeArray<T extends ASTNode>
@@ -366,6 +368,8 @@ export interface FunctionExpression extends Expression, FunctionBase {
 
 export interface Declaration extends ASTNode {
   _declarationBrand: never
+
+  symbol?: Symbol;
 }
 
 export interface NamedDeclaration extends Declaration {

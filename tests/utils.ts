@@ -58,7 +58,7 @@ export function bindCode (text: string) {
     const parser = createParser(text);
     const file = parser.parseSourceFile();
     const binder = createBinder(file);
-    const result = binder.bindFile();
+    binder.bindFile();
 
     const localsResult: SymbolContainer[] = [];
     const membersResult: SymbolContainer[] = [];
@@ -71,23 +71,20 @@ export function bindCode (text: string) {
     }
     
     function visitor (node: ASTNode) {
-        const locals = result.getLocalsFromNode(node);
-        if (locals) {
+        if (node.locals) {
             localsResult.push({
                 pos: node.pos,
                 kind: node.__debugKind ?? node.kind,
-                symbols: Array.from(locals.values()).map(symbolToSignature)
+                symbols: Array.from(node.locals.values()).map(symbolToSignature)
             })
         }
 
         if (isDeclaration(node)) {
-            const declaration = result.getSymbolFromDeclaration(node);
-            if (declaration) {
-                const members = declaration.members ?? new Map();
+            if (node.symbol?.members) {
                 membersResult.push({
                     pos: node.pos,
                     kind: node.__debugKind ?? node.kind,
-                    symbols: Array.from(members.values()).map(symbolToSignature)
+                    symbols: Array.from(node.symbol.members.values()).map(symbolToSignature)
                 })
             }
         }

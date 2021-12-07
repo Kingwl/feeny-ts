@@ -25,20 +25,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-binary-shorthand - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "VariableStatement",
-    "pos": 10,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-binary-shorthand - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-break-and-continue - locals 1`] = `
 Array [
@@ -56,15 +43,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-break-and-continue - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-break-and-continue - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-function - locals 1`] = `
 Array [
@@ -97,30 +76,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-function - members 1`] = `
-Array [
-  Object {
-    "kind": "FunctionStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "Parameter",
-    "pos": 7,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "Parameter",
-    "pos": 10,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "Parameter",
-    "pos": 13,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-function - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-function-call - locals 1`] = `
 Array [
@@ -143,20 +99,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-function-call - members 1`] = `
-Array [
-  Object {
-    "kind": "FunctionStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "Parameter",
-    "pos": 7,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-function-call - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-function-expression - locals 1`] = `
 Array [
@@ -185,20 +128,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-function-expression - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "Parameter",
-    "pos": 18,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-function-expression - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-get-shorthand - locals 1`] = `
 Array [
@@ -216,15 +146,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-get-shorthand - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-get-shorthand - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-global-variable - locals 1`] = `
 Array [
@@ -242,15 +164,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-global-variable - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-global-variable - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-if-expression - locals 1`] = `
 Array [
@@ -268,15 +182,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-if-expression - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-if-expression - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-if-expression-with-if-only - locals 1`] = `
 Array [
@@ -294,15 +200,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-if-expression-with-if-only - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-if-expression-with-if-only - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-integer - locals 1`] = `Array []`;
 
@@ -335,20 +233,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-local-variable - members 1`] = `
-Array [
-  Object {
-    "kind": "FunctionStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "VariableStatement",
-    "pos": 16,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-local-variable - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-method-call - locals 1`] = `
 Array [
@@ -369,11 +254,6 @@ Array [
 exports[`Binder should-work-with-method-call - members 1`] = `
 Array [
   Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 8,
     "symbols": Array [
@@ -383,11 +263,6 @@ Array [
         "name": "f",
       },
     ],
-  },
-  Object {
-    "kind": "MethodSlot",
-    "pos": 20,
-    "symbols": Array [],
   },
 ]
 `;
@@ -451,40 +326,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-nested-function - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "FunctionStatement",
-    "pos": 10,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "Parameter",
-    "pos": 19,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "VariableStatement",
-    "pos": 27,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "FunctionStatement",
-    "pos": 41,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "Parameter",
-    "pos": 50,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-nested-function - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-null - locals 1`] = `Array []`;
 
@@ -510,16 +352,6 @@ Array [
       },
     ],
   },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 12,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "MethodSlot",
-    "pos": 27,
-    "symbols": Array [],
-  },
 ]
 `;
 
@@ -542,11 +374,6 @@ Array [
 exports[`Binder should-work-with-objects - members 1`] = `
 Array [
   Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 8,
     "symbols": Array [
@@ -556,11 +383,6 @@ Array [
         "name": "y",
       },
     ],
-  },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 20,
-    "symbols": Array [],
   },
   Object {
     "kind": "ObjectsExpression",
@@ -577,16 +399,6 @@ Array [
         "name": "f",
       },
     ],
-  },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 47,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "MethodSlot",
-    "pos": 62,
-    "symbols": Array [],
   },
 ]
 `;
@@ -610,11 +422,6 @@ Array [
 exports[`Binder should-work-with-objects-and-slots - members 1`] = `
 Array [
   Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 8,
     "symbols": Array [
@@ -624,11 +431,6 @@ Array [
         "name": "y",
       },
     ],
-  },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 20,
-    "symbols": Array [],
   },
   Object {
     "kind": "ObjectsExpression",
@@ -645,16 +447,6 @@ Array [
         "name": "f",
       },
     ],
-  },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 47,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "MethodSlot",
-    "pos": 62,
-    "symbols": Array [],
   },
 ]
 `;
@@ -679,15 +471,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-set-shorthand - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-set-shorthand - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-slot-assignment - locals 1`] = `
 Array [
@@ -713,11 +497,6 @@ Array [
 exports[`Binder should-work-with-slot-assignment - members 1`] = `
 Array [
   Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 8,
     "symbols": Array [
@@ -727,16 +506,6 @@ Array [
         "name": "field",
       },
     ],
-  },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 20,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "VariableStatement",
-    "pos": 35,
-    "symbols": Array [],
   },
   Object {
     "kind": "ObjectsExpression",
@@ -760,11 +529,6 @@ Array [
     ],
   },
   Object {
-    "kind": "VariableSlot",
-    "pos": 55,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 63,
     "symbols": Array [
@@ -781,11 +545,6 @@ Array [
     ],
   },
   Object {
-    "kind": "VariableSlot",
-    "pos": 79,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 87,
     "symbols": Array [
@@ -795,11 +554,6 @@ Array [
         "name": "d",
       },
     ],
-  },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 107,
-    "symbols": Array [],
   },
 ]
 `;
@@ -828,11 +582,6 @@ Array [
 exports[`Binder should-work-with-slot-lookup - members 1`] = `
 Array [
   Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 8,
     "symbols": Array [
@@ -842,16 +591,6 @@ Array [
         "name": "field",
       },
     ],
-  },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 20,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "VariableStatement",
-    "pos": 35,
-    "symbols": Array [],
   },
   Object {
     "kind": "ObjectsExpression",
@@ -875,11 +614,6 @@ Array [
     ],
   },
   Object {
-    "kind": "VariableSlot",
-    "pos": 55,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 63,
     "symbols": Array [
@@ -896,11 +630,6 @@ Array [
     ],
   },
   Object {
-    "kind": "VariableSlot",
-    "pos": 79,
-    "symbols": Array [],
-  },
-  Object {
     "kind": "ObjectsExpression",
     "pos": 87,
     "symbols": Array [
@@ -910,11 +639,6 @@ Array [
         "name": "d",
       },
     ],
-  },
-  Object {
-    "kind": "VariableSlot",
-    "pos": 107,
-    "symbols": Array [],
   },
 ]
 `;
@@ -935,15 +659,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-variable-assignment - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-variable-assignment - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-variable-reference - locals 1`] = `
 Array [
@@ -961,15 +677,7 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-variable-reference - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-variable-reference - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-while-expression - locals 1`] = `
 Array [
@@ -992,17 +700,4 @@ Array [
 ]
 `;
 
-exports[`Binder should-work-with-while-expression - members 1`] = `
-Array [
-  Object {
-    "kind": "VariableStatement",
-    "pos": 0,
-    "symbols": Array [],
-  },
-  Object {
-    "kind": "VariableStatement",
-    "pos": 10,
-    "symbols": Array [],
-  },
-]
-`;
+exports[`Binder should-work-with-while-expression - members 1`] = `Array []`;

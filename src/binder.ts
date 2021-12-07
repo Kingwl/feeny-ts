@@ -1,13 +1,10 @@
-import { ASTNode, Symbol, FunctionStatement, MethodSlot, ObjectsExpression, Declaration, Parameter, SourceFile, SyntaxKind, VariableSlot, VariableStatement, HasLocalVariables, SymbolFlag, SymbolTable } from "./types";
-import { assertDef, getDeclarationSymbolFlags, isDef, isLocalVariableContainer, symbolFlagToDisplayText } from "./utils";
+import { ASTNode, Symbol, FunctionStatement, MethodSlot, ObjectsExpression, Declaration, Parameter, SourceFile, SyntaxKind, VariableSlot, VariableStatement, HasLocalVariables, SymbolFlag } from "./types";
+import { assertDef, getDeclarationSymbolFlags, isLocalVariableContainer, symbolFlagToDisplayText } from "./utils";
 import { forEachChild } from "./visitor";
 
 export function createBinder(file: SourceFile) {
     let container: HasLocalVariables | undefined = undefined;
     let parent: Symbol | undefined = undefined;
-
-    const nodeToLocalsTableMap = new Map<HasLocalVariables, SymbolTable>();
-    const declarationToSymbol = new Map<Declaration, Symbol>();
 
     return {
         bindFile
@@ -15,36 +12,15 @@ export function createBinder(file: SourceFile) {
 
     function bindFile () {
         bind(file)
-
-        return {
-            getSymbolFromDeclaration,
-            getLocalsFromNode
-        }
-    }
-
-    function getSymbolFromDeclaration (declaration: Declaration) {
-        return declarationToSymbol.get(declaration);
-    }
-
-    function getLocalsFromNode (node: ASTNode): SymbolTable | undefined {
-        if (!isLocalVariableContainer(node)) {
-            return undefined;
-        }
-
-        return nodeToLocalsTableMap.get(node);
     }
 
     function currentLocalsTable() {
         assertDef(container);
 
-        const existed = nodeToLocalsTableMap.get(container);
-        if (isDef(existed)) {
-            return existed;
+        if (!container.locals) {
+            container.locals = createSymbolTable();
         }
-
-        const symbolTable = createSymbolTable();
-        nodeToLocalsTableMap.set(container, symbolTable);
-        return symbolTable;
+        return container.locals;
     }
 
     function bind (node: ASTNode) {
@@ -146,9 +122,8 @@ export function createBinder(file: SourceFile) {
             declaration,
             parent
         };
+        declaration.symbol = symbol;
         setupSymbolDebugInfo(symbol);
-
-        declarationToSymbol.set(declaration, symbol);
         return symbol;
     }
 
@@ -159,9 +134,8 @@ export function createBinder(file: SourceFile) {
             declaration,
             parent
         }
+        declaration.symbol = symbol;
         setupSymbolDebugInfo(symbol);
-
-        declarationToSymbol.set(declaration, symbol);
         return symbol;
     }
 
