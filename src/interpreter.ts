@@ -567,6 +567,11 @@ export function createInterpreter(file: SourceFile) {
   };
   const callFrames = [globalCallframe];
 
+  const exceptionObjects = {
+    Break: {},
+    Continue: {}
+  } as const
+
   return {
     evaluate
   };
@@ -583,10 +588,13 @@ export function createInterpreter(file: SourceFile) {
     callFrames.push(callFrame);
   }
 
-  function popCallFrame() {
+  function popCallFrame(targetCallFrame: CallFrame | undefined) {
     const result = callFrames.pop();
     if (!callFrames.length) {
       throw new Error('Callframe not balanced');
+    }
+    if (targetCallFrame && result !== targetCallFrame) {
+      throw new Error('Invalid call frame');
     }
     return result;
   }
@@ -595,13 +603,17 @@ export function createInterpreter(file: SourceFile) {
     currentCallFrame().envStack.push(env);
   }
 
-  function popEnv() {
+  function popEnv(targetEnv: Environment | undefined) {
     const envStack = currentCallFrame().envStack;
     if (!envStack.length) {
       throw new Error('EnvStack not balanced');
     }
 
     const result = envStack.pop();
+    if (targetEnv && result !== targetEnv) {
+      throw new Error('Invalid environment');
+    }
+
     return result;
   }
 
@@ -609,8 +621,14 @@ export function createInterpreter(file: SourceFile) {
     const parent = currentEnv();
     const env = new Environment(parent);
     pushEnv(env);
-    const result = cb();
-    popEnv();
+
+    let result: R
+    try {
+      result = cb();
+    } finally {
+      popEnv(env);
+    }
+
     return result;
   }
 
@@ -639,14 +657,13 @@ export function createInterpreter(file: SourceFile) {
 
     pushCallFrame(callFrame);
     pushEnv(env);
-    const result = cb();
-    const lastEnv = popEnv();
-    if (lastEnv !== env) {
-      throw new Error('Invalid environment');
-    }
-    const lastCallFrame = popCallFrame();
-    if (lastCallFrame !== callFrame) {
-      throw new Error('Invalid call frame');
+    
+    let result: R
+    try {
+      result = cb();
+    } finally {
+      popEnv(env);
+      popCallFrame(callFrame);
     }
 
     return result;
@@ -975,14 +992,24 @@ export function createInterpreter(file: SourceFile) {
   function evaluateWhileExpression(expr: WhileExpression) {
     let i = 0;
     while (toBooleanValue(evaluateExpression(expr.condition)).value) {
-      if (i > 10000) {
+      if (i++ > 10000) {
         throw new Error('Infinite loop');
       }
-      i++;
 
-      runInEnv(() => {
-        return evaluateExpressionStatementOrSequenceOfStatements(expr.body);
-      });
+      try {
+        runInEnv(() => {
+          return evaluateExpressionStatementOrSequenceOfStatements(expr.body);
+        });
+      } catch (e: unknown) {
+        if (e === exceptionObjects.Break) {
+          break;
+        }
+        if (e === exceptionObjects.Continue) {
+          continue;
+        }
+
+        throw e
+      }
     }
 
     return NullValue.Instance;

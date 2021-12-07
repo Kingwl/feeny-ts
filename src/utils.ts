@@ -146,7 +146,9 @@ export enum Keywords {
   While = 'while',
   Method = 'method',
   Defn = 'defn',
-  Printf = 'printf'
+  Printf = 'printf',
+  Continue = 'continue',
+  Break = 'break'
 }
 
 export function isKeyword(value: string): value is Keywords {
@@ -162,6 +164,8 @@ export function isKeyword(value: string): value is Keywords {
     case Keywords.Method:
     case Keywords.Defn:
     case Keywords.Printf:
+    case Keywords.Break:
+    case Keywords.Continue:
       return true;
     default:
       return false;
@@ -183,6 +187,8 @@ export function isKeywordSyntaxKind(
     case SyntaxKind.WhileKeyword:
     case SyntaxKind.MethodKeyword:
     case SyntaxKind.DefnKeyword:
+    case SyntaxKind.ContinueKeyword:
+    case SyntaxKind.BreakKeyword:
       return true;
     default:
       return false;
@@ -275,7 +281,9 @@ export const KeywordsToTokenKind = {
   [Keywords.While]: SyntaxKind.WhileKeyword,
   [Keywords.Method]: SyntaxKind.MethodKeyword,
   [Keywords.Defn]: SyntaxKind.DefnKeyword,
-  [Keywords.Printf]: SyntaxKind.PrintfKeyword
+  [Keywords.Printf]: SyntaxKind.PrintfKeyword,
+  [Keywords.Continue]: SyntaxKind.ContinueKeyword,
+  [Keywords.Break]: SyntaxKind.BreakKeyword
 } as const;
 
 export const TokenKindsToKeyword = {
@@ -289,7 +297,9 @@ export const TokenKindsToKeyword = {
   [SyntaxKind.WhileKeyword]: Keywords.While,
   [SyntaxKind.MethodKeyword]: Keywords.Method,
   [SyntaxKind.DefnKeyword]: Keywords.Defn,
-  [SyntaxKind.PrintfKeyword]: Keywords.Printf
+  [SyntaxKind.PrintfKeyword]: Keywords.Printf,
+  [SyntaxKind.ContinueKeyword]: Keywords.Continue,
+  [SyntaxKind.BreakKeyword]: Keywords.Break
 } as const;
 
 export function isDigit(char: string): boolean {
@@ -349,6 +359,8 @@ export function isStatement(node: ASTNode): node is Statement {
     case SyntaxKind.VariableStatement:
     case SyntaxKind.ExpressionStatement:
     case SyntaxKind.FunctionStatement:
+    case SyntaxKind.ContinueStatement:
+    case SyntaxKind.BreakStatement:
       return true;
     default:
       return false;

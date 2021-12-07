@@ -38,6 +38,8 @@ export enum SyntaxKind {
   WhileKeyword,
   MethodKeyword,
   DefnKeyword,
+  BreakKeyword,
+  ContinueKeyword,
 
   EndOfFileToken,
   SourceFile,
@@ -70,6 +72,8 @@ export enum SyntaxKind {
   SequenceOfStatements,
   ExpressionStatement,
   FunctionStatement,
+  BreakStatement,
+  ContinueStatement,
 
   // Shorthand
   BinaryShorthand,
@@ -149,6 +153,9 @@ export type WhileKeywordToken = Token<SyntaxKind.WhileKeyword>;
 export type MethodKeywordToken = Token<SyntaxKind.MethodKeyword>;
 export type DefnKeywordToken = Token<SyntaxKind.DefnKeyword>;
 export type PrintfKeywordToken = Token<SyntaxKind.PrintfKeyword>;
+export type ContinueKeywordToken = Token<SyntaxKind.ContinueKeyword>;
+export type BreakKeywordToken = Token<SyntaxKind.BreakKeyword>;
+
 export type OpenParenToken = Token<SyntaxKind.OpenParenToken>;
 export type CloseParenToken = Token<SyntaxKind.CloseParenToken>;
 export type CommaToken = Token<SyntaxKind.CommaToken>;
@@ -181,6 +188,8 @@ export type AllTokens =
   | MethodKeywordToken
   | DefnKeywordToken
   | PrintfKeywordToken
+  | ContinueKeywordToken
+  | BreakKeywordToken
   | OpenParenToken
   | CloseParenToken
   | CommaToken
@@ -216,6 +225,8 @@ export type KeywordTokens =
   | ElseKeywordToken
   | WhileKeywordToken
   | MethodKeywordToken
+  | ContinueKeywordToken
+  | BreakKeywordToken
   | DefnKeywordToken;
 
 export type KeywordSyntaxKind = KeywordTokens['kind'];
@@ -387,6 +398,14 @@ export interface FunctionStatement extends Statement, FunctionBase {
   kind: SyntaxKind.FunctionStatement;
 }
 
+export interface ContinueStatement extends Statement {
+  kind: SyntaxKind.ContinueStatement
+}
+
+export interface BreakStatement extends Statement {
+  kind: SyntaxKind.BreakStatement
+}
+
 export type PrimaryExpression =
   | IntegerLiteralExpression
   | StringLiteralExpression
@@ -414,4 +433,6 @@ export type AllStatement =
   | VariableStatement
   | SequenceOfStatements
   | ExpressionStatement
-  | FunctionStatement;
+  | FunctionStatement
+  | BreakStatement
+  | ContinueStatement;
