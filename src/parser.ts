@@ -1,6 +1,6 @@
 import {
-  createBreakStatement,
-  createContinueStatement,
+  createBreakExpression,
+  createContinueExpression,
   createStringLiteralExpression,
   createVariableStatement,
   createIdentifier,
@@ -130,33 +130,9 @@ export function createParser(text: string) {
         return parseVariableStatement();
       case SyntaxKind.DefnKeyword:
         return parseFunctionStatement();
-      case SyntaxKind.ContinueKeyword:
-        return parseContinueStatement();
-      case SyntaxKind.BreakKeyword:
-        return parseBreakStatement();
       default:
         return parseExpressionStatement();
     }
-  }
-
-  function parseContinueStatement() {
-    const pos = scanner.getTokenStart();
-    parseExpectdToken(SyntaxKind.ContinueKeyword);
-    return finishNode(
-      createContinueStatement(),
-      pos,
-      scanner.getCurrentPos()
-    )
-  }
-
-  function parseBreakStatement () {
-    const pos = scanner.getTokenStart();
-    parseExpectdToken(SyntaxKind.BreakKeyword);
-    return finishNode(
-      createBreakStatement(),
-      pos,
-      scanner.getCurrentPos()
-    )
   }
 
   function parseVariableStatement() {
@@ -199,7 +175,7 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.DefnKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     const params = parseParameterList();
-    const body = parseExpressionStatementOrSequenceOfStatements();
+    const body = parseExpressionStatementOrSequenceOfStatements(true);
 
     return finishNode(
       createFunctionStatement(name, params, body),
@@ -238,22 +214,6 @@ export function createParser(text: string) {
 
     return finishNode(
       createSequenceOfStatements(statements, isExpression),
-      pos,
-      scanner.getCurrentPos()
-    );
-  }
-
-  function parseExpressionList(endToken: SyntaxKind): NodeArray<Expression> {
-    const expressions: Expression[] = [];
-    const pos = scanner.getTokenStart();
-
-    while (!scanner.isEOF() && scanner.currentToken().kind !== endToken) {
-      expressions.push(parseExpression());
-
-      parseOptionalToken(SyntaxKind.CommaToken);
-    }
-    return finishNodeArray(
-      createNodeArray(expressions),
       pos,
       scanner.getCurrentPos()
     );
@@ -471,9 +431,33 @@ export function createParser(text: string) {
         return parseParenExpression();
       case SyntaxKind.DefnKeyword:
         return parseFunctionExpression();
+      case SyntaxKind.BreakKeyword:
+        return parseBreakExpression();
+      case SyntaxKind.ContinueKeyword:
+        return parseContinueExpression()
       default:
         throw new Error(token.__debugKind);
     }
+  }
+
+  function parseContinueExpression() {
+    const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.ContinueKeyword);
+    return finishNode(
+      createContinueExpression(),
+      pos,
+      scanner.getCurrentPos()
+    )
+  }
+
+  function parseBreakExpression () {
+    const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.BreakKeyword);
+    return finishNode(
+      createBreakExpression(),
+      pos,
+      scanner.getCurrentPos()
+    )
   }
 
   function parseStringLiteralExpression() {
@@ -493,7 +477,7 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.DefnKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     const params = parseParameterList();
-    const body = parseExpressionStatementOrSequenceOfStatements();
+    const body = parseExpressionStatementOrSequenceOfStatements(true);
 
     return finishNode(
       createFunctionExpression(name, params, body),
@@ -521,10 +505,10 @@ export function createParser(text: string) {
     return finishNode(createThisExpression(), pos, scanner.getCurrentPos());
   }
 
-  function parseExpressionStatementOrSequenceOfStatements() {
+  function parseExpressionStatementOrSequenceOfStatements(isExpression: boolean) {
     const colonToken = parseOptionalToken(SyntaxKind.ColonToken);
     if (colonToken && scanner.currentTokenhasLineFeed()) {
-      return parseSequenceOfStatements(colonToken.leadingIndent, true);
+      return parseSequenceOfStatements(colonToken.leadingIndent, isExpression);
     }
     return parseExpressionStatement();
   }
@@ -534,12 +518,12 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.IfKeyword);
     const condition = parseExpression();
 
-    const thenStatement = parseExpressionStatementOrSequenceOfStatements();
+    const thenStatement = parseExpressionStatementOrSequenceOfStatements(true);
 
     let elseStatement: SequenceOfStatements | ExpressionStatement | undefined;
     const elseToken = parseOptionalToken(SyntaxKind.ElseKeyword);
     if (elseToken) {
-      elseStatement = parseExpressionStatementOrSequenceOfStatements();
+      elseStatement = parseExpressionStatementOrSequenceOfStatements(true);
     }
 
     return finishNode(
@@ -553,7 +537,7 @@ export function createParser(text: string) {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.WhileKeyword);
     const condition = parseExpression();
-    const body = parseExpressionStatementOrSequenceOfStatements();
+    const body = parseExpressionStatementOrSequenceOfStatements(false);
 
     return finishNode(
       createWhileExpression(condition, body),
@@ -705,7 +689,7 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.MethodKeyword);
     const name = parseIdentifierName();
     const params = parseParameterList();
-    const body = parseExpressionStatementOrSequenceOfStatements();
+    const body = parseExpressionStatementOrSequenceOfStatements(true);
 
     return finishNode(
       createMethodSlot(name, params, body),

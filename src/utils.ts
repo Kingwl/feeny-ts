@@ -359,8 +359,6 @@ export function isStatement(node: ASTNode): node is Statement {
     case SyntaxKind.VariableStatement:
     case SyntaxKind.ExpressionStatement:
     case SyntaxKind.FunctionStatement:
-    case SyntaxKind.ContinueStatement:
-    case SyntaxKind.BreakStatement:
       return true;
     default:
       return false;
@@ -394,6 +392,10 @@ export function isExpression(node: ASTNode): node is Expression {
     case SyntaxKind.WhileExpression:
     case SyntaxKind.ThisExpression:
     case SyntaxKind.ParenExpression:
+    case SyntaxKind.GetShorthand:
+    case SyntaxKind.SetShorthand:
+    case SyntaxKind.BreakExpression:
+    case SyntaxKind.ContinueExpression:
       return true;
     default:
       return false;

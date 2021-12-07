@@ -12,6 +12,30 @@ exports[`Interpreter should-work-with-arrays 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-binary-shorthand 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-break-and-continue 1`] = `
+Array [
+  Array [
+    "while start",
+    "3",
+  ],
+  Array [
+    "while end",
+  ],
+  Array [
+    "while start",
+    "2",
+  ],
+  Array [
+    "while start",
+    "1",
+  ],
+  Array [
+    "after",
+    "1",
+  ],
+]
+`;
+
 exports[`Interpreter should-work-with-function 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-function-call 1`] = `Array []`;

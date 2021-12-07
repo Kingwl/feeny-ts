@@ -1,7 +1,7 @@
 import {
   Statement,
-  BreakStatement,
-  ContinueStatement,
+  BreakExpression,
+  ContinueExpression,
   AccessOrAssignmentExpressionOrHigher,
   ArraysExpression,
   ASTNode,
@@ -216,13 +216,13 @@ export function createFunctionStatement(
   return node;
 }
 
-export function createBreakStatement(): BreakStatement {
-  const node = createNode<BreakStatement>(SyntaxKind.BreakStatement);
+export function createBreakExpression(): BreakExpression {
+  const node = createNode<BreakExpression>(SyntaxKind.BreakExpression);
   return node;
 }
 
-export function createContinueStatement(): ContinueStatement {
-  const node = createNode<ContinueStatement>(SyntaxKind.ContinueStatement);
+export function createContinueExpression(): ContinueExpression {
+  const node = createNode<ContinueExpression>(SyntaxKind.ContinueExpression);
   return node;
 }
 

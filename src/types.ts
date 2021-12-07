@@ -62,6 +62,8 @@ export enum SyntaxKind {
   ThisExpression,
   ParenExpression,
   FunctionExpression,
+  BreakExpression,
+  ContinueExpression,
 
   // Object slot
   VariableSlot,
@@ -72,8 +74,6 @@ export enum SyntaxKind {
   SequenceOfStatements,
   ExpressionStatement,
   FunctionStatement,
-  BreakStatement,
-  ContinueStatement,
 
   // Shorthand
   BinaryShorthand,
@@ -318,6 +318,15 @@ export interface WhileExpression extends Expression {
   body: SequenceOfStatements | ExpressionStatement;
 }
 
+export interface ContinueExpression extends Expression {
+  kind: SyntaxKind.ContinueExpression
+}
+
+export interface BreakExpression extends Expression {
+  kind: SyntaxKind.BreakExpression
+}
+
+
 export interface ThisExpression extends Expression {
   kind: SyntaxKind.ThisExpression;
 }
@@ -398,14 +407,6 @@ export interface FunctionStatement extends Statement, FunctionBase {
   kind: SyntaxKind.FunctionStatement;
 }
 
-export interface ContinueStatement extends Statement {
-  kind: SyntaxKind.ContinueStatement
-}
-
-export interface BreakStatement extends Statement {
-  kind: SyntaxKind.BreakStatement
-}
-
 export type PrimaryExpression =
   | IntegerLiteralExpression
   | StringLiteralExpression
@@ -419,6 +420,8 @@ export type PrimaryExpression =
   | IfExpression
   | WhileExpression
   | ThisExpression
+  | BreakExpression
+  | ContinueExpression
   | ParenExpression;
 
 export type AccessOrAssignmentExpressionOrHigher =
@@ -433,6 +436,4 @@ export type AllStatement =
   | VariableStatement
   | SequenceOfStatements
   | ExpressionStatement
-  | FunctionStatement
-  | BreakStatement
-  | ContinueStatement;
+  | FunctionStatement;

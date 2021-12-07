@@ -1,4 +1,6 @@
 import {
+  BreakExpression, 
+  ContinueExpression,
   ArraysExpression,
   Expression,
   FunctionStatement,
@@ -541,6 +543,7 @@ interface CallFrame {
   name: string;
   envStack: Environment[];
   parent: CallFrame | undefined;
+  insideLoop: boolean
 }
 
 function isVarValues(value: BaseValue): value is VarValues {
@@ -563,7 +566,8 @@ export function createInterpreter(file: SourceFile) {
     thisValue: undefined,
     name: '',
     envStack: [globalEnv],
-    parent: undefined
+    parent: undefined,
+    insideLoop: false
   };
   const callFrames = [globalCallframe];
 
@@ -632,6 +636,21 @@ export function createInterpreter(file: SourceFile) {
     return result;
   }
 
+  function runInLoop<R>(cb: () => R) {
+    const frame = currentCallFrame();
+    const savedInsideLoop = frame.insideLoop
+    frame.insideLoop = true
+    
+    let result: R
+    try {
+      result = cb()
+    } finally {
+      frame.insideLoop = savedInsideLoop
+    }
+
+    return result;
+  }
+
   function runInFuncEnv<R = void>(
     name: string,
     thisValue: BaseValue | undefined,
@@ -652,7 +671,8 @@ export function createInterpreter(file: SourceFile) {
       thisValue,
       envStack: [],
       name,
-      parent: currentCallFrame()
+      parent: currentCallFrame(),
+      insideLoop: false
     };
 
     pushCallFrame(callFrame);
@@ -746,7 +766,20 @@ export function createInterpreter(file: SourceFile) {
       case SyntaxKind.FunctionStatement:
         return evaluateFunctionStatement(stmt as FunctionStatement);
       default:
-        throw new Error('Invalid statement');
+        throw new Error('Invalid statement: ' + stmt.__debugKind);
+    }
+  }
+
+  function evaluateBreakOrContinueExpression(stmt: BreakExpression | ContinueExpression): never {
+    const callFrame = currentCallFrame();
+    if (!callFrame.insideLoop) {
+      throw new Error("Break or continue cannot used outside loop")
+    }
+
+    if (stmt.kind === SyntaxKind.BreakExpression) {
+      throw exceptionObjects.Break
+    } else {
+      throw exceptionObjects.Continue
     }
   }
 
@@ -800,6 +833,9 @@ export function createInterpreter(file: SourceFile) {
         return evaluateSetShorthand(expr as SetShorthand);
       case SyntaxKind.FunctionExpression:
         return evaluateFunctionExpression(expr as FunctionExpression);
+      case SyntaxKind.BreakExpression:
+      case SyntaxKind.ContinueExpression:
+        return evaluateBreakOrContinueExpression(expr as BreakExpression | ContinueExpression)
       default:
         throw new Error('Invalid expression: ' + expr.__debugKind);
     }
@@ -998,7 +1034,9 @@ export function createInterpreter(file: SourceFile) {
 
       try {
         runInEnv(() => {
-          return evaluateExpressionStatementOrSequenceOfStatements(expr.body);
+          return runInLoop(() => {
+            return evaluateExpressionStatementOrSequenceOfStatements(expr.body);
+          })
         });
       } catch (e: unknown) {
         if (e === exceptionObjects.Break) {
