@@ -417,6 +417,44 @@ export interface FunctionStatement extends Statement, NamedDeclaration, Function
   kind: SyntaxKind.FunctionStatement;
 }
 
+
+export enum SymbolFlag {
+  None = 0,
+  Variable = 1 << 0,
+  Parameter = 1 << 1,
+  Function = 1 << 2,
+  VariableSlot = 1 << 3,
+  MethodSlot = 1 << 4,
+  AnomymousObject = 1 << 5,
+
+  VariableLike = Variable | Parameter | VariableSlot,
+  FunctionLike = Function | MethodSlot,
+}
+
+
+export interface Symbol {
+  members?: SymbolTable;
+  name?: string;
+  flags: SymbolFlag;
+  declaration: Declaration
+  parent?: Symbol;
+  _debugFlags?: string
+}
+
+export interface SymbolTable extends Map<string, Symbol> {
+
+}
+
+export type HasLocalVariables = 
+  | SequenceOfStatements
+  | SourceFile
+  | MethodSlot
+  | FunctionStatement
+  | FunctionExpression
+
+export type HasMembers =
+  | ObjectsExpression
+
 export type PrimaryExpression =
   | IntegerLiteralExpression
   | StringLiteralExpression

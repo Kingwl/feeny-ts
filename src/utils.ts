@@ -9,7 +9,10 @@ import {
   BinaryShorthandToken,
   Statement,
   Expression,
-  Declaration
+  Declaration,
+  SymbolFlag,
+  HasLocalVariables,
+  HasMembers
 } from './types';
 
 export function finishNode<T extends ASTNode>(
@@ -424,5 +427,78 @@ export function isDeclaration(node: ASTNode): node is Declaration {
       return true;
     default:
       return false;
+  }
+}
+
+
+export function symbolFlagToDisplayText (flags: SymbolFlag) {
+  const text = [];
+  if (flags & SymbolFlag.Variable) {
+      flags &= ~SymbolFlag.Variable;
+      text.push(SymbolFlag[SymbolFlag.Variable]);
+  }
+  if (flags & SymbolFlag.Parameter) {
+      flags &= ~SymbolFlag.Parameter;
+      text.push(SymbolFlag[SymbolFlag.Parameter]);
+  }
+  if (flags & SymbolFlag.Function) {
+      flags &= ~SymbolFlag.Function;
+      text.push(SymbolFlag[SymbolFlag.Function]);
+  }
+  if (flags & SymbolFlag.VariableSlot) {
+      flags &= ~SymbolFlag.VariableSlot;
+      text.push(SymbolFlag[SymbolFlag.VariableSlot]);
+  }
+  if (flags & SymbolFlag.MethodSlot) {
+      flags &= ~SymbolFlag.MethodSlot;
+      text.push(SymbolFlag[SymbolFlag.MethodSlot]);
+  }
+  if (flags & SymbolFlag.AnomymousObject) {
+      flags &= ~SymbolFlag.AnomymousObject;
+      text.push(SymbolFlag[SymbolFlag.AnomymousObject]);
+  }
+
+  assert(flags === SymbolFlag.None, `Unknown symbol flag: ${flags}`);
+  return text.join(' | ');
+}
+
+export function getDeclarationSymbolFlags (node: ASTNode): SymbolFlag {
+  switch (node.kind) {
+      case SyntaxKind.VariableSlot:
+          return SymbolFlag.VariableSlot;
+      case SyntaxKind.VariableStatement:
+          return SymbolFlag.Variable;
+      case SyntaxKind.Parameter:
+          return SymbolFlag.Parameter;
+      case SyntaxKind.FunctionStatement:
+          return SymbolFlag.Function;
+      case SyntaxKind.MethodSlot:
+          return SymbolFlag.MethodSlot;
+      case SyntaxKind.ObjectsExpression:
+          return SymbolFlag.AnomymousObject;
+      default:
+          return SymbolFlag.None;
+  }
+}
+
+export function isLocalVariableContainer (node: ASTNode): node is HasLocalVariables {
+  switch (node.kind) {
+      case SyntaxKind.SequenceOfStatements:
+      case SyntaxKind.SourceFile:
+      case SyntaxKind.MethodSlot:
+      case SyntaxKind.FunctionStatement:
+      case SyntaxKind.FunctionExpression:
+          return true;
+      default:
+          return false;
+  }
+}
+
+export function isMemberContainer (node: ASTNode): node is HasMembers {
+  switch (node.kind) {
+      case SyntaxKind.ObjectsExpression:
+          return true
+      default:
+          return false;
   }
 }
