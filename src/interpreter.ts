@@ -46,6 +46,16 @@ enum ValueType {
   String
 }
 
+function assertThisValue<T extends BaseValue>(value: T | undefined): asserts value is NonNullable<T> {
+  assertDef(value, "'This' cannot be null")
+}
+
+function assertArgumentsLength (expected: number, actual: number) {
+  if (expected !== actual) {
+    throw new Error(`Arguments mis match, expected ${expected}, actual: ${actual}`);
+  }
+}
+
 abstract class BaseValue {
   abstract get type(): ValueType;
 
@@ -360,15 +370,17 @@ function createIntegerValueBuiltinFunction(
   cb: (a: number, b: number) => BaseValue
 ) {
   return (thisValue: BaseValue | undefined, args: BaseValue[]) => {
-    assertDef(thisValue, 'Cannot find this value');
+    assertThisValue(thisValue);
 
-    if (args.length !== 1) {
-      throw new Error('Arguments mis match');
-    }
+    assertArgumentsLength(1, args.length)
     const [right] = args;
-    if (!thisValue.isInteger() || !right.isInteger()) {
-      throw new TypeError('Invalid arguments');
+    if (!thisValue.isInteger()) {
+      throw new TypeError('Invalid this value, expected integers.');
     }
+    if(!right.isInteger()) {
+      throw new TypeError('Invalid arguments, expected integers.');
+    }
+
     return cb(thisValue.value, right.value);
   };
 }
@@ -468,16 +480,16 @@ const arraysBuiltinFunctionGet = new BuiltinFunction(
   'get',
   ['index'],
   (thisValue: BaseValue | undefined, args: BaseValue[]) => {
-    assertDef(thisValue, 'Cannot find this value');
+    assertThisValue(thisValue);
+
     if (!thisValue.isArray()) {
-      throw new TypeError('Invalid arguments');
+      throw new TypeError('Invalid this value, expected Array');
     }
-    if (args.length !== 1) {
-      throw new Error('Arguments mis match');
-    }
+
+    assertArgumentsLength(1, args.length);
     const [indexValue] = args;
     if (!indexValue.isInteger()) {
-      throw new TypeError('Invalid arguments');
+      throw new TypeError('Invalid arguments, expected Integer');
     }
 
     const index = indexValue.value;
@@ -494,16 +506,16 @@ const arraysBuiltinFunctionSet = new BuiltinFunction(
   'set',
   ['index', 'value'],
   (thisValue: BaseValue | undefined, args: BaseValue[]) => {
-    assertDef(thisValue, 'Cannot find this value');
+    assertThisValue(thisValue)
+
     if (!thisValue.isArray()) {
-      throw new TypeError('Invalid arguments');
+      throw new TypeError('Invalid this value, expected Array');
     }
-    if (args.length !== 2) {
-      throw new Error('Arguments mis match');
-    }
+
+    assertArgumentsLength(2, args.length)
     const [indexValue, value] = args;
     if (!indexValue.isInteger()) {
-      throw new TypeError('Invalid arguments');
+      throw new TypeError('Invalid arguments, expected Integer');
     }
 
     const index = indexValue.value;
@@ -516,9 +528,10 @@ const arraysBuiltinFunctionLength = new BuiltinFunction(
   'length',
   [],
   (thisValue: BaseValue | undefined, args: BaseValue[]) => {
-    assertDef(thisValue, 'Cannot find this value');
+    assertThisValue(thisValue)
+
     if (!thisValue.isArray()) {
-      throw new TypeError('Invalid arguments');
+      throw new TypeError('Invalid this value, expected Array');
     }
 
     return thisValue.length;
@@ -598,7 +611,7 @@ export function createInterpreter(file: SourceFile) {
       throw new Error('Callframe not balanced');
     }
     if (targetCallFrame && result !== targetCallFrame) {
-      throw new Error('Invalid call frame');
+      throw new Error('Invalid callframe');
     }
     return result;
   }
@@ -695,12 +708,10 @@ export function createInterpreter(file: SourceFile) {
     args: BaseValue[]
   ) {
     if (!callable.isFunction()) {
-      throw new TypeError('Not a function');
+      throw new TypeError('Value is not callable: ' + callable.type);
     }
 
-    if (args.length !== callable.params.length) {
-      throw new Error('Invalid number of arguments');
-    }
+    assertArgumentsLength(callable.params.length, args.length)
 
     if (callable.isBuiltin()) {
       return runInFuncEnv(
@@ -716,8 +727,9 @@ export function createInterpreter(file: SourceFile) {
     }
 
     if (!callable.isRuntime()) {
-      throw new Error('Unknown callable');
+      throw new Error('Unknown callable kind: ' + callable.type);
     }
+
     return runInFuncEnv(
       callable.name,
       thisValue,
@@ -750,7 +762,7 @@ export function createInterpreter(file: SourceFile) {
     }
 
     if (last.kind !== SyntaxKind.ExpressionStatement) {
-      throw new Error('Invalid statement');
+      throw new Error('Invalid statement: ' + last.__debugKind);
     }
     return evaluateExpressionStatement(last as ExpressionStatement);
   }
@@ -851,11 +863,11 @@ export function createInterpreter(file: SourceFile) {
   function evaluateSetShorthand(expr: SetShorthand) {
     const left = evaluateExpression(expr.expression);
     if (!left.isEnvValue()) {
-      throw new Error('Invalid get shorthand');
+      throw new Error('Left operand must be an environment value');
     }
 
     const setFunc = left.env.getBinding('set');
-    assertDef(setFunc, 'set shorthand not found');
+    assertDef(setFunc, 'Cannot find definition for shorthand: set');
 
     const args = expr.args.map(evaluateExpression);
     const value = evaluateExpression(expr.value);
@@ -866,11 +878,11 @@ export function createInterpreter(file: SourceFile) {
   function evaluateGetShorthand(expr: GetShorthand) {
     const left = evaluateExpression(expr.expression);
     if (!left.isEnvValue()) {
-      throw new Error('Invalid get shorthand');
+      throw new Error('Left operand must be an environment value');
     }
 
     const getFunc = left.env.getBinding('get');
-    assertDef(getFunc, 'get shorthand not found');
+    assertDef(getFunc, 'Cannot find definition for shorthand: get');
 
     const args = expr.args.map(evaluateExpression);
     return callFunction(left, getFunc, args);
@@ -899,7 +911,7 @@ export function createInterpreter(file: SourceFile) {
       case SyntaxKind.EqualsEqualsToken:
         return 'eq';
       default:
-        throw new Error('Invalid operator');
+        throw new Error('Invalid operator: ' + SyntaxKind[kind]);
     }
   }
 
@@ -916,7 +928,7 @@ export function createInterpreter(file: SourceFile) {
 
     const operator = shorthandTokenToOperator(expr.operator.kind);
     const callable = left.env.getBinding(operator);
-    assertDef(callable, 'Operator not found: ' + operator);
+    assertDef(callable, 'Cannot find definition for shorthand: ' + operator);
 
     const right = evaluateExpression(expr.right);
     return callFunction(left, callable, [right]);
@@ -934,7 +946,7 @@ export function createInterpreter(file: SourceFile) {
       throw new TypeError('Left operand must be an environment value');
     }
     const callable = left.env.getBinding(expr.name.id);
-    assertDef(callable, 'Method not found');
+    assertDef(callable, 'Cannot find definition for method: ' + expr.name.id);
 
     const args = expr.args.map(evaluateExpression);
     return callFunction(left, callable, args);
@@ -966,7 +978,7 @@ export function createInterpreter(file: SourceFile) {
       );
       obj.env.addBinding(methodSlot.name.id, callable);
     } else {
-      throw new Error('Invalid slot');
+      throw new Error('Invalid slot kind: ' + slot.__debugKind);
     }
   }
 
@@ -998,7 +1010,7 @@ export function createInterpreter(file: SourceFile) {
     }
 
     const result = left.env.getBinding(expr.name.id);
-    assertDef(result, 'Slot not found');
+    assertDef(result, 'Cannot find slot: ' + expr.name.id);
     return result;
   }
 
@@ -1022,7 +1034,10 @@ export function createInterpreter(file: SourceFile) {
     if (value.isInteger()) {
       return value.value === 0 ? BooleanValue.False : BooleanValue.True;
     }
-    throw new TypeError('Invalid type: ' + value.type);
+    if (value.isString()) {
+      return value.value ? BooleanValue.True : BooleanValue.False
+    }
+    throw new TypeError('Invalid cast: ' + value.type);
   }
 
   function evaluateWhileExpression(expr: WhileExpression) {
@@ -1091,7 +1106,7 @@ export function createInterpreter(file: SourceFile) {
       ? evaluateExpression(expr.defaultValue)
       : undefined;
     if (!length.isInteger()) {
-      throw new TypeError('Invalid length');
+      throw new TypeError('Invalid length arguments, expected integer');
     }
 
     return new ArrayValue(length, defaultValue);
