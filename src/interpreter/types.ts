@@ -10,9 +10,8 @@ import {
   BaseValue
 } from './values';
 
-
 export interface Context {
-    stdout: (str: string) => void
+  stdout: (str: string) => void;
 }
 
 export enum ValueType {

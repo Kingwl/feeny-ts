@@ -599,9 +599,12 @@ export function createInterpreter(file: SourceFile, context: Context) {
   }
 
   function evaluatePrintingExpression(expr: PrintingExpression): NullValue {
-    expr.args.map(evaluateExpression).map(x => x.print()).forEach(text => {
-      context.stdout(text);
-    });
+    expr.args
+      .map(evaluateExpression)
+      .map(x => x.print())
+      .forEach(text => {
+        context.stdout(text);
+      });
     return NullValue.Instance;
   }
 

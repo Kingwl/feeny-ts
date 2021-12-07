@@ -43,7 +43,7 @@ export function parseCode (text: string) {
 
 export function createNodeContext(): Context {
     return {
-        stdout: process.stdout.write
+        stdout: text => process.stdout.write(text, 'utf-8')
     }
 }
 

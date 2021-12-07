@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { createParser, createInterpreter } from './index';
+import { Context } from './interpreter/types';
 
 function main() {
   if (process.argv.length < 3) {
@@ -28,7 +29,10 @@ function main() {
 
   const parser = createParser(content);
   const sourceFile = parser.parseSourceFile();
-  const interpreter = createInterpreter(sourceFile);
+  const context: Context = {
+    stdout: text => process.stdout.write(text, 'utf-8')
+  }
+  const interpreter = createInterpreter(sourceFile, context);
   interpreter.evaluate();
 }
 
