@@ -128,6 +128,8 @@ class NullValue extends BaseValue {
     return ValueType.Null;
   }
 
+  static Instance = new NullValue();
+
   print(): string {
     return 'null';
   }
@@ -202,7 +204,7 @@ class ArrayValue extends EnvValue {
       if (value) {
         list.push(value);
       } else {
-        list.push(new NullValue());
+        list.push(NullValue.Instance);
       }
     }
     return `[${list.map(v => v.print()).join(', ')}]`;
@@ -482,7 +484,7 @@ const arraysBuiltinFunctionGet = new BuiltinFunction(
     }
 
     const result = thisValue.env.getBinding(`${index}`);
-    return result ?? new NullValue();
+    return result ?? NullValue.Instance;
   }
 );
 
@@ -504,7 +506,7 @@ const arraysBuiltinFunctionSet = new BuiltinFunction(
 
     const index = indexValue.value;
     thisValue.env.addBinding(`${index}`, value);
-    return new NullValue();
+    return NullValue.Instance;
   }
 );
 
@@ -707,7 +709,7 @@ export function createInterpreter(file: SourceFile) {
 
     if (!seqs.isExpression) {
       evaluateStatement(last);
-      return new NullValue();
+      return NullValue.Instance;
     }
 
     if (last.kind !== SyntaxKind.ExpressionStatement) {
@@ -850,7 +852,7 @@ export function createInterpreter(file: SourceFile) {
 
   function evaluateThisExpression(expr: ThisExpression) {
     const callFrame = currentCallFrame();
-    return callFrame.thisValue ?? new NullValue();
+    return callFrame.thisValue ?? NullValue.Instance;
   }
 
   function evaluateBinaryShorthand(expr: BinaryShorthand) {
@@ -983,7 +985,7 @@ export function createInterpreter(file: SourceFile) {
       });
     }
 
-    return new NullValue();
+    return NullValue.Instance;
   }
 
   function evaluateParenExpression(expr: ParenExpression) {
@@ -1014,7 +1016,7 @@ export function createInterpreter(file: SourceFile) {
         return evaluateExpressionStatementOrSequenceOfStatements(elseStatement);
       });
     } else {
-      return new NullValue();
+      return NullValue.Instance;
     }
   }
 
@@ -1031,12 +1033,12 @@ export function createInterpreter(file: SourceFile) {
   }
 
   function evaluateNullExpression(expr: NullExpression) {
-    return new NullValue();
+    return NullValue.Instance;
   }
 
   function evaluatePrintingExpression(expr: PrintingExpression): NullValue {
     console.log(...expr.args.map(evaluateExpression).map(x => x.print()));
-    return new NullValue();
+    return NullValue.Instance;
   }
 
   function evaluateIntegerLiteralExpression(
