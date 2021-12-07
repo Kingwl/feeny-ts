@@ -141,6 +141,7 @@ export function createParser(text: string) {
 
   function parseContinueStatement() {
     const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.ContinueKeyword);
     return finishNode(
       createContinueStatement(),
       pos,
@@ -150,6 +151,7 @@ export function createParser(text: string) {
 
   function parseBreakStatement () {
     const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.BreakKeyword);
     return finishNode(
       createBreakStatement(),
       pos,

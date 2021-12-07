@@ -1,0 +1,11 @@
+var x = 4
+while x:
+    x = x - 1
+    printf("while start", x)
+    if x == 2:
+        continue
+    if x == 1:
+        break
+    printf("while end")
+
+printf("after", x)

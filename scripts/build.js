@@ -14,7 +14,6 @@ esbuild.build({
     entryPoints: [
         './src/cli.ts'
     ],
-    bundle: true,
     format: 'cjs',
     sourcemap: true,
     outdir: './dist',
