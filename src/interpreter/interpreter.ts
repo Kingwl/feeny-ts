@@ -35,6 +35,7 @@ import {
   StringLiteralExpression
 } from '../types';
 import { assertDef, last } from '../utils';
+import { setupBuiltin } from './builtins';
 import { Environment, CallFrame } from './types';
 import { assertArgumentsLength } from './utils';
 import {
@@ -47,6 +48,8 @@ import {
   IntegerValue,
   StringValue
 } from './values';
+
+setupBuiltin();
 
 export function createInterpreter(file: SourceFile) {
   const globalEnv = new Environment();
