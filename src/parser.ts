@@ -1,4 +1,6 @@
 import {
+  createBreakStatement,
+  createContinueStatement,
   createStringLiteralExpression,
   createVariableStatement,
   createIdentifier,
@@ -42,7 +44,6 @@ import {
   IntegerLiteralExpression,
   IntegerLiteralToken,
   ExpressionStatement,
-  VariableStatement,
   MethodSlot,
   NodeArray,
   NullExpression,
@@ -129,9 +130,31 @@ export function createParser(text: string) {
         return parseVariableStatement();
       case SyntaxKind.DefnKeyword:
         return parseFunctionStatement();
+      case SyntaxKind.ContinueKeyword:
+        return parseContinueStatement();
+      case SyntaxKind.BreakKeyword:
+        return parseBreakStatement();
       default:
         return parseExpressionStatement();
     }
+  }
+
+  function parseContinueStatement() {
+    const pos = scanner.getTokenStart();
+    return finishNode(
+      createContinueStatement(),
+      pos,
+      scanner.getCurrentPos()
+    )
+  }
+
+  function parseBreakStatement () {
+    const pos = scanner.getTokenStart();
+    return finishNode(
+      createBreakStatement(),
+      pos,
+      scanner.getCurrentPos()
+    )
   }
 
   function parseVariableStatement() {
