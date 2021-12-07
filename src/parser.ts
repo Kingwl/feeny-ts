@@ -434,7 +434,7 @@ export function createParser(text: string) {
       case SyntaxKind.BreakKeyword:
         return parseBreakExpression();
       case SyntaxKind.ContinueKeyword:
-        return parseContinueExpression()
+        return parseContinueExpression();
       default:
         throw new Error(token.__debugKind);
     }
@@ -443,21 +443,13 @@ export function createParser(text: string) {
   function parseContinueExpression() {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.ContinueKeyword);
-    return finishNode(
-      createContinueExpression(),
-      pos,
-      scanner.getCurrentPos()
-    )
+    return finishNode(createContinueExpression(), pos, scanner.getCurrentPos());
   }
 
-  function parseBreakExpression () {
+  function parseBreakExpression() {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.BreakKeyword);
-    return finishNode(
-      createBreakExpression(),
-      pos,
-      scanner.getCurrentPos()
-    )
+    return finishNode(createBreakExpression(), pos, scanner.getCurrentPos());
   }
 
   function parseStringLiteralExpression() {
@@ -505,7 +497,9 @@ export function createParser(text: string) {
     return finishNode(createThisExpression(), pos, scanner.getCurrentPos());
   }
 
-  function parseExpressionStatementOrSequenceOfStatements(isExpression: boolean) {
+  function parseExpressionStatementOrSequenceOfStatements(
+    isExpression: boolean
+  ) {
     const colonToken = parseOptionalToken(SyntaxKind.ColonToken);
     if (colonToken && scanner.currentTokenhasLineFeed()) {
       return parseSequenceOfStatements(colonToken.leadingIndent, isExpression);

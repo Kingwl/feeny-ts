@@ -1,5 +1,5 @@
 import {
-  BreakExpression, 
+  BreakExpression,
   ContinueExpression,
   ArraysExpression,
   Expression,
@@ -46,13 +46,17 @@ enum ValueType {
   String
 }
 
-function assertThisValue<T extends BaseValue>(value: T | undefined): asserts value is NonNullable<T> {
-  assertDef(value, "'This' cannot be null")
+function assertThisValue<T extends BaseValue>(
+  value: T | undefined
+): asserts value is NonNullable<T> {
+  assertDef(value, "'This' cannot be null");
 }
 
-function assertArgumentsLength (expected: number, actual: number) {
+function assertArgumentsLength(expected: number, actual: number) {
   if (expected !== actual) {
-    throw new Error(`Arguments mis match, expected ${expected}, actual: ${actual}`);
+    throw new Error(
+      `Arguments mis match, expected ${expected}, actual: ${actual}`
+    );
   }
 }
 
@@ -372,12 +376,12 @@ function createIntegerValueBuiltinFunction(
   return (thisValue: BaseValue | undefined, args: BaseValue[]) => {
     assertThisValue(thisValue);
 
-    assertArgumentsLength(1, args.length)
+    assertArgumentsLength(1, args.length);
     const [right] = args;
     if (!thisValue.isInteger()) {
       throw new TypeError('Invalid this value, expected integers.');
     }
-    if(!right.isInteger()) {
+    if (!right.isInteger()) {
       throw new TypeError('Invalid arguments, expected integers.');
     }
 
@@ -506,13 +510,13 @@ const arraysBuiltinFunctionSet = new BuiltinFunction(
   'set',
   ['index', 'value'],
   (thisValue: BaseValue | undefined, args: BaseValue[]) => {
-    assertThisValue(thisValue)
+    assertThisValue(thisValue);
 
     if (!thisValue.isArray()) {
       throw new TypeError('Invalid this value, expected Array');
     }
 
-    assertArgumentsLength(2, args.length)
+    assertArgumentsLength(2, args.length);
     const [indexValue, value] = args;
     if (!indexValue.isInteger()) {
       throw new TypeError('Invalid arguments, expected Integer');
@@ -528,7 +532,7 @@ const arraysBuiltinFunctionLength = new BuiltinFunction(
   'length',
   [],
   (thisValue: BaseValue | undefined, args: BaseValue[]) => {
-    assertThisValue(thisValue)
+    assertThisValue(thisValue);
 
     if (!thisValue.isArray()) {
       throw new TypeError('Invalid this value, expected Array');
@@ -556,7 +560,7 @@ interface CallFrame {
   name: string;
   envStack: Environment[];
   parent: CallFrame | undefined;
-  insideLoop: boolean
+  insideLoop: boolean;
 }
 
 function isVarValues(value: BaseValue): value is VarValues {
@@ -587,7 +591,7 @@ export function createInterpreter(file: SourceFile) {
   const exceptionObjects = {
     Break: {},
     Continue: {}
-  } as const
+  } as const;
 
   return {
     evaluate
@@ -639,7 +643,7 @@ export function createInterpreter(file: SourceFile) {
     const env = new Environment(parent);
     pushEnv(env);
 
-    let result: R
+    let result: R;
     try {
       result = cb();
     } finally {
@@ -651,14 +655,14 @@ export function createInterpreter(file: SourceFile) {
 
   function runInLoop<R>(cb: () => R) {
     const frame = currentCallFrame();
-    const savedInsideLoop = frame.insideLoop
-    frame.insideLoop = true
-    
-    let result: R
+    const savedInsideLoop = frame.insideLoop;
+    frame.insideLoop = true;
+
+    let result: R;
     try {
-      result = cb()
+      result = cb();
     } finally {
-      frame.insideLoop = savedInsideLoop
+      frame.insideLoop = savedInsideLoop;
     }
 
     return result;
@@ -690,8 +694,8 @@ export function createInterpreter(file: SourceFile) {
 
     pushCallFrame(callFrame);
     pushEnv(env);
-    
-    let result: R
+
+    let result: R;
     try {
       result = cb();
     } finally {
@@ -711,7 +715,7 @@ export function createInterpreter(file: SourceFile) {
       throw new TypeError('Value is not callable: ' + callable.type);
     }
 
-    assertArgumentsLength(callable.params.length, args.length)
+    assertArgumentsLength(callable.params.length, args.length);
 
     if (callable.isBuiltin()) {
       return runInFuncEnv(
@@ -782,16 +786,18 @@ export function createInterpreter(file: SourceFile) {
     }
   }
 
-  function evaluateBreakOrContinueExpression(stmt: BreakExpression | ContinueExpression): never {
+  function evaluateBreakOrContinueExpression(
+    stmt: BreakExpression | ContinueExpression
+  ): never {
     const callFrame = currentCallFrame();
     if (!callFrame.insideLoop) {
-      throw new Error("Break or continue cannot used outside loop")
+      throw new Error('Break or continue cannot used outside loop');
     }
 
     if (stmt.kind === SyntaxKind.BreakExpression) {
-      throw exceptionObjects.Break
+      throw exceptionObjects.Break;
     } else {
-      throw exceptionObjects.Continue
+      throw exceptionObjects.Continue;
     }
   }
 
@@ -847,7 +853,9 @@ export function createInterpreter(file: SourceFile) {
         return evaluateFunctionExpression(expr as FunctionExpression);
       case SyntaxKind.BreakExpression:
       case SyntaxKind.ContinueExpression:
-        return evaluateBreakOrContinueExpression(expr as BreakExpression | ContinueExpression)
+        return evaluateBreakOrContinueExpression(
+          expr as BreakExpression | ContinueExpression
+        );
       default:
         throw new Error('Invalid expression: ' + expr.__debugKind);
     }
@@ -1035,7 +1043,7 @@ export function createInterpreter(file: SourceFile) {
       return value.value === 0 ? BooleanValue.False : BooleanValue.True;
     }
     if (value.isString()) {
-      return value.value ? BooleanValue.True : BooleanValue.False
+      return value.value ? BooleanValue.True : BooleanValue.False;
     }
     throw new TypeError('Invalid cast: ' + value.type);
   }
@@ -1051,7 +1059,7 @@ export function createInterpreter(file: SourceFile) {
         runInEnv(() => {
           return runInLoop(() => {
             return evaluateExpressionStatementOrSequenceOfStatements(expr.body);
-          })
+          });
         });
       } catch (e: unknown) {
         if (e === exceptionObjects.Break) {
@@ -1061,7 +1069,7 @@ export function createInterpreter(file: SourceFile) {
           continue;
         }
 
-        throw e
+        throw e;
       }
     }
 

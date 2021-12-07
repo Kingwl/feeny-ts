@@ -319,13 +319,12 @@ export interface WhileExpression extends Expression {
 }
 
 export interface ContinueExpression extends Expression {
-  kind: SyntaxKind.ContinueExpression
+  kind: SyntaxKind.ContinueExpression;
 }
 
 export interface BreakExpression extends Expression {
-  kind: SyntaxKind.BreakExpression
+  kind: SyntaxKind.BreakExpression;
 }
-
 
 export interface ThisExpression extends Expression {
   kind: SyntaxKind.ThisExpression;
