@@ -1,19 +1,15 @@
-import { forEachCases, runCode, runWithConsoleLogHook } from "./utils"
+import { forEachCases, runWithStdoutHook } from "./utils"
 
 describe('Interpreter', () => {
     it('Should work with hello world', () => {
         const code = `printf("hello world")`
-        const stdout = runWithConsoleLogHook(() => {
-            runCode(code)
-        })
+        const stdout = runWithStdoutHook(code)
         expect(stdout).toMatchSnapshot();
     })
 
     forEachCases((baseName, content) => {
         it(baseName, () => {
-            const stdout = runWithConsoleLogHook(() => {
-                runCode(content)
-            })
+            const stdout = runWithStdoutHook(content);
             expect(stdout).toMatchSnapshot();
         })
     })

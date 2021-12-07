@@ -1,4 +1,4 @@
-import { forEachDemo, parseCode, runCode, runWithConsoleLogHook, scanCode } from './utils'
+import { forEachDemo, parseCode, runWithStdoutHook, scanCode } from './utils'
 
 describe('Should work with demo', () => {
     forEachDemo((baseName, content) => {
@@ -13,9 +13,7 @@ describe('Should work with demo', () => {
         })
 
         it(`Interpreter - should work with ${baseName}`, () => {
-            const output = runWithConsoleLogHook(() => {
-                runCode(content)
-            });
+            const output = runWithStdoutHook(content);
             expect(output).toMatchSnapshot();
         })
     })

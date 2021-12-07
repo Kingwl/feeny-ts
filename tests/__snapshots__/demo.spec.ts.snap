@@ -2,249 +2,163 @@
 
 exports[`Should work with demo Interpreter - should work with bsearch 1`] = `
 Array [
-  Array [
-    "The index of ~ in a is ~.\\\\n",
-    "13",
-    "3",
-  ],
-  Array [
-    "The index of ~ in a is ~.\\\\n",
-    "14",
-    "-1",
-  ],
-  Array [
-    "The index of ~ in a is ~.\\\\n",
-    "15",
-    "4",
-  ],
-  Array [
-    "The index of ~ in a is ~.\\\\n",
-    "29",
-    "8",
-  ],
-  Array [
-    "The index of ~ in a is ~.\\\\n",
-    "30",
-    "-1",
-  ],
+  "The index of ~ in a is ~.\\\\n",
+  "13",
+  "3",
+  "The index of ~ in a is ~.\\\\n",
+  "14",
+  "-1",
+  "The index of ~ in a is ~.\\\\n",
+  "15",
+  "4",
+  "The index of ~ in a is ~.\\\\n",
+  "29",
+  "8",
+  "The index of ~ in a is ~.\\\\n",
+  "30",
+  "-1",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with cplx 1`] = `
 Array [
-  Array [
-    "a / b = ",
-  ],
-  Array [
-    "~ - ~i",
-    "0",
-    "1",
-  ],
-  Array [
-    "\\\\n",
-  ],
+  "a / b = ",
+  "~ - ~i",
+  "0",
+  "1",
+  "\\\\n",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with fibonacci 1`] = `
 Array [
-  Array [
-    "Fib(~) = ~\\\\n",
-    "0",
-    "1",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "1",
-    "1",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "2",
-    "2",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "3",
-    "3",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "4",
-    "5",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "5",
-    "8",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "6",
-    "13",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "7",
-    "21",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "8",
-    "34",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "9",
-    "55",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "10",
-    "89",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "11",
-    "144",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "12",
-    "233",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "13",
-    "377",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "14",
-    "610",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "15",
-    "987",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "16",
-    "1597",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "17",
-    "2584",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "18",
-    "4181",
-  ],
-  Array [
-    "Fib(~) = ~\\\\n",
-    "19",
-    "6765",
-  ],
+  "Fib(~) = ~\\\\n",
+  "0",
+  "1",
+  "Fib(~) = ~\\\\n",
+  "1",
+  "1",
+  "Fib(~) = ~\\\\n",
+  "2",
+  "2",
+  "Fib(~) = ~\\\\n",
+  "3",
+  "3",
+  "Fib(~) = ~\\\\n",
+  "4",
+  "5",
+  "Fib(~) = ~\\\\n",
+  "5",
+  "8",
+  "Fib(~) = ~\\\\n",
+  "6",
+  "13",
+  "Fib(~) = ~\\\\n",
+  "7",
+  "21",
+  "Fib(~) = ~\\\\n",
+  "8",
+  "34",
+  "Fib(~) = ~\\\\n",
+  "9",
+  "55",
+  "Fib(~) = ~\\\\n",
+  "10",
+  "89",
+  "Fib(~) = ~\\\\n",
+  "11",
+  "144",
+  "Fib(~) = ~\\\\n",
+  "12",
+  "233",
+  "Fib(~) = ~\\\\n",
+  "13",
+  "377",
+  "Fib(~) = ~\\\\n",
+  "14",
+  "610",
+  "Fib(~) = ~\\\\n",
+  "15",
+  "987",
+  "Fib(~) = ~\\\\n",
+  "16",
+  "1597",
+  "Fib(~) = ~\\\\n",
+  "17",
+  "2584",
+  "Fib(~) = ~\\\\n",
+  "18",
+  "4181",
+  "Fib(~) = ~\\\\n",
+  "19",
+  "6765",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with hello 1`] = `
 Array [
-  Array [
-    "Hello World\\\\n",
-  ],
+  "Hello World\\\\n",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with hello2 1`] = `
 Array [
-  Array [
-    "Hello ",
-  ],
-  Array [
-    "World\\\\n",
-  ],
+  "Hello ",
+  "World\\\\n",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with hello3 1`] = `
 Array [
-  Array [
-    "Hello ",
-  ],
-  Array [
-    "World\\\\n",
-  ],
+  "Hello ",
+  "World\\\\n",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with hello4 1`] = `
 Array [
-  Array [
-    "Hello ~ ",
-    "3",
-  ],
-  Array [
-    "World ~ ~\\\\n",
-    "4",
-    "5",
-  ],
+  "Hello ~ ",
+  "3",
+  "World ~ ~\\\\n",
+  "4",
+  "5",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with hello5 1`] = `
 Array [
-  Array [
-    "Hello ~ ",
-    "3",
-  ],
-  Array [
-    "World ~ ~\\\\n",
-    "4",
-    "3",
-  ],
+  "Hello ~ ",
+  "3",
+  "World ~ ~\\\\n",
+  "4",
+  "3",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with hello6 1`] = `
 Array [
-  Array [
-    "Hello ~ ",
-    "3",
-  ],
-  Array [
-    "World ~ ~\\\\n",
-    "4",
-    "10",
-  ],
+  "Hello ~ ",
+  "3",
+  "World ~ ~\\\\n",
+  "4",
+  "10",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with hello7 1`] = `
 Array [
-  Array [
-    "Hello ~ ",
-    "3",
-  ],
-  Array [
-    "World ~ ~\\\\n",
-    "4",
-    "10",
-  ],
+  "Hello ~ ",
+  "3",
+  "World ~ ~\\\\n",
+  "4",
+  "10",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with hello8 1`] = `
 Array [
-  Array [
-    "World",
-  ],
-  Array [
-    "World\\\\n",
-  ],
+  "World",
+  "World\\\\n",
 ]
 `;
 
@@ -252,2168 +166,960 @@ exports[`Should work with demo Interpreter - should work with hello9 1`] = `Arra
 
 exports[`Should work with demo Interpreter - should work with inheritance 1`] = `
 Array [
-  Array [
-    "Do a binary operation on ~ and ~.\\\\n",
-    "11",
-    "7",
-  ],
-  Array [
-    "Result = ~.\\\\n",
-    "18",
-  ],
-  Array [
-    "Do a binary operation on ~ and ~.\\\\n",
-    "11",
-    "7",
-  ],
-  Array [
-    "Result = ~.\\\\n",
-    "77",
-  ],
+  "Do a binary operation on ~ and ~.\\\\n",
+  "11",
+  "7",
+  "Result = ~.\\\\n",
+  "18",
+  "Do a binary operation on ~ and ~.\\\\n",
+  "11",
+  "7",
+  "Result = ~.\\\\n",
+  "77",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with lists 1`] = `
 Array [
-  Array [
-    "List A\\\\n",
-  ],
-  Array [
-    "(~",
-    "1",
-  ],
-  Array [
-    " ~",
-    "2",
-  ],
-  Array [
-    " ~",
-    "3",
-  ],
-  Array [
-    " ~",
-    "4",
-  ],
-  Array [
-    ")",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "List B\\\\n",
-  ],
-  Array [
-    "(~",
-    "10",
-  ],
-  Array [
-    " ~",
-    "9",
-  ],
-  Array [
-    " ~",
-    "8",
-  ],
-  Array [
-    " ~",
-    "7",
-  ],
-  Array [
-    " ~",
-    "6",
-  ],
-  Array [
-    " ~",
-    "5",
-  ],
-  Array [
-    ")",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "a.length() = ~\\\\n",
-    "4",
-  ],
-  Array [
-    "b.length() = ~\\\\n",
-    "6",
-  ],
-  Array [
-    "a.append(b) = ",
-  ],
-  Array [
-    "(~",
-    "1",
-  ],
-  Array [
-    " ~",
-    "2",
-  ],
-  Array [
-    " ~",
-    "3",
-  ],
-  Array [
-    " ~",
-    "4",
-  ],
-  Array [
-    " ~",
-    "10",
-  ],
-  Array [
-    " ~",
-    "9",
-  ],
-  Array [
-    " ~",
-    "8",
-  ],
-  Array [
-    " ~",
-    "7",
-  ],
-  Array [
-    " ~",
-    "6",
-  ],
-  Array [
-    " ~",
-    "5",
-  ],
-  Array [
-    ")",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "a reversed = ",
-  ],
-  Array [
-    "(~",
-    "4",
-  ],
-  Array [
-    " ~",
-    "3",
-  ],
-  Array [
-    " ~",
-    "2",
-  ],
-  Array [
-    " ~",
-    "1",
-  ],
-  Array [
-    ")",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "b reversed = ",
-  ],
-  Array [
-    "(~",
-    "5",
-  ],
-  Array [
-    " ~",
-    "6",
-  ],
-  Array [
-    " ~",
-    "7",
-  ],
-  Array [
-    " ~",
-    "8",
-  ],
-  Array [
-    " ~",
-    "9",
-  ],
-  Array [
-    " ~",
-    "10",
-  ],
-  Array [
-    ")",
-  ],
-  Array [
-    "\\\\n",
-  ],
+  "List A\\\\n",
+  "(~",
+  "1",
+  " ~",
+  "2",
+  " ~",
+  "3",
+  " ~",
+  "4",
+  ")",
+  "\\\\n",
+  "List B\\\\n",
+  "(~",
+  "10",
+  " ~",
+  "9",
+  " ~",
+  "8",
+  " ~",
+  "7",
+  " ~",
+  "6",
+  " ~",
+  "5",
+  ")",
+  "\\\\n",
+  "a.length() = ~\\\\n",
+  "4",
+  "b.length() = ~\\\\n",
+  "6",
+  "a.append(b) = ",
+  "(~",
+  "1",
+  " ~",
+  "2",
+  " ~",
+  "3",
+  " ~",
+  "4",
+  " ~",
+  "10",
+  " ~",
+  "9",
+  " ~",
+  "8",
+  " ~",
+  "7",
+  " ~",
+  "6",
+  " ~",
+  "5",
+  ")",
+  "\\\\n",
+  "a reversed = ",
+  "(~",
+  "4",
+  " ~",
+  "3",
+  " ~",
+  "2",
+  " ~",
+  "1",
+  ")",
+  "\\\\n",
+  "b reversed = ",
+  "(~",
+  "5",
+  " ~",
+  "6",
+  " ~",
+  "7",
+  " ~",
+  "8",
+  " ~",
+  "9",
+  " ~",
+  "10",
+  ")",
+  "\\\\n",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with sudoku 1`] = `
 Array [
-  Array [
-    "=== Given Puzzle ===\\\\n",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "1",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "3",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "4",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "3",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "5",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "7",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "6",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "~",
-    "4",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "7",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "6",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "9",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "4",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "1",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "3",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "5",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "6",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "3",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "9",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "~",
-    "1",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "9",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "7",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "6",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "4",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "5",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "9",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "1",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "\\\\n=== Solution ===\\\\n",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "1",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "3",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "4",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "3",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "5",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "7",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "6",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "~",
-    "4",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "7",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "6",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "9",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "4",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "1",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "3",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "5",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "6",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "3",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "9",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "~",
-    "1",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "9",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "7",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "2",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "6",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "4",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "8",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "5",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "9",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "_",
-  ],
-  Array [
-    " ",
-  ],
-  Array [
-    "~",
-    "1",
-  ],
-  Array [
-    "\\\\n",
-  ],
+  "=== Given Puzzle ===\\\\n",
+  "~",
+  "8",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "1",
+  " ",
+  "_",
+  " ",
+  "~",
+  "3",
+  " ",
+  "~",
+  "4",
+  " ",
+  "_",
+  " ",
+  "_",
+  "\\\\n",
+  "_",
+  " ",
+  "~",
+  "3",
+  " ",
+  "~",
+  "5",
+  " ",
+  "~",
+  "7",
+  " ",
+  "~",
+  "8",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "6",
+  " ",
+  "~",
+  "2",
+  "\\\\n",
+  "~",
+  "4",
+  " ",
+  "~",
+  "7",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "6",
+  " ",
+  "_",
+  " ",
+  "~",
+  "9",
+  " ",
+  "_",
+  "\\\\n",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "2",
+  " ",
+  "~",
+  "4",
+  "\\\\n",
+  "_",
+  " ",
+  "~",
+  "1",
+  " ",
+  "_",
+  " ",
+  "~",
+  "3",
+  " ",
+  "_",
+  " ",
+  "~",
+  "5",
+  " ",
+  "_",
+  " ",
+  "~",
+  "8",
+  " ",
+  "_",
+  "\\\\n",
+  "~",
+  "2",
+  " ",
+  "~",
+  "8",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  "\\\\n",
+  "_",
+  " ",
+  "~",
+  "2",
+  " ",
+  "_",
+  " ",
+  "~",
+  "6",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "3",
+  " ",
+  "~",
+  "9",
+  "\\\\n",
+  "~",
+  "1",
+  " ",
+  "~",
+  "9",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "7",
+  " ",
+  "~",
+  "2",
+  " ",
+  "~",
+  "6",
+  " ",
+  "~",
+  "4",
+  " ",
+  "_",
+  "\\\\n",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "8",
+  " ",
+  "~",
+  "5",
+  " ",
+  "_",
+  " ",
+  "~",
+  "9",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "1",
+  "\\\\n",
+  "\\\\n=== Solution ===\\\\n",
+  "~",
+  "8",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "1",
+  " ",
+  "_",
+  " ",
+  "~",
+  "3",
+  " ",
+  "~",
+  "4",
+  " ",
+  "_",
+  " ",
+  "_",
+  "\\\\n",
+  "_",
+  " ",
+  "~",
+  "3",
+  " ",
+  "~",
+  "5",
+  " ",
+  "~",
+  "7",
+  " ",
+  "~",
+  "8",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "6",
+  " ",
+  "~",
+  "2",
+  "\\\\n",
+  "~",
+  "4",
+  " ",
+  "~",
+  "7",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "6",
+  " ",
+  "_",
+  " ",
+  "~",
+  "9",
+  " ",
+  "_",
+  "\\\\n",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "2",
+  " ",
+  "~",
+  "4",
+  "\\\\n",
+  "_",
+  " ",
+  "~",
+  "1",
+  " ",
+  "_",
+  " ",
+  "~",
+  "3",
+  " ",
+  "_",
+  " ",
+  "~",
+  "5",
+  " ",
+  "_",
+  " ",
+  "~",
+  "8",
+  " ",
+  "_",
+  "\\\\n",
+  "~",
+  "2",
+  " ",
+  "~",
+  "8",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  "\\\\n",
+  "_",
+  " ",
+  "~",
+  "2",
+  " ",
+  "_",
+  " ",
+  "~",
+  "6",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "3",
+  " ",
+  "~",
+  "9",
+  "\\\\n",
+  "~",
+  "1",
+  " ",
+  "~",
+  "9",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "7",
+  " ",
+  "~",
+  "2",
+  " ",
+  "~",
+  "6",
+  " ",
+  "~",
+  "4",
+  " ",
+  "_",
+  "\\\\n",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "8",
+  " ",
+  "~",
+  "5",
+  " ",
+  "_",
+  " ",
+  "~",
+  "9",
+  " ",
+  "_",
+  " ",
+  "_",
+  " ",
+  "~",
+  "1",
+  "\\\\n",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with sudoku2 1`] = `
 Array [
-  Array [
-    "Puzzle ~\\\\n",
-    "0",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "1",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "2",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "3",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "4",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "5",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "6",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "7",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "8",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "9",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "10",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "11",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "12",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "13",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "14",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "15",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "16",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "17",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "18",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "19",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "20",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "21",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "22",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "23",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "24",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "25",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "26",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "27",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "28",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "29",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "30",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "31",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "32",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "33",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "34",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "35",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "36",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "37",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "38",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "39",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "40",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "41",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "42",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "43",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "44",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "45",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "46",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "47",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "48",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "49",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "50",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "51",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "52",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "53",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "54",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "55",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "56",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "57",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "58",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "59",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "60",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "61",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "62",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "63",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "64",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "65",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "66",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "67",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "68",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "69",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "70",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "71",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "72",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "73",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "74",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "75",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "76",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "77",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "78",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "79",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "80",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "81",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "82",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "83",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "84",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "85",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "86",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "87",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "88",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "89",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "90",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "91",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "92",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "93",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "94",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "95",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "96",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "97",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "98",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "99",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "100",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "101",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "102",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "103",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "104",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "105",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "106",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "107",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "108",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "109",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "110",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "111",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "112",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "113",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "114",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "115",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "116",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "117",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "118",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "119",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "120",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "121",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "122",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "123",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "124",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "125",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "126",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "127",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "128",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "129",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "130",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "131",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "132",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "133",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "134",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "135",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "136",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "137",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "138",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "139",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "140",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "141",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "142",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "143",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "144",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "145",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "146",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "147",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "148",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "149",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "150",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "151",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "152",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "153",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "154",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "155",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "156",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "157",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "158",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "159",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "160",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "161",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "162",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "163",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "164",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "165",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "166",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "167",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "168",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "169",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "170",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "171",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "172",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "173",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "174",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "175",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "176",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "177",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "178",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "179",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "180",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "181",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "182",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "183",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "184",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "185",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "186",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "187",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "188",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "189",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "190",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "191",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "192",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "193",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "194",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "195",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "196",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "197",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "198",
-  ],
-  Array [
-    "Puzzle ~\\\\n",
-    "199",
-  ],
+  "Puzzle ~\\\\n",
+  "0",
+  "Puzzle ~\\\\n",
+  "1",
+  "Puzzle ~\\\\n",
+  "2",
+  "Puzzle ~\\\\n",
+  "3",
+  "Puzzle ~\\\\n",
+  "4",
+  "Puzzle ~\\\\n",
+  "5",
+  "Puzzle ~\\\\n",
+  "6",
+  "Puzzle ~\\\\n",
+  "7",
+  "Puzzle ~\\\\n",
+  "8",
+  "Puzzle ~\\\\n",
+  "9",
+  "Puzzle ~\\\\n",
+  "10",
+  "Puzzle ~\\\\n",
+  "11",
+  "Puzzle ~\\\\n",
+  "12",
+  "Puzzle ~\\\\n",
+  "13",
+  "Puzzle ~\\\\n",
+  "14",
+  "Puzzle ~\\\\n",
+  "15",
+  "Puzzle ~\\\\n",
+  "16",
+  "Puzzle ~\\\\n",
+  "17",
+  "Puzzle ~\\\\n",
+  "18",
+  "Puzzle ~\\\\n",
+  "19",
+  "Puzzle ~\\\\n",
+  "20",
+  "Puzzle ~\\\\n",
+  "21",
+  "Puzzle ~\\\\n",
+  "22",
+  "Puzzle ~\\\\n",
+  "23",
+  "Puzzle ~\\\\n",
+  "24",
+  "Puzzle ~\\\\n",
+  "25",
+  "Puzzle ~\\\\n",
+  "26",
+  "Puzzle ~\\\\n",
+  "27",
+  "Puzzle ~\\\\n",
+  "28",
+  "Puzzle ~\\\\n",
+  "29",
+  "Puzzle ~\\\\n",
+  "30",
+  "Puzzle ~\\\\n",
+  "31",
+  "Puzzle ~\\\\n",
+  "32",
+  "Puzzle ~\\\\n",
+  "33",
+  "Puzzle ~\\\\n",
+  "34",
+  "Puzzle ~\\\\n",
+  "35",
+  "Puzzle ~\\\\n",
+  "36",
+  "Puzzle ~\\\\n",
+  "37",
+  "Puzzle ~\\\\n",
+  "38",
+  "Puzzle ~\\\\n",
+  "39",
+  "Puzzle ~\\\\n",
+  "40",
+  "Puzzle ~\\\\n",
+  "41",
+  "Puzzle ~\\\\n",
+  "42",
+  "Puzzle ~\\\\n",
+  "43",
+  "Puzzle ~\\\\n",
+  "44",
+  "Puzzle ~\\\\n",
+  "45",
+  "Puzzle ~\\\\n",
+  "46",
+  "Puzzle ~\\\\n",
+  "47",
+  "Puzzle ~\\\\n",
+  "48",
+  "Puzzle ~\\\\n",
+  "49",
+  "Puzzle ~\\\\n",
+  "50",
+  "Puzzle ~\\\\n",
+  "51",
+  "Puzzle ~\\\\n",
+  "52",
+  "Puzzle ~\\\\n",
+  "53",
+  "Puzzle ~\\\\n",
+  "54",
+  "Puzzle ~\\\\n",
+  "55",
+  "Puzzle ~\\\\n",
+  "56",
+  "Puzzle ~\\\\n",
+  "57",
+  "Puzzle ~\\\\n",
+  "58",
+  "Puzzle ~\\\\n",
+  "59",
+  "Puzzle ~\\\\n",
+  "60",
+  "Puzzle ~\\\\n",
+  "61",
+  "Puzzle ~\\\\n",
+  "62",
+  "Puzzle ~\\\\n",
+  "63",
+  "Puzzle ~\\\\n",
+  "64",
+  "Puzzle ~\\\\n",
+  "65",
+  "Puzzle ~\\\\n",
+  "66",
+  "Puzzle ~\\\\n",
+  "67",
+  "Puzzle ~\\\\n",
+  "68",
+  "Puzzle ~\\\\n",
+  "69",
+  "Puzzle ~\\\\n",
+  "70",
+  "Puzzle ~\\\\n",
+  "71",
+  "Puzzle ~\\\\n",
+  "72",
+  "Puzzle ~\\\\n",
+  "73",
+  "Puzzle ~\\\\n",
+  "74",
+  "Puzzle ~\\\\n",
+  "75",
+  "Puzzle ~\\\\n",
+  "76",
+  "Puzzle ~\\\\n",
+  "77",
+  "Puzzle ~\\\\n",
+  "78",
+  "Puzzle ~\\\\n",
+  "79",
+  "Puzzle ~\\\\n",
+  "80",
+  "Puzzle ~\\\\n",
+  "81",
+  "Puzzle ~\\\\n",
+  "82",
+  "Puzzle ~\\\\n",
+  "83",
+  "Puzzle ~\\\\n",
+  "84",
+  "Puzzle ~\\\\n",
+  "85",
+  "Puzzle ~\\\\n",
+  "86",
+  "Puzzle ~\\\\n",
+  "87",
+  "Puzzle ~\\\\n",
+  "88",
+  "Puzzle ~\\\\n",
+  "89",
+  "Puzzle ~\\\\n",
+  "90",
+  "Puzzle ~\\\\n",
+  "91",
+  "Puzzle ~\\\\n",
+  "92",
+  "Puzzle ~\\\\n",
+  "93",
+  "Puzzle ~\\\\n",
+  "94",
+  "Puzzle ~\\\\n",
+  "95",
+  "Puzzle ~\\\\n",
+  "96",
+  "Puzzle ~\\\\n",
+  "97",
+  "Puzzle ~\\\\n",
+  "98",
+  "Puzzle ~\\\\n",
+  "99",
+  "Puzzle ~\\\\n",
+  "100",
+  "Puzzle ~\\\\n",
+  "101",
+  "Puzzle ~\\\\n",
+  "102",
+  "Puzzle ~\\\\n",
+  "103",
+  "Puzzle ~\\\\n",
+  "104",
+  "Puzzle ~\\\\n",
+  "105",
+  "Puzzle ~\\\\n",
+  "106",
+  "Puzzle ~\\\\n",
+  "107",
+  "Puzzle ~\\\\n",
+  "108",
+  "Puzzle ~\\\\n",
+  "109",
+  "Puzzle ~\\\\n",
+  "110",
+  "Puzzle ~\\\\n",
+  "111",
+  "Puzzle ~\\\\n",
+  "112",
+  "Puzzle ~\\\\n",
+  "113",
+  "Puzzle ~\\\\n",
+  "114",
+  "Puzzle ~\\\\n",
+  "115",
+  "Puzzle ~\\\\n",
+  "116",
+  "Puzzle ~\\\\n",
+  "117",
+  "Puzzle ~\\\\n",
+  "118",
+  "Puzzle ~\\\\n",
+  "119",
+  "Puzzle ~\\\\n",
+  "120",
+  "Puzzle ~\\\\n",
+  "121",
+  "Puzzle ~\\\\n",
+  "122",
+  "Puzzle ~\\\\n",
+  "123",
+  "Puzzle ~\\\\n",
+  "124",
+  "Puzzle ~\\\\n",
+  "125",
+  "Puzzle ~\\\\n",
+  "126",
+  "Puzzle ~\\\\n",
+  "127",
+  "Puzzle ~\\\\n",
+  "128",
+  "Puzzle ~\\\\n",
+  "129",
+  "Puzzle ~\\\\n",
+  "130",
+  "Puzzle ~\\\\n",
+  "131",
+  "Puzzle ~\\\\n",
+  "132",
+  "Puzzle ~\\\\n",
+  "133",
+  "Puzzle ~\\\\n",
+  "134",
+  "Puzzle ~\\\\n",
+  "135",
+  "Puzzle ~\\\\n",
+  "136",
+  "Puzzle ~\\\\n",
+  "137",
+  "Puzzle ~\\\\n",
+  "138",
+  "Puzzle ~\\\\n",
+  "139",
+  "Puzzle ~\\\\n",
+  "140",
+  "Puzzle ~\\\\n",
+  "141",
+  "Puzzle ~\\\\n",
+  "142",
+  "Puzzle ~\\\\n",
+  "143",
+  "Puzzle ~\\\\n",
+  "144",
+  "Puzzle ~\\\\n",
+  "145",
+  "Puzzle ~\\\\n",
+  "146",
+  "Puzzle ~\\\\n",
+  "147",
+  "Puzzle ~\\\\n",
+  "148",
+  "Puzzle ~\\\\n",
+  "149",
+  "Puzzle ~\\\\n",
+  "150",
+  "Puzzle ~\\\\n",
+  "151",
+  "Puzzle ~\\\\n",
+  "152",
+  "Puzzle ~\\\\n",
+  "153",
+  "Puzzle ~\\\\n",
+  "154",
+  "Puzzle ~\\\\n",
+  "155",
+  "Puzzle ~\\\\n",
+  "156",
+  "Puzzle ~\\\\n",
+  "157",
+  "Puzzle ~\\\\n",
+  "158",
+  "Puzzle ~\\\\n",
+  "159",
+  "Puzzle ~\\\\n",
+  "160",
+  "Puzzle ~\\\\n",
+  "161",
+  "Puzzle ~\\\\n",
+  "162",
+  "Puzzle ~\\\\n",
+  "163",
+  "Puzzle ~\\\\n",
+  "164",
+  "Puzzle ~\\\\n",
+  "165",
+  "Puzzle ~\\\\n",
+  "166",
+  "Puzzle ~\\\\n",
+  "167",
+  "Puzzle ~\\\\n",
+  "168",
+  "Puzzle ~\\\\n",
+  "169",
+  "Puzzle ~\\\\n",
+  "170",
+  "Puzzle ~\\\\n",
+  "171",
+  "Puzzle ~\\\\n",
+  "172",
+  "Puzzle ~\\\\n",
+  "173",
+  "Puzzle ~\\\\n",
+  "174",
+  "Puzzle ~\\\\n",
+  "175",
+  "Puzzle ~\\\\n",
+  "176",
+  "Puzzle ~\\\\n",
+  "177",
+  "Puzzle ~\\\\n",
+  "178",
+  "Puzzle ~\\\\n",
+  "179",
+  "Puzzle ~\\\\n",
+  "180",
+  "Puzzle ~\\\\n",
+  "181",
+  "Puzzle ~\\\\n",
+  "182",
+  "Puzzle ~\\\\n",
+  "183",
+  "Puzzle ~\\\\n",
+  "184",
+  "Puzzle ~\\\\n",
+  "185",
+  "Puzzle ~\\\\n",
+  "186",
+  "Puzzle ~\\\\n",
+  "187",
+  "Puzzle ~\\\\n",
+  "188",
+  "Puzzle ~\\\\n",
+  "189",
+  "Puzzle ~\\\\n",
+  "190",
+  "Puzzle ~\\\\n",
+  "191",
+  "Puzzle ~\\\\n",
+  "192",
+  "Puzzle ~\\\\n",
+  "193",
+  "Puzzle ~\\\\n",
+  "194",
+  "Puzzle ~\\\\n",
+  "195",
+  "Puzzle ~\\\\n",
+  "196",
+  "Puzzle ~\\\\n",
+  "197",
+  "Puzzle ~\\\\n",
+  "198",
+  "Puzzle ~\\\\n",
+  "199",
 ]
 `;
 
 exports[`Should work with demo Interpreter - should work with vector 1`] = `
 Array [
-  Array [
-    "Create empty vector.\\\\n",
-  ],
-  Array [
-    "[]",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "Add some elements.\\\\n",
-  ],
-  Array [
-    "[~",
-    "2",
-  ],
-  Array [
-    ", ~",
-    "10",
-  ],
-  Array [
-    ", ~",
-    "22",
-  ],
-  Array [
-    ", ~",
-    "17",
-  ],
-  Array [
-    ", ~",
-    "23",
-  ],
-  Array [
-    ", ~",
-    "2",
-  ],
-  Array [
-    ", ~",
-    "7",
-  ],
-  Array [
-    "]",
-  ],
-  Array [
-    "\\\\n",
-  ],
-  Array [
-    "Retrieving some elements.\\\\n",
-  ],
-  Array [
-    "v[~] = ~.\\\\n",
-    "2",
-    "22",
-  ],
-  Array [
-    "v[~] = ~.\\\\n",
-    "4",
-    "23",
-  ],
-  Array [
-    "v[~] = ~.\\\\n",
-    "1",
-    "10",
-  ],
-  Array [
-    "Setting first 3 elements to 0.\\\\n",
-  ],
-  Array [
-    "[~",
-    "0",
-  ],
-  Array [
-    ", ~",
-    "0",
-  ],
-  Array [
-    ", ~",
-    "0",
-  ],
-  Array [
-    ", ~",
-    "17",
-  ],
-  Array [
-    ", ~",
-    "23",
-  ],
-  Array [
-    ", ~",
-    "2",
-  ],
-  Array [
-    ", ~",
-    "7",
-  ],
-  Array [
-    "]",
-  ],
-  Array [
-    "\\\\n",
-  ],
+  "Create empty vector.\\\\n",
+  "[]",
+  "\\\\n",
+  "Add some elements.\\\\n",
+  "[~",
+  "2",
+  ", ~",
+  "10",
+  ", ~",
+  "22",
+  ", ~",
+  "17",
+  ", ~",
+  "23",
+  ", ~",
+  "2",
+  ", ~",
+  "7",
+  "]",
+  "\\\\n",
+  "Retrieving some elements.\\\\n",
+  "v[~] = ~.\\\\n",
+  "2",
+  "22",
+  "v[~] = ~.\\\\n",
+  "4",
+  "23",
+  "v[~] = ~.\\\\n",
+  "1",
+  "10",
+  "Setting first 3 elements to 0.\\\\n",
+  "[~",
+  "0",
+  ", ~",
+  "0",
+  ", ~",
+  "0",
+  ", ~",
+  "17",
+  ", ~",
+  "23",
+  ", ~",
+  "2",
+  ", ~",
+  "7",
+  "]",
+  "\\\\n",
 ]
 `;
 

@@ -1,6 +1,7 @@
 import { createScanner, Token, TokenSyntaxKind, createParser, createInterpreter } from "../src";
 import * as path from 'path';
 import * as fs from 'fs';
+import { Context } from "../src/interpreter/types";
 
 export const casesPath = path.resolve(__dirname, 'cases');
 export const demoPath = path.resolve(__dirname, 'demo');
@@ -40,22 +41,30 @@ export function parseCode (text: string) {
     return file;
 }
 
+export function createNodeContext(): Context {
+    return {
+        stdout: process.stdout.write
+    }
+}
+
 export function runCode (text: string) {
     const parser = createParser(text);
     const file = parser.parseSourceFile();
-    const interpreter = createInterpreter(file);
+    const context = createNodeContext();
+    const interpreter = createInterpreter(file, context);
     interpreter.evaluate();
 }
 
-export function runWithConsoleLogHook(cb: () => void) {
-    const result: any[][] = []
+export function runWithStdoutHook(text: string) {
+    const result: string[] = []
 
-    const log = console.log
-    console.log = (...args: any[]) => {
-        result.push(args)
+    const parser = createParser(text);
+    const file = parser.parseSourceFile();
+
+    const context: Context = {
+        stdout: content => result.push(content)
     }
-    
-    cb()
-    console.log = log
+    const interpreter = createInterpreter(file, context);
+    interpreter.evaluate();
     return result
 }

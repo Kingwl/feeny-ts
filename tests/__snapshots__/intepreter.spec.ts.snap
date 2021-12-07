@@ -2,9 +2,7 @@
 
 exports[`Interpreter Should work with hello world 1`] = `
 Array [
-  Array [
-    "hello world",
-  ],
+  "hello world",
 ]
 `;
 
@@ -14,25 +12,15 @@ exports[`Interpreter should-work-with-binary-shorthand 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-break-and-continue 1`] = `
 Array [
-  Array [
-    "while start",
-    "3",
-  ],
-  Array [
-    "while end",
-  ],
-  Array [
-    "while start",
-    "2",
-  ],
-  Array [
-    "while start",
-    "1",
-  ],
-  Array [
-    "after",
-    "1",
-  ],
+  "while start",
+  "3",
+  "while end",
+  "while start",
+  "2",
+  "while start",
+  "1",
+  "after",
+  "1",
 ]
 `;
 
@@ -42,10 +30,8 @@ exports[`Interpreter should-work-with-function-call 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-function-expression 1`] = `
 Array [
-  Array [
-    "",
-    "3",
-  ],
+  "",
+  "3",
 ]
 `;
 
@@ -55,17 +41,13 @@ exports[`Interpreter should-work-with-global-variable 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-if-expression 1`] = `
 Array [
-  Array [
-    "A",
-  ],
+  "A",
 ]
 `;
 
 exports[`Interpreter should-work-with-if-expression-with-if-only 1`] = `
 Array [
-  Array [
-    "A",
-  ],
+  "A",
 ]
 `;
 
@@ -77,10 +59,8 @@ exports[`Interpreter should-work-with-method-call 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-nested-function 1`] = `
 Array [
-  Array [
-    "",
-    "5",
-  ],
+  "",
+  "5",
 ]
 `;
 
@@ -94,10 +74,8 @@ exports[`Interpreter should-work-with-objects-and-slots 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-printf 1`] = `
 Array [
-  Array [
-    " My age is ~.\\\\ n ",
-    "8",
-  ],
+  " My age is ~.\\\\ n ",
+  "8",
 ]
 `;
 

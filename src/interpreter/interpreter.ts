@@ -36,7 +36,7 @@ import {
 } from '../types';
 import { assertDef, last } from '../utils';
 import { setupBuiltin } from './builtins';
-import { Environment, CallFrame } from './types';
+import { Environment, CallFrame, Context } from './types';
 import { assertArgumentsLength } from './utils';
 import {
   BaseValue,
@@ -51,7 +51,7 @@ import {
 
 setupBuiltin();
 
-export function createInterpreter(file: SourceFile) {
+export function createInterpreter(file: SourceFile, context: Context) {
   const globalEnv = new Environment();
   const globalCallframe: CallFrame = {
     thisValue: undefined,
@@ -599,7 +599,9 @@ export function createInterpreter(file: SourceFile) {
   }
 
   function evaluatePrintingExpression(expr: PrintingExpression): NullValue {
-    console.log(...expr.args.map(evaluateExpression).map(x => x.print()));
+    expr.args.map(evaluateExpression).map(x => x.print()).forEach(text => {
+      context.stdout(text);
+    });
     return NullValue.Instance;
   }
 
