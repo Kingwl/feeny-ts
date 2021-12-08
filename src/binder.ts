@@ -1,5 +1,5 @@
 import { ASTNode, Symbol, FunctionStatement, MethodSlot, ObjectsExpression, Declaration, Parameter, SourceFile, SyntaxKind, VariableSlot, VariableStatement, HasLocalVariables, SymbolFlag } from "./types";
-import { assertDef, getDeclarationSymbolFlags, isLocalVariableContainer, symbolFlagToDisplayText } from "./utils";
+import { assertDef, getDeclarationSymbolFlags, isLocalVariableContainer, setupSymbolDebugInfo, symbolFlagToDisplayText } from "./utils";
 import { forEachChild } from "./visitor";
 
 export function createBinder(file: SourceFile) {
@@ -141,14 +141,5 @@ export function createBinder(file: SourceFile) {
 
     function createSymbolTable () {
         return new Map<string, Symbol>()
-    }
-
-    function setupSymbolDebugInfo (symbol: Symbol) {
-        Object.defineProperty(symbol, '_debugFlags', {
-            enumerable: false,
-            get () {
-                return symbolFlagToDisplayText(symbol.flags);
-            }
-        });
     }
 }

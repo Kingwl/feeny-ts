@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parser Should work 1`] = `
+Array [
+  Object {
+    "kind": "ArraysExpression",
+    "pos": 9,
+    "type": "Object",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 15,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 18,
+    "type": "Integer",
+  },
+]
+`;

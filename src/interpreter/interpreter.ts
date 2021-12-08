@@ -34,7 +34,7 @@ import {
   Statement,
   StringLiteralExpression
 } from '../types';
-import { assertDef, last } from '../utils';
+import { assertDef, frontAndTail, last } from '../utils';
 import { setupBuiltin } from './builtins';
 import { Environment, CallFrame, Context } from './types';
 import { assertArgumentsLength } from './utils';
@@ -229,20 +229,19 @@ export function createInterpreter(file: SourceFile, context: Context) {
   }
 
   function evaluateSequenceOfStatements(seqs: SequenceOfStatements) {
-    const front = seqs.statements.slice(0, seqs.statements.length - 1);
-    const last = seqs.statements[seqs.statements.length - 1];
-
-    front.forEach(evaluateStatement);
-
     if (!seqs.isExpression) {
-      evaluateStatement(last);
+      seqs.statements.forEach(evaluateStatement);
       return NullValue.Instance;
     }
 
-    if (last.kind !== SyntaxKind.ExpressionStatement) {
-      throw new Error('Invalid statement: ' + last.__debugKind);
+    const [front, tail] = frontAndTail(seqs.statements);
+
+    front.forEach(evaluateStatement);
+
+    if (tail.kind !== SyntaxKind.ExpressionStatement) {
+      throw new Error('Invalid statement: ' + tail.__debugKind);
     }
-    return evaluateExpressionStatement(last as ExpressionStatement);
+    return evaluateExpressionStatement(tail as ExpressionStatement);
   }
 
   function evaluateStatement(stmt: Statement) {

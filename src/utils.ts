@@ -2,6 +2,7 @@ import {
   KeywordSyntaxKind,
   ObjectSlot,
   ASTNode,
+  Symbol,
   Token,
   SyntaxKind,
   NodeArray,
@@ -66,6 +67,17 @@ export function setupDebugInfo(node: ASTNode, text: string) {
   });
 }
 
+export function setupSymbolDebugInfo (symbol: Symbol) {
+  Object.defineProperty(symbol, '_debugFlags', {
+      enumerable: false,
+      get () {
+          return symbolFlagToDisplayText(symbol.flags);
+      }
+  });
+}
+
+
+
 export function isDef<T>(v: T): v is NonNullable<T> {
   return v !== undefined && v !== null;
 }
@@ -108,6 +120,16 @@ export function lastOrUndefined<T>(v?: readonly T[]): T | undefined {
     return undefined;
   }
   return v[v.length - 1];
+}
+
+export function frontAndTail<T>(v?: readonly T[]): [T[], T] {
+  if (!v?.length) {
+    throw new Error('Index out of range');
+  }
+
+  const front = v.slice(0, v.length - 1);
+  const tail = v[v.length - 1];
+  return [front, tail];
 }
 
 export enum Chars {

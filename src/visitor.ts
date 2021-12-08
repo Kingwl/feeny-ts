@@ -1,5 +1,4 @@
-import { SourceFile } from ".";
-import { ArraysExpression, ExpressionStatement, GetShorthand, ObjectsExpression, Parameter, PrintingExpression, VariableAssignmentExpression, ASTNode, BinaryShorthand, FunctionExpression, FunctionStatement, IfExpression, MethodCallExpression, MethodSlot, ParenExpression, SequenceOfStatements, SetShorthand, SlotAssignmentExpression, SlotLookupExpression, SyntaxKind, VariableSlot, VariableStatement, WhileExpression, FunctionCallExpression } from "./types";
+import { SourceFile, ArraysExpression, ExpressionStatement, GetShorthand, ObjectsExpression, Parameter, PrintingExpression, VariableAssignmentExpression, ASTNode, BinaryShorthand, FunctionExpression, FunctionStatement, IfExpression, MethodCallExpression, MethodSlot, ParenExpression, SequenceOfStatements, SetShorthand, SlotAssignmentExpression, SlotLookupExpression, SyntaxKind, VariableSlot, VariableStatement, WhileExpression, FunctionCallExpression } from "./types";
 import { assertKind, isBinaryShorthandTokenSyntaxKind, isDef, isKeywordSyntaxKind } from "./utils";
 
 export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefined): T | undefined {

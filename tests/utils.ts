@@ -1,4 +1,4 @@
-import { createScanner, createBinder, Token, TokenSyntaxKind, createParser, createInterpreter, forEachChild, ASTNode, Symbol } from "../src";
+import { createScanner, createBinder, createChecker, Token, TokenSyntaxKind, createParser, createInterpreter, forEachChild, ASTNode, Symbol } from "../src";
 import * as path from 'path';
 import * as fs from 'fs';
 import { Context } from "../src/interpreter/types";
@@ -113,6 +113,38 @@ export function runCode (text: string) {
     const context = createNodeContext();
     const interpreter = createInterpreter(file, context);
     interpreter.evaluate();
+}
+
+interface CheckResult {
+    pos: number;
+    kind: string | number;
+    type: string | number | undefined;
+}
+
+export function checkCode (text: string) {
+    const parser = createParser(text);
+    const file = parser.parseSourceFile();
+    const checker = createChecker(file);
+    const { check } = checker.checkFile();
+
+    const result: CheckResult[] = []; 
+
+    visitor(file);
+
+    return result;
+    
+    function visitor (node: ASTNode) {
+        const type = check(node)
+        if (type) {
+            result.push({
+                pos: node.pos,
+                kind: node.__debugKind ?? node.kind,
+                type: type._debugKind ?? node.kind
+            })
+        }
+
+        forEachChild(node, visitor)
+    }
 }
 
 export function runWithStdoutHook(text: string) {

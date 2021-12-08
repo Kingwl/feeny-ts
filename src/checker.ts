@@ -1,5 +1,5 @@
-import { ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression } from "./types";
-import { assertKind, isExpression } from "./utils";
+import { VariableStatement, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot } from "./types";
+import { assertKind, first, frontAndTail, isExpression } from "./utils";
 import { forEachChild } from './visitor'
 
 enum TypeKind {
@@ -19,97 +19,41 @@ interface Type {
     _debugKind?: string
 }
 
-interface UnknownType {
+interface UnknownType extends Type {
     kind: TypeKind.Unknown
 }
 
-interface NeverType {
+interface NeverType extends Type {
     kind: TypeKind.Never
 }
 
-interface NullType {
+interface NullType extends Type {
     kind: TypeKind.Null
 }
 
-interface IntegerType {
+interface IntegerType extends Type {
     kind: TypeKind.Integer
 }
 
-interface StringType {
+interface StringType extends Type {
     kind: TypeKind.String
 }
 
-interface ObjectType {
+interface ObjectType extends Type {
     kind: TypeKind.Object
     properties?: Map<string, Type>
 }
 
-interface FunctionType {
+interface FunctionType extends Type {
     kind: TypeKind.Function
     thisType?: Type
     parameters?: Type[]
     returnType?: Type
 }
 
-interface UnionType {
+interface UnionType extends Type {
     kind: TypeKind.Union
     types?: Type[]
-}
-
-function createUnknownType () {
-    const type: UnknownType = {
-        kind: TypeKind.Unknown
-    }
-    return type
-}
-
-function createNeverType () {
-    const type: NeverType = {
-        kind: TypeKind.Never
-    }
-    return type
-}
-
-function createNullType () {
-    const type: NullType = {
-        kind: TypeKind.Null
-    }
-    return type
-}
-
-function createIntegerType () {
-    const type: IntegerType = {
-        kind: TypeKind.Integer
-    }
-    return type
-}
-
-function createStringType () {
-    const type: StringType = {
-        kind: TypeKind.String
-    }
-    return type
-}
-
-function createObjectType () {
-    const type: ObjectType = {
-        kind: TypeKind.Object
-    }
-    return type
-}
-
-function createFunctionType () {
-    const type: FunctionType = {
-        kind: TypeKind.Function
-    }
-    return type
-}
-
-function createUnionType () {
-    const type: UnionType = {
-        kind: TypeKind.Union
-    }
-    return type
 }
 
 export function createChecker(file: SourceFile) {
@@ -120,12 +64,50 @@ export function createChecker(file: SourceFile) {
     const integerType = createIntegerType();
     const stringType = createStringType();
 
+    const typeCheckCache = new Map<ASTNode, Type | undefined>();
+
+    return {
+        checkFile,
+    }
+
+    function checkFile () {
+        check(file);
+
+        return {
+            check
+        }
+    }
+
     function check (node: ASTNode): Type | undefined {
+        if (typeCheckCache.has(node)) {
+            return typeCheckCache.get(node);
+        }
+
+        const type = checkWorker(node);
+        typeCheckCache.set(node, type);
+        return type;
+    }
+
+    function checkWorker (node: ASTNode) {
         if (isExpression(node)) {
             return checkExpression(node)
         }
 
-        return forEachChild(node, check);
+        switch (node.kind) {
+            case SyntaxKind.FunctionStatement:
+                return checkFunctionStatement(node as FunctionStatement)
+            case SyntaxKind.VariableStatement:
+                return checkVariableStatement(node as VariableStatement)
+            case SyntaxKind.SequenceOfStatements:
+                return checkSequenceOfStatements(node as SequenceOfStatements);
+            case SyntaxKind.MethodSlot:
+                return checkMethodSlot(node as MethodSlot);
+            case SyntaxKind.VariableSlot:
+                return checkVariableSlot(node as VariableSlot);
+            default:
+                forEachChild(node, check);
+                return undefined;
+        }
     }
 
     function checkExpression (node: Expression): Type {
@@ -179,35 +161,42 @@ export function createChecker(file: SourceFile) {
             case SyntaxKind.ContinueExpression:
                 assertKind<BreakExpression | ContinueExpression>(node);
                 return checkBreakOrContinueStatement(node);
+            case SyntaxKind.BinaryShorthand:
+                assertKind<BinaryShorthand>(node);
+                return checkBinaryShorthand(node);
+            case SyntaxKind.GetShorthand:
+                assertKind<GetShorthand>(node);
+                return checkGetShorthand(node);
+            case SyntaxKind.SetShorthand:
+                assertKind<SetShorthand>(node);
+                return checkSetShorthand(node);
             default:
                 forEachChild(node, check);
                 return errorType;
         }
     }
 
-    function checkVariableAssignmentExpression(node: VariableAssignmentExpression) {
-        checkExpression(node.expression);
-        const type = checkExpression(node.value)
-        return type;
+    function isRelatedTo(source: Type, target: Type) {
+        return true
     }
 
-    function checkSequenceOfStatementsOrExpression(node: SequenceOfStatements<true> | ExpressionStatement): Type
-    function checkSequenceOfStatementsOrExpression(node: SequenceOfStatements<false> | ExpressionStatement): Type | undefined
-    function checkSequenceOfStatementsOrExpression(node: SequenceOfStatements | ExpressionStatement): Type | undefined {
-        return neverType
+    function checkVariableAssignmentExpression(node: VariableAssignmentExpression) {
+        const target = checkExpression(node.expression);
+        const type = checkExpression(node.value)
+        isRelatedTo(type, target);
+        return type;
     }
     
     function checkIfExpression(node: IfExpression) {
         checkExpression(node.condition);
         
-        const thenType = checkSequenceOfStatementsOrExpression(node.thenStatement);
-        const elseType = node.elseStatement ? checkSequenceOfStatementsOrExpression(node.elseStatement) : nullType;
+        const thenType = checkSequenceOfStatementsOrExpressionStatement(node.thenStatement);
+        const elseType = node.elseStatement ? checkSequenceOfStatementsOrExpressionStatement(node.elseStatement) : nullType;
 
-        const type = createUnionType()
-        type.types = [
+        const type = createUnionType([
             thenType,
             elseType
-        ];
+        ])
         return type
     }
     
@@ -216,7 +205,6 @@ export function createChecker(file: SourceFile) {
         check(node.body);
         return nullType
     }
-    
 
     function checkBreakOrContinueStatement(node: BreakExpression | ContinueExpression) {
         return neverType
@@ -239,9 +227,11 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkSlotAssignmentExpression(node: SlotAssignmentExpression) {
-        return errorType
+        const targetType = checkExpression(node.expression);
+        const valueType = checkExpression(node.value);
+        isRelatedTo(valueType, targetType);
+        return valueType
     }
-    
 
     function checkSlotLookupExpression(node: SlotLookupExpression) {
         return errorType
@@ -265,6 +255,147 @@ export function createChecker(file: SourceFile) {
     function checkPrintingExpression (node: PrintingExpression) {
         forEachChild(node, check);
         return nullType
+    }
+
+    function checkFunctionStatement(node: FunctionStatement): Type {
+        return errorType
+    }
+
+    function checkVariableStatement(node: VariableStatement): Type {
+        return errorType
+    }
+
+    function checkExpressionStatement(node: ExpressionStatement) {
+        return checkExpression(node.expression);
+    }
+
+    function checkSequenceOfStatementsOrExpressionStatement(node: SequenceOfStatements<true> | ExpressionStatement): Type
+    function checkSequenceOfStatementsOrExpressionStatement(node: SequenceOfStatements<boolean> | ExpressionStatement): Type | undefined
+    function checkSequenceOfStatementsOrExpressionStatement<T extends boolean>(node: SequenceOfStatements<T> | ExpressionStatement): Type | undefined {
+        if (node.kind === SyntaxKind.SequenceOfStatements) {
+            return checkSequenceOfStatements(node);
+        } else {
+            return checkExpressionStatement(node);
+        }
+    }
+
+    function checkSequenceOfStatements(node: SequenceOfStatements<true>): Type
+    function checkSequenceOfStatements(node: SequenceOfStatements): Type | undefined
+    function checkSequenceOfStatements<T extends boolean>(node: SequenceOfStatements<T>): Type | undefined {
+        if (!node.isExpression) {
+            forEachChild(node, check);
+            return undefined;
+        }
+
+        const [ front, tail ] = frontAndTail(node.statements)
+        front.forEach(check);
+
+        if (tail.kind !== SyntaxKind.ExpressionStatement) {
+            return errorType
+        }
+
+        return checkExpressionStatement(tail as ExpressionStatement);
+    }
+
+    function checkBinaryShorthand(node: BinaryShorthand): Type {
+        return errorType
+    }
+    
+    function checkGetShorthand(node: GetShorthand): Type {
+        return errorType
+    }
+    
+    function checkSetShorthand(node: SetShorthand): Type {
+        return errorType
+    }
+    
+    function checkMethodSlot(arg0: MethodSlot) {
+        return errorType
+    }
+    
+    function checkVariableSlot(arg0: VariableSlot) {
+        return errorType
+    }
+
+    function createUnknownType () {
+        const type: UnknownType = {
+            kind: TypeKind.Unknown
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+    
+    function createNeverType () {
+        const type: NeverType = {
+            kind: TypeKind.Never
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+    
+    function createNullType () {
+        const type: NullType = {
+            kind: TypeKind.Null
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+    
+    function createIntegerType () {
+        const type: IntegerType = {
+            kind: TypeKind.Integer
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+    
+    function createStringType () {
+        const type: StringType = {
+            kind: TypeKind.String
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+    
+    function createObjectType () {
+        const type: ObjectType = {
+            kind: TypeKind.Object
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+    
+    function createFunctionType () {
+        const type: FunctionType = {
+            kind: TypeKind.Function
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+    
+    function createUnionType (types: Type[]): Type {
+        if (!types.length) {
+            return neverType
+        }
+
+        if (types.length === 1) {
+            return first(types)
+        }
+    
+        const type: UnionType = {
+            kind: TypeKind.Union,
+            types
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+
+    function setupTypeDebugInfo (type: Type) {
+        Object.defineProperty(type, '_debugKind', {
+            get () {
+                return TypeKind[type.kind]
+            }
+        })
     }
 
     function createArrayType (itemType: Type) {
