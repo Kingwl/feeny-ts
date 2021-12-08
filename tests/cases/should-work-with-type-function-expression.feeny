@@ -1,0 +1,3 @@
+var a = defn foo() -> integer:
+    printf("foo")
+    42

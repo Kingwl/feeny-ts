@@ -1,0 +1,2 @@
+defn foo(a: integer) -> integer:
+    a + 1

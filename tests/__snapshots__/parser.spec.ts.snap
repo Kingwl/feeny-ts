@@ -4511,6 +4511,260 @@ Object {
 }
 `;
 
+exports[`Parser should-work-with-type-function-expression 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "body": Object {
+    "__debugKind": "SequenceOfStatements",
+    "end": 55,
+    "isExpression": false,
+    "kind": 68,
+    "pos": 0,
+    "statements": Array [
+      Object {
+        "__debugKind": "VariableStatement",
+        "end": 55,
+        "initializer": Object {
+          "__debugKind": "FunctionExpression",
+          "body": Object {
+            "__debugKind": "SequenceOfStatements",
+            "end": 55,
+            "isExpression": true,
+            "kind": 68,
+            "pos": 35,
+            "statements": Array [
+              Object {
+                "__debugKind": "ExpressionStatement",
+                "end": 55,
+                "expression": Object {
+                  "__debugKind": "PrintingExpression",
+                  "args": Array [
+                    Object {
+                      "__debugKind": "StringLiteralExpression",
+                      "end": 48,
+                      "kind": 45,
+                      "pos": 42,
+                      "value": Object {
+                        "__debugKind": "StringLiteralToken",
+                        "end": 47,
+                        "fullPos": 42,
+                        "kind": 21,
+                        "leadingIndent": 4,
+                        "pos": 42,
+                        "value": "foo",
+                      },
+                    },
+                  ],
+                  "end": 55,
+                  "kind": 47,
+                  "pos": 35,
+                },
+                "kind": 69,
+                "pos": 35,
+              },
+              Object {
+                "__debugKind": "ExpressionStatement",
+                "end": 55,
+                "expression": Object {
+                  "__debugKind": "IntegerLiteralExpression",
+                  "end": 55,
+                  "kind": 44,
+                  "pos": 53,
+                  "subToken": undefined,
+                  "value": Object {
+                    "__debugKind": "IntegerLiteralToken",
+                    "end": 55,
+                    "fullPos": 48,
+                    "kind": 20,
+                    "leadingIndent": 4,
+                    "pos": 53,
+                    "value": "42",
+                  },
+                },
+                "kind": 69,
+                "pos": 53,
+              },
+            ],
+          },
+          "end": 55,
+          "kind": 60,
+          "name": Object {
+            "__debugKind": "Identifier",
+            "end": 16,
+            "fullPos": 12,
+            "kind": 22,
+            "leadingIndent": 0,
+            "pos": 13,
+            "text": "foo",
+          },
+          "params": Array [],
+          "pos": 8,
+          "type": Object {
+            "__debugKind": "IntegerTypeNode",
+            "end": 30,
+            "kind": 40,
+            "pos": 22,
+          },
+        },
+        "kind": 67,
+        "name": Object {
+          "__debugKind": "Identifier",
+          "end": 5,
+          "fullPos": 3,
+          "kind": 22,
+          "leadingIndent": 0,
+          "pos": 4,
+          "text": "a",
+        },
+        "pos": 0,
+        "type": undefined,
+      },
+    ],
+  },
+  "end": 55,
+  "eof": Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 55,
+    "fullPos": 55,
+    "kind": 42,
+    "leadingIndent": 4,
+    "pos": 55,
+  },
+  "kind": 43,
+  "pos": 0,
+}
+`;
+
+exports[`Parser should-work-with-type-function-parameter 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "body": Object {
+    "__debugKind": "SequenceOfStatements",
+    "end": 42,
+    "isExpression": false,
+    "kind": 68,
+    "pos": 0,
+    "statements": Array [
+      Object {
+        "__debugKind": "FunctionStatement",
+        "body": Object {
+          "__debugKind": "SequenceOfStatements",
+          "end": 42,
+          "isExpression": true,
+          "kind": 68,
+          "pos": 37,
+          "statements": Array [
+            Object {
+              "__debugKind": "ExpressionStatement",
+              "end": 42,
+              "expression": Object {
+                "__debugKind": "BinaryShorthand",
+                "end": 42,
+                "kind": 73,
+                "left": Object {
+                  "__debugKind": "VariableReferenceExpression",
+                  "end": 40,
+                  "kind": 46,
+                  "name": Object {
+                    "__debugKind": "Identifier",
+                    "end": 38,
+                    "fullPos": 32,
+                    "kind": 22,
+                    "leadingIndent": 4,
+                    "pos": 37,
+                    "text": "a",
+                  },
+                  "pos": 37,
+                },
+                "operator": Object {
+                  "__debugKind": "AddToken",
+                  "end": 40,
+                  "fullPos": 38,
+                  "kind": 10,
+                  "leadingIndent": 4,
+                  "pos": 39,
+                },
+                "pos": 37,
+                "right": Object {
+                  "__debugKind": "IntegerLiteralExpression",
+                  "end": 42,
+                  "kind": 44,
+                  "pos": 41,
+                  "subToken": undefined,
+                  "value": Object {
+                    "__debugKind": "IntegerLiteralToken",
+                    "end": 42,
+                    "fullPos": 40,
+                    "kind": 20,
+                    "leadingIndent": 4,
+                    "pos": 41,
+                    "value": "1",
+                  },
+                },
+              },
+              "kind": 69,
+              "pos": 37,
+            },
+          ],
+        },
+        "end": 42,
+        "kind": 70,
+        "name": Object {
+          "__debugKind": "Identifier",
+          "end": 8,
+          "fullPos": 4,
+          "kind": 22,
+          "leadingIndent": 0,
+          "pos": 5,
+          "text": "foo",
+        },
+        "params": Array [
+          Object {
+            "__debugKind": "ParameterDeclaration",
+            "end": 20,
+            "kind": 71,
+            "name": Object {
+              "__debugKind": "Identifier",
+              "end": 10,
+              "fullPos": 9,
+              "kind": 22,
+              "leadingIndent": 0,
+              "pos": 9,
+              "text": "a",
+            },
+            "pos": 9,
+            "type": Object {
+              "__debugKind": "IntegerTypeNode",
+              "end": 20,
+              "kind": 40,
+              "pos": 12,
+            },
+          },
+        ],
+        "pos": 0,
+        "type": Object {
+          "__debugKind": "IntegerTypeNode",
+          "end": 32,
+          "kind": 40,
+          "pos": 24,
+        },
+      },
+    ],
+  },
+  "end": 42,
+  "eof": Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 42,
+    "fullPos": 42,
+    "kind": 42,
+    "leadingIndent": 4,
+    "pos": 42,
+  },
+  "kind": 43,
+  "pos": 0,
+}
+`;
+
 exports[`Parser should-work-with-type-function-statement 1`] = `
 Object {
   "__debugKind": "SourceFile",

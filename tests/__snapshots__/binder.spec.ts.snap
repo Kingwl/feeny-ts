@@ -661,6 +661,47 @@ Array [
 
 exports[`Binder should-work-with-type-arrays - members 1`] = `Array []`;
 
+exports[`Binder should-work-with-type-function-expression - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-function-expression - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-type-function-parameter - locals 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "4",
+        "name": "foo",
+      },
+      Object {
+        "declarationPos": 9,
+        "flags": "2",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-function-parameter - members 1`] = `Array []`;
+
 exports[`Binder should-work-with-type-function-statement - locals 1`] = `
 Array [
   Object {
