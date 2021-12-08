@@ -1,3 +1,4 @@
+import { ObjectSlotSignature, TypeDefDeclaration, TypeNode, VariableSlotSignatureDeclaration } from '.';
 import {
   Statement,
   ParameterDeclaration,
@@ -44,7 +45,12 @@ import {
   VariableSlot,
   VariableStatement,
   WhileExpression,
-  StringLiteralExpression
+  StringLiteralExpression,
+  MethodSlotSignatureDeclaration,
+  ArraysTypeNode,
+  IntegerTypeNode,
+  TypeReferenceTypeNode,
+  NullTypeNode
 } from './types';
 
 export function createNode<T extends ASTNode>(kind: T['kind']): T {
@@ -167,20 +173,24 @@ export function createObjectsExpression(
 
 export function createVariableSlot(
   name: IdentifierToken,
+  type: TypeNode | undefined,
   initializer: Expression
 ): VariableSlot {
   const node = createNode<VariableSlot>(SyntaxKind.VariableSlot);
   node.name = name;
+  node.type = type;
   node.initializer = initializer;
   return node;
 }
 
 export function createVariableStatement(
   name: IdentifierToken,
+  type: TypeNode | undefined,
   initializer: Expression
 ): VariableStatement {
   const node = createNode<VariableStatement>(SyntaxKind.VariableStatement);
   node.name = name;
+  node.type = type;
   node.initializer = initializer;
   return node;
 }
@@ -208,11 +218,13 @@ export function createSequenceOfStatements<T extends boolean>(
 export function createFunctionStatement(
   name: IdentifierToken,
   params: NodeArray<ParameterDeclaration>,
+  type: TypeNode | undefined,
   body: SequenceOfStatements<true> | ExpressionStatement
 ): FunctionStatement {
   const node = createNode<FunctionStatement>(SyntaxKind.FunctionStatement);
   node.name = name;
   node.params = params;
+  node.type = type;
   node.body = body;
   return node;
 }
@@ -230,11 +242,13 @@ export function createContinueExpression(): ContinueExpression {
 export function createMethodSlot(
   name: IdentifierToken,
   params: NodeArray<ParameterDeclaration>,
+  type: TypeNode | undefined,
   body: SequenceOfStatements<true> | ExpressionStatement
 ): MethodSlot {
   const node = createNode<MethodSlot>(SyntaxKind.MethodSlot);
   node.name = name;
   node.params = params;
+  node.type = type;
   node.body = body;
   return node;
 }
@@ -350,11 +364,13 @@ export function createFunctionCallExpression(
 export function createFunctionExpression(
   name: IdentifierToken,
   params: NodeArray<ParameterDeclaration>,
+  type: TypeNode | undefined,
   body: SequenceOfStatements<true> | ExpressionStatement
 ) {
   const node = createNode<FunctionExpression>(SyntaxKind.FunctionExpression);
   node.name = name;
   node.params = params;
+  node.type = type;
   node.body = body;
   return node;
 }
@@ -382,8 +398,54 @@ export function createParenExpression(expression: Expression) {
   return node;
 }
 
-export function createParameterDeclaration(name: IdentifierToken) {
+export function createParameterDeclaration(name: IdentifierToken, type: TypeNode | undefined) {
   const node = createNode<ParameterDeclaration>(SyntaxKind.ParameterDeclaration);
+  node.name = name;
+  node.type = type;
+  return node;
+}
+
+export function createTypeDefDeclaration(name: IdentifierToken, slots: NodeArray<ObjectSlotSignature>) {
+  const node = createNode<TypeDefDeclaration>(SyntaxKind.TypeDefDeclaration);
+  node.name = name;
+  node.slots = slots;
+  return node;
+}
+
+export function createVariableSlotSignautre(name: IdentifierToken, type: TypeNode) {
+  const node = createNode<VariableSlotSignatureDeclaration>(SyntaxKind.VariableSlotSignatureDeclaration);
+  node.name = name;
+  node.type = type;
+  return node;
+}
+
+export function createMethodSlotSignature(name: IdentifierToken, params: NodeArray<ParameterDeclaration>, type: TypeNode) {
+  const node = createNode<MethodSlotSignatureDeclaration>(SyntaxKind.MethodSlotSignatureDeclaration);
+  node.name = name;
+  node.params = params;
+  node.type = type;
+  return node;
+}
+
+export function createIntegerTypeNode() {
+  const node = createNode<IntegerTypeNode>(SyntaxKind.IntegerTypeNode);
+  return node;
+}
+
+export function createNullTypeNode() {
+  const node = createNode<NullTypeNode>(SyntaxKind.NullTypeNode);
+  return node;
+}
+
+export function createArraysTypeNode(size: IntegerLiteralToken, type: TypeNode) {
+  const node = createNode<ArraysTypeNode>(SyntaxKind.ArraysTypeNode);
+  node.size = size;
+  node.type = type;
+  return node;
+}
+
+export function createTypeReferenceTypeNode(name: IdentifierToken) {
+  const node = createNode<TypeReferenceTypeNode>(SyntaxKind.TypeReferenceTypeNode);
   node.name = name;
   return node;
 }

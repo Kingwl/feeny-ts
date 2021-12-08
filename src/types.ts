@@ -440,12 +440,13 @@ export interface TypeNode extends ASTNode {
 
 export interface TypeReferenceTypeNode extends TypeNode {
   kind: SyntaxKind.TypeReferenceTypeNode;
+  name: IdentifierToken;
 }
 
-export interface ArrayTypeNode extends TypeNode {
+export interface ArraysTypeNode extends TypeNode {
   kind: SyntaxKind.ArraysTypeNode;
-  elementType: TypeNode;
   size: IntegerLiteralToken
+  type: TypeNode;
 }
 
 export interface NullTypeNode extends TypeNode {
@@ -456,10 +457,10 @@ export interface IntegerTypeNode extends TypeNode {
   kind: SyntaxKind.IntegerTypeNode;
 }
 
-export interface TypeDefDeclaration extends NamedDeclaration, TypeNode {
+export interface TypeDefDeclaration extends NamedDeclaration, Statement, TypeNode {
   kind: SyntaxKind.TypeDefDeclaration
   name: IdentifierToken
-  slots: ObjectSlotSignature[]
+  slots: NodeArray<ObjectSlotSignature>
 }
 
 export interface ObjectSlotSignature extends NamedDeclaration, TypeNode {
@@ -474,7 +475,7 @@ export interface VariableSlotSignatureDeclaration extends ObjectSlotSignature {
 export interface MethodSlotSignatureDeclaration extends ObjectSlotSignature {
   kind: SyntaxKind.MethodSlotSignatureDeclaration
   params: NodeArray<ParameterDeclaration>
-  returnType: TypeNode
+  type: TypeNode
 }
 
 export enum SymbolFlag {

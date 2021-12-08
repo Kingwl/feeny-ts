@@ -1258,6 +1258,7 @@ Object {
                         "text": "n1",
                       },
                       "pos": 101,
+                      "type": undefined,
                     },
                     Object {
                       "__debugKind": "VariableStatement",
@@ -1370,6 +1371,7 @@ Object {
                         "text": "a",
                       },
                       "pos": 122,
+                      "type": undefined,
                     },
                     Object {
                       "__debugKind": "ExpressionStatement",
@@ -1838,6 +1840,7 @@ Object {
               "text": "xs",
             },
             "pos": 15,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -1853,6 +1856,7 @@ Object {
               "text": "i",
             },
             "pos": 19,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -1868,6 +1872,7 @@ Object {
               "text": "n",
             },
             "pos": 22,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -1883,9 +1888,11 @@ Object {
               "text": "v",
             },
             "pos": 25,
+            "type": undefined,
           },
         ],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -2132,6 +2139,7 @@ Object {
               "text": "xs",
             },
             "pos": 240,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -2147,9 +2155,11 @@ Object {
               "text": "v",
             },
             "pos": 244,
+            "type": undefined,
           },
         ],
         "pos": 231,
+        "type": undefined,
       },
       Object {
         "__debugKind": "VariableStatement",
@@ -2203,6 +2213,7 @@ Object {
           "text": "a",
         },
         "pos": 321,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -2948,9 +2959,11 @@ Object {
               "text": "v",
             },
             "pos": 451,
+            "type": undefined,
           },
         ],
         "pos": 440,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -3251,6 +3264,7 @@ Object {
                       "text": "real",
                     },
                     "pos": 37,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "VariableSlot",
@@ -3281,6 +3295,7 @@ Object {
                       "text": "imag",
                     },
                     "pos": 56,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -3478,9 +3493,11 @@ Object {
                           "text": "c",
                         },
                         "pos": 87,
+                        "type": undefined,
                       },
                     ],
                     "pos": 75,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -3678,9 +3695,11 @@ Object {
                           "text": "c",
                         },
                         "pos": 178,
+                        "type": undefined,
                       },
                     ],
                     "pos": 166,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -4036,9 +4055,11 @@ Object {
                           "text": "c",
                         },
                         "pos": 269,
+                        "type": undefined,
                       },
                     ],
                     "pos": 257,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -4225,6 +4246,7 @@ Object {
                             "text": "d",
                           },
                           "pos": 424,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -4641,9 +4663,11 @@ Object {
                           "text": "c",
                         },
                         "pos": 410,
+                        "type": undefined,
                       },
                     ],
                     "pos": 398,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -5044,6 +5068,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 594,
+                    "type": undefined,
                   },
                 ],
               },
@@ -5078,6 +5103,7 @@ Object {
               "text": "r",
             },
             "pos": 11,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -5093,9 +5119,11 @@ Object {
               "text": "i",
             },
             "pos": 14,
+            "type": undefined,
           },
         ],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -5175,6 +5203,7 @@ Object {
                 "text": "a",
               },
               "pos": 850,
+              "type": undefined,
             },
             Object {
               "__debugKind": "VariableStatement",
@@ -5252,6 +5281,7 @@ Object {
                 "text": "b",
               },
               "pos": 872,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -5398,6 +5428,7 @@ Object {
         },
         "params": Array [],
         "pos": 832,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -5599,6 +5630,7 @@ Object {
                             "text": "a",
                           },
                           "pos": 82,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "VariableStatement",
@@ -5630,6 +5662,7 @@ Object {
                             "text": "b",
                           },
                           "pos": 98,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -5701,6 +5734,7 @@ Object {
                                     "text": "c",
                                   },
                                   "pos": 138,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -6039,9 +6073,11 @@ Object {
               "text": "n",
             },
             "pos": 10,
+            "type": undefined,
           },
         ],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -6082,6 +6118,7 @@ Object {
                 "text": "i",
               },
               "pos": 231,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -6318,6 +6355,7 @@ Object {
         },
         "params": Array [],
         "pos": 213,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -6426,6 +6464,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -6563,6 +6602,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -6671,6 +6711,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -6725,6 +6766,7 @@ Object {
         },
         "params": Array [],
         "pos": 40,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -6806,6 +6848,7 @@ Object {
         },
         "params": Array [],
         "pos": 78,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -6942,9 +6985,11 @@ Object {
               "text": "i",
             },
             "pos": 12,
+            "type": undefined,
           },
         ],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -7042,6 +7087,7 @@ Object {
               "text": "j",
             },
             "pos": 58,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -7057,9 +7103,11 @@ Object {
               "text": "k",
             },
             "pos": 61,
+            "type": undefined,
           },
         ],
         "pos": 46,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -7191,6 +7239,7 @@ Object {
         },
         "params": Array [],
         "pos": 98,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -7292,6 +7341,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -7374,9 +7424,11 @@ Object {
               "text": "i",
             },
             "pos": 37,
+            "type": undefined,
           },
         ],
         "pos": 25,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -7474,6 +7526,7 @@ Object {
               "text": "j",
             },
             "pos": 83,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -7489,9 +7542,11 @@ Object {
               "text": "k",
             },
             "pos": 86,
+            "type": undefined,
           },
         ],
         "pos": 71,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -7635,6 +7690,7 @@ Object {
         },
         "params": Array [],
         "pos": 123,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -7736,6 +7792,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -7818,9 +7875,11 @@ Object {
               "text": "i",
             },
             "pos": 37,
+            "type": undefined,
           },
         ],
         "pos": 25,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -7918,6 +7977,7 @@ Object {
               "text": "j",
             },
             "pos": 83,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -7933,9 +7993,11 @@ Object {
               "text": "k",
             },
             "pos": 86,
+            "type": undefined,
           },
         ],
         "pos": 71,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -7982,6 +8044,7 @@ Object {
                 "text": "i",
               },
               "pos": 141,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -8057,6 +8120,7 @@ Object {
                 "text": "j",
               },
               "pos": 172,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -8133,6 +8197,7 @@ Object {
         },
         "params": Array [],
         "pos": 123,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -8234,6 +8299,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -8316,9 +8382,11 @@ Object {
               "text": "i",
             },
             "pos": 37,
+            "type": undefined,
           },
         ],
         "pos": 25,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -8416,6 +8484,7 @@ Object {
               "text": "j",
             },
             "pos": 83,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -8431,9 +8500,11 @@ Object {
               "text": "k",
             },
             "pos": 86,
+            "type": undefined,
           },
         ],
         "pos": 71,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -8480,6 +8551,7 @@ Object {
                 "text": "i",
               },
               "pos": 141,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -8643,6 +8715,7 @@ Object {
         },
         "params": Array [],
         "pos": 123,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -8928,6 +9001,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -9022,6 +9096,7 @@ Object {
                 "text": "i",
               },
               "pos": 18,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -9144,6 +9219,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -9396,6 +9472,7 @@ Object {
                           "text": "x",
                         },
                         "pos": 47,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -9411,9 +9488,11 @@ Object {
                           "text": "y",
                         },
                         "pos": 50,
+                        "type": undefined,
                       },
                     ],
                     "pos": 33,
+                    "type": undefined,
                   },
                 ],
               },
@@ -9435,6 +9514,7 @@ Object {
         },
         "params": Array [],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -9563,6 +9643,7 @@ Object {
                           "text": "x",
                         },
                         "pos": 218,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -9578,9 +9659,11 @@ Object {
                           "text": "y",
                         },
                         "pos": 221,
+                        "type": undefined,
                       },
                     ],
                     "pos": 207,
+                    "type": undefined,
                   },
                 ],
               },
@@ -9602,6 +9685,7 @@ Object {
         },
         "params": Array [],
         "pos": 165,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -9730,6 +9814,7 @@ Object {
                           "text": "x",
                         },
                         "pos": 300,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -9745,9 +9830,11 @@ Object {
                           "text": "y",
                         },
                         "pos": 303,
+                        "type": undefined,
                       },
                     ],
                     "pos": 289,
+                    "type": undefined,
                   },
                 ],
               },
@@ -9769,6 +9856,7 @@ Object {
         },
         "params": Array [],
         "pos": 242,
+        "type": undefined,
       },
       Object {
         "__debugKind": "VariableStatement",
@@ -9806,6 +9894,7 @@ Object {
           "text": "a",
         },
         "pos": 324,
+        "type": undefined,
       },
       Object {
         "__debugKind": "VariableStatement",
@@ -9843,6 +9932,7 @@ Object {
           "text": "m",
         },
         "pos": 340,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -10066,6 +10156,7 @@ Object {
               },
               "params": Array [],
               "pos": 22,
+              "type": undefined,
             },
             Object {
               "__debugKind": "MethodSlot",
@@ -10120,6 +10211,7 @@ Object {
               },
               "params": Array [],
               "pos": 50,
+              "type": undefined,
             },
             Object {
               "__debugKind": "MethodSlot",
@@ -10167,6 +10259,7 @@ Object {
               },
               "params": Array [],
               "pos": 90,
+              "type": undefined,
             },
             Object {
               "__debugKind": "MethodSlot",
@@ -10226,9 +10319,11 @@ Object {
                     "text": "b",
                   },
                   "pos": 135,
+                  "type": undefined,
                 },
               ],
               "pos": 120,
+              "type": undefined,
             },
             Object {
               "__debugKind": "MethodSlot",
@@ -10266,6 +10361,7 @@ Object {
               },
               "params": Array [],
               "pos": 151,
+              "type": undefined,
             },
           ],
         },
@@ -10280,6 +10376,7 @@ Object {
           "text": "nil",
         },
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -10329,6 +10426,7 @@ Object {
                       "text": "head",
                     },
                     "pos": 220,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "VariableSlot",
@@ -10359,6 +10457,7 @@ Object {
                       "text": "tail",
                     },
                     "pos": 239,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -10406,6 +10505,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 258,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -10501,6 +10601,7 @@ Object {
                             "text": "rest",
                           },
                           "pos": 362,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -10744,6 +10845,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 302,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -10842,6 +10944,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 519,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -10983,9 +11086,11 @@ Object {
                           "text": "b",
                         },
                         "pos": 592,
+                        "type": undefined,
                       },
                     ],
                     "pos": 577,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -11130,6 +11235,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 650,
+                    "type": undefined,
                   },
                 ],
               },
@@ -11164,6 +11270,7 @@ Object {
               "text": "a",
             },
             "pos": 194,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -11179,9 +11286,11 @@ Object {
               "text": "b",
             },
             "pos": 197,
+            "type": undefined,
           },
         ],
         "pos": 183,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -11236,6 +11345,7 @@ Object {
         },
         "params": Array [],
         "pos": 729,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -11460,6 +11570,7 @@ Object {
                 "text": "a",
               },
               "pos": 805,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -11818,6 +11929,7 @@ Object {
                 "text": "b",
               },
               "pos": 900,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -12065,6 +12177,7 @@ Object {
                 "text": "c",
               },
               "pos": 1077,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -12205,6 +12318,7 @@ Object {
                 "text": "ar",
               },
               "pos": 1150,
+              "type": undefined,
             },
             Object {
               "__debugKind": "VariableStatement",
@@ -12251,6 +12365,7 @@ Object {
                 "text": "br",
               },
               "pos": 1174,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -12455,6 +12570,7 @@ Object {
         },
         "params": Array [],
         "pos": 765,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -12616,6 +12732,7 @@ Object {
               "text": "a",
             },
             "pos": 10,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -12631,9 +12748,11 @@ Object {
               "text": "b",
             },
             "pos": 13,
+            "type": undefined,
           },
         ],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -12741,6 +12860,7 @@ Object {
               "text": "a",
             },
             "pos": 52,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -12756,9 +12876,11 @@ Object {
               "text": "b",
             },
             "pos": 55,
+            "type": undefined,
           },
         ],
         "pos": 43,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -12866,9 +12988,11 @@ Object {
               "text": "x",
             },
             "pos": 95,
+            "type": undefined,
           },
         ],
         "pos": 85,
+        "type": undefined,
       },
       Object {
         "__debugKind": "VariableStatement",
@@ -12922,6 +13046,7 @@ Object {
           "text": "check-array",
         },
         "pos": 128,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -12962,6 +13087,7 @@ Object {
                 "text": "i",
               },
               "pos": 184,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -13176,6 +13302,7 @@ Object {
         },
         "params": Array [],
         "pos": 159,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -13326,9 +13453,11 @@ Object {
               "text": "x",
             },
             "pos": 265,
+            "type": undefined,
           },
         ],
         "pos": 253,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -13369,6 +13498,7 @@ Object {
                 "text": "good",
               },
               "pos": 334,
+              "type": undefined,
             },
             Object {
               "__debugKind": "VariableStatement",
@@ -13400,6 +13530,7 @@ Object {
                 "text": "i",
               },
               "pos": 350,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -13708,6 +13839,7 @@ Object {
         },
         "params": Array [],
         "pos": 309,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -13986,6 +14118,7 @@ Object {
                             "text": "s",
                           },
                           "pos": 533,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "VariableStatement",
@@ -14017,6 +14150,7 @@ Object {
                             "text": "n",
                           },
                           "pos": 552,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -14712,6 +14846,7 @@ Object {
               "text": "b",
             },
             "pos": 465,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -14727,9 +14862,11 @@ Object {
               "text": "i",
             },
             "pos": 468,
+            "type": undefined,
           },
         ],
         "pos": 447,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -14829,6 +14966,7 @@ Object {
                       "text": "array",
                     },
                     "pos": 901,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -14914,9 +15052,11 @@ Object {
                           "text": "i",
                         },
                         "pos": 947,
+                        "type": undefined,
                       },
                     ],
                     "pos": 935,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -15017,6 +15157,7 @@ Object {
                           "text": "i",
                         },
                         "pos": 997,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -15032,9 +15173,11 @@ Object {
                           "text": "x",
                         },
                         "pos": 1000,
+                        "type": undefined,
                       },
                     ],
                     "pos": 981,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -15179,6 +15322,7 @@ Object {
                           "text": "r",
                         },
                         "pos": 1050,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -15194,9 +15338,11 @@ Object {
                           "text": "c",
                         },
                         "pos": 1053,
+                        "type": undefined,
                       },
                     ],
                     "pos": 1038,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -15356,6 +15502,7 @@ Object {
                           "text": "r",
                         },
                         "pos": 1107,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -15371,6 +15518,7 @@ Object {
                           "text": "c",
                         },
                         "pos": 1110,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -15386,9 +15534,11 @@ Object {
                           "text": "x",
                         },
                         "pos": 1113,
+                        "type": undefined,
                       },
                     ],
                     "pos": 1095,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -15429,6 +15579,7 @@ Object {
                             "text": "r",
                           },
                           "pos": 1186,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -15472,6 +15623,7 @@ Object {
                                     "text": "c",
                                   },
                                   "pos": 1231,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -16056,6 +16208,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 1159,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -16096,6 +16249,7 @@ Object {
                             "text": "good?",
                           },
                           "pos": 1518,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "VariableStatement",
@@ -16127,6 +16281,7 @@ Object {
                             "text": "r",
                           },
                           "pos": 1566,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -16198,6 +16353,7 @@ Object {
                                     "text": "c",
                                   },
                                   "pos": 1637,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -16653,6 +16809,7 @@ Object {
                             "text": "c",
                           },
                           "pos": 1841,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -16724,6 +16881,7 @@ Object {
                                     "text": "r",
                                   },
                                   "pos": 1912,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -17179,6 +17337,7 @@ Object {
                             "text": "cell",
                           },
                           "pos": 2099,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -17287,6 +17446,7 @@ Object {
                                     "text": "r",
                                   },
                                   "pos": 2150,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "VariableStatement",
@@ -17383,6 +17543,7 @@ Object {
                                     "text": "c",
                                   },
                                   "pos": 2185,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -17441,6 +17602,7 @@ Object {
                                     "text": "ri",
                                   },
                                   "pos": 2246,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -17483,6 +17645,7 @@ Object {
                                             "text": "ci",
                                           },
                                           "pos": 2303,
+                                          "type": undefined,
                                         },
                                         Object {
                                           "__debugKind": "ExpressionStatement",
@@ -18128,6 +18291,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 1491,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -18204,6 +18368,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 2559,
+                    "type": undefined,
                   },
                 ],
               },
@@ -18225,6 +18390,7 @@ Object {
         },
         "params": Array [],
         "pos": 867,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -18271,6 +18437,7 @@ Object {
                 "text": "b",
               },
               "pos": 2627,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -24693,6 +24860,7 @@ Object {
         },
         "params": Array [],
         "pos": 2609,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -24854,6 +25022,7 @@ Object {
               "text": "a",
             },
             "pos": 10,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -24869,9 +25038,11 @@ Object {
               "text": "b",
             },
             "pos": 13,
+            "type": undefined,
           },
         ],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -24979,6 +25150,7 @@ Object {
               "text": "a",
             },
             "pos": 52,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -24994,9 +25166,11 @@ Object {
               "text": "b",
             },
             "pos": 55,
+            "type": undefined,
           },
         ],
         "pos": 43,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -25104,9 +25278,11 @@ Object {
               "text": "x",
             },
             "pos": 95,
+            "type": undefined,
           },
         ],
         "pos": 85,
+        "type": undefined,
       },
       Object {
         "__debugKind": "VariableStatement",
@@ -25160,6 +25336,7 @@ Object {
           "text": "check-array",
         },
         "pos": 128,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -25200,6 +25377,7 @@ Object {
                 "text": "i",
               },
               "pos": 184,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -25414,6 +25592,7 @@ Object {
         },
         "params": Array [],
         "pos": 159,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -25564,9 +25743,11 @@ Object {
               "text": "x",
             },
             "pos": 265,
+            "type": undefined,
           },
         ],
         "pos": 253,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -25607,6 +25788,7 @@ Object {
                 "text": "good",
               },
               "pos": 334,
+              "type": undefined,
             },
             Object {
               "__debugKind": "VariableStatement",
@@ -25638,6 +25820,7 @@ Object {
                 "text": "i",
               },
               "pos": 350,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -25946,6 +26129,7 @@ Object {
         },
         "params": Array [],
         "pos": 309,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -26224,6 +26408,7 @@ Object {
                             "text": "s",
                           },
                           "pos": 533,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "VariableStatement",
@@ -26255,6 +26440,7 @@ Object {
                             "text": "n",
                           },
                           "pos": 552,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -26950,6 +27136,7 @@ Object {
               "text": "b",
             },
             "pos": 465,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -26965,9 +27152,11 @@ Object {
               "text": "i",
             },
             "pos": 468,
+            "type": undefined,
           },
         ],
         "pos": 447,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -27067,6 +27256,7 @@ Object {
                       "text": "array",
                     },
                     "pos": 901,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -27152,9 +27342,11 @@ Object {
                           "text": "i",
                         },
                         "pos": 947,
+                        "type": undefined,
                       },
                     ],
                     "pos": 935,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -27255,6 +27447,7 @@ Object {
                           "text": "i",
                         },
                         "pos": 997,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -27270,9 +27463,11 @@ Object {
                           "text": "x",
                         },
                         "pos": 1000,
+                        "type": undefined,
                       },
                     ],
                     "pos": 981,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -27417,6 +27612,7 @@ Object {
                           "text": "r",
                         },
                         "pos": 1050,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -27432,9 +27628,11 @@ Object {
                           "text": "c",
                         },
                         "pos": 1053,
+                        "type": undefined,
                       },
                     ],
                     "pos": 1038,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -27594,6 +27792,7 @@ Object {
                           "text": "r",
                         },
                         "pos": 1107,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -27609,6 +27808,7 @@ Object {
                           "text": "c",
                         },
                         "pos": 1110,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -27624,9 +27824,11 @@ Object {
                           "text": "x",
                         },
                         "pos": 1113,
+                        "type": undefined,
                       },
                     ],
                     "pos": 1095,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -27667,6 +27869,7 @@ Object {
                             "text": "r",
                           },
                           "pos": 1186,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -27710,6 +27913,7 @@ Object {
                                     "text": "c",
                                   },
                                   "pos": 1231,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -28294,6 +28498,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 1159,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -28334,6 +28539,7 @@ Object {
                             "text": "good?",
                           },
                           "pos": 1518,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "VariableStatement",
@@ -28365,6 +28571,7 @@ Object {
                             "text": "r",
                           },
                           "pos": 1566,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -28436,6 +28643,7 @@ Object {
                                     "text": "c",
                                   },
                                   "pos": 1637,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -28891,6 +29099,7 @@ Object {
                             "text": "c",
                           },
                           "pos": 1841,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -28962,6 +29171,7 @@ Object {
                                     "text": "r",
                                   },
                                   "pos": 1912,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -29417,6 +29627,7 @@ Object {
                             "text": "cell",
                           },
                           "pos": 2099,
+                          "type": undefined,
                         },
                         Object {
                           "__debugKind": "ExpressionStatement",
@@ -29525,6 +29736,7 @@ Object {
                                     "text": "r",
                                   },
                                   "pos": 2150,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "VariableStatement",
@@ -29621,6 +29833,7 @@ Object {
                                     "text": "c",
                                   },
                                   "pos": 2185,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -29679,6 +29892,7 @@ Object {
                                     "text": "ri",
                                   },
                                   "pos": 2246,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -29721,6 +29935,7 @@ Object {
                                             "text": "ci",
                                           },
                                           "pos": 2303,
+                                          "type": undefined,
                                         },
                                         Object {
                                           "__debugKind": "ExpressionStatement",
@@ -30366,6 +30581,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 1491,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -30442,6 +30658,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 2559,
+                    "type": undefined,
                   },
                 ],
               },
@@ -30463,6 +30680,7 @@ Object {
         },
         "params": Array [],
         "pos": 867,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -30509,6 +30727,7 @@ Object {
                 "text": "b",
               },
               "pos": 2627,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -36799,6 +37018,7 @@ Object {
         },
         "params": Array [],
         "pos": 2609,
+        "type": undefined,
       },
       Object {
         "__debugKind": "VariableStatement",
@@ -36830,6 +37050,7 @@ Object {
           "text": "i",
         },
         "pos": 3893,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",
@@ -37106,6 +37327,7 @@ Object {
                 "text": "j",
               },
               "pos": 38,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -37433,6 +37655,7 @@ Object {
               "text": "dst",
             },
             "pos": 17,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -37448,6 +37671,7 @@ Object {
               "text": "src",
             },
             "pos": 22,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -37463,6 +37687,7 @@ Object {
               "text": "i",
             },
             "pos": 27,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -37478,9 +37703,11 @@ Object {
               "text": "n",
             },
             "pos": 30,
+            "type": undefined,
           },
         ],
         "pos": 0,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -37617,6 +37844,7 @@ Object {
               "text": "a",
             },
             "pos": 129,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -37632,9 +37860,11 @@ Object {
               "text": "b",
             },
             "pos": 132,
+            "type": undefined,
           },
         ],
         "pos": 119,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -37702,6 +37932,7 @@ Object {
                 "text": "n",
               },
               "pos": 199,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -37860,6 +38091,7 @@ Object {
                         "text": "sz",
                       },
                       "pos": 244,
+                      "type": undefined,
                     },
                     Object {
                       "__debugKind": "VariableStatement",
@@ -37912,6 +38144,7 @@ Object {
                         "text": "a",
                       },
                       "pos": 273,
+                      "type": undefined,
                     },
                     Object {
                       "__debugKind": "ExpressionStatement",
@@ -38112,6 +38345,7 @@ Object {
               "text": "v",
             },
             "pos": 188,
+            "type": undefined,
           },
           Object {
             "__debugKind": "ParameterDeclaration",
@@ -38127,9 +38361,11 @@ Object {
               "text": "c",
             },
             "pos": 191,
+            "type": undefined,
           },
         ],
         "pos": 166,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -38199,6 +38435,7 @@ Object {
                       "text": "array",
                     },
                     "pos": 388,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "VariableSlot",
@@ -38230,6 +38467,7 @@ Object {
                       "text": "size",
                     },
                     "pos": 418,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -38500,9 +38738,11 @@ Object {
                           "text": "x",
                         },
                         "pos": 449,
+                        "type": undefined,
                       },
                     ],
                     "pos": 437,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -38588,9 +38828,11 @@ Object {
                           "text": "i",
                         },
                         "pos": 588,
+                        "type": undefined,
                       },
                     ],
                     "pos": 576,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -38815,6 +39057,7 @@ Object {
                           "text": "i",
                         },
                         "pos": 634,
+                        "type": undefined,
                       },
                       Object {
                         "__debugKind": "ParameterDeclaration",
@@ -38830,9 +39073,11 @@ Object {
                           "text": "x",
                         },
                         "pos": 637,
+                        "type": undefined,
                       },
                     ],
                     "pos": 622,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -38885,6 +39130,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 765,
+                    "type": undefined,
                   },
                   Object {
                     "__debugKind": "MethodSlot",
@@ -39059,6 +39305,7 @@ Object {
                                     "text": "i",
                                   },
                                   "pos": 952,
+                                  "type": undefined,
                                 },
                                 Object {
                                   "__debugKind": "ExpressionStatement",
@@ -39364,6 +39611,7 @@ Object {
                     },
                     "params": Array [],
                     "pos": 809,
+                    "type": undefined,
                   },
                 ],
               },
@@ -39385,6 +39633,7 @@ Object {
         },
         "params": Array [],
         "pos": 353,
+        "type": undefined,
       },
       Object {
         "__debugKind": "FunctionStatement",
@@ -39460,6 +39709,7 @@ Object {
                 "text": "v",
               },
               "pos": 1144,
+              "type": undefined,
             },
             Object {
               "__debugKind": "ExpressionStatement",
@@ -40574,6 +40824,7 @@ Object {
         },
         "params": Array [],
         "pos": 1090,
+        "type": undefined,
       },
       Object {
         "__debugKind": "ExpressionStatement",

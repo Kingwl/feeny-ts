@@ -1,4 +1,11 @@
 import {
+  createArraysTypeNode,
+  createIntegerTypeNode,
+  createMethodSlotSignature,
+  createNullTypeNode,
+  createTypeDefDeclaration,
+  createTypeReferenceTypeNode,
+  createVariableSlotSignautre,
   createBreakExpression,
   createContinueExpression,
   createStringLiteralExpression,
@@ -62,6 +69,9 @@ import {
   VariableReferenceExpression,
   VariableSlot,
   Statement,
+  ObjectSlotSignature,
+  TypeNode,
+  TypeReferenceTypeNode,
   ParameterDeclaration
 } from './types';
 import {
@@ -132,19 +142,136 @@ export function createParser(text: string) {
         return parseVariableStatement();
       case SyntaxKind.DefnKeyword:
         return parseFunctionStatement();
+      case SyntaxKind.TypeDefKeyword:
+        return parseTypeDefDeclaration();
       default:
         return parseExpressionStatement();
     }
+  }
+
+  function parseTypeDefDeclaration() {
+    const pos = scanner.getTokenStart();
+    const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+    const slots = parseObjectSlotListLike(name.leadingIndent, parseObjectSlotSignature);
+
+    return finishNode(
+      createTypeDefDeclaration(name, slots),
+      pos,
+      scanner.getCurrentPos()
+    );
+  }
+
+  function parseObjectSlotSignature (): ObjectSlotSignature {
+    const token = scanner.currentToken();
+    switch (token.kind) {
+      case SyntaxKind.VarKeyword:
+        return parseVariableSlotSignature();
+      case SyntaxKind.MethodKeyword:
+        return parseMethodSlotSignature();
+      default:
+        throw new Error(token.__debugKind);
+    }
+  }
+
+  function parseMethodSlotSignature() {
+    const pos = scanner.getTokenStart();
+    const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+    const params = parseParameterList();
+    parseExpectdToken(SyntaxKind.SubGreaterThanToken);
+    const type = parseTypeNode();
+    return finishNode(
+      createMethodSlotSignature(name, params, type),
+      pos,
+      scanner.getCurrentPos()
+    );
+  }
+
+  function parseVariableSlotSignature () {
+    const pos = scanner.getTokenStart();
+    const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+    parseExpectdToken(SyntaxKind.ColonToken);
+    const type = parseTypeNode();
+    return finishNode(
+      createVariableSlotSignautre(name, type),
+      pos,
+      scanner.getCurrentPos()
+    )
+  }
+
+  function parseTypeNode (): TypeNode {
+    const token = scanner.currentToken();
+    switch (token.kind) {
+      case SyntaxKind.IntegerKeyword:
+        return parseIntegerTypeNode();
+      case SyntaxKind.NullKeyword:
+        return parseNullTypeNode();
+      case SyntaxKind.ArraysKeyword:
+        return parseArraysTypeNode();
+      case SyntaxKind.Identifier:
+        return parseTypeReferenceTypeNode();
+      default:
+        throw new Error(token.__debugKind);
+    }
+  }
+
+  function parseTypeReferenceTypeNode(): TypeReferenceTypeNode {
+    const pos = scanner.getTokenStart();
+    const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+    return finishNode(
+      createTypeReferenceTypeNode(name),
+      pos,
+      scanner.getCurrentPos()
+    )
+  }
+
+  function parseNullTypeNode() {
+    const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.NullKeyword);
+    return finishNode(
+      createNullTypeNode(),
+      pos,
+      scanner.getCurrentPos()
+    )
+  }
+
+  function parseIntegerTypeNode() {
+    const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.IntegerKeyword);
+    return finishNode(
+      createIntegerTypeNode(),
+      pos,
+      scanner.getCurrentPos()
+    );
+  }
+
+  function parseArraysTypeNode() {
+    const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.ArraysKeyword);
+    parseExpectdToken(SyntaxKind.LessThanToken);
+    const size = parseExpectdToken<IntegerLiteralToken>(SyntaxKind.IntegerLiteralToken)
+    parseOptionalToken(SyntaxKind.CommaToken);
+    const type = parseTypeNode();
+    parseExpectdToken(SyntaxKind.GreaterThanToken);
+
+    return finishNode(
+      createArraysTypeNode(size, type),
+      pos,
+      scanner.getCurrentPos()
+    );
   }
 
   function parseVariableStatement() {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.VarKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+    let type: TypeNode | undefined;
+    if (parseOptionalToken(SyntaxKind.ColonToken)) {
+      type = parseTypeNode();
+    }
     parseExpectdToken(SyntaxKind.EqualsToken);
     const initializer = parseExpression();
     return finishNode(
-      createVariableStatement(name, initializer),
+      createVariableStatement(name, type, initializer),
       pos,
       scanner.getCurrentPos()
     );
@@ -153,8 +280,13 @@ export function createParser(text: string) {
   function parseParameter(): ParameterDeclaration {
     const pos = scanner.getTokenStart();
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+
+    let type: TypeNode | undefined;
+    if (parseOptionalToken(SyntaxKind.ColonToken)) {
+      type = parseTypeNode();
+    }
     return finishNode(
-      createParameterDeclaration(name),
+      createParameterDeclaration(name, type),
       pos,
       scanner.getCurrentPos()
     );
@@ -187,10 +319,15 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.DefnKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     const params = parseParameterList();
+
+    let type: TypeNode | undefined;
+    if (parseOptionalToken(SyntaxKind.SubGreaterThanToken)) {
+      type = parseTypeNode();
+    }
     const body = parseExpressionStatementOrSequenceOfStatements(true);
 
     return finishNode(
-      createFunctionStatement(name, params, body),
+      createFunctionStatement(name, params, type, body),
       pos,
       scanner.getCurrentPos()
     );
@@ -481,10 +618,16 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.DefnKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     const params = parseParameterList();
+
+    let type: TypeNode | undefined;
+    if (parseOptionalToken(SyntaxKind.SubGreaterThanToken)) {
+      type = parseTypeNode();
+    }
+
     const body = parseExpressionStatementOrSequenceOfStatements(true);
 
     return finishNode(
-      createFunctionExpression(name, params, body),
+      createFunctionExpression(name, params, type, body),
       pos,
       scanner.getCurrentPos()
     );
@@ -645,9 +788,9 @@ export function createParser(text: string) {
     );
   }
 
-  function parseObjectSlotList(indent: number): NodeArray<ObjectSlot> {
+  function parseObjectSlotListLike<T extends ObjectSlot | ObjectSlotSignature>(indent: number, factory: () => T): NodeArray<T> {
     const pos = scanner.getTokenStart();
-    const slots: ObjectSlot[] = [];
+    const slots: T[] = [];
     const slotIndent = scanner.currentToken().leadingIndent;
     while (
       slotIndent > indent &&
@@ -655,7 +798,7 @@ export function createParser(text: string) {
       isStartOfObjectSlot() &&
       scanner.currentToken().leadingIndent === slotIndent
     ) {
-      const slot = parseObjectSlot();
+      const slot = factory();
       slots.push(slot);
     }
 
@@ -683,11 +826,15 @@ export function createParser(text: string) {
 
     parseExpectdToken(SyntaxKind.VarKeyword);
     const name = parseIdentifierName();
+    let type: TypeNode | undefined;
+    if (parseOptionalToken(SyntaxKind.ColonToken)) {
+      type = parseTypeNode();
+    }
     parseExpectdToken(SyntaxKind.EqualsToken);
     const initializer = parseExpression();
 
     return finishNode(
-      createVariableSlot(name, initializer),
+      createVariableSlot(name, type, initializer),
       pos,
       scanner.getCurrentPos()
     );
@@ -698,10 +845,16 @@ export function createParser(text: string) {
     parseExpectdToken(SyntaxKind.MethodKeyword);
     const name = parseIdentifierName();
     const params = parseParameterList();
+
+    let type: TypeNode | undefined;
+    if (parseOptionalToken(SyntaxKind.SubGreaterThanToken)) {
+      type = parseTypeNode();
+    }
+
     const body = parseExpressionStatementOrSequenceOfStatements(true);
 
     return finishNode(
-      createMethodSlot(name, params, body),
+      createMethodSlot(name, params, type, body),
       pos,
       scanner.getCurrentPos()
     );
@@ -718,7 +871,7 @@ export function createParser(text: string) {
     }
     parseExpectdToken(SyntaxKind.ColonToken);
 
-    const slots = parseObjectSlotList(objectKeyword.leadingIndent);
+    const slots = parseObjectSlotListLike(objectKeyword.leadingIndent, parseObjectSlot);
 
     return finishNode(
       createObjectsExpression(extendsClause, slots),
