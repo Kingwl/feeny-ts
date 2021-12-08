@@ -1,4 +1,4 @@
-import { ASTNode, Symbol, FunctionStatement, MethodSlot, ObjectsExpression, Declaration, Parameter, SourceFile, SyntaxKind, VariableSlot, VariableStatement, HasLocalVariables, SymbolFlag } from "./types";
+import { ASTNode, Symbol, FunctionStatement, MethodSlot, ObjectsExpression, Declaration, ParameterDeclaration, SourceFile, SyntaxKind, VariableSlot, VariableStatement, HasLocalVariables, SymbolFlag } from "./types";
 import { assertDef, getDeclarationSymbolFlags, isLocalVariableContainer, setupSymbolDebugInfo, symbolFlagToDisplayText } from "./utils";
 import { forEachChild } from "./visitor";
 
@@ -47,8 +47,8 @@ export function createBinder(file: SourceFile) {
             case SyntaxKind.MethodSlot:
                 bindMethodSlot(node as MethodSlot);
                 break;
-            case SyntaxKind.Parameter:
-                bindParameter(node as Parameter);
+            case SyntaxKind.ParameterDeclaration:
+                bindParameterDeclaration(node as ParameterDeclaration);
                 break;
             case SyntaxKind.ObjectsExpression:
                 bindObjectsExpression(node as ObjectsExpression);
@@ -67,7 +67,7 @@ export function createBinder(file: SourceFile) {
         forEachChild(node, bind);
     }
 
-    function bindParameter (node: Parameter) {
+    function bindParameterDeclaration (node: ParameterDeclaration) {
         addLocalVariableToContainer(node.name.text, node);
         forEachChild(node, bind);
     }

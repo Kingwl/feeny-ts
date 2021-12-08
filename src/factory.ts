@@ -1,6 +1,6 @@
 import {
   Statement,
-  Parameter,
+  ParameterDeclaration,
   BreakExpression,
   ContinueExpression,
   AccessOrAssignmentExpressionOrHigher,
@@ -207,7 +207,7 @@ export function createSequenceOfStatements<T extends boolean>(
 
 export function createFunctionStatement(
   name: IdentifierToken,
-  params: NodeArray<Parameter>,
+  params: NodeArray<ParameterDeclaration>,
   body: SequenceOfStatements<true> | ExpressionStatement
 ): FunctionStatement {
   const node = createNode<FunctionStatement>(SyntaxKind.FunctionStatement);
@@ -229,7 +229,7 @@ export function createContinueExpression(): ContinueExpression {
 
 export function createMethodSlot(
   name: IdentifierToken,
-  params: NodeArray<Parameter>,
+  params: NodeArray<ParameterDeclaration>,
   body: SequenceOfStatements<true> | ExpressionStatement
 ): MethodSlot {
   const node = createNode<MethodSlot>(SyntaxKind.MethodSlot);
@@ -349,7 +349,7 @@ export function createFunctionCallExpression(
 
 export function createFunctionExpression(
   name: IdentifierToken,
-  params: NodeArray<Parameter>,
+  params: NodeArray<ParameterDeclaration>,
   body: SequenceOfStatements<true> | ExpressionStatement
 ) {
   const node = createNode<FunctionExpression>(SyntaxKind.FunctionExpression);
@@ -382,8 +382,8 @@ export function createParenExpression(expression: Expression) {
   return node;
 }
 
-export function createParameter(name: IdentifierToken) {
-  const node = createNode<Parameter>(SyntaxKind.Parameter);
+export function createParameterDeclaration(name: IdentifierToken) {
+  const node = createNode<ParameterDeclaration>(SyntaxKind.ParameterDeclaration);
   node.name = name;
   return node;
 }

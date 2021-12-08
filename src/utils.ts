@@ -184,7 +184,9 @@ export enum Keywords {
   Defn = 'defn',
   Printf = 'printf',
   Continue = 'continue',
-  Break = 'break'
+  Break = 'break',
+  Integer = 'integer',
+  TypeDef = 'typedef',
 }
 
 export function isKeyword(value: string): value is Keywords {
@@ -303,7 +305,7 @@ export const CharsToTokenKind = {
   [Chars.CloseBracket]: SyntaxKind.CloseBracketToken,
   [Chars.Dot]: SyntaxKind.DotToken,
   [Chars.Colon]: SyntaxKind.ColonToken,
-  [Chars.Comma]: SyntaxKind.CommaToken
+  [Chars.Comma]: SyntaxKind.CommaToken,
 } as const;
 
 export const KeywordsToTokenKind = {
@@ -319,7 +321,9 @@ export const KeywordsToTokenKind = {
   [Keywords.Defn]: SyntaxKind.DefnKeyword,
   [Keywords.Printf]: SyntaxKind.PrintfKeyword,
   [Keywords.Continue]: SyntaxKind.ContinueKeyword,
-  [Keywords.Break]: SyntaxKind.BreakKeyword
+  [Keywords.Break]: SyntaxKind.BreakKeyword,
+  [Keywords.Integer]: SyntaxKind.IntegerKeyword,
+  [Keywords.TypeDef]: SyntaxKind.TypeDefKeyword,
 } as const;
 
 export const TokenKindsToKeyword = {
@@ -335,7 +339,9 @@ export const TokenKindsToKeyword = {
   [SyntaxKind.DefnKeyword]: Keywords.Defn,
   [SyntaxKind.PrintfKeyword]: Keywords.Printf,
   [SyntaxKind.ContinueKeyword]: Keywords.Continue,
-  [SyntaxKind.BreakKeyword]: Keywords.Break
+  [SyntaxKind.BreakKeyword]: Keywords.Break,
+  [SyntaxKind.IntegerKeyword]: Keywords.Integer,
+  [SyntaxKind.TypeDefKeyword]: Keywords.TypeDef,
 } as const;
 
 export function isDigit(char: string): boolean {
@@ -444,8 +450,11 @@ export function isDeclaration(node: ASTNode): node is Declaration {
     case SyntaxKind.FunctionStatement:
     case SyntaxKind.VariableSlot:
     case SyntaxKind.MethodSlot:
-    case SyntaxKind.Parameter:
+    case SyntaxKind.ParameterDeclaration:
     case SyntaxKind.ObjectsExpression:
+    case SyntaxKind.MethodSlotSignatureDeclaration:
+    case SyntaxKind.VariableSlotSignatureDeclaration:
+    case SyntaxKind.TypeDefDeclaration:
       return true;
     default:
       return false;
@@ -490,7 +499,7 @@ export function getDeclarationSymbolFlags (node: ASTNode): SymbolFlag {
           return SymbolFlag.VariableSlot;
       case SyntaxKind.VariableStatement:
           return SymbolFlag.Variable;
-      case SyntaxKind.Parameter:
+      case SyntaxKind.ParameterDeclaration:
           return SymbolFlag.Parameter;
       case SyntaxKind.FunctionStatement:
           return SymbolFlag.Function;

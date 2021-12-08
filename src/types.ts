@@ -40,6 +40,13 @@ export enum SyntaxKind {
   DefnKeyword,
   BreakKeyword,
   ContinueKeyword,
+  IntegerKeyword,
+  TypeDefKeyword,
+
+  TypeReferenceTypeNode,
+  NullTypeNode,
+  IntegerTypeNode,
+  ArraysTypeNode,
 
   EndOfFileToken,
 
@@ -69,6 +76,8 @@ export enum SyntaxKind {
   // Object slot
   VariableSlot,
   MethodSlot,
+  VariableSlotSignatureDeclaration,
+  MethodSlotSignatureDeclaration,
 
   // Statements
   VariableStatement,
@@ -77,27 +86,16 @@ export enum SyntaxKind {
   FunctionStatement,
   
   // Declaration
-  Parameter,
+  ParameterDeclaration,
+
+  // Type Declaration
+  TypeDefDeclaration,
 
   // Shorthand
   BinaryShorthand,
   GetShorthand,
   SetShorthand
 }
-
-export type BinaryShorthandTokenSyntaxKind =
-  | SyntaxKind.AddToken
-  | SyntaxKind.SubToken
-  | SyntaxKind.MulToken
-  | SyntaxKind.DivToken
-  | SyntaxKind.ModToken
-  | SyntaxKind.LessThanToken
-  | SyntaxKind.GreaterThanToken
-  | SyntaxKind.LessEqualsThanToken
-  | SyntaxKind.GreaterEqualsThanToken
-  | SyntaxKind.EqualsEqualsToken;
-
-export type BinaryShorthandToken = Token<BinaryShorthandTokenSyntaxKind>;
 
 export interface TextSpan {
   fullPos: number;
@@ -161,6 +159,8 @@ export type DefnKeywordToken = Token<SyntaxKind.DefnKeyword>;
 export type PrintfKeywordToken = Token<SyntaxKind.PrintfKeyword>;
 export type ContinueKeywordToken = Token<SyntaxKind.ContinueKeyword>;
 export type BreakKeywordToken = Token<SyntaxKind.BreakKeyword>;
+export type IntegerKeywordToken = Token<SyntaxKind.IntegerKeyword>;
+export type TypeDefKeywordToken = Token<SyntaxKind.TypeDefKeyword>;
 
 export type OpenParenToken = Token<SyntaxKind.OpenParenToken>;
 export type CloseParenToken = Token<SyntaxKind.CloseParenToken>;
@@ -181,8 +181,7 @@ export type LessEqualsThanToken = Token<SyntaxKind.LessEqualsThanToken>;
 export type GreaterEqualsThanToken = Token<SyntaxKind.GreaterEqualsThanToken>;
 export type EqualsEqualsToken = Token<SyntaxKind.EqualsEqualsToken>;
 
-export type AllTokens =
-  | EndOfFileToken
+export type AllKeywords = 
   | NullKeywordToken
   | ArraysKeywordToken
   | ObjectsKeywordToken
@@ -196,6 +195,12 @@ export type AllTokens =
   | PrintfKeywordToken
   | ContinueKeywordToken
   | BreakKeywordToken
+  | IntegerKeywordToken
+  | TypeDefKeywordToken
+
+export type AllTokens =
+  | AllKeywords
+  | EndOfFileToken
   | OpenParenToken
   | CloseParenToken
   | CommaToken
@@ -376,13 +381,15 @@ export interface NamedDeclaration extends Declaration {
   name: IdentifierToken;
 }
 
-export interface Parameter extends NamedDeclaration {
-  kind: SyntaxKind.Parameter;
+export interface ParameterDeclaration extends NamedDeclaration {
+  kind: SyntaxKind.ParameterDeclaration;
+  type?: TypeNode
 }
 
 export interface FunctionBase {
-  params: NodeArray<Parameter>;
+  params: NodeArray<ParameterDeclaration>;
   body: SequenceOfStatements<true> | ExpressionStatement;
+  type?: TypeNode;
 }
 
 export interface ObjectSlot extends ASTNode {
@@ -391,11 +398,13 @@ export interface ObjectSlot extends ASTNode {
 
 export interface VariableSlot extends NamedDeclaration, ObjectSlot {
   kind: SyntaxKind.VariableSlot;
+  type?: TypeNode;
   initializer: Expression;
 }
 
 export interface MethodSlot extends NamedDeclaration, ObjectSlot, FunctionBase {
   kind: SyntaxKind.MethodSlot;
+  type?: TypeNode;
 }
 export interface Statement extends ASTNode {
   _statementBrand: never;
@@ -403,6 +412,7 @@ export interface Statement extends ASTNode {
 
 export interface VariableStatement extends NamedDeclaration, Statement {
   kind: SyntaxKind.VariableStatement;
+  type?: TypeNode;
   initializer: Expression;
 }
 
@@ -421,6 +431,48 @@ export interface FunctionStatement extends Statement, NamedDeclaration, Function
   kind: SyntaxKind.FunctionStatement;
 }
 
+export interface TypeNode extends ASTNode {
+  _typeNodeBrand: never;
+}
+
+export interface TypeReferenceTypeNode extends TypeNode {
+  kind: SyntaxKind.TypeReferenceTypeNode;
+}
+
+export interface ArrayTypeNode extends TypeNode {
+  kind: SyntaxKind.ArraysTypeNode;
+  elementType: TypeNode;
+  size: IntegerLiteralToken
+}
+
+export interface NullTypeNode extends TypeNode {
+  kind: SyntaxKind.NullTypeNode;
+}
+
+export interface IntegerTypeNode extends TypeNode {
+  kind: SyntaxKind.IntegerTypeNode;
+}
+
+export interface TypeDefDeclaration extends NamedDeclaration, TypeNode {
+  kind: SyntaxKind.TypeDefDeclaration
+  name: IdentifierToken
+  slots: ObjectSlotSignature[]
+}
+
+export interface ObjectSlotSignature extends NamedDeclaration, TypeNode {
+
+}
+
+export interface VariableSlotSignatureDeclaration extends ObjectSlotSignature {
+  kind: SyntaxKind.VariableSlotSignatureDeclaration
+  type: TypeNode
+}
+
+export interface MethodSlotSignatureDeclaration extends ObjectSlotSignature {
+  kind: SyntaxKind.MethodSlotSignatureDeclaration
+  params: NodeArray<ParameterDeclaration>
+  returnType: TypeNode
+}
 
 export enum SymbolFlag {
   None = 0,
@@ -495,5 +547,22 @@ export type AllDeclaration =
   | FunctionStatement
   | VariableSlot
   | MethodSlot
-  | Parameter
+  | ParameterDeclaration
   | ObjectsExpression
+  | TypeDefDeclaration
+  | VariableSlotSignatureDeclaration
+  | MethodSlotSignatureDeclaration
+
+export type BinaryShorthandTokenSyntaxKind =
+  | SyntaxKind.AddToken
+  | SyntaxKind.SubToken
+  | SyntaxKind.MulToken
+  | SyntaxKind.DivToken
+  | SyntaxKind.ModToken
+  | SyntaxKind.LessThanToken
+  | SyntaxKind.GreaterThanToken
+  | SyntaxKind.LessEqualsThanToken
+  | SyntaxKind.GreaterEqualsThanToken
+  | SyntaxKind.EqualsEqualsToken;
+
+export type BinaryShorthandToken = Token<BinaryShorthandTokenSyntaxKind>;

@@ -30,7 +30,7 @@ import {
   createWhileExpression,
   createExpressionStatement,
   createFunctionExpression,
-  createParameter
+  createParameterDeclaration
 } from './factory';
 import { createScanner } from './scanner';
 import {
@@ -62,7 +62,7 @@ import {
   VariableReferenceExpression,
   VariableSlot,
   Statement,
-  Parameter
+  ParameterDeclaration
 } from './types';
 import {
   BinaryShorthandPriority,
@@ -150,20 +150,20 @@ export function createParser(text: string) {
     );
   }
 
-  function parseParameter(): Parameter {
+  function parseParameter(): ParameterDeclaration {
     const pos = scanner.getTokenStart();
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     return finishNode(
-      createParameter(name),
+      createParameterDeclaration(name),
       pos,
       scanner.getCurrentPos()
     );
   }
 
-  function parseParameterList(): NodeArray<Parameter> {
+  function parseParameterList(): NodeArray<ParameterDeclaration> {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.OpenParenToken);
-    const params: Parameter[] = [];
+    const params: ParameterDeclaration[] = [];
     while (
       !scanner.isEOF() &&
       scanner.currentToken().kind === SyntaxKind.Identifier
