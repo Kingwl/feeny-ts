@@ -10,6 +10,7 @@ export enum SyntaxKind {
   EqualsToken,
   OpenBracketToken,
   CloseBracketToken,
+  SubGreaterThanToken,
 
   AddToken,
   SubToken,
@@ -180,6 +181,7 @@ export type GreaterThanToken = Token<SyntaxKind.GreaterThanToken>;
 export type LessEqualsThanToken = Token<SyntaxKind.LessEqualsThanToken>;
 export type GreaterEqualsThanToken = Token<SyntaxKind.GreaterEqualsThanToken>;
 export type EqualsEqualsToken = Token<SyntaxKind.EqualsEqualsToken>;
+export type SubGreaterThanToken = Token<SyntaxKind.SubGreaterThanToken>;
 
 export type AllKeywords = 
   | NullKeywordToken
@@ -221,7 +223,8 @@ export type AllTokens =
   | EqualsEqualsToken
   | IdentifierToken
   | StringLiteralToken
-  | IntegerLiteralToken;
+  | IntegerLiteralToken
+  | SubGreaterThanToken;
 
 export type TokenSyntaxKind = AllTokens['kind'];
 

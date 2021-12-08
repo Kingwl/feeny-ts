@@ -152,7 +152,6 @@ export enum Chars {
   BackSlash = '\\',
   Semi = ';',
   LowDash = '_',
-  Dash = '-',
   Question = '?',
 
   _0 = '0',
@@ -379,7 +378,7 @@ export function isAlphaOrDigitOrLowDashOrDashOrQuestion(char: string): boolean {
     isAlpha(char) ||
     isDigit(char) ||
     char === Chars.LowDash ||
-    char === Chars.Dash ||
+    char === Chars.Sub ||
     char === Chars.Question
   );
 }

@@ -19,7 +19,6 @@ import {
 } from './utils';
 
 export function createScanner(text: string) {
-  const originalText = text;
   let tokenFullStart = 0;
   let tokenStart = 0;
   let current = 0;
@@ -132,8 +131,17 @@ export function createScanner(text: string) {
           break;
         }
 
-        case Chars.Add:
         case Chars.Sub:
+          if (text[current + 1] === Chars.GreaterThan) {
+            current += 2;
+            token = finishNode(
+              createToken(SyntaxKind.SubGreaterThanToken),
+              tokenStart,
+              current
+            );
+            break;
+          }
+        case Chars.Add:
         case Chars.Mul:
         case Chars.Div:
         case Chars.Mod:
