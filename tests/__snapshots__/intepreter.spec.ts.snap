@@ -97,9 +97,15 @@ exports[`Interpreter should-work-with-type-integer 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-type-method-signature 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-type-method-slot 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-type-null 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-type-typedef 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-type-variable-reference 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-type-variable-slot 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-variable-assignment 1`] = `Array []`;
 

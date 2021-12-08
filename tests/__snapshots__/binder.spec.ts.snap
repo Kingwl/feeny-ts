@@ -742,6 +742,43 @@ exports[`Binder should-work-with-type-method-signature - locals 1`] = `Array []`
 
 exports[`Binder should-work-with-type-method-signature - members 1`] = `Array []`;
 
+exports[`Binder should-work-with-type-method-slot - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-method-slot - members 1`] = `
+Array [
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "symbols": Array [
+      Object {
+        "declarationPos": 20,
+        "flags": "8",
+        "name": "foo",
+      },
+      Object {
+        "declarationPos": 45,
+        "flags": "16",
+        "name": "bar",
+      },
+    ],
+  },
+]
+`;
+
 exports[`Binder should-work-with-type-null - locals 1`] = `
 Array [
   Object {
@@ -763,6 +800,70 @@ exports[`Binder should-work-with-type-null - members 1`] = `Array []`;
 exports[`Binder should-work-with-type-typedef - locals 1`] = `Array []`;
 
 exports[`Binder should-work-with-type-typedef - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-type-variable-reference - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 33,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-variable-reference - members 1`] = `
+Array [
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 46,
+    "symbols": Array [
+      Object {
+        "declarationPos": 58,
+        "flags": "8",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-variable-slot - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-variable-slot - members 1`] = `
+Array [
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "symbols": Array [
+      Object {
+        "declarationPos": 20,
+        "flags": "8",
+        "name": "foo",
+      },
+    ],
+  },
+]
+`;
 
 exports[`Binder should-work-with-variable-assignment - locals 1`] = `
 Array [

@@ -1,0 +1,5 @@
+typedef foo:
+    var a: integer
+
+var a: foo = object:
+    var a = 1

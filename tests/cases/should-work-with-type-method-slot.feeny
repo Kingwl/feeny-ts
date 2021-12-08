@@ -1,0 +1,4 @@
+var a = object:
+    var foo: integer = 1
+    method bar(x: integer) -> integer:
+        this.foo + x + 1
