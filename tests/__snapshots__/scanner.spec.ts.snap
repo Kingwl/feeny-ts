@@ -4027,6 +4027,117 @@ Array [
 ]
 `;
 
+exports[`Scanner should-work-with-type-function-statement 1`] = `
+Array [
+  Object {
+    "__debugKind": "DefnKeyword",
+    "end": 4,
+    "fullPos": 0,
+    "kind": 33,
+    "leadingIndent": 0,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 8,
+    "fullPos": 4,
+    "kind": 22,
+    "leadingIndent": 0,
+    "pos": 5,
+    "text": "foo",
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 9,
+    "fullPos": 8,
+    "kind": 2,
+    "leadingIndent": 0,
+    "pos": 8,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 10,
+    "fullPos": 9,
+    "kind": 3,
+    "leadingIndent": 0,
+    "pos": 9,
+  },
+  Object {
+    "__debugKind": "SubGreaterThanToken",
+    "end": 13,
+    "fullPos": 10,
+    "kind": 9,
+    "leadingIndent": 0,
+    "pos": 11,
+  },
+  Object {
+    "__debugKind": "NullKeyword",
+    "end": 18,
+    "fullPos": 13,
+    "kind": 25,
+    "leadingIndent": 0,
+    "pos": 14,
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 19,
+    "fullPos": 18,
+    "kind": 4,
+    "leadingIndent": 0,
+    "pos": 18,
+  },
+  Object {
+    "__debugKind": "PrintfKeyword",
+    "end": 30,
+    "fullPos": 19,
+    "kind": 23,
+    "leadingIndent": 4,
+    "pos": 24,
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 31,
+    "fullPos": 30,
+    "kind": 2,
+    "leadingIndent": 4,
+    "pos": 30,
+  },
+  Object {
+    "__debugKind": "StringLiteralToken",
+    "end": 36,
+    "fullPos": 31,
+    "kind": 21,
+    "leadingIndent": 4,
+    "pos": 31,
+    "value": "foo",
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 37,
+    "fullPos": 36,
+    "kind": 3,
+    "leadingIndent": 4,
+    "pos": 36,
+  },
+  Object {
+    "__debugKind": "NullKeyword",
+    "end": 46,
+    "fullPos": 37,
+    "kind": 25,
+    "leadingIndent": 4,
+    "pos": 42,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 46,
+    "fullPos": 46,
+    "kind": 42,
+    "leadingIndent": 4,
+    "pos": 46,
+  },
+]
+`;
+
 exports[`Scanner should-work-with-type-integer 1`] = `
 Array [
   Object {
@@ -4090,6 +4201,126 @@ Array [
 ]
 `;
 
+exports[`Scanner should-work-with-type-method-signature 1`] = `
+Array [
+  Object {
+    "__debugKind": "TypeDefKeyword",
+    "end": 7,
+    "fullPos": 0,
+    "kind": 37,
+    "leadingIndent": 0,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 11,
+    "fullPos": 7,
+    "kind": 22,
+    "leadingIndent": 0,
+    "pos": 8,
+    "text": "foo",
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 12,
+    "fullPos": 11,
+    "kind": 4,
+    "leadingIndent": 0,
+    "pos": 11,
+  },
+  Object {
+    "__debugKind": "VarKeyword",
+    "end": 20,
+    "fullPos": 12,
+    "kind": 27,
+    "leadingIndent": 4,
+    "pos": 17,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 22,
+    "fullPos": 20,
+    "kind": 22,
+    "leadingIndent": 4,
+    "pos": 21,
+    "text": "a",
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 23,
+    "fullPos": 22,
+    "kind": 4,
+    "leadingIndent": 4,
+    "pos": 22,
+  },
+  Object {
+    "__debugKind": "IntegerKeyword",
+    "end": 31,
+    "fullPos": 23,
+    "kind": 36,
+    "leadingIndent": 4,
+    "pos": 24,
+  },
+  Object {
+    "__debugKind": "MethodKeyword",
+    "end": 42,
+    "fullPos": 31,
+    "kind": 32,
+    "leadingIndent": 4,
+    "pos": 36,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 44,
+    "fullPos": 42,
+    "kind": 22,
+    "leadingIndent": 4,
+    "pos": 43,
+    "text": "f",
+  },
+  Object {
+    "__debugKind": "OpenParenToken",
+    "end": 45,
+    "fullPos": 44,
+    "kind": 2,
+    "leadingIndent": 4,
+    "pos": 44,
+  },
+  Object {
+    "__debugKind": "CloseParenToken",
+    "end": 46,
+    "fullPos": 45,
+    "kind": 3,
+    "leadingIndent": 4,
+    "pos": 45,
+  },
+  Object {
+    "__debugKind": "SubGreaterThanToken",
+    "end": 49,
+    "fullPos": 46,
+    "kind": 9,
+    "leadingIndent": 4,
+    "pos": 47,
+  },
+  Object {
+    "__debugKind": "IntegerKeyword",
+    "end": 57,
+    "fullPos": 49,
+    "kind": 36,
+    "leadingIndent": 4,
+    "pos": 50,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 58,
+    "fullPos": 57,
+    "kind": 42,
+    "leadingIndent": 0,
+    "pos": 57,
+  },
+]
+`;
+
 exports[`Scanner should-work-with-type-null 1`] = `
 Array [
   Object {
@@ -4149,6 +4380,77 @@ Array [
     "kind": 42,
     "leadingIndent": 0,
     "pos": 15,
+  },
+]
+`;
+
+exports[`Scanner should-work-with-type-typedef 1`] = `
+Array [
+  Object {
+    "__debugKind": "TypeDefKeyword",
+    "end": 7,
+    "fullPos": 0,
+    "kind": 37,
+    "leadingIndent": 0,
+    "pos": 0,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 11,
+    "fullPos": 7,
+    "kind": 22,
+    "leadingIndent": 0,
+    "pos": 8,
+    "text": "foo",
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 12,
+    "fullPos": 11,
+    "kind": 4,
+    "leadingIndent": 0,
+    "pos": 11,
+  },
+  Object {
+    "__debugKind": "VarKeyword",
+    "end": 20,
+    "fullPos": 12,
+    "kind": 27,
+    "leadingIndent": 4,
+    "pos": 17,
+  },
+  Object {
+    "__debugKind": "Identifier",
+    "end": 22,
+    "fullPos": 20,
+    "kind": 22,
+    "leadingIndent": 4,
+    "pos": 21,
+    "text": "a",
+  },
+  Object {
+    "__debugKind": "ColonToken",
+    "end": 23,
+    "fullPos": 22,
+    "kind": 4,
+    "leadingIndent": 4,
+    "pos": 22,
+  },
+  Object {
+    "__debugKind": "IntegerKeyword",
+    "end": 31,
+    "fullPos": 23,
+    "kind": 36,
+    "leadingIndent": 4,
+    "pos": 24,
+  },
+  Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 31,
+    "fullPos": 31,
+    "kind": 42,
+    "leadingIndent": 4,
+    "pos": 31,
   },
 ]
 `;

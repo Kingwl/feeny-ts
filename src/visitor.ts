@@ -1,4 +1,5 @@
-import { SourceFile, ArraysExpression, ExpressionStatement, GetShorthand, ObjectsExpression, ParameterDeclaration, PrintingExpression, VariableAssignmentExpression, ASTNode, BinaryShorthand, FunctionExpression, FunctionStatement, IfExpression, MethodCallExpression, MethodSlot, ParenExpression, SequenceOfStatements, SetShorthand, SlotAssignmentExpression, SlotLookupExpression, SyntaxKind, VariableSlot, VariableStatement, WhileExpression, FunctionCallExpression } from "./types";
+import { IntegerTypeNode, NullKeywordToken, VariableSlotSignatureDeclaration } from ".";
+import { SourceFile, ArraysExpression, ExpressionStatement, GetShorthand, ObjectsExpression, ParameterDeclaration, PrintingExpression, VariableAssignmentExpression, ASTNode, BinaryShorthand, FunctionExpression, FunctionStatement, IfExpression, MethodCallExpression, MethodSlot, ParenExpression, SequenceOfStatements, SetShorthand, SlotAssignmentExpression, SlotLookupExpression, SyntaxKind, VariableSlot, VariableStatement, WhileExpression, FunctionCallExpression, TypeDefDeclaration, MethodSlotSignatureDeclaration, ArraysTypeNode } from "./types";
 import { assertKind, isBinaryShorthandTokenSyntaxKind, isDef, isKeywordSyntaxKind } from "./utils";
 
 export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefined): T | undefined {
@@ -100,6 +101,22 @@ export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefi
             case SyntaxKind.SetShorthand:
                 assertKind<SetShorthand>(node);
                 return cb(node.expression) || visitNodes(node.args) || cb(node.value)
+            case SyntaxKind.TypeDefDeclaration:
+                assertKind<TypeDefDeclaration>(node);
+                return cb(node.name) || visitNodes(node.slots)
+            case SyntaxKind.MethodSlotSignatureDeclaration:
+                assertKind<MethodSlotSignatureDeclaration>(node);
+                return cb(node.name) || visitNodes(node.params) || cb(node.type)
+            case SyntaxKind.VariableSlotSignatureDeclaration:
+                assertKind<VariableSlotSignatureDeclaration>(node);
+                return cb(node.name) || cb(node.type)
+            case SyntaxKind.IntegerTypeNode:
+            case SyntaxKind.NullTypeNode:
+                assertKind<IntegerTypeNode | NullKeywordToken>(node);
+                return undefined
+            case SyntaxKind.ArraysTypeNode:
+                assertKind<ArraysTypeNode>(node);
+                return cb(node.size) || cb(node.type)
             default:
                 throw new Error(`Unknown node kind: ${node.__debugKind}`)
         }

@@ -87,9 +87,15 @@ exports[`Interpreter should-work-with-slot-lookup 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-type-arrays 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-type-function-statement 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-type-integer 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-type-method-signature 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-type-null 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-type-typedef 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-variable-assignment 1`] = `Array []`;
 

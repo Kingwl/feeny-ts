@@ -1,0 +1,3 @@
+typedef foo:
+    var a: integer
+    method f() -> integer

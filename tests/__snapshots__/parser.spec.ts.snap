@@ -4511,6 +4511,112 @@ Object {
 }
 `;
 
+exports[`Parser should-work-with-type-function-statement 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "body": Object {
+    "__debugKind": "SequenceOfStatements",
+    "end": 46,
+    "isExpression": false,
+    "kind": 68,
+    "pos": 0,
+    "statements": Array [
+      Object {
+        "__debugKind": "FunctionStatement",
+        "body": Object {
+          "__debugKind": "SequenceOfStatements",
+          "end": 46,
+          "isExpression": true,
+          "kind": 68,
+          "pos": 24,
+          "statements": Array [
+            Object {
+              "__debugKind": "ExpressionStatement",
+              "end": 46,
+              "expression": Object {
+                "__debugKind": "PrintingExpression",
+                "args": Array [
+                  Object {
+                    "__debugKind": "StringLiteralExpression",
+                    "end": 37,
+                    "kind": 45,
+                    "pos": 31,
+                    "value": Object {
+                      "__debugKind": "StringLiteralToken",
+                      "end": 36,
+                      "fullPos": 31,
+                      "kind": 21,
+                      "leadingIndent": 4,
+                      "pos": 31,
+                      "value": "foo",
+                    },
+                  },
+                ],
+                "end": 46,
+                "kind": 47,
+                "pos": 24,
+              },
+              "kind": 69,
+              "pos": 24,
+            },
+            Object {
+              "__debugKind": "ExpressionStatement",
+              "end": 46,
+              "expression": Object {
+                "__debugKind": "NullExpression",
+                "end": 46,
+                "kind": 49,
+                "pos": 42,
+                "token": Object {
+                  "__debugKind": "NullKeyword",
+                  "end": 46,
+                  "fullPos": 37,
+                  "kind": 25,
+                  "leadingIndent": 4,
+                  "pos": 42,
+                },
+              },
+              "kind": 69,
+              "pos": 42,
+            },
+          ],
+        },
+        "end": 46,
+        "kind": 70,
+        "name": Object {
+          "__debugKind": "Identifier",
+          "end": 8,
+          "fullPos": 4,
+          "kind": 22,
+          "leadingIndent": 0,
+          "pos": 5,
+          "text": "foo",
+        },
+        "params": Array [],
+        "pos": 0,
+        "type": Object {
+          "__debugKind": "NullTypeNode",
+          "end": 19,
+          "kind": 39,
+          "pos": 14,
+        },
+      },
+    ],
+  },
+  "end": 46,
+  "eof": Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 46,
+    "fullPos": 46,
+    "kind": 42,
+    "leadingIndent": 4,
+    "pos": 46,
+  },
+  "kind": 43,
+  "pos": 0,
+}
+`;
+
 exports[`Parser should-work-with-type-integer 1`] = `
 Object {
   "__debugKind": "SourceFile",
@@ -4574,6 +4680,92 @@ Object {
 }
 `;
 
+exports[`Parser should-work-with-type-method-signature 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "body": Object {
+    "__debugKind": "SequenceOfStatements",
+    "end": 58,
+    "isExpression": false,
+    "kind": 68,
+    "pos": 0,
+    "statements": Array [
+      Object {
+        "__debugKind": "TypeDefDeclaration",
+        "end": 58,
+        "kind": 72,
+        "name": Object {
+          "__debugKind": "Identifier",
+          "end": 11,
+          "fullPos": 7,
+          "kind": 22,
+          "leadingIndent": 0,
+          "pos": 8,
+          "text": "foo",
+        },
+        "pos": 0,
+        "slots": Array [
+          Object {
+            "__debugKind": "VariableSlotSignatureDeclaration",
+            "end": 42,
+            "kind": 65,
+            "name": Object {
+              "__debugKind": "Identifier",
+              "end": 22,
+              "fullPos": 20,
+              "kind": 22,
+              "leadingIndent": 4,
+              "pos": 21,
+              "text": "a",
+            },
+            "pos": 17,
+            "type": Object {
+              "__debugKind": "IntegerTypeNode",
+              "end": 42,
+              "kind": 40,
+              "pos": 24,
+            },
+          },
+          Object {
+            "__debugKind": "MethodSlotSignatureDeclaration",
+            "end": 58,
+            "kind": 66,
+            "name": Object {
+              "__debugKind": "Identifier",
+              "end": 44,
+              "fullPos": 42,
+              "kind": 22,
+              "leadingIndent": 4,
+              "pos": 43,
+              "text": "f",
+            },
+            "params": Array [],
+            "pos": 36,
+            "type": Object {
+              "__debugKind": "IntegerTypeNode",
+              "end": 58,
+              "kind": 40,
+              "pos": 50,
+            },
+          },
+        ],
+      },
+    ],
+  },
+  "end": 58,
+  "eof": Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 58,
+    "fullPos": 57,
+    "kind": 42,
+    "leadingIndent": 0,
+    "pos": 57,
+  },
+  "kind": 43,
+  "pos": 0,
+}
+`;
+
 exports[`Parser should-work-with-type-null 1`] = `
 Object {
   "__debugKind": "SourceFile",
@@ -4631,6 +4823,70 @@ Object {
     "kind": 42,
     "leadingIndent": 0,
     "pos": 15,
+  },
+  "kind": 43,
+  "pos": 0,
+}
+`;
+
+exports[`Parser should-work-with-type-typedef 1`] = `
+Object {
+  "__debugKind": "SourceFile",
+  "body": Object {
+    "__debugKind": "SequenceOfStatements",
+    "end": 31,
+    "isExpression": false,
+    "kind": 68,
+    "pos": 0,
+    "statements": Array [
+      Object {
+        "__debugKind": "TypeDefDeclaration",
+        "end": 31,
+        "kind": 72,
+        "name": Object {
+          "__debugKind": "Identifier",
+          "end": 11,
+          "fullPos": 7,
+          "kind": 22,
+          "leadingIndent": 0,
+          "pos": 8,
+          "text": "foo",
+        },
+        "pos": 0,
+        "slots": Array [
+          Object {
+            "__debugKind": "VariableSlotSignatureDeclaration",
+            "end": 31,
+            "kind": 65,
+            "name": Object {
+              "__debugKind": "Identifier",
+              "end": 22,
+              "fullPos": 20,
+              "kind": 22,
+              "leadingIndent": 4,
+              "pos": 21,
+              "text": "a",
+            },
+            "pos": 17,
+            "type": Object {
+              "__debugKind": "IntegerTypeNode",
+              "end": 31,
+              "kind": 40,
+              "pos": 24,
+            },
+          },
+        ],
+      },
+    ],
+  },
+  "end": 31,
+  "eof": Object {
+    "__debugKind": "EndOfFileToken",
+    "end": 31,
+    "fullPos": 31,
+    "kind": 42,
+    "leadingIndent": 4,
+    "pos": 31,
   },
   "kind": 43,
   "pos": 0,

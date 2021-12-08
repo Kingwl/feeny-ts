@@ -1,0 +1,3 @@
+defn foo() -> null:
+    printf("foo")
+    null

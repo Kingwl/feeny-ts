@@ -151,7 +151,10 @@ export function createParser(text: string) {
 
   function parseTypeDefDeclaration() {
     const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.TypeDefKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+
+    parseExpectdToken(SyntaxKind.ColonToken);
     const slots = parseObjectSlotListLike(name.leadingIndent, parseObjectSlotSignature);
 
     return finishNode(
@@ -175,6 +178,7 @@ export function createParser(text: string) {
 
   function parseMethodSlotSignature() {
     const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.MethodKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     const params = parseParameterList();
     parseExpectdToken(SyntaxKind.SubGreaterThanToken);
@@ -188,6 +192,7 @@ export function createParser(text: string) {
 
   function parseVariableSlotSignature () {
     const pos = scanner.getTokenStart();
+    parseExpectdToken(SyntaxKind.VarKeyword);
     const name = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
     parseExpectdToken(SyntaxKind.ColonToken);
     const type = parseTypeNode();

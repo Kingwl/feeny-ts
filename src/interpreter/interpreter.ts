@@ -254,6 +254,8 @@ export function createInterpreter(file: SourceFile, context: Context) {
         return evaluateVariableStatement(stmt as VariableStatement);
       case SyntaxKind.FunctionStatement:
         return evaluateFunctionStatement(stmt as FunctionStatement);
+      case SyntaxKind.TypeDefDeclaration:
+        return undefined;
       default:
         throw new Error('Invalid statement: ' + stmt.__debugKind);
     }

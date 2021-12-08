@@ -661,6 +661,24 @@ Array [
 
 exports[`Binder should-work-with-type-arrays - members 1`] = `Array []`;
 
+exports[`Binder should-work-with-type-function-statement - locals 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "4",
+        "name": "foo",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-function-statement - members 1`] = `Array []`;
+
 exports[`Binder should-work-with-type-integer - locals 1`] = `
 Array [
   Object {
@@ -679,6 +697,10 @@ Array [
 
 exports[`Binder should-work-with-type-integer - members 1`] = `Array []`;
 
+exports[`Binder should-work-with-type-method-signature - locals 1`] = `Array []`;
+
+exports[`Binder should-work-with-type-method-signature - members 1`] = `Array []`;
+
 exports[`Binder should-work-with-type-null - locals 1`] = `
 Array [
   Object {
@@ -696,6 +718,10 @@ Array [
 `;
 
 exports[`Binder should-work-with-type-null - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-type-typedef - locals 1`] = `Array []`;
+
+exports[`Binder should-work-with-type-typedef - members 1`] = `Array []`;
 
 exports[`Binder should-work-with-variable-assignment - locals 1`] = `
 Array [
