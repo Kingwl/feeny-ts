@@ -643,6 +643,60 @@ Array [
 ]
 `;
 
+exports[`Binder should-work-with-type-arrays - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-arrays - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-type-integer - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-integer - members 1`] = `Array []`;
+
+exports[`Binder should-work-with-type-null - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "1",
+        "name": "a",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-null - members 1`] = `Array []`;
+
 exports[`Binder should-work-with-variable-assignment - locals 1`] = `
 Array [
   Object {

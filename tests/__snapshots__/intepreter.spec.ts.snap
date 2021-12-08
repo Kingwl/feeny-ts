@@ -85,6 +85,12 @@ exports[`Interpreter should-work-with-slot-assignment 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-slot-lookup 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-type-arrays 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-type-integer 1`] = `Array []`;
+
+exports[`Interpreter should-work-with-type-null 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-variable-assignment 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-variable-reference 1`] = `Array []`;

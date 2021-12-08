@@ -203,6 +203,8 @@ export function isKeyword(value: string): value is Keywords {
     case Keywords.Printf:
     case Keywords.Break:
     case Keywords.Continue:
+    case Keywords.Integer:
+    case Keywords.TypeDef:
       return true;
     default:
       return false;
@@ -226,6 +228,8 @@ export function isKeywordSyntaxKind(
     case SyntaxKind.DefnKeyword:
     case SyntaxKind.ContinueKeyword:
     case SyntaxKind.BreakKeyword:
+    case SyntaxKind.IntegerKeyword:
+    case SyntaxKind.TypeDefKeyword:
       return true;
     default:
       return false;
