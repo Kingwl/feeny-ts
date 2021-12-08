@@ -61,7 +61,7 @@ export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefi
                 return cb(node.name) || visitNodes(node.params) || cb(node.body)
             case SyntaxKind.VariableAssignmentExpression:
                 assertKind<VariableAssignmentExpression>(node);
-                return cb(node.id) || cb(node.value)
+                return cb(node.expression) || cb(node.value)
             case SyntaxKind.IfExpression:
                 assertKind<IfExpression>(node);
                 return cb(node.condition) || cb(node.thenStatement) || node.elseStatement && cb(node.elseStatement)

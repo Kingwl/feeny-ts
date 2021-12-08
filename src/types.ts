@@ -123,7 +123,7 @@ export interface NodeArray<T extends ASTNode>
 export interface SourceFile extends ASTNode {
   _sourceFileBrand: never;
   kind: SyntaxKind.SourceFile;
-  body: SequenceOfStatements;
+  body: SequenceOfStatements<false>;
   eof: EndOfFileToken;
 }
 
@@ -133,7 +133,7 @@ export interface Token<K extends SyntaxKind = SyntaxKind> extends ASTNode {
 }
 
 export interface IdentifierToken extends Token<SyntaxKind.Identifier> {
-  id: string;
+  text: string;
   keyword?: KeywordTokens;
 }
 
@@ -254,7 +254,7 @@ export interface StringLiteralExpression extends Expression {
 
 export interface VariableReferenceExpression extends Expression {
   kind: SyntaxKind.VariableReferenceExpression;
-  id: IdentifierToken;
+  name: IdentifierToken;
 }
 
 export interface PrintingExpression extends Expression {
@@ -307,15 +307,15 @@ export interface FunctionCallExpression extends Expression {
 
 export interface VariableAssignmentExpression extends Expression {
   kind: SyntaxKind.VariableAssignmentExpression;
-  id: IdentifierToken;
+  expression: VariableReferenceExpression;
   value: Expression;
 }
 
 export interface IfExpression extends Expression {
   kind: SyntaxKind.IfExpression;
   condition: Expression;
-  thenStatement: SequenceOfStatements | ExpressionStatement;
-  elseStatement?: SequenceOfStatements | ExpressionStatement;
+  thenStatement: SequenceOfStatements<true> | ExpressionStatement;
+  elseStatement?: SequenceOfStatements<true> | ExpressionStatement;
 }
 
 export interface WhileExpression extends Expression {
@@ -382,7 +382,7 @@ export interface Parameter extends NamedDeclaration {
 
 export interface FunctionBase {
   params: NodeArray<Parameter>;
-  body: SequenceOfStatements | ExpressionStatement;
+  body: SequenceOfStatements<true> | ExpressionStatement;
 }
 
 export interface ObjectSlot extends ASTNode {
@@ -406,10 +406,10 @@ export interface VariableStatement extends NamedDeclaration, Statement {
   initializer: Expression;
 }
 
-export interface SequenceOfStatements extends Statement {
+export interface SequenceOfStatements<IsExpr extends boolean = boolean> extends Statement {
   kind: SyntaxKind.SequenceOfStatements;
   statements: NodeArray<Statement>;
-  isExpression: boolean;
+  isExpression: IsExpr;
 }
 
 export interface ExpressionStatement extends Statement {

@@ -337,9 +337,9 @@ export function createInterpreter(file: SourceFile, context: Context) {
 
   function evaluateFunctionExpression(expr: FunctionExpression) {
     const env = currentEnv();
-    const params = expr.params.map(x => x.name.id);
+    const params = expr.params.map(x => x.name.text);
     const func = new RuntimeFunction(
-      expr.name.id,
+      expr.name.text,
       params,
       () => evaluateExpressionStatementOrSequenceOfStatements(expr.body),
       env
@@ -432,8 +432,8 @@ export function createInterpreter(file: SourceFile, context: Context) {
     if (!left.isEnvValue()) {
       throw new TypeError('Left operand must be an environment value');
     }
-    const callable = left.env.getBinding(expr.name.id);
-    assertDef(callable, 'Cannot find definition for method: ' + expr.name.id);
+    const callable = left.env.getBinding(expr.name.text);
+    assertDef(callable, 'Cannot find definition for method: ' + expr.name.text);
 
     const args = expr.args.map(evaluateExpression);
     return callFunction(left, callable, args);
@@ -452,19 +452,19 @@ export function createInterpreter(file: SourceFile, context: Context) {
     if (slot.kind === SyntaxKind.VariableSlot) {
       const variableSlot = slot as VariableSlot;
       const initializer = evaluateExpression(variableSlot.initializer);
-      obj.env.addBinding(variableSlot.name.id, initializer);
+      obj.env.addBinding(variableSlot.name.text, initializer);
     } else if (slot.kind === SyntaxKind.MethodSlot) {
       const env = currentEnv();
       const methodSlot = slot as MethodSlot;
-      const params = methodSlot.params.map(x => x.name.id);
+      const params = methodSlot.params.map(x => x.name.text);
       const callable = new RuntimeFunction(
-        methodSlot.name.id,
+        methodSlot.name.text,
         params,
         () =>
           evaluateExpressionStatementOrSequenceOfStatements(methodSlot.body),
         env
       );
-      obj.env.addBinding(methodSlot.name.id, callable);
+      obj.env.addBinding(methodSlot.name.text, callable);
     } else {
       throw new Error('Invalid slot kind: ' + slot.__debugKind);
     }
@@ -476,7 +476,7 @@ export function createInterpreter(file: SourceFile, context: Context) {
     const env = currentEnv();
     const value = evaluateExpression(expr.value);
 
-    env.setBinding(expr.id.id, value);
+    env.setBinding(expr.expression.name.text, value);
     return value;
   }
 
@@ -487,7 +487,7 @@ export function createInterpreter(file: SourceFile, context: Context) {
     }
 
     const right = evaluateExpression(expr.value);
-    left.env.setBinding(expr.name.id, right);
+    left.env.setBinding(expr.name.text, right);
     return right;
   }
 
@@ -497,8 +497,8 @@ export function createInterpreter(file: SourceFile, context: Context) {
       throw new Error('Invalid left value type: ' + left.type);
     }
 
-    const result = left.env.getBinding(expr.name.id);
-    assertDef(result, 'Cannot find slot: ' + expr.name.id);
+    const result = left.env.getBinding(expr.name.text);
+    assertDef(result, 'Cannot find slot: ' + expr.name.text);
     return result;
   }
 
@@ -506,9 +506,9 @@ export function createInterpreter(file: SourceFile, context: Context) {
     expr: VariableReferenceExpression
   ) {
     const env = currentEnv();
-    const value = env.getBinding(expr.id.id);
+    const value = env.getBinding(expr.name.text);
 
-    assertDef(value, 'Cannot find reference: ' + expr.id.id);
+    assertDef(value, 'Cannot find reference: ' + expr.name.text);
     return value;
   }
 
@@ -631,19 +631,19 @@ export function createInterpreter(file: SourceFile, context: Context) {
   function evaluateVariableStatement(stmt: VariableStatement) {
     const env = currentEnv();
     const value = evaluateExpression(stmt.initializer);
-    env.addBinding(stmt.name.id, value);
+    env.addBinding(stmt.name.text, value);
   }
 
   function evaluateFunctionStatement(stmt: FunctionStatement) {
     const env = currentEnv();
-    const params = stmt.params.map(x => x.name.id);
+    const params = stmt.params.map(x => x.name.text);
     const func = new RuntimeFunction(
-      stmt.name.id,
+      stmt.name.text,
       params,
       () => evaluateExpressionStatementOrSequenceOfStatements(stmt.body),
       env
     );
-    env.addBinding(stmt.name.id, func);
+    env.addBinding(stmt.name.text, func);
   }
 
   function evaluateExpressionStatement(stmt: ExpressionStatement) {

@@ -216,16 +216,16 @@ export function createParser(text: string) {
     );
   }
 
-  function parseSequenceOfStatements(
+  function parseSequenceOfStatements<T extends boolean>(
     baseIndent: number,
-    isExpression: boolean
-  ): SequenceOfStatements {
+    isExpression: T
+  ): SequenceOfStatements<T> {
     const pos = scanner.getTokenStart();
 
     const statements = parseIndentStatementList(baseIndent);
 
     return finishNode(
-      createSequenceOfStatements(statements, isExpression),
+      createSequenceOfStatements<T>(statements, isExpression),
       pos,
       scanner.getCurrentPos()
     );
@@ -509,8 +509,8 @@ export function createParser(text: string) {
     return finishNode(createThisExpression(), pos, scanner.getCurrentPos());
   }
 
-  function parseExpressionStatementOrSequenceOfStatements(
-    isExpression: boolean
+  function parseExpressionStatementOrSequenceOfStatements<T extends boolean>(
+    isExpression: T
   ) {
     const colonToken = parseOptionalToken(SyntaxKind.ColonToken);
     if (colonToken && scanner.currentTokenhasLineFeed()) {
@@ -526,7 +526,7 @@ export function createParser(text: string) {
 
     const thenStatement = parseExpressionStatementOrSequenceOfStatements(true);
 
-    let elseStatement: SequenceOfStatements | ExpressionStatement | undefined;
+    let elseStatement: SequenceOfStatements<true> | ExpressionStatement | undefined;
     const elseToken = parseOptionalToken(SyntaxKind.ElseKeyword);
     if (elseToken) {
       elseStatement = parseExpressionStatementOrSequenceOfStatements(true);
@@ -571,22 +571,25 @@ export function createParser(text: string) {
     | VariableAssignmentExpression {
     const pos = scanner.getTokenStart();
     const token = parseExpectdToken<IdentifierToken>(SyntaxKind.Identifier);
+
+    const expression = finishNode(
+      createVariableReferenceExpression(token),
+      pos,
+      scanner.getCurrentPos()
+    )
+
     if (scanner.currentToken().kind === SyntaxKind.EqualsToken) {
       parseExpectdToken(SyntaxKind.EqualsToken);
       const value = parseExpression();
 
       return finishNode(
-        createVariableAssignmentExpression(token, value),
+        createVariableAssignmentExpression(expression, value),
         pos,
         scanner.getCurrentPos()
       );
     }
 
-    return finishNode(
-      createVariableReferenceExpression(token),
-      pos,
-      scanner.getCurrentPos()
-    );
+    return expression;
   }
 
   function parsePrintingExpression(): PrintingExpression {

@@ -58,27 +58,27 @@ export function createBinder(file: SourceFile) {
     }
 
     function bindVariableStatement (node: VariableStatement) {
-        addLocalVariableToContainer(node.name.id, node);
+        addLocalVariableToContainer(node.name.text, node);
         forEachChild(node, bind);
     }
 
     function bindFunctionStatement (node: FunctionStatement) {
-        addLocalVariableToContainer(node.name.id, node);
+        addLocalVariableToContainer(node.name.text, node);
         forEachChild(node, bind);
     }
 
     function bindParameter (node: Parameter) {
-        addLocalVariableToContainer(node.name.id, node);
+        addLocalVariableToContainer(node.name.text, node);
         forEachChild(node, bind);
     }
 
     function bindVariableSlot (node: VariableSlot) {
-        addMemberToParent(node.name.id, node);
+        addMemberToParent(node.name.text, node);
         forEachChild(node, bind);
     }
 
     function bindMethodSlot (node: MethodSlot) {
-        addMemberToParent(node.name.id, node);
+        addMemberToParent(node.name.text, node);
         forEachChild(node, bind);
     }
 

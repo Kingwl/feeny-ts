@@ -83,14 +83,14 @@ export function createNumberLiteralToken(value: string): IntegerLiteralToken {
   return token;
 }
 
-export function createIdentifier(id: string): IdentifierToken {
+export function createIdentifier(text: string): IdentifierToken {
   const token = createToken(SyntaxKind.Identifier) as IdentifierToken;
-  token.id = id;
+  token.text = text;
   return token;
 }
 
 export function createSourceFile(
-  body: SequenceOfStatements,
+  body: SequenceOfStatements<false>,
   eof: EndOfFileToken
 ): SourceFile {
   const node = createNode<SourceFile>(SyntaxKind.SourceFile);
@@ -122,12 +122,12 @@ export function createStringLiteralExpression(
 }
 
 export function createVariableReferenceExpression(
-  id: IdentifierToken
+  name: IdentifierToken
 ): VariableReferenceExpression {
   const node = createNode<VariableReferenceExpression>(
     SyntaxKind.VariableReferenceExpression
   );
-  node.id = id;
+  node.name = name;
   return node;
 }
 
@@ -193,11 +193,11 @@ export function createExpressionStatement(
   return node;
 }
 
-export function createSequenceOfStatements(
+export function createSequenceOfStatements<T extends boolean>(
   statements: NodeArray<Statement>,
-  isExpression: boolean
-): SequenceOfStatements {
-  const node = createNode<SequenceOfStatements>(
+  isExpression: T
+): SequenceOfStatements<T> {
+  const node = createNode<SequenceOfStatements<T>>(
     SyntaxKind.SequenceOfStatements
   );
   node.statements = statements;
@@ -208,7 +208,7 @@ export function createSequenceOfStatements(
 export function createFunctionStatement(
   name: IdentifierToken,
   params: NodeArray<Parameter>,
-  body: SequenceOfStatements | ExpressionStatement
+  body: SequenceOfStatements<true> | ExpressionStatement
 ): FunctionStatement {
   const node = createNode<FunctionStatement>(SyntaxKind.FunctionStatement);
   node.name = name;
@@ -230,7 +230,7 @@ export function createContinueExpression(): ContinueExpression {
 export function createMethodSlot(
   name: IdentifierToken,
   params: NodeArray<Parameter>,
-  body: SequenceOfStatements | ExpressionStatement
+  body: SequenceOfStatements<true> | ExpressionStatement
 ): MethodSlot {
   const node = createNode<MethodSlot>(SyntaxKind.MethodSlot);
   node.name = name;
@@ -241,8 +241,8 @@ export function createMethodSlot(
 
 export function createIfExpression(
   condition: Expression,
-  thenStatement: SequenceOfStatements | ExpressionStatement,
-  elseStatement?: SequenceOfStatements | ExpressionStatement
+  thenStatement: SequenceOfStatements<true> | ExpressionStatement,
+  elseStatement?: SequenceOfStatements<true> | ExpressionStatement
 ): IfExpression {
   const node = createNode<IfExpression>(SyntaxKind.IfExpression);
   node.condition = condition;
@@ -310,13 +310,13 @@ export function createSetShorthand(
 }
 
 export function createVariableAssignmentExpression(
-  id: IdentifierToken,
+  expression: VariableReferenceExpression,
   value: Expression
 ): VariableAssignmentExpression {
   const node = createNode<VariableAssignmentExpression>(
     SyntaxKind.VariableAssignmentExpression
   );
-  node.id = id;
+  node.expression = expression;
   node.value = value;
   return node;
 }
@@ -350,7 +350,7 @@ export function createFunctionCallExpression(
 export function createFunctionExpression(
   name: IdentifierToken,
   params: NodeArray<Parameter>,
-  body: SequenceOfStatements | ExpressionStatement
+  body: SequenceOfStatements<true> | ExpressionStatement
 ) {
   const node = createNode<FunctionExpression>(SyntaxKind.FunctionExpression);
   node.name = name;
