@@ -34,7 +34,12 @@ import {
   Statement,
   StringLiteralExpression
 } from '../types';
-import { assertDef, frontAndTail, last, shorthandTokenToOperator } from '../utils';
+import {
+  assertDef,
+  frontAndTail,
+  last,
+  shorthandTokenToOperator
+} from '../utils';
 import { setupBuiltin } from './builtins';
 import { Environment, CallFrame, Context } from './types';
 import { assertArgumentsLength } from './utils';
