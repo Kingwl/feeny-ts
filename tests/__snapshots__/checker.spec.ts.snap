@@ -1,26 +1,1591 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checker Should work 1`] = `
+exports[`Checker should-work-with-arrays 1`] = `
+Array [
+  Object {
+    "kind": "ArraysExpression",
+    "pos": 0,
+    "type": "Object",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 7,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 11,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "ArraysExpression",
+    "pos": 14,
+    "type": "Object",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 21,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-binary-shorthand 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
-    "pos": 9,
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 10,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 18,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 21,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 25,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 27,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 31,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 33,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 37,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 39,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 43,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 45,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 49,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 51,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 55,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 57,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 61,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 63,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 68,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 70,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 75,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 77,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 82,
+    "type": "Unknown",
+  },
+]
+`;
+
+exports[`Checker should-work-with-break-and-continue 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "WhileExpression",
+    "pos": 10,
+    "type": "Null",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 16,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableAssignmentExpression",
+    "pos": 23,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 23,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 27,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 31,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 37,
+    "type": "Null",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 59,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IfExpression",
+    "pos": 66,
+    "type": "Union",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 69,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 74,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 85,
+    "type": "Never",
+  },
+  Object {
+    "kind": "ContinueExpression",
+    "pos": 85,
+    "type": "Never",
+  },
+  Object {
+    "kind": "IfExpression",
+    "pos": 98,
+    "type": "Union",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 101,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 106,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 117,
+    "type": "Never",
+  },
+  Object {
+    "kind": "BreakExpression",
+    "pos": 117,
+    "type": "Never",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 127,
+    "type": "Null",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 148,
+    "type": "Null",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 164,
+    "type": "Unknown",
+  },
+]
+`;
+
+exports[`Checker should-work-with-function 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "type": "Function",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 7,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 10,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 13,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 22,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 22,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 26,
+    "type": "Unknown",
+  },
+]
+`;
+
+exports[`Checker should-work-with-function-call 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "type": "Function",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 7,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 15,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 15,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "FunctionCallExpression",
+    "pos": 18,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 18,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 20,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-function-expression 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 18,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 26,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 26,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 30,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 33,
+    "type": "Null",
+  },
+  Object {
+    "kind": "FunctionCallExpression",
+    "pos": 44,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 44,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 47,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-get-shorthand 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ArraysExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 14,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "GetShorthand",
+    "pos": 18,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 18,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 20,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-global-variable 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-if-expression 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IfExpression",
+    "pos": 11,
+    "type": "Union",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 14,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 21,
+    "type": "Null",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 21,
+    "type": "Null",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 43,
+    "type": "Null",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 43,
+    "type": "Null",
+  },
+]
+`;
+
+exports[`Checker should-work-with-if-expression-with-if-only 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IfExpression",
+    "pos": 11,
+    "type": "Union",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 14,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 21,
+    "type": "Null",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 21,
+    "type": "Null",
+  },
+]
+`;
+
+exports[`Checker should-work-with-integer 1`] = `
+Array [
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 0,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 2,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 5,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 16,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 19,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-local-variable 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "type": "Function",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 16,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 16,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 24,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-method-call 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 20,
+    "type": "Function",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 41,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 41,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "MethodCallExpression",
+    "pos": 44,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 44,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 48,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-nested-function 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 10,
+    "type": "Function",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 19,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 27,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 27,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 35,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 41,
+    "type": "Function",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 50,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 62,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 62,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 66,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 70,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 74,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 78,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 84,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 88,
+    "type": "Null",
+  },
+  Object {
+    "kind": "FunctionCallExpression",
+    "pos": 99,
+    "type": "Never",
+  },
+  Object {
+    "kind": "FunctionCallExpression",
+    "pos": 99,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 99,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 103,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 106,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-null 1`] = `
+Array [
+  Object {
+    "kind": "NullExpression",
+    "pos": 0,
+    "type": "Never",
+  },
+]
+`;
+
+exports[`Checker should-work-with-object-without-extends 1`] = `
+Array [
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 0,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 12,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 20,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 27,
+    "type": "Function",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 47,
+    "type": "Never",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 47,
+    "type": "Never",
+  },
+  Object {
+    "kind": "ThisExpression",
+    "pos": 47,
+    "type": "Never",
+  },
+]
+`;
+
+exports[`Checker should-work-with-objects 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 28,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 32,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 39,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 47,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 55,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 62,
+    "type": "Function",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 82,
+    "type": "Never",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 82,
+    "type": "Never",
+  },
+  Object {
+    "kind": "ThisExpression",
+    "pos": 82,
+    "type": "Never",
+  },
+]
+`;
+
+exports[`Checker should-work-with-objects-and-slots 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 28,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 32,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 39,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 47,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 55,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 62,
+    "type": "Function",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 89,
+    "type": "Never",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 89,
+    "type": "Never",
+  },
+  Object {
+    "kind": "ThisExpression",
+    "pos": 89,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 98,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 102,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 106,
+    "type": "Unknown",
+  },
+]
+`;
+
+exports[`Checker should-work-with-printf 1`] = `
+Array [
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 0,
+    "type": "Null",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 30,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-set-shorthand 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ArraysExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 14,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "SetShorthand",
+    "pos": 19,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 19,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 21,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 26,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-slot-assignment 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 32,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 35,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 43,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 55,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 63,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 79,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 87,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 107,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 115,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "SlotAssignmentExpression",
+    "pos": 118,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 118,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 128,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "SlotAssignmentExpression",
+    "pos": 138,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 136,
+    "type": "Never",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 132,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 132,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 142,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-slot-lookup 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 32,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 35,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 43,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 55,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 63,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 79,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 87,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 107,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 115,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 119,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 119,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 134,
+    "type": "Never",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 132,
+    "type": "Never",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 128,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 128,
+    "type": "Unknown",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-arrays 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
     "type": "Object",
   },
   Object {
     "kind": "ArraysExpression",
-    "pos": 35,
+    "pos": 24,
     "type": "Object",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 30,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 34,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-function-expression 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 35,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 35,
+    "type": "Null",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 53,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-function-parameter 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "type": "Function",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 9,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 37,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 37,
+    "type": "Unknown",
   },
   Object {
     "kind": "IntegerLiteralExpression",
     "pos": 41,
     "type": "Integer",
   },
+]
+`;
+
+exports[`Checker should-work-with-type-function-statement 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "type": "Function",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 24,
+    "type": "Never",
+  },
+  Object {
+    "kind": "PrintingExpression",
+    "pos": 24,
+    "type": "Null",
+  },
+  Object {
+    "kind": "NullExpression",
+    "pos": 42,
+    "type": "Never",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-integer 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Integer",
+  },
   Object {
     "kind": "IntegerLiteralExpression",
-    "pos": 44,
+    "pos": 17,
     "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-method-signature 1`] = `
+Array [
+  Object {
+    "kind": "TypeDefDeclaration",
+    "pos": 0,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlotSignatureDeclaration",
+    "pos": 17,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "MethodSlotSignatureDeclaration",
+    "pos": 36,
+    "type": "Function",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-method-slot 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 39,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 45,
+    "type": "Function",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 88,
+    "type": "Never",
+  },
+  Object {
+    "kind": "SlotLookupExpression",
+    "pos": 88,
+    "type": "Never",
+  },
+  Object {
+    "kind": "ThisExpression",
+    "pos": 88,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 99,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 103,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-null 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Null",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 14,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-typedef 1`] = `
+Array [
+  Object {
+    "kind": "TypeDefDeclaration",
+    "pos": 0,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlotSignatureDeclaration",
+    "pos": 17,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-variable-reference 1`] = `
+Array [
+  Object {
+    "kind": "TypeDefDeclaration",
+    "pos": 0,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlotSignatureDeclaration",
+    "pos": 17,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 33,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 46,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 58,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 66,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-type-variable-slot 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "ObjectsExpression",
+    "pos": 8,
+    "type": "Object",
+  },
+  Object {
+    "kind": "VariableSlot",
+    "pos": 20,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 39,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-variable-assignment 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableAssignmentExpression",
+    "pos": 11,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 11,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 15,
+    "type": "Integer",
+  },
+]
+`;
+
+exports[`Checker should-work-with-variable-reference 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 10,
+    "type": "Unknown",
+  },
+]
+`;
+
+exports[`Checker should-work-with-while-expression 1`] = `
+Array [
+  Object {
+    "kind": "VariableStatement",
+    "pos": 0,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 8,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 10,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 18,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "WhileExpression",
+    "pos": 22,
+    "type": "Null",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 28,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableAssignmentExpression",
+    "pos": 35,
+    "type": "Never",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 35,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 39,
+    "type": "Unknown",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 43,
+    "type": "Unknown",
   },
 ]
 `;

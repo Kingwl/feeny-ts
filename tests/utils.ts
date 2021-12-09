@@ -126,6 +126,8 @@ interface CheckResult {
 export function checkCode (text: string) {
     const parser = createParser(text);
     const file = parser.parse();
+    const binder = createBinder(file);
+    binder.bindFile();
     const checker = createChecker(file);
     const { check } = checker.checkFile();
 

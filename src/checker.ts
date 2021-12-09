@@ -263,7 +263,11 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkTypeReferenceTypeNode(node: TypeReferenceTypeNode): Type {
-        return errorType
+        const symbol = resolveName(node.name.text, node, SymbolFlag.Value);
+        if (!symbol) {
+            return unknownType
+        }
+        return checkDeclaration(symbol.declaration) 
     }
 
     function checkArraysTypeNode(node: ArraysTypeNode): Type {
