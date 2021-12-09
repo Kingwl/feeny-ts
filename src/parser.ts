@@ -289,14 +289,12 @@ export function createParser(text: string) {
   function parseArraysTypeNode() {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.ArraysKeyword);
-    parseExpectdToken(SyntaxKind.LessThanToken);
-    const size = parseExpectdToken<IntegerLiteralToken>(SyntaxKind.IntegerLiteralToken)
-    parseOptionalToken(SyntaxKind.CommaToken);
+    parseExpectdToken(SyntaxKind.OpenParenToken);
     const type = parseTypeNode();
-    parseExpectdToken(SyntaxKind.GreaterThanToken);
+    parseExpectdToken(SyntaxKind.CloseParenToken);
 
     return finishNode(
-      createArraysTypeNode(size, type),
+      createArraysTypeNode(type),
       pos,
       scanner.getCurrentPos()
     );

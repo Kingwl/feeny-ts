@@ -437,9 +437,8 @@ export function createNullTypeNode() {
   return node;
 }
 
-export function createArraysTypeNode(size: IntegerLiteralToken, type: TypeNode) {
+export function createArraysTypeNode(type: TypeNode) {
   const node = createNode<ArraysTypeNode>(SyntaxKind.ArraysTypeNode);
-  node.size = size;
   node.type = type;
   return node;
 }

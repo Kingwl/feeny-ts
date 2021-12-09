@@ -1,1 +1,1 @@
-var a: array<10, integer> = array(10, 0)
+var a: array(integer) = array(10, 0)

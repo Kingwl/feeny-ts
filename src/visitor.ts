@@ -116,7 +116,7 @@ export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefi
                 return undefined
             case SyntaxKind.ArraysTypeNode:
                 assertKind<ArraysTypeNode>(node);
-                return cb(node.size) || cb(node.type)
+                return cb(node.type)
             default:
                 throw new Error(`Unknown node kind: ${node.__debugKind}`)
         }

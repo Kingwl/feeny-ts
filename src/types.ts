@@ -391,25 +391,27 @@ export interface ParameterDeclaration extends NamedDeclaration {
   type?: TypeNode
 }
 
-export interface FunctionBase {
+export interface ParamsAndReturnType {
   params: NodeArray<ParameterDeclaration>;
-  body: SequenceOfStatements<true> | ExpressionStatement;
   type?: TypeNode;
 }
 
-export interface ObjectSlot extends ASTNode {
+export interface FunctionBase extends ParamsAndReturnType {
+  body: SequenceOfStatements<true> | ExpressionStatement;
+}
+
+export interface ObjectSlot extends NamedDeclaration {
   _objectSlotBrand: never;
 }
 
-export interface VariableSlot extends NamedDeclaration, ObjectSlot {
+export interface VariableSlot extends ObjectSlot {
   kind: SyntaxKind.VariableSlot;
   type?: TypeNode;
   initializer: Expression;
 }
 
-export interface MethodSlot extends NamedDeclaration, ObjectSlot, FunctionBase {
+export interface MethodSlot extends ObjectSlot, FunctionBase {
   kind: SyntaxKind.MethodSlot;
-  type?: TypeNode;
 }
 export interface Statement extends ASTNode {
   _statementBrand: never;
@@ -447,7 +449,6 @@ export interface TypeReferenceTypeNode extends TypeNode {
 
 export interface ArraysTypeNode extends TypeNode {
   kind: SyntaxKind.ArraysTypeNode;
-  size: IntegerLiteralToken
   type: TypeNode;
 }
 
@@ -474,7 +475,7 @@ export interface VariableSlotSignatureDeclaration extends ObjectSlotSignature {
   type: TypeNode
 }
 
-export interface MethodSlotSignatureDeclaration extends ObjectSlotSignature {
+export interface MethodSlotSignatureDeclaration extends ObjectSlotSignature, ParamsAndReturnType {
   kind: SyntaxKind.MethodSlotSignatureDeclaration
   params: NodeArray<ParameterDeclaration>
   type: TypeNode

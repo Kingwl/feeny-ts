@@ -1,4 +1,5 @@
-import { VariableStatement, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot } from "./types";
+import { FunctionBase, ParamsAndReturnType } from ".";
+import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration } from "./types";
 import { assertKind, first, frontAndTail, isExpression } from "./utils";
 import { forEachChild } from './visitor'
 
@@ -41,19 +42,19 @@ interface StringType extends Type {
 
 interface ObjectType extends Type {
     kind: TypeKind.Object
-    properties?: Map<string, Type>
+    properties: Map<string, Type>
 }
 
 interface FunctionType extends Type {
     kind: TypeKind.Function
     thisType?: Type
-    parameters?: Type[]
-    returnType?: Type
+    paramTypes: Type[]
+    returnType: Type
 }
 
 interface UnionType extends Type {
     kind: TypeKind.Union
-    types?: Type[]
+    types: Type[]
 }
 
 export function createChecker(file: SourceFile) {
@@ -100,10 +101,8 @@ export function createChecker(file: SourceFile) {
                 return checkVariableStatement(node as VariableStatement)
             case SyntaxKind.SequenceOfStatements:
                 return checkSequenceOfStatements(node as SequenceOfStatements);
-            case SyntaxKind.MethodSlot:
-                return checkMethodSlot(node as MethodSlot);
-            case SyntaxKind.VariableSlot:
-                return checkVariableSlot(node as VariableSlot);
+            case SyntaxKind.TypeDefDeclaration:
+                return checkTypeDefDeclaration(node as TypeDefDeclaration);
             default:
                 forEachChild(node, check);
                 return undefined;
@@ -156,7 +155,7 @@ export function createChecker(file: SourceFile) {
                 return checkParenExpression(node);
             case SyntaxKind.FunctionExpression:
                 assertKind<FunctionExpression>(node)
-                return checkFunctionLike(node);
+                return checkFunctionExpression(node);
             case SyntaxKind.BreakExpression:
             case SyntaxKind.ContinueExpression:
                 assertKind<BreakExpression | ContinueExpression>(node);
@@ -178,6 +177,83 @@ export function createChecker(file: SourceFile) {
 
     function isRelatedTo(source: Type, target: Type) {
         return true
+    }
+
+    function checkVariableSlotSignatureOrMethodSlotSignature(node: ObjectSlotSignature): Type {
+        switch (node.kind) {
+            case SyntaxKind.VariableSlotSignatureDeclaration:
+                return checkVariableSlotSignature(node as VariableSlotSignatureDeclaration);
+            case SyntaxKind.MethodSlotSignatureDeclaration:
+                return checkMethodSlotSignature(node as MethodSlotSignatureDeclaration);
+            default:
+                throw new Error(`Unknown kind ${node.__debugKind}`)
+        }
+    }
+
+    function checkVariableSlotOrMethodSlot(node: ObjectSlot) {
+        switch (node.kind) {
+            case SyntaxKind.VariableSlot:
+                return checkVariableSlot(node as VariableSlot);
+            case SyntaxKind.MethodSlot:
+                return checkMethodSlot(node as MethodSlot);
+            default:
+                throw new Error(`Unknown kind ${node.__debugKind}`)
+        }
+    }
+
+    function checkTypeNode(node: TypeNode): Type {
+        switch (node.kind) {
+            case SyntaxKind.NullTypeNode:
+                return nullType;
+            case SyntaxKind.IntegerTypeNode:
+                return integerType;
+            case SyntaxKind.ArraysTypeNode:
+                return checkArraysTypeNode(node as ArraysTypeNode);
+            case SyntaxKind.TypeReferenceTypeNode:
+                return checkTypeReferenceTypeNode(node as TypeReferenceTypeNode);
+            default:
+                throw new Error(`Unknown kind ${node.__debugKind}`)
+        }
+    }
+
+    function checkTypeReferenceTypeNode(node: TypeReferenceTypeNode): Type {
+        return errorType
+    }
+
+    function checkArraysTypeNode(node: ArraysTypeNode): Type {
+        const type = checkTypeNode(node.type);
+        return createArrayType(type)
+    }
+
+    function checkMethodSlot(node: MethodSlot) {
+        const type = checkParamsAndReturnType(node)
+        check(node.body);
+        return type;
+    }
+    
+    function checkVariableSlot(node: VariableSlot) {
+        if (node.type) {
+            return checkTypeNode(node.type)
+        }
+
+        return unknownType
+    }
+
+    function checkVariableSlotSignature(node: VariableSlotSignatureDeclaration): Type {
+        return checkTypeNode(node.type)
+    }
+
+    function checkMethodSlotSignature(node: MethodSlotSignatureDeclaration): Type {
+        return checkParamsAndReturnType(node);
+    }
+
+    function checkTypeDefDeclaration(node: TypeDefDeclaration) {
+        const properties = new Map<string, Type>();
+        node.slots.forEach(slot => {
+            const slotType = checkVariableSlotSignatureOrMethodSlotSignature(slot);
+            properties.set(slot.name.text, slotType);
+        })
+        return createObjectType(properties);
     }
 
     function checkVariableAssignmentExpression(node: VariableAssignmentExpression) {
@@ -210,8 +286,21 @@ export function createChecker(file: SourceFile) {
         return neverType
     }
 
-    function checkFunctionLike(node: FunctionExpression | FunctionStatement) {
-        return errorType
+    function checkParameterDeclaration(node: ParameterDeclaration) {
+        if (node.type) {
+            checkTypeNode(node.type)
+        }
+        return unknownType
+    }
+
+    function checkParamsAndReturnType(node: ParamsAndReturnType) {
+        const paramTypes: Type[] = [];
+        node.params.forEach(param => {
+            const paramType = checkParameterDeclaration(param)
+            paramTypes.push(paramType)
+        })
+        const returnType = node.type ? checkTypeNode(node.type) : unknownType;
+        return createFunctionType(undefined, paramTypes, returnType);
     }
 
     function checkParenExpression(node: ParenExpression) {
@@ -242,7 +331,12 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkObjectsExpression(node: ObjectsExpression) {
-        return createObjectType();
+        const properties = new Map<string, Type>();
+        node.slots.forEach(slot => {
+            const slotType = checkVariableSlotOrMethodSlot(slot);
+            properties.set(slot.name.text, slotType);
+        })
+        return createObjectType(properties);
     }
 
     function checkArraysExpression(node: ArraysExpression) {
@@ -258,11 +352,22 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkFunctionStatement(node: FunctionStatement): Type {
-        return errorType
+        const type = checkParamsAndReturnType(node)
+        check(node.body);
+        return type;
+    }
+
+    function checkFunctionExpression(node: FunctionExpression) {
+        const type = checkParamsAndReturnType(node)
+        check(node.body);
+        return type;
     }
 
     function checkVariableStatement(node: VariableStatement): Type {
-        return errorType
+        if (node.type) {
+            return checkTypeNode(node.type)
+        }
+        return unknownType
     }
 
     function checkExpressionStatement(node: ExpressionStatement) {
@@ -308,14 +413,6 @@ export function createChecker(file: SourceFile) {
     function checkSetShorthand(node: SetShorthand): Type {
         return errorType
     }
-    
-    function checkMethodSlot(arg0: MethodSlot) {
-        return errorType
-    }
-    
-    function checkVariableSlot(arg0: VariableSlot) {
-        return errorType
-    }
 
     function createUnknownType () {
         const type: UnknownType = {
@@ -357,17 +454,21 @@ export function createChecker(file: SourceFile) {
         return type
     }
     
-    function createObjectType () {
+    function createObjectType (properties: Map<string, Type>) {
         const type: ObjectType = {
-            kind: TypeKind.Object
+            kind: TypeKind.Object,
+            properties
         }
         setupTypeDebugInfo(type);
         return type
     }
     
-    function createFunctionType () {
+    function createFunctionType (thisType: Type | undefined, paramTypes: Type[], returnType: Type) {
         const type: FunctionType = {
-            kind: TypeKind.Function
+            kind: TypeKind.Function,
+            thisType,
+            paramTypes,
+            returnType
         }
         setupTypeDebugInfo(type);
         return type
@@ -399,40 +500,40 @@ export function createChecker(file: SourceFile) {
     }
 
     function createArrayType (itemType: Type) {
-        const arrayType = createObjectType();
+        const properties = new Map<string, Type>();
+        const arrayType = createObjectType(properties);
+
         const getMethod = createGetMethod();
         const setMethod = createSetMethod();
         const lengthMethod = createLengthMethod();
 
-        const properties = new Map<string, Type>();
         properties.set("get", getMethod);
         properties.set("set", setMethod);
         properties.set("length", lengthMethod);
-        arrayType.properties = properties;
         return arrayType
 
         function createGetMethod () {
-            const type = createFunctionType();
-            type.parameters = [integerType];
-            type.thisType = arrayType;
-            type.returnType = unknownType;
-            return type
+            return createFunctionType(
+                arrayType,
+                [integerType],
+                itemType
+            )
         }
 
         function createSetMethod () {
-            const type = createFunctionType();
-            type.parameters = [integerType, unknownType];
-            type.thisType = arrayType;
-            type.returnType = unknownType;
-            return type
+            return createFunctionType(
+                arrayType,
+                [integerType, itemType],
+                nullType
+            )
         }
 
         function createLengthMethod () {
-            const type = createFunctionType();
-            type.parameters = [];
-            type.thisType = arrayType;
-            type.returnType = integerType;
-            return type
+            return createFunctionType(
+                arrayType,
+                [],
+                integerType
+            );
         }
     }
 }
