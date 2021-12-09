@@ -490,11 +490,10 @@ export enum SymbolFlag {
   MethodSlot = 1 << 4,
   AnomymousObject = 1 << 5,
   TypeDef = 1 << 6,
-  VariableSlotSignature = 1 << 7,
-  MethodSlotSignature = 1 << 8,
 
   VariableLike = Variable | Parameter | VariableSlot,
   FunctionLike = Function | MethodSlot,
+  Value = Variable | Parameter | Function | VariableSlot | MethodSlot | AnomymousObject,
 }
 
 

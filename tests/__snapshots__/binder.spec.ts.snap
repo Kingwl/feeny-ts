@@ -747,12 +747,12 @@ Array [
     "symbols": Array [
       Object {
         "declarationPos": 17,
-        "flags": "VariableSlotSignature",
+        "flags": "Variable",
         "name": "a",
       },
       Object {
         "declarationPos": 36,
-        "flags": "MethodSlotSignature",
+        "flags": "MethodSlot",
         "name": "f",
       },
     ],
@@ -841,7 +841,7 @@ Array [
     "symbols": Array [
       Object {
         "declarationPos": 17,
-        "flags": "VariableSlotSignature",
+        "flags": "Variable",
         "name": "a",
       },
     ],
@@ -879,7 +879,7 @@ Array [
     "symbols": Array [
       Object {
         "declarationPos": 17,
-        "flags": "VariableSlotSignature",
+        "flags": "Variable",
         "name": "a",
       },
     ],

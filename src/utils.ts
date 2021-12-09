@@ -495,14 +495,6 @@ export function symbolFlagToDisplayText (flags: SymbolFlag) {
       flags &= ~SymbolFlag.TypeDef;
       text.push(SymbolFlag[SymbolFlag.TypeDef]);
   }
-  if (flags & SymbolFlag.MethodSlotSignature) {
-      flags &= ~SymbolFlag.MethodSlotSignature;
-      text.push(SymbolFlag[SymbolFlag.MethodSlotSignature]);
-  }
-  if (flags & SymbolFlag.VariableSlotSignature) {
-      flags &= ~SymbolFlag.VariableSlotSignature;
-      text.push(SymbolFlag[SymbolFlag.VariableSlotSignature]);
-  }
 
   assert(flags === SymbolFlag.None, `Unknown symbol flag: ${flags}`);
   return text.join(' | ');
@@ -513,21 +505,19 @@ export function getDeclarationSymbolFlags (node: ASTNode): SymbolFlag {
       case SyntaxKind.VariableSlot:
           return SymbolFlag.VariableSlot;
       case SyntaxKind.VariableStatement:
-          return SymbolFlag.Variable;
+      case SyntaxKind.VariableSlotSignatureDeclaration:
+        return SymbolFlag.Variable;
       case SyntaxKind.ParameterDeclaration:
           return SymbolFlag.Parameter;
       case SyntaxKind.FunctionStatement:
           return SymbolFlag.Function;
       case SyntaxKind.MethodSlot:
-          return SymbolFlag.MethodSlot;
+      case SyntaxKind.MethodSlotSignatureDeclaration:
+        return SymbolFlag.MethodSlot;
       case SyntaxKind.ObjectsExpression:
           return SymbolFlag.AnomymousObject;
       case SyntaxKind.TypeDefDeclaration:
           return SymbolFlag.TypeDef;
-      case SyntaxKind.MethodSlotSignatureDeclaration:
-          return SymbolFlag.MethodSlotSignature;
-      case SyntaxKind.VariableSlotSignatureDeclaration:
-          return SymbolFlag.VariableSlotSignature;  
       default:
           return SymbolFlag.None;
   }

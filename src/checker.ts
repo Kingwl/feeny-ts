@@ -1,6 +1,6 @@
-import { FunctionBase, ParamsAndReturnType } from ".";
-import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration } from "./types";
-import { assertKind, first, frontAndTail, isExpression } from "./utils";
+import { AllDeclaration, Declaration, FunctionBase, ParamsAndReturnType, Symbol, SymbolFlag } from ".";
+import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression } from "./types";
+import { assertKind, first, frontAndTail, isDeclaration, isDef, isExpression } from "./utils";
 import { forEachChild } from './visitor'
 
 enum TypeKind {
@@ -94,18 +94,40 @@ export function createChecker(file: SourceFile) {
             return checkExpression(node)
         }
 
+        if (isDeclaration(node)) {
+            return checkDeclaration(node)
+        }
+
+        if (node.kind === SyntaxKind.SequenceOfStatements) {
+            return checkSequenceOfStatements(node as SequenceOfStatements);
+        }
+
+        forEachChild(node, check);
+        return undefined;
+    }
+
+    function checkDeclaration (node: Declaration): Type {
         switch (node.kind) {
             case SyntaxKind.FunctionStatement:
                 return checkFunctionStatement(node as FunctionStatement)
             case SyntaxKind.VariableStatement:
                 return checkVariableStatement(node as VariableStatement)
-            case SyntaxKind.SequenceOfStatements:
-                return checkSequenceOfStatements(node as SequenceOfStatements);
             case SyntaxKind.TypeDefDeclaration:
                 return checkTypeDefDeclaration(node as TypeDefDeclaration);
+            case SyntaxKind.MethodSlot:
+                return checkMethodSlot(node as MethodSlot);
+            case SyntaxKind.VariableSlot:
+                return checkVariableSlot(node as VariableSlot);
+            case SyntaxKind.MethodSlotSignatureDeclaration:
+                return checkMethodSlotSignature(node as MethodSlotSignatureDeclaration);
+            case SyntaxKind.VariableSlotSignatureDeclaration:
+                return checkVariableSlotSignature(node as VariableSlotSignatureDeclaration);
+            case SyntaxKind.ParameterDeclaration:
+                return checkParameterDeclaration(node as ParameterDeclaration);
+            case SyntaxKind.ObjectsExpression:
+                return checkObjectsExpression(node as ObjectsExpression);
             default:
-                forEachChild(node, check);
-                return undefined;
+                throw new Error(`Unknown declaration kind ${node}`)
         }
     }
 
@@ -141,6 +163,9 @@ export function createChecker(file: SourceFile) {
             case SyntaxKind.VariableAssignmentExpression:
                 assertKind<VariableAssignmentExpression>(node)
                 return checkVariableAssignmentExpression(node);
+            case SyntaxKind.VariableReferenceExpression:
+                assertKind<VariableReferenceExpression>(node);
+                return checkVariableReferenceExpression(node);
             case SyntaxKind.IfExpression:
                 assertKind<IfExpression>(node)
                 return checkIfExpression(node);
@@ -179,6 +204,14 @@ export function createChecker(file: SourceFile) {
         return true
     }
 
+    function checkVariableReferenceExpression(node: VariableReferenceExpression): Type {
+        const symbol = resolveName(node.name.text, node, SymbolFlag.Value);
+        if (!symbol) {
+            return unknownType
+        }
+        return checkDeclaration(symbol.declaration) 
+    }
+
     function checkVariableSlotSignatureOrMethodSlotSignature(node: ObjectSlotSignature): Type {
         switch (node.kind) {
             case SyntaxKind.VariableSlotSignatureDeclaration:
@@ -214,6 +247,19 @@ export function createChecker(file: SourceFile) {
             default:
                 throw new Error(`Unknown kind ${node.__debugKind}`)
         }
+    }
+
+    function resolveName (name: string, location: ASTNode, flag: SymbolFlag): Symbol | undefined {
+        let current: ASTNode | undefined = location
+        while (current) {
+            const matched = current.locals?.get(name);
+            if (isDef(matched) && matched.flags & flag) {
+                return matched;
+            }
+
+            current = current.parent
+        }
+        return undefined;
     }
 
     function checkTypeReferenceTypeNode(node: TypeReferenceTypeNode): Type {
