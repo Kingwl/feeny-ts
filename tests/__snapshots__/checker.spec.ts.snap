@@ -35,7 +35,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -45,7 +45,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 10,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -55,102 +55,102 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 21,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 25,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 27,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 31,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 33,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 37,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 39,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 43,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 45,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 49,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 51,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 55,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 57,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 61,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 63,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 68,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 70,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 75,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 77,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 82,
-    "type": "Unknown",
+    "type": "Integer",
   },
 ]
 `;
@@ -160,7 +160,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -175,22 +175,22 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 16,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableAssignmentExpression",
     "pos": 23,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 23,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 27,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -205,7 +205,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 59,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IfExpression",
@@ -215,7 +215,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 69,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -240,7 +240,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 101,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -270,7 +270,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 164,
-    "type": "Unknown",
+    "type": "Integer",
   },
 ]
 `;
@@ -340,12 +340,12 @@ Array [
   Object {
     "kind": "FunctionCallExpression",
     "pos": 18,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 18,
-    "type": "Unknown",
+    "type": "Function",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -360,7 +360,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Function",
   },
   Object {
     "kind": "ParameterDeclaration",
@@ -390,12 +390,12 @@ Array [
   Object {
     "kind": "FunctionCallExpression",
     "pos": 44,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 44,
-    "type": "Unknown",
+    "type": "Function",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -410,7 +410,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ArraysExpression",
@@ -430,7 +430,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 18,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -445,7 +445,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -460,7 +460,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -475,7 +475,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 14,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "SequenceOfStatements",
@@ -505,7 +505,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -520,7 +520,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 14,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "SequenceOfStatements",
@@ -580,7 +580,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 16,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -595,7 +595,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -620,12 +620,12 @@ Array [
   Object {
     "kind": "MethodCallExpression",
     "pos": 44,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 44,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -640,7 +640,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -660,12 +660,12 @@ Array [
   Object {
     "kind": "SequenceOfStatements",
     "pos": 27,
-    "type": "Unknown",
+    "type": "Function",
   },
   Object {
     "kind": "VariableStatement",
     "pos": 27,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -690,7 +690,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 62,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
@@ -700,7 +700,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 70,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
@@ -715,7 +715,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 84,
-    "type": "Unknown",
+    "type": "Function",
   },
   Object {
     "kind": "PrintingExpression",
@@ -730,12 +730,12 @@ Array [
   Object {
     "kind": "FunctionCallExpression",
     "pos": 99,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 99,
-    "type": "Unknown",
+    "type": "Function",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -795,7 +795,7 @@ Array [
   Object {
     "kind": "ThisExpression",
     "pos": 47,
-    "type": "Never",
+    "type": "Unknown",
   },
 ]
 `;
@@ -805,7 +805,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -830,7 +830,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 39,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "VariableSlot",
@@ -860,7 +860,7 @@ Array [
   Object {
     "kind": "ThisExpression",
     "pos": 82,
-    "type": "Never",
+    "type": "Unknown",
   },
 ]
 `;
@@ -870,7 +870,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -895,7 +895,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 39,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "VariableSlot",
@@ -925,7 +925,7 @@ Array [
   Object {
     "kind": "ThisExpression",
     "pos": 89,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
@@ -965,7 +965,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ArraysExpression",
@@ -980,12 +980,12 @@ Array [
   Object {
     "kind": "SetShorthand",
     "pos": 19,
-    "type": "Never",
+    "type": "Null",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 19,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1005,7 +1005,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1025,7 +1025,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 35,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1070,7 +1070,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 118,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1090,12 +1090,12 @@ Array [
   Object {
     "kind": "SlotLookupExpression",
     "pos": 132,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 132,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1110,7 +1110,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1130,7 +1130,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 35,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1170,12 +1170,12 @@ Array [
   Object {
     "kind": "SlotLookupExpression",
     "pos": 119,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 119,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "SlotLookupExpression",
@@ -1190,12 +1190,12 @@ Array [
   Object {
     "kind": "SlotLookupExpression",
     "pos": 128,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 128,
-    "type": "Unknown",
+    "type": "Object",
   },
 ]
 `;
@@ -1225,12 +1225,72 @@ Array [
 ]
 `;
 
+exports[`Checker should-work-with-type-function-call 1`] = `
+Array [
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "type": "Function",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 9,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "ParameterDeclaration",
+    "pos": 21,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 50,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 50,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 54,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableStatement",
+    "pos": 57,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "FunctionCallExpression",
+    "pos": 65,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "VariableReferenceExpression",
+    "pos": 65,
+    "type": "Function",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 69,
+    "type": "Integer",
+  },
+  Object {
+    "kind": "IntegerLiteralExpression",
+    "pos": 72,
+    "type": "Integer",
+  },
+]
+`;
+
 exports[`Checker should-work-with-type-function-expression 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Function",
   },
   Object {
     "kind": "SequenceOfStatements",
@@ -1260,17 +1320,17 @@ Array [
   Object {
     "kind": "ParameterDeclaration",
     "pos": 9,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "SequenceOfStatements",
     "pos": 37,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 37,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1345,7 +1405,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1380,7 +1440,7 @@ Array [
   Object {
     "kind": "ThisExpression",
     "pos": 88,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
@@ -1465,7 +1525,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1490,7 +1550,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1505,7 +1565,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 11,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1520,7 +1580,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1530,7 +1590,7 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 10,
-    "type": "Unknown",
+    "type": "Integer",
   },
 ]
 `;
@@ -1540,7 +1600,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 0,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1550,7 +1610,7 @@ Array [
   Object {
     "kind": "VariableStatement",
     "pos": 10,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1565,27 +1625,27 @@ Array [
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 28,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableAssignmentExpression",
     "pos": 35,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 35,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 39,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
     "pos": 43,
-    "type": "Unknown",
+    "type": "Integer",
   },
 ]
 `;

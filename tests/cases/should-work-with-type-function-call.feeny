@@ -1,0 +1,4 @@
+defn add(x: integer, y: integer) -> integer :
+    x + y
+
+var a = add(1, 2)

@@ -34,7 +34,7 @@ import {
   Statement,
   StringLiteralExpression
 } from '../types';
-import { assertDef, frontAndTail, last } from '../utils';
+import { assertDef, frontAndTail, last, shorthandTokenToOperator } from '../utils';
 import { setupBuiltin } from './builtins';
 import { Environment, CallFrame, Context } from './types';
 import { assertArgumentsLength } from './utils';
@@ -374,33 +374,6 @@ export function createInterpreter(file: SourceFile, context: Context) {
 
     const args = expr.args.map(evaluateExpression);
     return callFunction(left, getFunc, args);
-  }
-
-  function shorthandTokenToOperator(kind: BinaryShorthandTokenSyntaxKind) {
-    switch (kind) {
-      case SyntaxKind.AddToken:
-        return 'add';
-      case SyntaxKind.SubToken:
-        return 'sub';
-      case SyntaxKind.MulToken:
-        return 'mul';
-      case SyntaxKind.DivToken:
-        return 'div';
-      case SyntaxKind.ModToken:
-        return 'mod';
-      case SyntaxKind.LessThanToken:
-        return 'lt';
-      case SyntaxKind.GreaterThanToken:
-        return 'gt';
-      case SyntaxKind.LessEqualsThanToken:
-        return 'le';
-      case SyntaxKind.GreaterEqualsThanToken:
-        return 'ge';
-      case SyntaxKind.EqualsEqualsToken:
-        return 'eq';
-      default:
-        throw new Error('Invalid operator: ' + SyntaxKind[kind]);
-    }
   }
 
   function evaluateThisExpression(expr: ThisExpression) {

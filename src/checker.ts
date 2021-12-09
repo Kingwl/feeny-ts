@@ -1,6 +1,6 @@
-import { AllDeclaration, Declaration, FunctionBase, ParamsAndReturnType, Symbol, SymbolFlag } from ".";
+import { AllDeclaration, BinaryShorthandToken, Declaration, FunctionBase, NodeArray, ParamsAndReturnType, Symbol, SymbolFlag } from ".";
 import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression } from "./types";
-import { assertKind, first, frontAndTail, isDeclaration, isDef, isExpression } from "./utils";
+import { assertKind, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
 import { forEachChild } from './visitor'
 
 enum TypeKind {
@@ -8,6 +8,7 @@ enum TypeKind {
     Never,
     Null,
     Integer,
+    Boolean,
     String,
     Object,
     Function,
@@ -34,6 +35,10 @@ interface NullType extends Type {
 
 interface IntegerType extends Type {
     kind: TypeKind.Integer
+}
+
+interface BooleanType extends Type {
+    kind: TypeKind.Boolean
 }
 
 interface StringType extends Type {
@@ -64,6 +69,7 @@ export function createChecker(file: SourceFile) {
     const nullType = createNullType();
     const integerType = createIntegerType();
     const stringType = createStringType();
+    const booleanType = createBooleanType();
 
     const typeCheckCache = new Map<ASTNode, Type | undefined>();
 
@@ -338,7 +344,7 @@ export function createChecker(file: SourceFile) {
 
     function checkParameterDeclaration(node: ParameterDeclaration) {
         if (node.type) {
-            checkTypeNode(node.type)
+            return checkTypeNode(node.type)
         }
         return unknownType
     }
@@ -358,11 +364,28 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkThisExpression(node: ThisExpression) {
-        return errorType
+        return unknownType
+    }
+
+    function checkFunctionCallLike (type: Type, args: Type[]) {
+        if (type.kind !== TypeKind.Function) {
+            return errorType
+        }
+        const functionType = type as FunctionType;
+        
+        if (args.length !== functionType.paramTypes.length) {
+            // TODO: error
+        }
+        for (let i = 0; i < args.length; i++) {
+            isRelatedTo(args[i], functionType.paramTypes[i]);
+        }
+        return functionType.returnType
     }
 
     function checkFunctionCallExpression(node: FunctionCallExpression) {
-        return errorType
+        const type = checkExpression(node.expression);
+        const args = node.args.map(checkExpression);
+        return checkFunctionCallLike(type, args);
     }
 
     function checkSlotAssignmentExpression(node: SlotAssignmentExpression) {
@@ -373,11 +396,18 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkSlotLookupExpression(node: SlotLookupExpression) {
-        return errorType
+        const type = checkExpression(node.expression);
+        return getPropertyFromType(type, node.name.text) ?? errorType;
     }
 
     function checkMethodCallExpression(node: MethodCallExpression) {
-        return errorType
+        const type = checkExpression(node.expression);
+        const args = node.args.map(checkExpression);
+        const propType = getPropertyFromType(type, node.name.text);
+        if (!propType) {
+            return errorType
+        }
+        return checkFunctionCallLike(propType, args);
     }
 
     function checkObjectsExpression(node: ObjectsExpression) {
@@ -417,7 +447,8 @@ export function createChecker(file: SourceFile) {
         if (node.type) {
             return checkTypeNode(node.type)
         }
-        return unknownType
+
+        return checkExpression(node.initializer);
     }
 
     function checkExpressionStatement(node: ExpressionStatement) {
@@ -452,16 +483,71 @@ export function createChecker(file: SourceFile) {
         return checkExpressionStatement(tail as ExpressionStatement);
     }
 
+    function checkBuiltinIntagerShorthand (operator: BinaryShorthandToken): Type {
+        switch(operator.kind) {
+            case SyntaxKind.AddToken:
+            case SyntaxKind.SubToken:
+            case SyntaxKind.MulToken:
+            case SyntaxKind.DivToken:
+            case SyntaxKind.ModToken:
+                return integerType;
+            case SyntaxKind.GreaterThanToken:
+            case SyntaxKind.GreaterEqualsThanToken:
+            case SyntaxKind.LessThanToken:
+            case SyntaxKind.LessEqualsThanToken:
+            case SyntaxKind.EqualsEqualsToken:
+                return booleanType;
+            default:
+                throw new Error(`Unexpected operator ${operator.kind}`)
+        }
+    }
+
     function checkBinaryShorthand(node: BinaryShorthand): Type {
-        return errorType
+        const left = checkExpression(node.left);
+        const operator = node.operator;
+        const right = checkExpression(node.right);
+        if (left.kind === TypeKind.Integer && right.kind === TypeKind.Integer) {
+            return checkBuiltinIntagerShorthand(operator)
+        }
+        const operatorName = shorthandTokenToOperator(operator.kind);
+        const methodType = getPropertyFromType(left, operatorName);
+        if (!methodType) {
+            return errorType
+        }
+        return checkFunctionCallLike(methodType, [right]);
+    }
+
+    function getPropertyFromType (type: Type, propertyName: string): Type | undefined {
+        if (type.kind !== TypeKind.Object) {
+            return undefined
+        }
+        const objectType = type as ObjectType;
+        return objectType.properties.get(propertyName)
     }
     
     function checkGetShorthand(node: GetShorthand): Type {
-        return errorType
+        const expression = checkExpression(node.expression);
+        const args = node.args.map(checkExpression);
+
+        const getMethodType = getPropertyFromType(expression, 'get');
+        if (!getMethodType) {
+            return errorType
+        }
+
+        return checkFunctionCallLike(getMethodType, args);
     }
     
     function checkSetShorthand(node: SetShorthand): Type {
-        return errorType
+        const expression = checkExpression(node.expression);
+        const args = node.args.map(checkExpression);
+        const value = checkExpression(node.value);
+
+        const setMethodType = getPropertyFromType(expression, 'set');
+        if (!setMethodType) {
+            return errorType
+        }
+
+        return checkFunctionCallLike(setMethodType, [...args, value]);
     }
 
     function createUnknownType () {
@@ -491,6 +577,14 @@ export function createChecker(file: SourceFile) {
     function createIntegerType () {
         const type: IntegerType = {
             kind: TypeKind.Integer
+        }
+        setupTypeDebugInfo(type);
+        return type
+    }
+
+    function createBooleanType() {
+        const type: BooleanType = {
+            kind: TypeKind.Boolean
         }
         setupTypeDebugInfo(type);
         return type

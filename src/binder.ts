@@ -24,12 +24,18 @@ export function createBinder(file: SourceFile) {
     }
 
     function bind (node: ASTNode) {
+        bindWorker(node);
+        bindChildren(node);
+    }
+
+    function bindChildren (node: ASTNode) {
         const savedContainer = container;
         if (isLocalVariableContainer(node)) {
             container = node;
         }
 
-        bindWorker(node);
+        forEachChild(node, bind);
+
         container = savedContainer;
     }
 
@@ -63,51 +69,51 @@ export function createBinder(file: SourceFile) {
                 bindMethodSlotSignatureDeclaration(node as MethodSlotSignatureDeclaration);
                 break;
             default:
-                return forEachChild(node, bind);
+                return bindChildren(node);
         }
     }
 
     function bindMethodSlotSignatureDeclaration(node: MethodSlotSignatureDeclaration) {
         addMemberToParent(node.name.text, node);
-        forEachChild(node, bind);
+        bindChildren(node);
     }
 
     function bindVariableSlotSignatureDeclaration(node: VariableSlotSignatureDeclaration) {
         addMemberToParent(node.name.text, node);
-        forEachChild(node, bind);
+        bindChildren(node);
     }
 
     function bindTypeDefDeclaration(node: TypeDefDeclaration) {
         const symbol = addTypeDeclarationToContainer(node.name.text, node);
         const savedParent = parent;
         parent = symbol;
-        forEachChild(node, bind);
+        bindChildren(node);
         parent = savedParent;
     }
 
     function bindVariableStatement (node: VariableStatement) {
         addLocalVariableToContainer(node.name.text, node);
-        forEachChild(node, bind);
+        bindChildren(node)
     }
 
     function bindFunctionStatement (node: FunctionStatement) {
         addLocalVariableToContainer(node.name.text, node);
-        forEachChild(node, bind);
+        bindChildren(node)
     }
 
     function bindParameterDeclaration (node: ParameterDeclaration) {
         addLocalVariableToContainer(node.name.text, node);
-        forEachChild(node, bind);
+        bindChildren(node)
     }
 
     function bindVariableSlot (node: VariableSlot) {
         addMemberToParent(node.name.text, node);
-        forEachChild(node, bind);
+        bindChildren(node)
     }
 
     function bindMethodSlot (node: MethodSlot) {
         addMemberToParent(node.name.text, node);
-        forEachChild(node, bind);
+        bindChildren(node)
     }
 
     function bindObjectsExpression (node: ObjectsExpression) {
@@ -116,7 +122,7 @@ export function createBinder(file: SourceFile) {
         const savedParent = parent;
         parent = symbol;
 
-        forEachChild(node, bind);
+        bindChildren(node)
 
         parent = savedParent;
     }

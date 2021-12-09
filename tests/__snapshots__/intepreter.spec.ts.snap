@@ -87,6 +87,8 @@ exports[`Interpreter should-work-with-slot-lookup 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-type-arrays 1`] = `Array []`;
 
+exports[`Interpreter should-work-with-type-function-call 1`] = `Array []`;
+
 exports[`Interpreter should-work-with-type-function-expression 1`] = `Array []`;
 
 exports[`Interpreter should-work-with-type-function-parameter 1`] = `Array []`;

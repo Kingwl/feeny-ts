@@ -48,7 +48,7 @@ exports[`Binder should-work-with-break-and-continue - members 1`] = `Array []`;
 exports[`Binder should-work-with-function - locals 1`] = `
 Array [
   Object {
-    "kind": "FunctionStatement",
+    "kind": "SequenceOfStatements",
     "pos": 0,
     "symbols": Array [
       Object {
@@ -56,6 +56,12 @@ Array [
         "flags": "Function",
         "name": "f",
       },
+    ],
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
       Object {
         "declarationPos": 7,
         "flags": "Parameter",
@@ -81,7 +87,7 @@ exports[`Binder should-work-with-function - members 1`] = `Array []`;
 exports[`Binder should-work-with-function-call - locals 1`] = `
 Array [
   Object {
-    "kind": "FunctionStatement",
+    "kind": "SequenceOfStatements",
     "pos": 0,
     "symbols": Array [
       Object {
@@ -89,6 +95,12 @@ Array [
         "flags": "Function",
         "name": "f",
       },
+    ],
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
       Object {
         "declarationPos": 7,
         "flags": "Parameter",
@@ -209,7 +221,7 @@ exports[`Binder should-work-with-integer - members 1`] = `Array []`;
 exports[`Binder should-work-with-local-variable - locals 1`] = `
 Array [
   Object {
-    "kind": "FunctionStatement",
+    "kind": "SequenceOfStatements",
     "pos": 0,
     "symbols": Array [
       Object {
@@ -279,17 +291,17 @@ Array [
         "flags": "Variable",
         "name": "m",
       },
+      Object {
+        "declarationPos": 10,
+        "flags": "Function",
+        "name": "foo",
+      },
     ],
   },
   Object {
     "kind": "FunctionStatement",
     "pos": 10,
     "symbols": Array [
-      Object {
-        "declarationPos": 10,
-        "flags": "Function",
-        "name": "foo",
-      },
       Object {
         "declarationPos": 19,
         "flags": "Parameter",
@@ -306,17 +318,17 @@ Array [
         "flags": "Variable",
         "name": "y",
       },
+      Object {
+        "declarationPos": 41,
+        "flags": "Function",
+        "name": "bar",
+      },
     ],
   },
   Object {
     "kind": "FunctionStatement",
     "pos": 41,
     "symbols": Array [
-      Object {
-        "declarationPos": 41,
-        "flags": "Function",
-        "name": "bar",
-      },
       Object {
         "declarationPos": 50,
         "flags": "Parameter",
@@ -524,6 +536,16 @@ Array [
         "flags": "VariableSlot",
         "name": "b",
       },
+      Object {
+        "declarationPos": 79,
+        "flags": "VariableSlot",
+        "name": "c",
+      },
+      Object {
+        "declarationPos": 107,
+        "flags": "VariableSlot",
+        "name": "d",
+      },
     ],
   },
   Object {
@@ -535,6 +557,11 @@ Array [
         "declarationPos": 79,
         "flags": "VariableSlot",
         "name": "c",
+      },
+      Object {
+        "declarationPos": 107,
+        "flags": "VariableSlot",
+        "name": "d",
       },
     ],
   },
@@ -598,6 +625,16 @@ Array [
         "flags": "VariableSlot",
         "name": "b",
       },
+      Object {
+        "declarationPos": 79,
+        "flags": "VariableSlot",
+        "name": "c",
+      },
+      Object {
+        "declarationPos": 107,
+        "flags": "VariableSlot",
+        "name": "d",
+      },
     ],
   },
   Object {
@@ -609,6 +646,11 @@ Array [
         "declarationPos": 79,
         "flags": "VariableSlot",
         "name": "c",
+      },
+      Object {
+        "declarationPos": 107,
+        "flags": "VariableSlot",
+        "name": "d",
       },
     ],
   },
@@ -645,6 +687,45 @@ Array [
 
 exports[`Binder should-work-with-type-arrays - members 1`] = `Array []`;
 
+exports[`Binder should-work-with-type-function-call - locals 1`] = `
+Array [
+  Object {
+    "kind": "SequenceOfStatements",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 0,
+        "flags": "Function",
+        "name": "add",
+      },
+      Object {
+        "declarationPos": 57,
+        "flags": "Variable",
+        "name": "a",
+      },
+    ],
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
+      Object {
+        "declarationPos": 9,
+        "flags": "Parameter",
+        "name": "x",
+      },
+      Object {
+        "declarationPos": 21,
+        "flags": "Parameter",
+        "name": "y",
+      },
+    ],
+  },
+]
+`;
+
+exports[`Binder should-work-with-type-function-call - members 1`] = `Array []`;
+
 exports[`Binder should-work-with-type-function-expression - locals 1`] = `
 Array [
   Object {
@@ -666,7 +747,7 @@ exports[`Binder should-work-with-type-function-expression - members 1`] = `Array
 exports[`Binder should-work-with-type-function-parameter - locals 1`] = `
 Array [
   Object {
-    "kind": "FunctionStatement",
+    "kind": "SequenceOfStatements",
     "pos": 0,
     "symbols": Array [
       Object {
@@ -674,6 +755,12 @@ Array [
         "flags": "Function",
         "name": "foo",
       },
+    ],
+  },
+  Object {
+    "kind": "FunctionStatement",
+    "pos": 0,
+    "symbols": Array [
       Object {
         "declarationPos": 9,
         "flags": "Parameter",
@@ -689,7 +776,7 @@ exports[`Binder should-work-with-type-function-parameter - members 1`] = `Array 
 exports[`Binder should-work-with-type-function-statement - locals 1`] = `
 Array [
   Object {
-    "kind": "FunctionStatement",
+    "kind": "SequenceOfStatements",
     "pos": 0,
     "symbols": Array [
       Object {

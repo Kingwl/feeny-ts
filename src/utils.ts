@@ -132,6 +132,19 @@ export function frontAndTail<T>(v?: readonly T[]): [T[], T] {
   return [front, tail];
 }
 
+
+export function findAncestor<T extends ASTNode>(node: ASTNode, pred: (v: ASTNode) => v is T): T | undefined
+export function findAncestor(node: ASTNode, pred: (v: ASTNode) => boolean): ASTNode | undefined
+export function findAncestor(node: ASTNode, pred: (v: ASTNode) => boolean): ASTNode | undefined {
+  let parent: ASTNode | undefined = node
+  while (parent) {
+    if (pred(parent)) {
+      return parent;
+    }
+    parent = parent.parent;
+  }
+}
+
 export enum Chars {
   Add = '+',
   Sub = '-',
@@ -543,5 +556,32 @@ export function isMemberContainer (node: ASTNode): node is HasMembers {
           return true
       default:
           return false;
+  }
+}
+
+export function shorthandTokenToOperator(kind: BinaryShorthandTokenSyntaxKind) {
+  switch (kind) {
+    case SyntaxKind.AddToken:
+      return 'add';
+    case SyntaxKind.SubToken:
+      return 'sub';
+    case SyntaxKind.MulToken:
+      return 'mul';
+    case SyntaxKind.DivToken:
+      return 'div';
+    case SyntaxKind.ModToken:
+      return 'mod';
+    case SyntaxKind.LessThanToken:
+      return 'lt';
+    case SyntaxKind.GreaterThanToken:
+      return 'gt';
+    case SyntaxKind.LessEqualsThanToken:
+      return 'le';
+    case SyntaxKind.GreaterEqualsThanToken:
+      return 'ge';
+    case SyntaxKind.EqualsEqualsToken:
+      return 'eq';
+    default:
+      throw new Error('Invalid operator: ' + SyntaxKind[kind]);
   }
 }
