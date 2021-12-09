@@ -486,6 +486,9 @@ export enum SymbolFlag {
   VariableSlot = 1 << 3,
   MethodSlot = 1 << 4,
   AnomymousObject = 1 << 5,
+  TypeDef = 1 << 6,
+  VariableSlotSignature = 1 << 7,
+  MethodSlotSignature = 1 << 8,
 
   VariableLike = Variable | Parameter | VariableSlot,
   FunctionLike = Function | MethodSlot,
@@ -514,6 +517,7 @@ export type HasLocalVariables =
 
 export type HasMembers =
   | ObjectsExpression
+  | TypeDefDeclaration
 
 export type PrimaryExpression =
   | IntegerLiteralExpression

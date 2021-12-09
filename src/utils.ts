@@ -491,6 +491,18 @@ export function symbolFlagToDisplayText (flags: SymbolFlag) {
       flags &= ~SymbolFlag.AnomymousObject;
       text.push(SymbolFlag[SymbolFlag.AnomymousObject]);
   }
+  if (flags & SymbolFlag.TypeDef) {
+      flags &= ~SymbolFlag.TypeDef;
+      text.push(SymbolFlag[SymbolFlag.TypeDef]);
+  }
+  if (flags & SymbolFlag.MethodSlotSignature) {
+      flags &= ~SymbolFlag.MethodSlotSignature;
+      text.push(SymbolFlag[SymbolFlag.MethodSlotSignature]);
+  }
+  if (flags & SymbolFlag.VariableSlotSignature) {
+      flags &= ~SymbolFlag.VariableSlotSignature;
+      text.push(SymbolFlag[SymbolFlag.VariableSlotSignature]);
+  }
 
   assert(flags === SymbolFlag.None, `Unknown symbol flag: ${flags}`);
   return text.join(' | ');
@@ -510,6 +522,12 @@ export function getDeclarationSymbolFlags (node: ASTNode): SymbolFlag {
           return SymbolFlag.MethodSlot;
       case SyntaxKind.ObjectsExpression:
           return SymbolFlag.AnomymousObject;
+      case SyntaxKind.TypeDefDeclaration:
+          return SymbolFlag.TypeDef;
+      case SyntaxKind.MethodSlotSignatureDeclaration:
+          return SymbolFlag.MethodSlotSignature;
+      case SyntaxKind.VariableSlotSignatureDeclaration:
+          return SymbolFlag.VariableSlotSignature;  
       default:
           return SymbolFlag.None;
   }
@@ -531,6 +549,7 @@ export function isLocalVariableContainer (node: ASTNode): node is HasLocalVariab
 export function isMemberContainer (node: ASTNode): node is HasMembers {
   switch (node.kind) {
       case SyntaxKind.ObjectsExpression:
+      case SyntaxKind.TypeDefDeclaration:
           return true
       default:
           return false;

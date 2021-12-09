@@ -50,6 +50,7 @@ interface SymbolSignature {
 
 interface SymbolContainer {
     pos: number;
+    name?: string;
     kind: string | number;
     symbols: SymbolSignature[];
 }
@@ -83,6 +84,7 @@ export function bindCode (text: string) {
             if (node.symbol?.members) {
                 membersResult.push({
                     pos: node.pos,
+                    name: node.symbol.name,
                     kind: node.__debugKind ?? node.kind,
                     symbols: Array.from(node.symbol.members.values()).map(symbolToSignature)
                 })
@@ -96,7 +98,7 @@ export function bindCode (text: string) {
         return {
             declarationPos: symbol.declaration.pos,
             name: symbol.name,
-            flags: symbol.flags.toString()
+            flags: symbol._debugFlags ?? symbol.flags
         }
     }
 }

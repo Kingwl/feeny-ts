@@ -1,4 +1,4 @@
-import { ASTNode, Symbol, FunctionStatement, MethodSlot, ObjectsExpression, Declaration, ParameterDeclaration, SourceFile, SyntaxKind, VariableSlot, VariableStatement, HasLocalVariables, SymbolFlag } from "./types";
+import { ASTNode, Symbol, FunctionStatement, MethodSlot, ObjectsExpression, Declaration, ParameterDeclaration, SourceFile, SyntaxKind, VariableSlot, VariableStatement, HasLocalVariables, SymbolFlag, TypeDefDeclaration, MethodSlotSignatureDeclaration, VariableSlotSignatureDeclaration } from "./types";
 import { assertDef, getDeclarationSymbolFlags, isLocalVariableContainer, setupSymbolDebugInfo, symbolFlagToDisplayText } from "./utils";
 import { forEachChild } from "./visitor";
 
@@ -52,9 +52,37 @@ export function createBinder(file: SourceFile) {
                 break;
             case SyntaxKind.ObjectsExpression:
                 bindObjectsExpression(node as ObjectsExpression);
+                break;
+            case SyntaxKind.TypeDefDeclaration:
+                bindTypeDefDeclaration(node as TypeDefDeclaration);
+                break;
+            case SyntaxKind.VariableSlotSignatureDeclaration:
+                bindVariableSlotSignatureDeclaration(node as VariableSlotSignatureDeclaration);
+                break;
+            case SyntaxKind.MethodSlotSignatureDeclaration:
+                bindMethodSlotSignatureDeclaration(node as MethodSlotSignatureDeclaration);
+                break;
             default:
                 return forEachChild(node, bind);
         }
+    }
+
+    function bindMethodSlotSignatureDeclaration(node: MethodSlotSignatureDeclaration) {
+        addMemberToParent(node.name.text, node);
+        forEachChild(node, bind);
+    }
+
+    function bindVariableSlotSignatureDeclaration(node: VariableSlotSignatureDeclaration) {
+        addMemberToParent(node.name.text, node);
+        forEachChild(node, bind);
+    }
+
+    function bindTypeDefDeclaration(node: TypeDefDeclaration) {
+        const symbol = addTypeDeclarationToContainer(node.name.text, node);
+        const savedParent = parent;
+        parent = symbol;
+        forEachChild(node, bind);
+        parent = savedParent;
     }
 
     function bindVariableStatement (node: VariableStatement) {
@@ -94,6 +122,13 @@ export function createBinder(file: SourceFile) {
     }
 
     function addLocalVariableToContainer (name: string, declaration: Declaration) {
+        const flags = getDeclarationSymbolFlags(declaration);
+        const symbol = createSymbol(name, flags, declaration);
+        currentLocalsTable().set(name, symbol);
+        return symbol;
+    }
+
+    function addTypeDeclarationToContainer (name: string, declaration: Declaration) {
         const flags = getDeclarationSymbolFlags(declaration);
         const symbol = createSymbol(name, flags, declaration);
         currentLocalsTable().set(name, symbol);
