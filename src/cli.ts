@@ -28,7 +28,7 @@ function main() {
   }
 
   const parser = createParser(content);
-  const sourceFile = parser.parseSourceFile();
+  const sourceFile = parser.parse();
   const context: Context = {
     stdout: text => process.stdout.write(text, 'utf-8')
   }
