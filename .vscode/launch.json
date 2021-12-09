@@ -13,7 +13,7 @@
             ],
             "program": "${workspaceFolder}/dist/cli.js",
             "args": [
-                "./tests/cases/should-work-with-break-and-continue.feeny"
+                "${file}"
             ],
             "outFiles": [
                 "${workspaceFolder}/dist/**/*.js"

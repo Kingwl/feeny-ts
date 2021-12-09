@@ -38,7 +38,7 @@ export function scanCode (text: string) {
 
 export function parseCode (text: string) {
     const parser = createParser(text);
-    const file = parser.parseSourceFile();
+    const file = parser.parse();
     return file;
 }
 
@@ -57,7 +57,7 @@ interface SymbolContainer {
 
 export function bindCode (text: string) {
     const parser = createParser(text);
-    const file = parser.parseSourceFile();
+    const file = parser.parse();
     const binder = createBinder(file);
     binder.bindFile();
 
@@ -111,7 +111,7 @@ export function createNodeContext(): Context {
 
 export function runCode (text: string) {
     const parser = createParser(text);
-    const file = parser.parseSourceFile();
+    const file = parser.parse();
     const context = createNodeContext();
     const interpreter = createInterpreter(file, context);
     interpreter.evaluate();
@@ -125,7 +125,7 @@ interface CheckResult {
 
 export function checkCode (text: string) {
     const parser = createParser(text);
-    const file = parser.parseSourceFile();
+    const file = parser.parse();
     const checker = createChecker(file);
     const { check } = checker.checkFile();
 
@@ -153,7 +153,7 @@ export function runWithStdoutHook(text: string) {
     const result: string[] = []
 
     const parser = createParser(text);
-    const file = parser.parseSourceFile();
+    const file = parser.parse();
 
     const context: Context = {
         stdout: content => result.push(content)

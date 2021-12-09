@@ -43,6 +43,7 @@ import { createScanner } from './scanner';
 import {
   AccessOrAssignmentExpressionOrHigher,
   AllTokens,
+  ASTNode,
   ArraysExpression,
   BinaryShorthand,
   EndOfFileToken,
@@ -83,6 +84,30 @@ import {
   isKeywordSyntaxKind,
   TokenKindsToKeyword
 } from './utils';
+import { forEachChild } from './visitor'
+
+function setParent (root: ASTNode) {
+  let parent = root;
+  forEachChild(root, visitor)
+
+  function visitor (node: ASTNode) {
+    Object.defineProperty(node, 'parent', {
+      value: parent,
+      enumerable: false
+    })
+
+    const savedParent = parent;
+    parent = node;
+
+    forEachChild(node, visitor)
+
+    parent = savedParent;
+  }
+}
+
+interface ParseOptions {
+  shouldSetParent?: boolean;
+}
 
 export function createParser(text: string) {
   const scanner = createScanner(text);
@@ -90,8 +115,20 @@ export function createParser(text: string) {
   const finishNode = createFinishNode(text);
 
   return {
-    parseSourceFile
+    parse
   };
+
+  function parse(options?: ParseOptions) {
+    const { shouldSetParent = true } = options ?? {}
+
+    const file = parseSourceFile();
+
+    if (shouldSetParent) {
+      setParent(file);
+    }
+
+    return file;
+  }
 
   function parseExpectdToken<T extends AllTokens>(kind: T['kind']): T {
     const token = scanner.currentToken();

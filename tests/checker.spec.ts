@@ -1,7 +1,7 @@
 import type {} from 'jest'
 import { forEachCases, checkCode } from './utils'
 
-describe('Parser', () => {
+describe('Checker', () => {
     it('Should work', () => {
         const code = `
         array(1, 2)
