@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Language service Definition of 128 1`] = `
+"defn foo() -> ab:
+    object:
+        var a = 1
+        var b = 2"
+`;
+
+exports[`Language service Definition of 134 1`] = `"var bar = foo()"`;
+
+exports[`Language service Definition of 138 1`] = `"var a: integer"`;
+
+exports[`Language service Definition of 144 1`] = `"var b: integer"`;

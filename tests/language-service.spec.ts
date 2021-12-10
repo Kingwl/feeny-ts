@@ -1,8 +1,7 @@
 import { createLanguageService } from '../src'
 
 describe('Language service', () => {
-    it("Should work", () => {
-        const code = 
+    const code = 
 `
 typedef ab:
     var a: integer
@@ -13,15 +12,21 @@ defn foo() -> ab:
         var a = 1
         var b = 2
 var bar = foo()
+bar.a
 bar.b
-`       
-        const ls = createLanguageService(code)
-        const pos = code.indexOf(`bar.b`) + 'bar.'.length
-        const char = code[pos]
-        const token = ls.getCurrentToken(pos)
+`     
+
+    const posList = [
+        code.indexOf(`bar.`),
+        code.indexOf(`bar.a`) + 'bar.'.length,
+        code.indexOf(`bar.b`) + 'bar.'.length,
+        code.indexOf(`= foo()`) + "= ".length,
+    ]
+    const ls = createLanguageService(code)
+    posList.forEach(pos => {
         const decl = ls.goToDefinition(pos)
-        if (decl?.pos) {
-            console.log(decl.pos, code.substring(decl.pos, decl.end))
-        }
+        it(`Definition of ${pos}`, () => {
+            expect(decl?.__debugText).toMatchSnapshot()
+        })
     })
 })

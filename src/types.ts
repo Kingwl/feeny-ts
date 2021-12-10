@@ -109,6 +109,7 @@ export interface ASTNode extends TextSpan {
   parent?: ASTNode;
 
   __debugKind?: string;
+  __debugText?: string;
 
   leadingIndent: number;
 
