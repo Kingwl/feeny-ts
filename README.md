@@ -1,1 +1,1 @@
-# fenny-ts
+# feeny-ts
