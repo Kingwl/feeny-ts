@@ -34,6 +34,7 @@ export function createScanner(text: string) {
     nextToken,
     currentToken,
     getTokenStart,
+    getTokenFullStart,
     getCurrentPos,
     currentTokenhasLineFeed
   };
@@ -44,6 +45,10 @@ export function createScanner(text: string) {
 
   function getTokenStart() {
     return tokenStart;
+  }
+
+  function getTokenFullStart() {
+    return tokenFullStart
   }
 
   function getCurrentPos() {

@@ -158,7 +158,7 @@ export function createParser(text: string) {
     return finishNode(
       createSourceFile(body, eof),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -168,7 +168,7 @@ export function createParser(text: string) {
     return finishNode(
       createExpressionStatement(expr),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -197,7 +197,7 @@ export function createParser(text: string) {
     return finishNode(
       createTypeDefDeclaration(name, slots),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -223,7 +223,7 @@ export function createParser(text: string) {
     return finishNode(
       createMethodSlotSignature(name, params, type),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -236,7 +236,7 @@ export function createParser(text: string) {
     return finishNode(
       createVariableSlotSignautre(name, type),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     )
   }
 
@@ -262,7 +262,7 @@ export function createParser(text: string) {
     return finishNode(
       createTypeReferenceTypeNode(name),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     )
   }
 
@@ -272,7 +272,7 @@ export function createParser(text: string) {
     return finishNode(
       createNullTypeNode(),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     )
   }
 
@@ -282,7 +282,7 @@ export function createParser(text: string) {
     return finishNode(
       createIntegerTypeNode(),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -296,7 +296,7 @@ export function createParser(text: string) {
     return finishNode(
       createArraysTypeNode(type),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -313,7 +313,7 @@ export function createParser(text: string) {
     return finishNode(
       createVariableStatement(name, type, initializer),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -328,7 +328,7 @@ export function createParser(text: string) {
     return finishNode(
       createParameterDeclaration(name, type),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -350,7 +350,7 @@ export function createParser(text: string) {
     return finishNodeArray(
       createNodeArray(params),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -369,7 +369,7 @@ export function createParser(text: string) {
     return finishNode(
       createFunctionStatement(name, params, type, body),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -389,7 +389,7 @@ export function createParser(text: string) {
     return finishNodeArray(
       createNodeArray(statements),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -404,7 +404,7 @@ export function createParser(text: string) {
     return finishNode(
       createSequenceOfStatements<T>(statements, isExpression),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -445,7 +445,7 @@ export function createParser(text: string) {
       expression = finishNode(
         createBinaryShorthand(expression, operator, right),
         pos,
-        scanner.getCurrentPos()
+        scanner.getTokenFullStart()
       );
     }
 
@@ -474,7 +474,7 @@ export function createParser(text: string) {
       const callExpression = finishNode(
         createFunctionCallExpression(expression, args),
         pos,
-        scanner.getCurrentPos()
+        scanner.getTokenFullStart()
       );
       expression = parseFunctionCallExpressionRest(callExpression, pos);
     }
@@ -494,12 +494,12 @@ export function createParser(text: string) {
     while (true) {
       if (scanner.currentToken().kind === SyntaxKind.DotToken) {
         expression = parseSlotLookupOrAssignment(expression, pos);
-        pos = scanner.getCurrentPos();
+        pos = scanner.getTokenFullStart();
         continue;
       }
       if (scanner.currentToken().kind === SyntaxKind.OpenBracketToken) {
         expression = parseGetShorthandOrSetShorthand(expression, pos);
-        pos = scanner.getCurrentPos();
+        pos = scanner.getTokenFullStart();
         continue;
       }
 
@@ -533,7 +533,7 @@ export function createParser(text: string) {
       return finishNode(
         createSlotAssignmentExpression(expression, name, value),
         pos,
-        scanner.getCurrentPos()
+        scanner.getTokenFullStart()
       );
     }
     if (scanner.currentToken().kind === SyntaxKind.OpenParenToken) {
@@ -541,13 +541,13 @@ export function createParser(text: string) {
       return finishNode(
         createMethodCallExpression(expression, name, args),
         pos,
-        scanner.getCurrentPos()
+        scanner.getTokenFullStart()
       );
     }
     return finishNode(
       createSlotLookupExpression(expression, name),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -564,13 +564,13 @@ export function createParser(text: string) {
       return finishNode(
         createSetShorthand(expression, args, value),
         pos,
-        scanner.getCurrentPos()
+        scanner.getTokenFullStart()
       );
     }
     return finishNode(
       createGetShorthand(expression, args),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -589,7 +589,7 @@ export function createParser(text: string) {
     }
     parseExpectdToken(closeToken);
 
-    return finishNodeArray(createNodeArray(args), pos, scanner.getCurrentPos());
+    return finishNodeArray(createNodeArray(args), pos, scanner.getTokenFullStart());
   }
 
   function parsePrimaryExpression(): PrimaryExpression {
@@ -632,13 +632,13 @@ export function createParser(text: string) {
   function parseContinueExpression() {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.ContinueKeyword);
-    return finishNode(createContinueExpression(), pos, scanner.getCurrentPos());
+    return finishNode(createContinueExpression(), pos, scanner.getTokenFullStart());
   }
 
   function parseBreakExpression() {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.BreakKeyword);
-    return finishNode(createBreakExpression(), pos, scanner.getCurrentPos());
+    return finishNode(createBreakExpression(), pos, scanner.getTokenFullStart());
   }
 
   function parseStringLiteralExpression() {
@@ -649,7 +649,7 @@ export function createParser(text: string) {
     return finishNode(
       createStringLiteralExpression(token),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -669,7 +669,7 @@ export function createParser(text: string) {
     return finishNode(
       createFunctionExpression(name, params, type, body),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -682,14 +682,14 @@ export function createParser(text: string) {
     return finishNode(
       createParenExpression(expression),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
   function parseThisExpression() {
     const pos = scanner.getTokenStart();
     parseExpectdToken(SyntaxKind.ThisKeyword);
-    return finishNode(createThisExpression(), pos, scanner.getCurrentPos());
+    return finishNode(createThisExpression(), pos, scanner.getTokenFullStart());
   }
 
   function parseExpressionStatementOrSequenceOfStatements<T extends boolean>(
@@ -718,7 +718,7 @@ export function createParser(text: string) {
     return finishNode(
       createIfExpression(condition, thenStatement, elseStatement),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -731,7 +731,7 @@ export function createParser(text: string) {
     return finishNode(
       createWhileExpression(condition, body),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -745,7 +745,7 @@ export function createParser(text: string) {
     return finishNode(
       createIntegerLiteralExpression(token, subToken),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -758,7 +758,7 @@ export function createParser(text: string) {
     const expression = finishNode(
       createVariableReferenceExpression(token),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     )
 
     if (scanner.currentToken().kind === SyntaxKind.EqualsToken) {
@@ -768,7 +768,7 @@ export function createParser(text: string) {
       return finishNode(
         createVariableAssignmentExpression(expression, value),
         pos,
-        scanner.getCurrentPos()
+        scanner.getTokenFullStart()
       );
     }
 
@@ -782,7 +782,7 @@ export function createParser(text: string) {
     return finishNode(
       createPrintingExpression(args),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -796,7 +796,7 @@ export function createParser(text: string) {
       return finishNode(
         createArraysExpression(length),
         pos,
-        scanner.getCurrentPos()
+        scanner.getTokenFullStart()
       );
     }
     parseOptionalToken(SyntaxKind.CommaToken);
@@ -806,7 +806,7 @@ export function createParser(text: string) {
     return finishNode(
       createArraysExpression(length, defaultValue),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -816,7 +816,7 @@ export function createParser(text: string) {
     return finishNode(
       createNullExpression(token),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -845,7 +845,7 @@ export function createParser(text: string) {
     return finishNodeArray(
       createNodeArray(slots),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -876,7 +876,7 @@ export function createParser(text: string) {
     return finishNode(
       createVariableSlot(name, type, initializer),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -896,7 +896,7 @@ export function createParser(text: string) {
     return finishNode(
       createMethodSlot(name, params, type, body),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 
@@ -916,7 +916,7 @@ export function createParser(text: string) {
     return finishNode(
       createObjectsExpression(extendsClause, slots),
       pos,
-      scanner.getCurrentPos()
+      scanner.getTokenFullStart()
     );
   }
 }
