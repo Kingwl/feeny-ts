@@ -99,14 +99,20 @@ export enum SyntaxKind {
 }
 
 export interface TextSpan {
-  fullPos: number;
   pos: number;
   end: number;
+}
+
+export interface Diangostic {
+  message: string
+  span: TextSpan
 }
 
 export interface ASTNode extends TextSpan {
   kind: SyntaxKind;
   parent?: ASTNode;
+
+  fullPos: number;
 
   __debugKind?: string;
   __debugText?: string;

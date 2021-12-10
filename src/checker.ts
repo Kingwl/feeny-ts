@@ -1,5 +1,5 @@
-import { BinaryShorthandToken, Declaration, ParamsAndReturnType, Symbol, SymbolFlag } from ".";
-import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression, Type, TypeKind } from "./types";
+import { BinaryShorthandToken, Declaration, NodeArray, ParamsAndReturnType, Symbol, SymbolFlag, TextSpan } from ".";
+import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression, Type, TypeKind, Diangostic } from "./types";
 import { assertDef, assertKind, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
 import { forEachChild } from './visitor'
 
@@ -56,7 +56,7 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
     const booleanType = createBooleanType();
 
     const typeCheckCache = new Map<ASTNode, Type | undefined>();
-    const diagnostics: string[] = []
+    const diagnostics: Diangostic[] = []
     const symbolResolveCache = new Map<ASTNode, Symbol | undefined>();
     const symbolTypeCache = new Map<Symbol, Type>();
 
@@ -69,6 +69,16 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         getSymbolAtNode,
         isNeverType,
         diagnostics
+    }
+
+    function addDiagnosticForNode(node: ASTNode, message: string) {
+        diagnostics.push({
+            message,
+            span: {
+                pos: node.pos,
+                end: node.end
+            }
+        })
     }
 
     function isNeverType (type: Type) {
@@ -261,9 +271,9 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         return false
     }
 
-    function checkAssignment(value: Type, decl: Type) {
+    function checkAssignment(value: Type, decl: Type, errorNode: ASTNode) {
         if (!isRelatedTo(value, decl)) {
-            diagnostics.push(`Cannot assign`)
+            addDiagnosticForNode(errorNode, `Cannot assign`)
         }
     }
 
@@ -363,7 +373,7 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         const value = checkExpression(node.initializer)
 
         if (decl) {
-            checkAssignment(value, decl);
+            checkAssignment(value, decl, node.initializer);
             return decl
         }
 
@@ -395,7 +405,7 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
     function checkVariableAssignmentExpression(node: VariableAssignmentExpression) {
         const decl = checkExpression(node.expression);
         const value = checkExpression(node.value)
-        checkAssignment(value, decl);
+        checkAssignment(value, decl, node.value);
         return value;
     }
     
@@ -447,18 +457,18 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         return unknownType
     }
 
-    function checkFunctionCallLike (type: Type, args: Type[]) {
+    function checkFunctionCallLike (type: Type, args: Type[], callNode: ASTNode, argsNode: readonly Expression[]) {
         if (type.kind !== TypeKind.Function) {
-            diagnostics.push(`Is not callable`)
+            addDiagnosticForNode(callNode, `Is not callable`)
             return errorType
         }
         const functionType = type as FunctionType;
         
         if (args.length !== functionType.paramTypes.length) {
-            diagnostics.push(`Function arguments count not match`)
+            addDiagnosticForNode(callNode, `Function arguments count not match`)
         }
         for (let i = 0; i < args.length; i++) {
-            checkAssignment(args[i], functionType.paramTypes[i]);
+            checkAssignment(args[i], functionType.paramTypes[i], argsNode[i]);
         }
         return functionType.returnType
     }
@@ -466,13 +476,13 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
     function checkFunctionCallExpression(node: FunctionCallExpression) {
         const type = checkExpression(node.expression);
         const args = node.args.map(checkExpression);
-        return checkFunctionCallLike(type, args);
+        return checkFunctionCallLike(type, args, node.expression, node.args);
     }
 
     function checkSlotAssignmentExpression(node: SlotAssignmentExpression) {
         const decl = checkExpression(node.expression);
         const value = checkExpression(node.value);
-        checkAssignment(value, decl);
+        checkAssignment(value, decl, node.value);
         return value
     }
 
@@ -480,7 +490,7 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         const type = checkExpression(node.expression);
         const prop = getPropertyFromType(type, node.name.text)
         if (!prop) {
-            diagnostics.push("Cannot find property")
+            addDiagnosticForNode(node.name, `Property ${node.name.text} not found`)
             return errorType
         }
         return getTypeFromSymbol(prop);
@@ -491,11 +501,11 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         const args = node.args.map(checkExpression);
         const prop = getPropertyFromType(type, node.name.text);
         if (!prop) {
-            diagnostics.push("Cannot find property")
+            addDiagnosticForNode(node.name, `Property ${node.name.text} not found`)
             return errorType
         }
         const propType = getTypeFromSymbol(prop);
-        return checkFunctionCallLike(propType, args);
+        return checkFunctionCallLike(propType, args, node.expression, node.args);
     }
 
     function checkObjectsExpression(node: ObjectsExpression) {
@@ -536,7 +546,7 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         const value = checkExpression(node.initializer);
 
         if (decl) {
-            checkAssignment(value, decl)
+            checkAssignment(value, decl, node.initializer)
             return decl
         }
 
@@ -567,7 +577,7 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         front.forEach(check);
 
         if (tail.kind !== SyntaxKind.ExpressionStatement) {
-            diagnostics.push('Must be expression')
+            addDiagnosticForNode(tail, `Expected expression statement`)
             return errorType
         }
 
@@ -604,11 +614,11 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         const operatorName = shorthandTokenToOperator(operator.kind);
         const prop = getPropertyFromType(left, operatorName);
         if (!prop) {
-            diagnostics.push("Cannot find shorthand method")
+            addDiagnosticForNode(operator, `Property ${operatorName} not found`)
             return errorType
         }
         const methodType = getTypeFromSymbol(prop);
-        return checkFunctionCallLike(methodType, [right]);
+        return checkFunctionCallLike(methodType, [right], operator, [node.right]);
     }
 
     function getPropertyFromType (type: Type, propertyName: string): Symbol | undefined {
@@ -625,12 +635,12 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
 
         const prop = getPropertyFromType(expression, 'get');
         if (!prop) {
-            diagnostics.push("Cannot find get shorthand method")
+            addDiagnosticForNode(node.expression, `Property get not found`)
             return errorType
         }
 
         const propType = getTypeFromSymbol(prop);
-        return checkFunctionCallLike(propType, args);
+        return checkFunctionCallLike(propType, args, node.expression, node.args);
     }
     
     function checkSetShorthand(node: SetShorthand): Type {
@@ -640,12 +650,12 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
 
         const prop = getPropertyFromType(expression, 'set');
         if (!prop) {
-            diagnostics.push("Cannot find set shorthand method")
+            addDiagnosticForNode(node.expression, `Property set not found`)
             return errorType
         }
 
         const propType = getTypeFromSymbol(prop);
-        return checkFunctionCallLike(propType, [...args, value]);
+        return checkFunctionCallLike(propType, [...args, value], node.expression, [...node.args, node.value]);
     }
 
     function createUnknownType () {

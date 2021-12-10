@@ -8,20 +8,44 @@ exports[`Checker diagnostics - should-work-with-break-and-continue 1`] = `Array 
 
 exports[`Checker diagnostics - should-work-with-function 1`] = `
 Array [
-  "Cannot find shorthand method",
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 25,
+      "pos": 24,
+    },
+  },
 ]
 `;
 
 exports[`Checker diagnostics - should-work-with-function-call 1`] = `
 Array [
-  "Cannot assign",
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 22,
+      "pos": 20,
+    },
+  },
 ]
 `;
 
 exports[`Checker diagnostics - should-work-with-function-expression 1`] = `
 Array [
-  "Cannot find shorthand method",
-  "Cannot assign",
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 29,
+      "pos": 28,
+    },
+  },
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 48,
+      "pos": 47,
+    },
+  },
 ]
 `;
 
@@ -37,24 +61,72 @@ exports[`Checker diagnostics - should-work-with-integer 1`] = `Array []`;
 
 exports[`Checker diagnostics - should-work-with-local-variable 1`] = `
 Array [
-  "Must be expression",
+  Object {
+    "message": "Expected expression statement",
+    "span": Object {
+      "end": 26,
+      "pos": 16,
+    },
+  },
 ]
 `;
 
 exports[`Checker diagnostics - should-work-with-method-call 1`] = `
 Array [
-  "Cannot assign",
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 50,
+      "pos": 48,
+    },
+  },
 ]
 `;
 
 exports[`Checker diagnostics - should-work-with-nested-function 1`] = `
 Array [
-  "Cannot find shorthand method",
-  "Cannot find shorthand method",
-  "Cannot find shorthand method",
-  "Cannot find shorthand method",
-  "Cannot assign",
-  "Is not callable",
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 65,
+      "pos": 64,
+    },
+  },
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 69,
+      "pos": 68,
+    },
+  },
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 73,
+      "pos": 72,
+    },
+  },
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 77,
+      "pos": 76,
+    },
+  },
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 104,
+      "pos": 103,
+    },
+  },
+  Object {
+    "message": "Is not callable",
+    "span": Object {
+      "end": 105,
+      "pos": 99,
+    },
+  },
 ]
 `;
 
@@ -62,22 +134,58 @@ exports[`Checker diagnostics - should-work-with-null 1`] = `Array []`;
 
 exports[`Checker diagnostics - should-work-with-object-without-extends 1`] = `
 Array [
-  "Cannot find property",
+  Object {
+    "message": "Property x not found",
+    "span": Object {
+      "end": 53,
+      "pos": 52,
+    },
+  },
 ]
 `;
 
 exports[`Checker diagnostics - should-work-with-objects 1`] = `
 Array [
-  "Cannot find property",
+  Object {
+    "message": "Property x not found",
+    "span": Object {
+      "end": 88,
+      "pos": 87,
+    },
+  },
 ]
 `;
 
 exports[`Checker diagnostics - should-work-with-objects-and-slots 1`] = `
 Array [
-  "Cannot find property",
-  "Cannot find shorthand method",
-  "Cannot find shorthand method",
-  "Cannot find shorthand method",
+  Object {
+    "message": "Property x not found",
+    "span": Object {
+      "end": 95,
+      "pos": 94,
+    },
+  },
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 97,
+      "pos": 96,
+    },
+  },
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 101,
+      "pos": 100,
+    },
+  },
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 105,
+      "pos": 104,
+    },
+  },
 ]
 `;
 
@@ -85,14 +193,32 @@ exports[`Checker diagnostics - should-work-with-printf 1`] = `Array []`;
 
 exports[`Checker diagnostics - should-work-with-set-shorthand 1`] = `
 Array [
-  "Cannot assign",
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 27,
+      "pos": 26,
+    },
+  },
 ]
 `;
 
 exports[`Checker diagnostics - should-work-with-slot-assignment 1`] = `
 Array [
-  "Cannot assign",
-  "Cannot assign",
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 130,
+      "pos": 128,
+    },
+  },
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 144,
+      "pos": 142,
+    },
+  },
 ]
 `;
 
@@ -100,7 +226,13 @@ exports[`Checker diagnostics - should-work-with-slot-lookup 1`] = `Array []`;
 
 exports[`Checker diagnostics - should-work-with-type-arrays 1`] = `
 Array [
-  "Cannot assign",
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 36,
+      "pos": 24,
+    },
+  },
 ]
 `;
 
@@ -118,15 +250,39 @@ exports[`Checker diagnostics - should-work-with-type-method-signature 1`] = `Arr
 
 exports[`Checker diagnostics - should-work-with-type-method-slot 1`] = `
 Array [
-  "Cannot find property",
-  "Cannot find shorthand method",
-  "Cannot find shorthand method",
+  Object {
+    "message": "Property foo not found",
+    "span": Object {
+      "end": 96,
+      "pos": 93,
+    },
+  },
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 98,
+      "pos": 97,
+    },
+  },
+  Object {
+    "message": "Property add not found",
+    "span": Object {
+      "end": 102,
+      "pos": 101,
+    },
+  },
 ]
 `;
 
 exports[`Checker diagnostics - should-work-with-type-null 1`] = `
 Array [
-  "Cannot assign",
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 15,
+      "pos": 14,
+    },
+  },
 ]
 `;
 
@@ -134,7 +290,13 @@ exports[`Checker diagnostics - should-work-with-type-typedef 1`] = `Array []`;
 
 exports[`Checker diagnostics - should-work-with-type-variable-reference 1`] = `
 Array [
-  "Cannot assign",
+  Object {
+    "message": "Cannot assign",
+    "span": Object {
+      "end": 67,
+      "pos": 46,
+    },
+  },
 ]
 `;
 
@@ -1466,13 +1628,13 @@ Array [
   Object {
     "id": 4,
     "kind": "SlotAssignmentExpression",
-    "pos": 138,
+    "pos": 137,
     "type": "Integer",
   },
   Object {
     "id": 8,
     "kind": "SlotLookupExpression",
-    "pos": 136,
+    "pos": 135,
     "type": "Object",
   },
   Object {
@@ -1585,13 +1747,13 @@ Array [
   Object {
     "id": 4,
     "kind": "SlotLookupExpression",
-    "pos": 134,
+    "pos": 133,
     "type": "Integer",
   },
   Object {
     "id": 8,
     "kind": "SlotLookupExpression",
-    "pos": 132,
+    "pos": 131,
     "type": "Object",
   },
   Object {
