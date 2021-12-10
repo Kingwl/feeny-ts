@@ -129,13 +129,13 @@ export function checkCode (text: string) {
     const binder = createBinder(file);
     binder.bindFile();
     const checker = createChecker(file);
-    const { check } = checker.checkFile();
+    const { check, diagnostics } = checker.checkFile();
 
     const result: CheckResult[] = []; 
 
     visitor(file);
 
-    return result;
+    return [result, diagnostics] as const;
     
     function visitor (node: ASTNode) {
         const type = check(node)

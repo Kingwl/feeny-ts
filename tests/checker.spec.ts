@@ -3,9 +3,13 @@ import { forEachCases, checkCode } from './utils'
 
 describe('Checker', () => {
     forEachCases((baseName, content) => {
-        it(baseName, () => {
-            const result = checkCode(content)
+        const [result, diagnostics] = checkCode(content)
+        it(`types - ${baseName}`, () => {
             expect(result).toMatchSnapshot()
+        })
+
+        it(`diagnostics - ${baseName}`, () => {
+            expect(diagnostics).toMatchSnapshot()
         })
     })
 })

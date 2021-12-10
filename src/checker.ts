@@ -72,6 +72,7 @@ export function createChecker(file: SourceFile) {
     const booleanType = createBooleanType();
 
     const typeCheckCache = new Map<ASTNode, Type | undefined>();
+    const diagnostics: string[] = []
 
     return {
         checkFile,
@@ -81,7 +82,8 @@ export function createChecker(file: SourceFile) {
         check(file);
 
         return {
-            check
+            check,
+            diagnostics
         }
     }
 
@@ -202,12 +204,21 @@ export function createChecker(file: SourceFile) {
                 return checkSetShorthand(node);
             default:
                 forEachChild(node, check);
-                return errorType;
+                return neverType;
         }
     }
 
-    function isRelatedTo(source: Type, target: Type) {
-        return true
+    function isRelatedTo(from: Type, to: Type) {
+        if (from === to) {
+            return true
+        }
+        return false
+    }
+
+    function checkAssignment(value: Type, decl: Type) {
+        if (!isRelatedTo(value, decl)) {
+            diagnostics.push(`Cannot assign`)
+        }
     }
 
     function checkVariableReferenceExpression(node: VariableReferenceExpression): Type {
@@ -288,11 +299,15 @@ export function createChecker(file: SourceFile) {
     }
     
     function checkVariableSlot(node: VariableSlot) {
-        if (node.type) {
-            return checkTypeNode(node.type)
+        const decl = node.type ? checkTypeNode(node.type) : undefined
+        const value = checkExpression(node.initializer)
+
+        if (decl) {
+            checkAssignment(value, decl);
+            return decl
         }
 
-        return unknownType
+        return value
     }
 
     function checkVariableSlotSignature(node: VariableSlotSignatureDeclaration): Type {
@@ -313,10 +328,10 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkVariableAssignmentExpression(node: VariableAssignmentExpression) {
-        const target = checkExpression(node.expression);
-        const type = checkExpression(node.value)
-        isRelatedTo(type, target);
-        return type;
+        const decl = checkExpression(node.expression);
+        const value = checkExpression(node.value)
+        checkAssignment(value, decl);
+        return value;
     }
     
     function checkIfExpression(node: IfExpression) {
@@ -369,15 +384,16 @@ export function createChecker(file: SourceFile) {
 
     function checkFunctionCallLike (type: Type, args: Type[]) {
         if (type.kind !== TypeKind.Function) {
+            diagnostics.push(`Is not callable`)
             return errorType
         }
         const functionType = type as FunctionType;
         
         if (args.length !== functionType.paramTypes.length) {
-            // TODO: error
+            diagnostics.push(`Function arguments count not match`)
         }
         for (let i = 0; i < args.length; i++) {
-            isRelatedTo(args[i], functionType.paramTypes[i]);
+            checkAssignment(args[i], functionType.paramTypes[i]);
         }
         return functionType.returnType
     }
@@ -389,15 +405,20 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkSlotAssignmentExpression(node: SlotAssignmentExpression) {
-        const targetType = checkExpression(node.expression);
-        const valueType = checkExpression(node.value);
-        isRelatedTo(valueType, targetType);
-        return valueType
+        const decl = checkExpression(node.expression);
+        const value = checkExpression(node.value);
+        checkAssignment(value, decl);
+        return value
     }
 
     function checkSlotLookupExpression(node: SlotLookupExpression) {
         const type = checkExpression(node.expression);
-        return getPropertyFromType(type, node.name.text) ?? errorType;
+        const propType = getPropertyFromType(type, node.name.text)
+        if (!propType) {
+            diagnostics.push("Cannot find property")
+            return errorType
+        }
+        return propType;
     }
 
     function checkMethodCallExpression(node: MethodCallExpression) {
@@ -405,6 +426,7 @@ export function createChecker(file: SourceFile) {
         const args = node.args.map(checkExpression);
         const propType = getPropertyFromType(type, node.name.text);
         if (!propType) {
+            diagnostics.push("Cannot find property")
             return errorType
         }
         return checkFunctionCallLike(propType, args);
@@ -421,8 +443,7 @@ export function createChecker(file: SourceFile) {
 
     function checkArraysExpression(node: ArraysExpression) {
         check(node.length);
-
-        const itemType = node.defaultValue ? checkExpression(node.defaultValue) : neverType;
+        const itemType = node.defaultValue ? checkExpression(node.defaultValue) : unknownType;
         return createArrayType(itemType);
     }
 
@@ -444,11 +465,15 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkVariableStatement(node: VariableStatement): Type {
-        if (node.type) {
-            return checkTypeNode(node.type)
+        const decl = node.type ? checkTypeNode(node.type) : undefined
+        const value = checkExpression(node.initializer);
+
+        if (decl) {
+            checkAssignment(value, decl)
+            return decl
         }
 
-        return checkExpression(node.initializer);
+        return value
     }
 
     function checkExpressionStatement(node: ExpressionStatement) {
@@ -477,6 +502,7 @@ export function createChecker(file: SourceFile) {
         front.forEach(check);
 
         if (tail.kind !== SyntaxKind.ExpressionStatement) {
+            diagnostics.push('Must be expression')
             return errorType
         }
 
@@ -506,12 +532,14 @@ export function createChecker(file: SourceFile) {
         const left = checkExpression(node.left);
         const operator = node.operator;
         const right = checkExpression(node.right);
+
         if (left.kind === TypeKind.Integer && right.kind === TypeKind.Integer) {
             return checkBuiltinIntagerShorthand(operator)
         }
         const operatorName = shorthandTokenToOperator(operator.kind);
         const methodType = getPropertyFromType(left, operatorName);
         if (!methodType) {
+            diagnostics.push("Cannot find shorthand method")
             return errorType
         }
         return checkFunctionCallLike(methodType, [right]);
@@ -531,6 +559,7 @@ export function createChecker(file: SourceFile) {
 
         const getMethodType = getPropertyFromType(expression, 'get');
         if (!getMethodType) {
+            diagnostics.push("Cannot find get shorthand method")
             return errorType
         }
 
@@ -544,6 +573,7 @@ export function createChecker(file: SourceFile) {
 
         const setMethodType = getPropertyFromType(expression, 'set');
         if (!setMethodType) {
+            diagnostics.push("Cannot find set shorthand method")
             return errorType
         }
 

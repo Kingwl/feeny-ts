@@ -1,6 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checker should-work-with-arrays 1`] = `
+exports[`Checker diagnostics - should-work-with-arrays 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-binary-shorthand 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-break-and-continue 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-function 1`] = `
+Array [
+  "Cannot find shorthand method",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-function-call 1`] = `
+Array [
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-function-expression 1`] = `
+Array [
+  "Cannot find shorthand method",
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-get-shorthand 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-global-variable 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-if-expression 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-if-expression-with-if-only 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-integer 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-local-variable 1`] = `
+Array [
+  "Must be expression",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-method-call 1`] = `
+Array [
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-nested-function 1`] = `
+Array [
+  "Cannot find shorthand method",
+  "Cannot find shorthand method",
+  "Cannot find shorthand method",
+  "Cannot find shorthand method",
+  "Cannot assign",
+  "Is not callable",
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-null 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-object-without-extends 1`] = `
+Array [
+  "Cannot find property",
+  "Cannot find property",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-objects 1`] = `
+Array [
+  "Cannot find property",
+  "Cannot find property",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-objects-and-slots 1`] = `
+Array [
+  "Cannot find property",
+  "Cannot find shorthand method",
+  "Cannot find shorthand method",
+  "Cannot find shorthand method",
+  "Cannot find property",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-printf 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-set-shorthand 1`] = `
+Array [
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-slot-assignment 1`] = `
+Array [
+  "Cannot assign",
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-slot-lookup 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-type-arrays 1`] = `
+Array [
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-type-function-call 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-type-function-expression 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-type-function-parameter 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-type-function-statement 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-type-integer 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-type-method-signature 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-type-method-slot 1`] = `
+Array [
+  "Cannot find property",
+  "Cannot find shorthand method",
+  "Cannot find shorthand method",
+  "Cannot find property",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-type-null 1`] = `
+Array [
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-type-typedef 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-type-variable-reference 1`] = `
+Array [
+  "Cannot assign",
+]
+`;
+
+exports[`Checker diagnostics - should-work-with-type-variable-slot 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-variable-assignment 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-variable-reference 1`] = `Array []`;
+
+exports[`Checker diagnostics - should-work-with-while-expression 1`] = `Array []`;
+
+exports[`Checker types - should-work-with-arrays 1`] = `
 Array [
   Object {
     "kind": "ArraysExpression",
@@ -30,7 +181,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-binary-shorthand 1`] = `
+exports[`Checker types - should-work-with-binary-shorthand 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -155,7 +306,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-break-and-continue 1`] = `
+exports[`Checker types - should-work-with-break-and-continue 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -275,7 +426,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-function 1`] = `
+exports[`Checker types - should-work-with-function 1`] = `
 Array [
   Object {
     "kind": "FunctionStatement",
@@ -315,7 +466,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-function-call 1`] = `
+exports[`Checker types - should-work-with-function-call 1`] = `
 Array [
   Object {
     "kind": "FunctionStatement",
@@ -355,7 +506,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-function-expression 1`] = `
+exports[`Checker types - should-work-with-function-expression 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -405,7 +556,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-get-shorthand 1`] = `
+exports[`Checker types - should-work-with-get-shorthand 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -425,7 +576,7 @@ Array [
   Object {
     "kind": "GetShorthand",
     "pos": 18,
-    "type": "Never",
+    "type": "Unknown",
   },
   Object {
     "kind": "VariableReferenceExpression",
@@ -440,7 +591,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-global-variable 1`] = `
+exports[`Checker types - should-work-with-global-variable 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -455,7 +606,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-if-expression 1`] = `
+exports[`Checker types - should-work-with-if-expression 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -500,7 +651,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-if-expression-with-if-only 1`] = `
+exports[`Checker types - should-work-with-if-expression-with-if-only 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -535,7 +686,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-integer 1`] = `
+exports[`Checker types - should-work-with-integer 1`] = `
 Array [
   Object {
     "kind": "IntegerLiteralExpression",
@@ -565,7 +716,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-local-variable 1`] = `
+exports[`Checker types - should-work-with-local-variable 1`] = `
 Array [
   Object {
     "kind": "FunctionStatement",
@@ -590,7 +741,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-method-call 1`] = `
+exports[`Checker types - should-work-with-method-call 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -635,7 +786,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-nested-function 1`] = `
+exports[`Checker types - should-work-with-nested-function 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -750,7 +901,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-null 1`] = `
+exports[`Checker types - should-work-with-null 1`] = `
 Array [
   Object {
     "kind": "NullExpression",
@@ -760,7 +911,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-object-without-extends 1`] = `
+exports[`Checker types - should-work-with-object-without-extends 1`] = `
 Array [
   Object {
     "kind": "ObjectsExpression",
@@ -770,7 +921,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 12,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -800,7 +951,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-objects 1`] = `
+exports[`Checker types - should-work-with-objects 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -815,7 +966,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 20,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -835,7 +986,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 47,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -865,7 +1016,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-objects-and-slots 1`] = `
+exports[`Checker types - should-work-with-objects-and-slots 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -880,7 +1031,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 20,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -900,7 +1051,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 47,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -945,7 +1096,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-printf 1`] = `
+exports[`Checker types - should-work-with-printf 1`] = `
 Array [
   Object {
     "kind": "PrintingExpression",
@@ -960,7 +1111,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-set-shorthand 1`] = `
+exports[`Checker types - should-work-with-set-shorthand 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1000,7 +1151,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-slot-assignment 1`] = `
+exports[`Checker types - should-work-with-slot-assignment 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1015,7 +1166,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 20,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1035,7 +1186,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 55,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1045,7 +1196,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 79,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1055,7 +1206,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 107,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1085,12 +1236,12 @@ Array [
   Object {
     "kind": "SlotLookupExpression",
     "pos": 136,
-    "type": "Never",
+    "type": "Object",
   },
   Object {
     "kind": "SlotLookupExpression",
     "pos": 132,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "VariableReferenceExpression",
@@ -1105,7 +1256,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-slot-lookup 1`] = `
+exports[`Checker types - should-work-with-slot-lookup 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1120,7 +1271,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 20,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1140,7 +1291,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 55,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1150,7 +1301,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 79,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "ObjectsExpression",
@@ -1160,7 +1311,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 107,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1170,7 +1321,7 @@ Array [
   Object {
     "kind": "SlotLookupExpression",
     "pos": 119,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "VariableReferenceExpression",
@@ -1180,17 +1331,17 @@ Array [
   Object {
     "kind": "SlotLookupExpression",
     "pos": 134,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
     "kind": "SlotLookupExpression",
     "pos": 132,
-    "type": "Never",
+    "type": "Object",
   },
   Object {
     "kind": "SlotLookupExpression",
     "pos": 128,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "kind": "VariableReferenceExpression",
@@ -1200,7 +1351,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-arrays 1`] = `
+exports[`Checker types - should-work-with-type-arrays 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1225,7 +1376,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-function-call 1`] = `
+exports[`Checker types - should-work-with-type-function-call 1`] = `
 Array [
   Object {
     "kind": "FunctionStatement",
@@ -1285,7 +1436,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-function-expression 1`] = `
+exports[`Checker types - should-work-with-type-function-expression 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1310,7 +1461,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-function-parameter 1`] = `
+exports[`Checker types - should-work-with-type-function-parameter 1`] = `
 Array [
   Object {
     "kind": "FunctionStatement",
@@ -1340,7 +1491,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-function-statement 1`] = `
+exports[`Checker types - should-work-with-type-function-statement 1`] = `
 Array [
   Object {
     "kind": "FunctionStatement",
@@ -1365,7 +1516,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-integer 1`] = `
+exports[`Checker types - should-work-with-type-integer 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1380,7 +1531,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-method-signature 1`] = `
+exports[`Checker types - should-work-with-type-method-signature 1`] = `
 Array [
   Object {
     "kind": "TypeDefDeclaration",
@@ -1400,7 +1551,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-method-slot 1`] = `
+exports[`Checker types - should-work-with-type-method-slot 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1455,7 +1606,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-null 1`] = `
+exports[`Checker types - should-work-with-type-null 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1470,7 +1621,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-typedef 1`] = `
+exports[`Checker types - should-work-with-type-typedef 1`] = `
 Array [
   Object {
     "kind": "TypeDefDeclaration",
@@ -1485,7 +1636,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-variable-reference 1`] = `
+exports[`Checker types - should-work-with-type-variable-reference 1`] = `
 Array [
   Object {
     "kind": "TypeDefDeclaration",
@@ -1510,7 +1661,7 @@ Array [
   Object {
     "kind": "VariableSlot",
     "pos": 58,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "kind": "IntegerLiteralExpression",
@@ -1520,7 +1671,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-type-variable-slot 1`] = `
+exports[`Checker types - should-work-with-type-variable-slot 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1545,7 +1696,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-variable-assignment 1`] = `
+exports[`Checker types - should-work-with-variable-assignment 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1575,7 +1726,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-variable-reference 1`] = `
+exports[`Checker types - should-work-with-variable-reference 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
@@ -1595,7 +1746,7 @@ Array [
 ]
 `;
 
-exports[`Checker should-work-with-while-expression 1`] = `
+exports[`Checker types - should-work-with-while-expression 1`] = `
 Array [
   Object {
     "kind": "VariableStatement",
