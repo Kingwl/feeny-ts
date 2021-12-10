@@ -122,6 +122,7 @@ export function runCode (text: string) {
 interface CheckResult {
     id: number
     pos: number;
+    type: string | number;
     kind: string | number;
 }
 
@@ -131,24 +132,24 @@ export function checkCode (text: string) {
     const binder = createBinder(file);
     binder.bindFile();
     const checker = createChecker(file);
-    const { check, diagnostics } = checker.checkFile();
 
     const result: CheckResult[] = []; 
 
     visitor(file);
 
-    return [result, diagnostics] as const;
+    return [result, checker.diagnostics] as const;
     
     function visitor (node: ASTNode) {
-        const type = check(node)
-        if (type) {
+        const type = checker.check(node)
+        if (!checker.isNeverType(type)) {
             result.push({
                 id: type.id,
                 pos: node.pos,
+                type: type._debugKind ?? type.kind,
                 kind: node.__debugKind ?? node.kind,
             })
         }
-
+       
         forEachChild(node, visitor)
     }
 }

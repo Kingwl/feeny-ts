@@ -78,30 +78,31 @@ export function createChecker(file: SourceFile) {
     const typeCheckCache = new Map<ASTNode, Type | undefined>();
     const diagnostics: string[] = []
 
+    check(file);
+
     return {
-        checkFile,
+        check,
+        checkExpression,
+        checkDeclaration,
+        isNeverType,
+        diagnostics
     }
 
-    function checkFile () {
-        check(file);
-
-        return {
-            check,
-            diagnostics
-        }
+    function isNeverType (type: Type) {
+        return type === neverType
     }
 
-    function check (node: ASTNode): Type | undefined {
+    function check (node: ASTNode): Type {
         if (typeCheckCache.has(node)) {
-            return typeCheckCache.get(node);
+            return typeCheckCache.get(node)!;
         }
 
-        const type = checkWorker(node);
+        const type = checkWithoutCache(node);
         typeCheckCache.set(node, type);
         return type;
     }
 
-    function checkWorker (node: ASTNode) {
+    function checkWithoutCache (node: ASTNode): Type {
         if (isExpression(node)) {
             return checkExpression(node)
         }
@@ -115,10 +116,20 @@ export function createChecker(file: SourceFile) {
         }
 
         forEachChild(node, check);
-        return undefined;
+        return neverType;
     }
 
     function checkDeclaration (node: Declaration): Type {
+        if (typeCheckCache.has(node)) {
+            return typeCheckCache.get(node)!;
+        }
+
+        const type = checkDeclarationWithoutCache(node);
+        typeCheckCache.set(node, type);
+        return type;
+    }
+
+    function checkDeclarationWithoutCache (node: Declaration) {
         switch (node.kind) {
             case SyntaxKind.FunctionStatement:
                 return checkFunctionStatement(node as FunctionStatement)
@@ -144,6 +155,16 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkExpression (node: Expression): Type {
+        if (typeCheckCache.has(node)) {
+            return typeCheckCache.get(node)!;
+        }
+
+        const type = checkExpressionWithoutCache(node);
+        typeCheckCache.set(node, type);
+        return type;
+    }
+
+    function checkExpressionWithoutCache (node: Expression): Type {
         switch (node.kind) {
             case SyntaxKind.IntegerLiteralExpression:
                 return integerType
@@ -498,12 +519,10 @@ export function createChecker(file: SourceFile) {
         }
     }
 
-    function checkSequenceOfStatements(node: SequenceOfStatements<true>): Type
-    function checkSequenceOfStatements(node: SequenceOfStatements): Type | undefined
-    function checkSequenceOfStatements<T extends boolean>(node: SequenceOfStatements<T>): Type | undefined {
+    function checkSequenceOfStatements(node: SequenceOfStatements): Type {
         if (!node.isExpression) {
             forEachChild(node, check);
-            return undefined;
+            return neverType;
         }
 
         const [ front, tail ] = frontAndTail(node.statements)

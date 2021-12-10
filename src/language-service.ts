@@ -9,8 +9,7 @@ export function createLanguageService (text: string) {
     const binder = createBinder(file);
     binder.bindFile();
     const checker = createChecker(file);
-    const checkResult = checker.checkFile();
-    const { check, diagnostics } = checkResult;
+    const { check, diagnostics } = checker;
 
     return {
         getDiagnostics,
