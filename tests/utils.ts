@@ -98,7 +98,7 @@ export function bindCode (text: string) {
     function symbolToSignature(symbol: Symbol): SymbolSignature {
         return {
             id: symbol.id,
-            declarationPos: symbol.declaration.pos,
+            declarationPos: symbol.declaration?.pos ?? -1,
             name: symbol.name,
             flags: symbol._debugFlags ?? symbol.flags
         }
@@ -131,7 +131,7 @@ export function checkCode (text: string) {
     const file = parser.parse();
     const binder = createBinder(file);
     binder.bindFile();
-    const checker = createChecker(file);
+    const checker = createChecker(file, binder.createBuiltinSymbol);
 
     const result: CheckResult[] = []; 
 

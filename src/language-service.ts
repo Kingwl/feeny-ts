@@ -8,8 +8,7 @@ export function createLanguageService (text: string) {
     const file = parser.parse();
     const binder = createBinder(file);
     binder.bindFile();
-    const checker = createChecker(file);
-    const { check, diagnostics } = checker;
+    const checker = createChecker(file, binder.createBuiltinSymbol);
 
     return {
         getDiagnostics,
@@ -18,7 +17,7 @@ export function createLanguageService (text: string) {
     }
 
     function getDiagnostics () {
-        return diagnostics
+        return checker.diagnostics
     }
 
     function getCurrentToken (pos: number) {
@@ -27,6 +26,11 @@ export function createLanguageService (text: string) {
     }
 
     function goToDefinition(pos: number) {
-        
+        const currentToken = findCurrentToken(file, pos);
+        if (!currentToken) {
+            return undefined;
+        }
+        const symbol = checker.getSymbolAtNode(currentToken);
+        return symbol?.declaration
     }
 }

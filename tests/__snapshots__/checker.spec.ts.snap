@@ -1974,10 +1974,10 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 0,
+    "id": 7,
     "kind": "VariableStatement",
     "pos": 33,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "id": 8,

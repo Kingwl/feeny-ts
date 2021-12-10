@@ -1,28 +1,8 @@
 import { BinaryShorthandToken, Declaration, ParamsAndReturnType, Symbol, SymbolFlag } from ".";
-import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression } from "./types";
-import { assertKind, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
+import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression, Type, TypeKind } from "./types";
+import { assertDef, assertKind, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
 import { forEachChild } from './visitor'
 
-enum TypeKind {
-    Unknown,
-    Never,
-    Null,
-    Integer,
-    Boolean,
-    String,
-    Object,
-    Function,
-    Union
-}
-
-interface Type {
-    id: number
-    kind: TypeKind
-
-    symbol?: Symbol
-
-    _debugKind?: string
-}
 
 interface UnknownType extends Type {
     kind: TypeKind.Unknown
@@ -50,7 +30,7 @@ interface StringType extends Type {
 
 interface ObjectType extends Type {
     kind: TypeKind.Object
-    properties: Map<string, Type>
+    properties: Map<string, Symbol>
 }
 
 interface FunctionType extends Type {
@@ -65,7 +45,7 @@ interface UnionType extends Type {
     types: Type[]
 }
 
-export function createChecker(file: SourceFile) {
+export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: SymbolFlag) => Symbol) {
     let uid = 0;
     const unknownType = createUnknownType();
     const errorType = createNeverType();
@@ -77,6 +57,8 @@ export function createChecker(file: SourceFile) {
 
     const typeCheckCache = new Map<ASTNode, Type | undefined>();
     const diagnostics: string[] = []
+    const symbolResolveCache = new Map<ASTNode, Symbol | undefined>();
+    const symbolTypeCache = new Map<Symbol, Type>();
 
     check(file);
 
@@ -84,12 +66,51 @@ export function createChecker(file: SourceFile) {
         check,
         checkExpression,
         checkDeclaration,
+        getSymbolAtNode,
         isNeverType,
         diagnostics
     }
 
     function isNeverType (type: Type) {
         return type === neverType
+    }
+
+    function getTypeFromSymbol (symbol: Symbol) {
+        if (symbolTypeCache.has(symbol)) {
+            return symbolTypeCache.get(symbol)!
+        }
+
+        let type: Type | undefined
+        if (symbol.type) {
+            type = symbol.type
+        } else if (symbol.declaration) {
+            type = checkDeclaration(symbol.declaration)
+        } else {
+            type = unknownType
+        }
+        symbolTypeCache.set(symbol, type)
+        return type
+    }
+
+    function getSymbolAtNode (node: ASTNode): Symbol | undefined {
+        switch (node.kind) {
+            case SyntaxKind.VariableReferenceExpression:
+            case SyntaxKind.TypeReferenceTypeNode:
+                assertKind<VariableReferenceExpression | TypeReferenceTypeNode>(node)
+                if (!symbolResolveCache.has(node)) {
+                    check(node);
+                }
+                return symbolResolveCache.get(node);
+            case SyntaxKind.Identifier:
+                return node.parent ? getSymbolAtNode(node.parent) : undefined;
+            case SyntaxKind.SlotLookupExpression: {
+                assertKind<SlotLookupExpression>(node);
+                const type = checkExpression(node.expression);
+                return getPropertyFromType(type, node.name.text)
+            }
+            default:
+                return undefined;
+        }
     }
 
     function check (node: ASTNode): Type {
@@ -247,8 +268,15 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkVariableReferenceExpression(node: VariableReferenceExpression): Type {
-        const symbol = resolveName(node.name.text, node, SymbolFlag.Value);
-        if (!symbol) {
+        let symbol: Symbol | undefined
+        if (symbolResolveCache.has(node)) {
+            symbol = symbolResolveCache.get(node);
+        } else {
+            symbol = resolveName(node.name.text, node, SymbolFlag.Value);
+            symbolResolveCache.set(node, symbol);
+        }
+
+        if (!symbol?.declaration) {
             return unknownType
         }
         return checkDeclaration(symbol.declaration) 
@@ -305,8 +333,15 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkTypeReferenceTypeNode(node: TypeReferenceTypeNode): Type {
-        const symbol = resolveName(node.name.text, node, SymbolFlag.Value);
-        if (!symbol) {
+        let symbol: Symbol | undefined
+        if (symbolResolveCache.has(node)) {
+            symbol = symbolResolveCache.get(node);
+        } else {
+            symbol = resolveName(node.name.text, node, SymbolFlag.TypeDef);
+            symbolResolveCache.set(node, symbol)
+        }
+        
+        if (!symbol?.declaration) {
             return unknownType
         }
         return checkDeclaration(symbol.declaration) 
@@ -344,10 +379,11 @@ export function createChecker(file: SourceFile) {
     }
 
     function checkTypeDefDeclaration(node: TypeDefDeclaration) {
-        const properties = new Map<string, Type>();
+        const properties = new Map<string, Symbol>();
         node.slots.forEach(slot => {
-            const slotType = checkVariableSlotSignatureOrMethodSlotSignature(slot);
-            properties.set(slot.name.text, slotType);
+            checkVariableSlotSignatureOrMethodSlotSignature(slot);
+            assertDef(slot.symbol);
+            properties.set(slot.name.text, slot.symbol);
         })
         const type = createObjectType(properties);
         if (node.symbol) {
@@ -442,30 +478,32 @@ export function createChecker(file: SourceFile) {
 
     function checkSlotLookupExpression(node: SlotLookupExpression) {
         const type = checkExpression(node.expression);
-        const propType = getPropertyFromType(type, node.name.text)
-        if (!propType) {
+        const prop = getPropertyFromType(type, node.name.text)
+        if (!prop) {
             diagnostics.push("Cannot find property")
             return errorType
         }
-        return propType;
+        return getTypeFromSymbol(prop);
     }
 
     function checkMethodCallExpression(node: MethodCallExpression) {
         const type = checkExpression(node.expression);
         const args = node.args.map(checkExpression);
-        const propType = getPropertyFromType(type, node.name.text);
-        if (!propType) {
+        const prop = getPropertyFromType(type, node.name.text);
+        if (!prop) {
             diagnostics.push("Cannot find property")
             return errorType
         }
+        const propType = getTypeFromSymbol(prop);
         return checkFunctionCallLike(propType, args);
     }
 
     function checkObjectsExpression(node: ObjectsExpression) {
-        const properties = new Map<string, Type>();
+        const properties = new Map<string, Symbol>();
         node.slots.forEach(slot => {
-            const slotType = checkVariableSlotOrMethodSlot(slot);
-            properties.set(slot.name.text, slotType);
+            checkVariableSlotOrMethodSlot(slot);
+            assertDef(slot.symbol);
+            properties.set(slot.name.text, slot.symbol);
         })
         return createObjectType(properties);
     }
@@ -564,15 +602,16 @@ export function createChecker(file: SourceFile) {
             return checkBuiltinIntagerShorthand(operator)
         }
         const operatorName = shorthandTokenToOperator(operator.kind);
-        const methodType = getPropertyFromType(left, operatorName);
-        if (!methodType) {
+        const prop = getPropertyFromType(left, operatorName);
+        if (!prop) {
             diagnostics.push("Cannot find shorthand method")
             return errorType
         }
+        const methodType = getTypeFromSymbol(prop);
         return checkFunctionCallLike(methodType, [right]);
     }
 
-    function getPropertyFromType (type: Type, propertyName: string): Type | undefined {
+    function getPropertyFromType (type: Type, propertyName: string): Symbol | undefined {
         if (type.kind !== TypeKind.Object) {
             return undefined
         }
@@ -584,13 +623,14 @@ export function createChecker(file: SourceFile) {
         const expression = checkExpression(node.expression);
         const args = node.args.map(checkExpression);
 
-        const getMethodType = getPropertyFromType(expression, 'get');
-        if (!getMethodType) {
+        const prop = getPropertyFromType(expression, 'get');
+        if (!prop) {
             diagnostics.push("Cannot find get shorthand method")
             return errorType
         }
 
-        return checkFunctionCallLike(getMethodType, args);
+        const propType = getTypeFromSymbol(prop);
+        return checkFunctionCallLike(propType, args);
     }
     
     function checkSetShorthand(node: SetShorthand): Type {
@@ -598,13 +638,14 @@ export function createChecker(file: SourceFile) {
         const args = node.args.map(checkExpression);
         const value = checkExpression(node.value);
 
-        const setMethodType = getPropertyFromType(expression, 'set');
-        if (!setMethodType) {
+        const prop = getPropertyFromType(expression, 'set');
+        if (!prop) {
             diagnostics.push("Cannot find set shorthand method")
             return errorType
         }
 
-        return checkFunctionCallLike(setMethodType, [...args, value]);
+        const propType = getTypeFromSymbol(prop);
+        return checkFunctionCallLike(propType, [...args, value]);
     }
 
     function createUnknownType () {
@@ -661,7 +702,7 @@ export function createChecker(file: SourceFile) {
         return type
     }
     
-    function createObjectType (properties: Map<string, Type>) {
+    function createObjectType (properties: Map<string, Symbol>) {
         const type: ObjectType = {
             id: uid++,
             kind: TypeKind.Object,
@@ -710,12 +751,19 @@ export function createChecker(file: SourceFile) {
     }
 
     function createArrayType (itemType: Type) {
-        const properties = new Map<string, Type>();
+        const properties = new Map<string, Symbol>();
         const arrayType = createObjectType(properties);
 
-        const getMethod = createGetMethod();
-        const setMethod = createSetMethod();
-        const lengthMethod = createLengthMethod();
+        const getMethodType = createGetMethod();
+        const setMethodType = createSetMethod();
+        const lengthMethodType = createLengthMethod();
+
+        const getMethod = createBuiltinSymbol(SymbolFlag.MethodSlot)
+        getMethod.type = getMethodType
+        const setMethod = createBuiltinSymbol(SymbolFlag.MethodSlot)
+        setMethod.type = setMethodType
+        const lengthMethod = createBuiltinSymbol(SymbolFlag.MethodSlot)
+        lengthMethod.type = lengthMethodType
 
         properties.set("get", getMethod);
         properties.set("set", setMethod);

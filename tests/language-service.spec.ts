@@ -4,18 +4,24 @@ describe('Language service', () => {
     it("Should work", () => {
         const code = 
 `
-defn foo():
+typedef ab:
+    var a: integer
+    var b: integer
+
+defn foo() -> ab:
     object:
         var a = 1
         var b = 2
 var bar = foo()
-bar.a
+bar.b
 `       
         const ls = createLanguageService(code)
-        const pos = code.indexOf(`var b = 2`) + 'var '.length
+        const pos = code.indexOf(`bar.b`) + 'bar.'.length
         const char = code[pos]
-        console.log(char);
         const token = ls.getCurrentToken(pos)
-        console.log(token)
+        const decl = ls.goToDefinition(pos)
+        if (decl?.pos) {
+            console.log(decl.pos, code.substring(decl.pos, decl.end))
+        }
     })
 })

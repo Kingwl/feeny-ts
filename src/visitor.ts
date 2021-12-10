@@ -26,6 +26,7 @@ export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefi
             case SyntaxKind.StringLiteralExpression:
             case SyntaxKind.IntegerLiteralExpression:
             case SyntaxKind.VariableReferenceExpression:
+            case SyntaxKind.TypeReferenceTypeNode:
             case SyntaxKind.NullExpression:
             case SyntaxKind.BreakExpression:
             case SyntaxKind.ContinueExpression:
@@ -73,22 +74,22 @@ export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefi
                 return cb(node.expression)
             case SyntaxKind.VariableSlot:
                 assertKind<VariableSlot>(node);
-                return cb(node.name) || cb(node.initializer)
+                return cb(node.name) || node.type && cb(node.type) || cb(node.initializer)
             case SyntaxKind.MethodSlot:
                 assertKind<MethodSlot>(node);
-                return cb(node.name) || cb(node.body)
+                return cb(node.name) || node.type && cb(node.type) || cb(node.body)
             case SyntaxKind.ParameterDeclaration:
                 assertKind<ParameterDeclaration>(node);
-                return cb(node.name)
+                return cb(node.name) || node.type && cb(node.type)
             case SyntaxKind.VariableStatement:
                 assertKind<VariableStatement>(node);
-                return cb(node.name) || cb(node.initializer)
+                return cb(node.name) || node.type && cb(node.type) || cb(node.initializer)
             case SyntaxKind.ExpressionStatement:
                 assertKind<ExpressionStatement>(node);
                 return cb(node.expression)
             case SyntaxKind.FunctionStatement:
                 assertKind<FunctionStatement>(node);
-                return cb(node.name) || visitNodes(node.params) || cb(node.body)
+                return cb(node.name) || visitNodes(node.params) || node.type && cb(node.type) || cb(node.body)
             case SyntaxKind.SequenceOfStatements:
                 assertKind<SequenceOfStatements>(node);
                 return visitNodes(node.statements)
@@ -106,7 +107,7 @@ export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefi
                 return cb(node.name) || visitNodes(node.slots)
             case SyntaxKind.MethodSlotSignatureDeclaration:
                 assertKind<MethodSlotSignatureDeclaration>(node);
-                return cb(node.name) || visitNodes(node.params) || cb(node.type)
+                return cb(node.name) || visitNodes(node.params) || node.type && cb(node.type) || cb(node.type)
             case SyntaxKind.VariableSlotSignatureDeclaration:
                 assertKind<VariableSlotSignatureDeclaration>(node);
                 return cb(node.name) || cb(node.type)

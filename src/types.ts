@@ -491,20 +491,43 @@ export enum SymbolFlag {
   AnomymousObject = 1 << 5,
   TypeDef = 1 << 6,
 
+  Builtin = 1 << 28,
   VariableLike = Variable | Parameter | VariableSlot,
   FunctionLike = Function | MethodSlot,
   Value = Variable | Parameter | Function | VariableSlot | MethodSlot | AnomymousObject,
 }
 
 
+export enum TypeKind {
+  Unknown,
+  Never,
+  Null,
+  Integer,
+  Boolean,
+  String,
+  Object,
+  Function,
+  Union
+}
+
+export interface Type {
+  id: number
+  kind: TypeKind
+
+  symbol?: Symbol
+
+  _debugKind?: string
+}
+
 export interface Symbol {
   id: number;
   members?: SymbolTable;
   name?: string;
   flags: SymbolFlag;
-  declaration: Declaration
+  declaration?: Declaration
   parent?: Symbol;
   _debugFlags?: string
+  type?: Type
 }
 
 export interface SymbolTable extends Map<string, Symbol> {

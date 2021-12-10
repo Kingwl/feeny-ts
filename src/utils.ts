@@ -150,7 +150,7 @@ export function textSpanIncludesPosition (textSpan: TextSpan, pos: number) {
 }
 
 export function findCurrentToken(root: ASTNode, pos: number) {
-  let parent: ASTNode | undefined = undefined;
+  let parent: ASTNode | undefined;
   visitor(root)
   return parent;
 

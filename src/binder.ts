@@ -8,7 +8,8 @@ export function createBinder(file: SourceFile) {
     let uid = 1
 
     return {
-        bindFile
+        bindFile,
+        createBuiltinSymbol
     }
 
     function bindFile () {
@@ -179,6 +180,18 @@ export function createBinder(file: SourceFile) {
             parent
         }
         declaration.symbol = symbol;
+        setupSymbolDebugInfo(symbol);
+        return symbol;
+    }
+
+    function createBuiltinSymbol(flags: SymbolFlag) {
+        const symbol: Symbol = {
+            id: uid++,
+            name: undefined,
+            flags: flags | SymbolFlag.Builtin,
+            declaration: undefined,
+            parent
+        }
         setupSymbolDebugInfo(symbol);
         return symbol;
     }
