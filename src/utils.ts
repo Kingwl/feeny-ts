@@ -1,3 +1,4 @@
+import { forEachChild } from '.';
 import {
   KeywordSyntaxKind,
   ObjectSlot,
@@ -13,7 +14,8 @@ import {
   Declaration,
   SymbolFlag,
   HasLocalVariables,
-  HasMembers
+  HasMembers,
+  TextSpan
 } from './types';
 
 export function finishNode<T extends ASTNode>(
@@ -75,8 +77,6 @@ export function setupSymbolDebugInfo (symbol: Symbol) {
       }
   });
 }
-
-
 
 export function isDef<T>(v: T): v is NonNullable<T> {
   return v !== undefined && v !== null;
@@ -142,6 +142,23 @@ export function findAncestor(node: ASTNode, pred: (v: ASTNode) => boolean): ASTN
       return parent;
     }
     parent = parent.parent;
+  }
+}
+
+export function textSpanIncludesPosition (textSpan: TextSpan, pos: number) {
+  return  textSpan.pos <= pos && pos < textSpan.end
+}
+
+export function findCurrentToken(root: ASTNode, pos: number) {
+  let parent: ASTNode | undefined = undefined;
+  visitor(root)
+  return parent;
+
+  function visitor (node: ASTNode) {
+    if (textSpanIncludesPosition(node, pos)) {
+      parent = node
+      forEachChild(parent, visitor)
+    }
   }
 }
 

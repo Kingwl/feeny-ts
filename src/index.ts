@@ -5,4 +5,5 @@ export * from './factory';
 export * from './binder';
 export * from './visitor';
 export * from './checker';
+export * from './language-service'
 export * from './interpreter/interpreter';
