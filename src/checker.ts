@@ -1,4 +1,4 @@
-import { AllDeclaration, BinaryShorthandToken, Declaration, FunctionBase, NodeArray, ParamsAndReturnType, Symbol, SymbolFlag } from ".";
+import { BinaryShorthandToken, Declaration, ParamsAndReturnType, Symbol, SymbolFlag } from ".";
 import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression } from "./types";
 import { assertKind, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
 import { forEachChild } from './visitor'
@@ -16,7 +16,10 @@ enum TypeKind {
 }
 
 interface Type {
+    id: number
     kind: TypeKind
+
+    symbol?: Symbol
 
     _debugKind?: string
 }
@@ -63,6 +66,7 @@ interface UnionType extends Type {
 }
 
 export function createChecker(file: SourceFile) {
+    let uid = 0;
     const unknownType = createUnknownType();
     const errorType = createNeverType();
     const neverType = createNeverType();
@@ -324,7 +328,11 @@ export function createChecker(file: SourceFile) {
             const slotType = checkVariableSlotSignatureOrMethodSlotSignature(slot);
             properties.set(slot.name.text, slotType);
         })
-        return createObjectType(properties);
+        const type = createObjectType(properties);
+        if (node.symbol) {
+            type.symbol = node.symbol;
+        }
+        return type;
     }
 
     function checkVariableAssignmentExpression(node: VariableAssignmentExpression) {
@@ -582,6 +590,7 @@ export function createChecker(file: SourceFile) {
 
     function createUnknownType () {
         const type: UnknownType = {
+            id: uid++,
             kind: TypeKind.Unknown
         }
         setupTypeDebugInfo(type);
@@ -590,6 +599,7 @@ export function createChecker(file: SourceFile) {
     
     function createNeverType () {
         const type: NeverType = {
+            id: uid++,
             kind: TypeKind.Never
         }
         setupTypeDebugInfo(type);
@@ -598,6 +608,7 @@ export function createChecker(file: SourceFile) {
     
     function createNullType () {
         const type: NullType = {
+            id: uid++,
             kind: TypeKind.Null
         }
         setupTypeDebugInfo(type);
@@ -606,6 +617,7 @@ export function createChecker(file: SourceFile) {
     
     function createIntegerType () {
         const type: IntegerType = {
+            id: uid++,
             kind: TypeKind.Integer
         }
         setupTypeDebugInfo(type);
@@ -614,6 +626,7 @@ export function createChecker(file: SourceFile) {
 
     function createBooleanType() {
         const type: BooleanType = {
+            id: uid++,
             kind: TypeKind.Boolean
         }
         setupTypeDebugInfo(type);
@@ -622,6 +635,7 @@ export function createChecker(file: SourceFile) {
     
     function createStringType () {
         const type: StringType = {
+            id: uid++,
             kind: TypeKind.String
         }
         setupTypeDebugInfo(type);
@@ -630,6 +644,7 @@ export function createChecker(file: SourceFile) {
     
     function createObjectType (properties: Map<string, Type>) {
         const type: ObjectType = {
+            id: uid++,
             kind: TypeKind.Object,
             properties
         }
@@ -639,6 +654,7 @@ export function createChecker(file: SourceFile) {
     
     function createFunctionType (thisType: Type | undefined, paramTypes: Type[], returnType: Type) {
         const type: FunctionType = {
+            id: uid++,
             kind: TypeKind.Function,
             thisType,
             paramTypes,
@@ -658,6 +674,7 @@ export function createChecker(file: SourceFile) {
         }
     
         const type: UnionType = {
+            id: uid++,
             kind: TypeKind.Union,
             types
         }

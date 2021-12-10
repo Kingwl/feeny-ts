@@ -498,6 +498,7 @@ export enum SymbolFlag {
 
 
 export interface Symbol {
+  id: number;
   members?: SymbolTable;
   name?: string;
   flags: SymbolFlag;

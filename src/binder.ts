@@ -5,6 +5,7 @@ import { forEachChild } from "./visitor";
 export function createBinder(file: SourceFile) {
     let container: HasLocalVariables | undefined = undefined;
     let parent: Symbol | undefined = undefined;
+    let uid = 1
 
     return {
         bindFile
@@ -158,6 +159,7 @@ export function createBinder(file: SourceFile) {
 
     function createSymbol(name: string, flags: SymbolFlag, declaration: Declaration) {
         const symbol: Symbol = {
+            id: uid++,
             name,
             flags,
             declaration,
@@ -170,6 +172,7 @@ export function createBinder(file: SourceFile) {
 
     function createAnonymousSymbol(flags: SymbolFlag, declaration: Declaration) {
         const symbol: Symbol = {
+            id: uid++,
             name: undefined,
             flags,
             declaration,

@@ -13,11 +13,13 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 7,
         "name": "x",
       },
       Object {
         "declarationPos": 10,
         "flags": "Variable",
+        "id": 8,
         "name": "y",
       },
     ],
@@ -36,6 +38,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "x",
       },
     ],
@@ -54,6 +57,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Function",
+        "id": 22,
         "name": "f",
       },
     ],
@@ -65,16 +69,19 @@ Array [
       Object {
         "declarationPos": 7,
         "flags": "Parameter",
+        "id": 26,
         "name": "x",
       },
       Object {
         "declarationPos": 10,
         "flags": "Parameter",
+        "id": 27,
         "name": "y",
       },
       Object {
         "declarationPos": 13,
         "flags": "Parameter",
+        "id": 28,
         "name": "z",
       },
     ],
@@ -93,6 +100,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Function",
+        "id": 10,
         "name": "f",
       },
     ],
@@ -104,6 +112,7 @@ Array [
       Object {
         "declarationPos": 7,
         "flags": "Parameter",
+        "id": 12,
         "name": "v",
       },
     ],
@@ -122,6 +131,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 16,
         "name": "fn",
       },
     ],
@@ -133,6 +143,7 @@ Array [
       Object {
         "declarationPos": 18,
         "flags": "Parameter",
+        "id": 20,
         "name": "x",
       },
     ],
@@ -151,6 +162,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "a",
       },
     ],
@@ -169,6 +181,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "x",
       },
     ],
@@ -187,6 +200,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "x",
       },
     ],
@@ -205,6 +219,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "x",
       },
     ],
@@ -227,6 +242,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Function",
+        "id": 16,
         "name": "foo",
       },
     ],
@@ -238,6 +254,7 @@ Array [
       Object {
         "declarationPos": 16,
         "flags": "Variable",
+        "id": 20,
         "name": "x",
       },
     ],
@@ -256,6 +273,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 22,
         "name": "o",
       },
     ],
@@ -273,6 +291,7 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "MethodSlot",
+        "id": 27,
         "name": "f",
       },
     ],
@@ -289,11 +308,13 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 61,
         "name": "m",
       },
       Object {
         "declarationPos": 10,
         "flags": "Function",
+        "id": 62,
         "name": "foo",
       },
     ],
@@ -305,6 +326,7 @@ Array [
       Object {
         "declarationPos": 19,
         "flags": "Parameter",
+        "id": 72,
         "name": "x",
       },
     ],
@@ -316,11 +338,13 @@ Array [
       Object {
         "declarationPos": 27,
         "flags": "Variable",
+        "id": 77,
         "name": "y",
       },
       Object {
         "declarationPos": 41,
         "flags": "Function",
+        "id": 78,
         "name": "bar",
       },
     ],
@@ -332,6 +356,7 @@ Array [
       Object {
         "declarationPos": 50,
         "flags": "Parameter",
+        "id": 80,
         "name": "z",
       },
     ],
@@ -357,11 +382,13 @@ Array [
       Object {
         "declarationPos": 12,
         "flags": "VariableSlot",
+        "id": 37,
         "name": "x",
       },
       Object {
         "declarationPos": 27,
         "flags": "MethodSlot",
+        "id": 38,
         "name": "f",
       },
     ],
@@ -378,6 +405,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 52,
         "name": "p",
       },
     ],
@@ -395,6 +423,7 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "VariableSlot",
+        "id": 57,
         "name": "y",
       },
     ],
@@ -407,11 +436,13 @@ Array [
       Object {
         "declarationPos": 47,
         "flags": "VariableSlot",
+        "id": 65,
         "name": "x",
       },
       Object {
         "declarationPos": 62,
         "flags": "MethodSlot",
+        "id": 66,
         "name": "f",
       },
     ],
@@ -428,6 +459,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 52,
         "name": "p",
       },
     ],
@@ -445,6 +477,7 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "VariableSlot",
+        "id": 57,
         "name": "y",
       },
     ],
@@ -457,11 +490,13 @@ Array [
       Object {
         "declarationPos": 47,
         "flags": "VariableSlot",
+        "id": 65,
         "name": "x",
       },
       Object {
         "declarationPos": 62,
         "flags": "MethodSlot",
+        "id": 66,
         "name": "f",
       },
     ],
@@ -482,6 +517,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "a",
       },
     ],
@@ -500,11 +536,13 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 403,
         "name": "o",
       },
       Object {
         "declarationPos": 35,
         "flags": "Variable",
+        "id": 410,
         "name": "a",
       },
     ],
@@ -522,6 +560,7 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "VariableSlot",
+        "id": 408,
         "name": "field",
       },
     ],
@@ -534,16 +573,19 @@ Array [
       Object {
         "declarationPos": 55,
         "flags": "VariableSlot",
+        "id": 475,
         "name": "b",
       },
       Object {
         "declarationPos": 79,
         "flags": "VariableSlot",
+        "id": 499,
         "name": "c",
       },
       Object {
         "declarationPos": 107,
         "flags": "VariableSlot",
+        "id": 505,
         "name": "d",
       },
     ],
@@ -556,11 +598,13 @@ Array [
       Object {
         "declarationPos": 79,
         "flags": "VariableSlot",
+        "id": 523,
         "name": "c",
       },
       Object {
         "declarationPos": 107,
         "flags": "VariableSlot",
+        "id": 529,
         "name": "d",
       },
     ],
@@ -573,6 +617,7 @@ Array [
       Object {
         "declarationPos": 107,
         "flags": "VariableSlot",
+        "id": 535,
         "name": "d",
       },
     ],
@@ -589,11 +634,13 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 403,
         "name": "o",
       },
       Object {
         "declarationPos": 35,
         "flags": "Variable",
+        "id": 410,
         "name": "a",
       },
     ],
@@ -611,6 +658,7 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "VariableSlot",
+        "id": 408,
         "name": "field",
       },
     ],
@@ -623,16 +671,19 @@ Array [
       Object {
         "declarationPos": 55,
         "flags": "VariableSlot",
+        "id": 475,
         "name": "b",
       },
       Object {
         "declarationPos": 79,
         "flags": "VariableSlot",
+        "id": 499,
         "name": "c",
       },
       Object {
         "declarationPos": 107,
         "flags": "VariableSlot",
+        "id": 505,
         "name": "d",
       },
     ],
@@ -645,11 +696,13 @@ Array [
       Object {
         "declarationPos": 79,
         "flags": "VariableSlot",
+        "id": 523,
         "name": "c",
       },
       Object {
         "declarationPos": 107,
         "flags": "VariableSlot",
+        "id": 529,
         "name": "d",
       },
     ],
@@ -662,6 +715,7 @@ Array [
       Object {
         "declarationPos": 107,
         "flags": "VariableSlot",
+        "id": 535,
         "name": "d",
       },
     ],
@@ -678,6 +732,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "a",
       },
     ],
@@ -696,11 +751,13 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Function",
+        "id": 19,
         "name": "add",
       },
       Object {
         "declarationPos": 57,
         "flags": "Variable",
+        "id": 24,
         "name": "a",
       },
     ],
@@ -712,11 +769,13 @@ Array [
       Object {
         "declarationPos": 9,
         "flags": "Parameter",
+        "id": 22,
         "name": "x",
       },
       Object {
         "declarationPos": 21,
         "flags": "Parameter",
+        "id": 23,
         "name": "y",
       },
     ],
@@ -735,6 +794,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "a",
       },
     ],
@@ -753,6 +813,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Function",
+        "id": 10,
         "name": "foo",
       },
     ],
@@ -764,6 +825,7 @@ Array [
       Object {
         "declarationPos": 9,
         "flags": "Parameter",
+        "id": 12,
         "name": "a",
       },
     ],
@@ -782,6 +844,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Function",
+        "id": 4,
         "name": "foo",
       },
     ],
@@ -800,6 +863,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "a",
       },
     ],
@@ -818,6 +882,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "TypeDef",
+        "id": 16,
         "name": "foo",
       },
     ],
@@ -835,11 +900,13 @@ Array [
       Object {
         "declarationPos": 17,
         "flags": "Variable",
+        "id": 17,
         "name": "a",
       },
       Object {
         "declarationPos": 36,
         "flags": "MethodSlot",
+        "id": 18,
         "name": "f",
       },
     ],
@@ -856,6 +923,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 34,
         "name": "a",
       },
     ],
@@ -873,11 +941,13 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "VariableSlot",
+        "id": 41,
         "name": "foo",
       },
       Object {
         "declarationPos": 45,
         "flags": "MethodSlot",
+        "id": 42,
         "name": "bar",
       },
     ],
@@ -894,6 +964,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "a",
       },
     ],
@@ -912,6 +983,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "TypeDef",
+        "id": 10,
         "name": "foo",
       },
     ],
@@ -929,6 +1001,7 @@ Array [
       Object {
         "declarationPos": 17,
         "flags": "Variable",
+        "id": 11,
         "name": "a",
       },
     ],
@@ -945,11 +1018,13 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "TypeDef",
+        "id": 31,
         "name": "foo",
       },
       Object {
         "declarationPos": 33,
         "flags": "Variable",
+        "id": 34,
         "name": "a",
       },
     ],
@@ -967,6 +1042,7 @@ Array [
       Object {
         "declarationPos": 17,
         "flags": "Variable",
+        "id": 32,
         "name": "a",
       },
     ],
@@ -979,6 +1055,7 @@ Array [
       Object {
         "declarationPos": 58,
         "flags": "VariableSlot",
+        "id": 39,
         "name": "a",
       },
     ],
@@ -995,6 +1072,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 22,
         "name": "a",
       },
     ],
@@ -1012,6 +1090,7 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "VariableSlot",
+        "id": 27,
         "name": "foo",
       },
     ],
@@ -1028,6 +1107,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "x",
       },
     ],
@@ -1046,6 +1126,7 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 4,
         "name": "x",
       },
     ],
@@ -1064,11 +1145,13 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
+        "id": 7,
         "name": "x",
       },
       Object {
         "declarationPos": 10,
         "flags": "Variable",
+        "id": 8,
         "name": "y",
       },
     ],

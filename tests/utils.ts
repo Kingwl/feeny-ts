@@ -43,6 +43,7 @@ export function parseCode (text: string) {
 }
 
 interface SymbolSignature {
+    id: number
     declarationPos: number;
     name?: string;
     flags: string | number;
@@ -96,6 +97,7 @@ export function bindCode (text: string) {
 
     function symbolToSignature(symbol: Symbol): SymbolSignature {
         return {
+            id: symbol.id,
             declarationPos: symbol.declaration.pos,
             name: symbol.name,
             flags: symbol._debugFlags ?? symbol.flags
@@ -118,9 +120,9 @@ export function runCode (text: string) {
 }
 
 interface CheckResult {
+    id: number
     pos: number;
     kind: string | number;
-    type: string | number | undefined;
 }
 
 export function checkCode (text: string) {
@@ -141,9 +143,9 @@ export function checkCode (text: string) {
         const type = check(node)
         if (type) {
             result.push({
+                id: type.id,
                 pos: node.pos,
                 kind: node.__debugKind ?? node.kind,
-                type: type._debugKind ?? node.kind
             })
         }
 
