@@ -22,13 +22,36 @@ Happy hacking!
 
 - Lexer
 - Parser
+    - Parsing
+    - Syntax extend
+        - Function expression
+        - Closure
+        - Break / Continue expression
+
 - Binder
+    - Symbol tables
+    - Get symbol from node
+
 - Checker
+    - Type annotations
+    - Basic type check
+    - ~~Type system~~
+
+- AST Interpreter
+    - Feeny features
+    - Closure
+    - Break / Continue
+
 - Cli
+    - Run feeny files
+
 - Language service api
+    - Get diagnostics
+    - GoToDefinition
 
 - VSCode extension
     - All features in [Feeny-VSCode](https://github.com/DanielRosenwasser/Feeny-VSCode)
-    - diagnostics
-    - goToDefinition
+    - Client / Server
+    - Diagnostics
+    - GoToDefinition
 
