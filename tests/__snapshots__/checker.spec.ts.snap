@@ -228,24 +228,7 @@ exports[`Checker diagnostics - should-work-with-type-integer 1`] = `Array []`;
 
 exports[`Checker diagnostics - should-work-with-type-method-signature 1`] = `Array []`;
 
-exports[`Checker diagnostics - should-work-with-type-method-slot 1`] = `
-Array [
-  Object {
-    "message": "Property add not found",
-    "span": Object {
-      "end": 98,
-      "pos": 97,
-    },
-  },
-  Object {
-    "message": "Property add not found",
-    "span": Object {
-      "end": 102,
-      "pos": 101,
-    },
-  },
-]
-`;
+exports[`Checker diagnostics - should-work-with-type-method-slot 1`] = `Array []`;
 
 exports[`Checker diagnostics - should-work-with-type-null 1`] = `
 Array [
@@ -1011,6 +994,12 @@ Array [
   },
   Object {
     "id": 0,
+    "kind": "ParameterDeclaration",
+    "pos": 29,
+    "type": "Unknown",
+  },
+  Object {
+    "id": 0,
     "kind": "SequenceOfStatements",
     "pos": 41,
     "type": "Unknown",
@@ -1386,6 +1375,24 @@ Array [
     "type": "Function",
   },
   Object {
+    "id": 0,
+    "kind": "ParameterDeclaration",
+    "pos": 71,
+    "type": "Unknown",
+  },
+  Object {
+    "id": 0,
+    "kind": "ParameterDeclaration",
+    "pos": 74,
+    "type": "Unknown",
+  },
+  Object {
+    "id": 0,
+    "kind": "ParameterDeclaration",
+    "pos": 77,
+    "type": "Unknown",
+  },
+  Object {
     "id": 1,
     "kind": "SequenceOfStatements",
     "pos": 89,
@@ -1601,13 +1608,13 @@ Array [
   Object {
     "id": 4,
     "kind": "SlotAssignmentExpression",
-    "pos": 137,
+    "pos": 132,
     "type": "Integer",
   },
   Object {
     "id": 10,
     "kind": "SlotLookupExpression",
-    "pos": 135,
+    "pos": 132,
     "type": "Object",
   },
   Object {
@@ -1720,13 +1727,13 @@ Array [
   Object {
     "id": 4,
     "kind": "SlotLookupExpression",
-    "pos": 133,
+    "pos": 128,
     "type": "Integer",
   },
   Object {
     "id": 10,
     "kind": "SlotLookupExpression",
-    "pos": 131,
+    "pos": 128,
     "type": "Object",
   },
   Object {
@@ -2016,22 +2023,28 @@ Array [
     "type": "Function",
   },
   Object {
-    "id": 1,
+    "id": 4,
+    "kind": "ParameterDeclaration",
+    "pos": 56,
+    "type": "Integer",
+  },
+  Object {
+    "id": 4,
     "kind": "SequenceOfStatements",
     "pos": 88,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
-    "id": 1,
+    "id": 4,
     "kind": "BinaryShorthand",
     "pos": 88,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
-    "id": 1,
+    "id": 4,
     "kind": "BinaryShorthand",
     "pos": 88,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
     "id": 4,
@@ -2046,10 +2059,10 @@ Array [
     "type": "Object",
   },
   Object {
-    "id": 0,
+    "id": 4,
     "kind": "VariableReferenceExpression",
     "pos": 99,
-    "type": "Unknown",
+    "type": "Integer",
   },
   Object {
     "id": 4,

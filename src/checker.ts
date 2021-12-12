@@ -1,5 +1,5 @@
 import { BinaryShorthandToken, Declaration, FunctionBase, NodeArray, ParamsAndReturnType, Symbol, SymbolFlag, TextSpan } from ".";
-import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression, Type, TypeKind, Diangostic } from "./types";
+import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression, Type, TypeKind, Diangostic, IdentifierToken } from "./types";
 import { assert, assertDef, assertKind, findAncestor, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
 import { forEachChild } from './visitor'
 
@@ -111,14 +111,26 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
                     check(node);
                 }
                 return symbolResolveCache.get(node);
-            case SyntaxKind.Identifier:
-            case SyntaxKind.ThisExpression:
-                return node.parent ? getSymbolAtNode(node.parent) : undefined;
-            case SyntaxKind.SlotLookupExpression: {
-                assertKind<SlotLookupExpression>(node);
-                const type = checkExpression(node.expression);
-                return getPropertyFromType(type, node.name.text)
+            case SyntaxKind.Identifier: {
+                assertKind<IdentifierToken>(node)
+                if (node.parent) {
+                    switch (node.parent.kind) {
+                        case SyntaxKind.SlotAssignmentExpression:
+                        case SyntaxKind.SlotLookupExpression: {
+                            assertKind<SlotAssignmentExpression | SlotLookupExpression>(node.parent);
+                            if (node.parent.name !== node) {
+                                return undefined;
+                            }
+
+                            const type = checkExpression(node.parent.expression);
+                            return getPropertyFromType(type, node.parent.name.text)
+                        }
+                    }
+                }
             }
+            case SyntaxKind.ThisKeyword:
+                return node.parent ? getSymbolAtNode(node.parent) : undefined;
+            
             case SyntaxKind.ThisExpression: {
                 assertKind<ThisExpression>(node);
                 const container = findThisContainer(node);

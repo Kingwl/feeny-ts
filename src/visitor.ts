@@ -77,7 +77,7 @@ export function forEachChild<T>(node: ASTNode, cb: (node: ASTNode) => T | undefi
                 return cb(node.name) || node.type && cb(node.type) || cb(node.initializer)
             case SyntaxKind.MethodSlot:
                 assertKind<MethodSlot>(node);
-                return cb(node.name) || node.type && cb(node.type) || cb(node.body)
+                return cb(node.name) || node.type && cb(node.type) || visitNodes(node.params) || cb(node.body)
             case SyntaxKind.ParameterDeclaration:
                 assertKind<ParameterDeclaration>(node);
                 return cb(node.name) || node.type && cb(node.type)

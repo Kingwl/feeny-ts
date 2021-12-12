@@ -273,8 +273,20 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
-        "id": 22,
+        "id": 46,
         "name": "o",
+      },
+    ],
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 20,
+    "symbols": Array [
+      Object {
+        "declarationPos": 29,
+        "flags": "Parameter",
+        "id": 60,
+        "name": "x",
       },
     ],
   },
@@ -291,7 +303,7 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "MethodSlot",
-        "id": 27,
+        "id": 55,
         "name": "f",
       },
     ],
@@ -459,8 +471,32 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
-        "id": 52,
+        "id": 124,
         "name": "p",
+      },
+    ],
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 62,
+    "symbols": Array [
+      Object {
+        "declarationPos": 71,
+        "flags": "Parameter",
+        "id": 162,
+        "name": "x",
+      },
+      Object {
+        "declarationPos": 74,
+        "flags": "Parameter",
+        "id": 163,
+        "name": "y",
+      },
+      Object {
+        "declarationPos": 77,
+        "flags": "Parameter",
+        "id": 164,
+        "name": "z",
       },
     ],
   },
@@ -477,7 +513,7 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "VariableSlot",
-        "id": 57,
+        "id": 129,
         "name": "y",
       },
     ],
@@ -490,13 +526,13 @@ Array [
       Object {
         "declarationPos": 47,
         "flags": "VariableSlot",
-        "id": 65,
+        "id": 149,
         "name": "x",
       },
       Object {
         "declarationPos": 62,
         "flags": "MethodSlot",
-        "id": 66,
+        "id": 150,
         "name": "f",
       },
     ],
@@ -923,8 +959,20 @@ Array [
       Object {
         "declarationPos": 0,
         "flags": "Variable",
-        "id": 34,
+        "id": 58,
         "name": "a",
+      },
+    ],
+  },
+  Object {
+    "kind": "MethodSlot",
+    "pos": 45,
+    "symbols": Array [
+      Object {
+        "declarationPos": 56,
+        "flags": "Parameter",
+        "id": 76,
+        "name": "x",
       },
     ],
   },
@@ -941,13 +989,13 @@ Array [
       Object {
         "declarationPos": 20,
         "flags": "VariableSlot",
-        "id": 41,
+        "id": 69,
         "name": "foo",
       },
       Object {
         "declarationPos": 45,
         "flags": "MethodSlot",
-        "id": 42,
+        "id": 70,
         "name": "bar",
       },
     ],

@@ -494,12 +494,10 @@ export function createParser(text: string) {
     while (true) {
       if (scanner.currentToken().kind === SyntaxKind.DotToken) {
         expression = parseSlotLookupOrAssignment(expression, pos);
-        pos = scanner.getTokenFullStart();
         continue;
       }
       if (scanner.currentToken().kind === SyntaxKind.OpenBracketToken) {
         expression = parseGetShorthandOrSetShorthand(expression, pos);
-        pos = scanner.getTokenFullStart();
         continue;
       }
 

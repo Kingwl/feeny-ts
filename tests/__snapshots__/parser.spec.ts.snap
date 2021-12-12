@@ -4070,7 +4070,7 @@ Object {
               "pos": 136,
               "text": "c",
             },
-            "pos": 135,
+            "pos": 132,
           },
           "kind": 53,
           "name": Object {
@@ -4082,7 +4082,7 @@ Object {
             "pos": 138,
             "text": "d",
           },
-          "pos": 137,
+          "pos": 132,
           "value": Object {
             "__debugKind": "IntegerLiteralExpression",
             "end": 144,
@@ -4378,7 +4378,7 @@ Object {
               "pos": 132,
               "text": "c",
             },
-            "pos": 131,
+            "pos": 128,
           },
           "kind": 52,
           "name": Object {
@@ -4390,7 +4390,7 @@ Object {
             "pos": 134,
             "text": "d",
           },
-          "pos": 133,
+          "pos": 128,
         },
         "kind": 69,
         "pos": 128,
