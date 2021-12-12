@@ -1,0 +1,42 @@
+{
+    "name": "feeny",
+    "version": "0.0.1",
+    "license": "MIT",
+    "description": "Basic syntax support for Feeny - a programming language for teaching purposes.",
+    "author": {
+        "name": "Daniel Rosenwasser",
+        "url": "https://github.com/DanielRosenwasser"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DanielRosenwasser/Feeny-VSCode"
+    },
+    "scripts": {
+        "package": "vsce package"
+    },
+    "devDependencies": {
+        "vsce": "^1.100.1"
+    },
+    "displayName": "Feeny",
+    "icon": "images/icon.png",
+    "publisher": "DanielRosenwasser",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "feeny",
+            "aliases": ["Feeny", "feeny"],
+            "extensions": ["feeny"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "feeny",
+            "scopeName": "source.feeny",
+            "path": "./syntaxes/feeny.tmLanguage.json"
+        }]
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Feeny",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#integers"
+        },
+        {
+            "include": "#square-brackets"
+        },
+        {
+            "include": "#parentheses"
+        },
+        {
+            "include": "#slot-access-operator"
+        },
+        {
+            "include": "#shorthand-operators"
+        },
+        {
+            "include": "#variables"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "name": "comment.line",
+            "match": ";.*$"
+        },
+        "keywords": {
+            "patterns": [{
+                "name": "keyword.control.feeny",
+                "match": "\\b(if|else|while|var|object|array|defn|method|this|null)\\b"
+            }]
+        },
+        "integers": {
+            "name": "constant.numeric",
+            "match": "(?<![a-zA-Z\\d\\+\\-\\*\\?/%<>=])-?\\d+\\b"
+        },
+        "square-brackets": {
+            "name": "meta.brace.square.feeny",
+            "match": "\\[|\\]"
+        },
+        "parentheses": {
+            "name": "meta.brace.round.feeny",
+            "match": "\\(|\\)"
+        },
+        "slot-access-operator": {
+            "name": "punctuation.accessor.feeny",
+            "match": "\\."
+        },
+        "shorthand-operators": {
+            "name": "keyword.operator",
+            "comment": "It seems like in Feeny, operators are tokenized the same as identifiers - but it would be nice if they appeared distinct.",
+            "match": "(?:(?<![a-zA-Z\\+\\-\\*\\?/%<>=])(?:\\+|-|\\*|\\?|/|%|<|>|<=|>=|==|=)(?![a-zA-Z\\d\\+\\-\\*\\?/%<>=]))|:"
+        },
+        "variables": {
+            "name": "variable.name",
+            "match": "(:?(:?[\\-][a-zA-Z\\+\\-\\*\\?/%<>=])|[a-zA-Z\\+\\*\\?/%<>=])[a-zA-Z\\d\\+\\-\\*\\?/%<>=]*"
+        },
+        "strings": {
+            "name": "string.quoted.double.feeny",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.feeny",
+                    "match": "\\\\."
+                },
+                {
+                    "name": "string.interpolated.feeny",
+                    "match": "~"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.feeny"
+}

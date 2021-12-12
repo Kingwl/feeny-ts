@@ -1,0 +1,34 @@
+{
+    "comments": {
+        // symbol used for single line comment.
+        "lineComment": ";"
+    },
+    // Symbols used as brackets.
+    "brackets": [
+        ["[", "]"],
+        ["(", ")"]
+    ],
+    // Symbols that are auto closed when typing.
+    "autoClosingPairs": [
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""]
+    ],
+    // Symbols that can be used to surround a selection.
+    "surroundingPairs": [
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""]
+    ],
+    // Indent after any ':' that's not part of a comment.
+    "onEnterRules": [
+        {
+            "beforeText": "^[^;]*:\\s*(?:;.+)?$",
+            "action": {
+                "indent": "indent"
+            }
+        }
+    ],
+    // Lots of valid identifiers in Feeny - but not a lot worth auto-completing.
+    "wordPattern": "[a-zA-Z][a-zA-Z\\+\\-\\*\\?/%<>=]*",
+}
