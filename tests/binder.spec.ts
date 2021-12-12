@@ -1,16 +1,15 @@
-import { forEachCases, bindCode } from "./utils"
+import { forEachCases, bindCode } from './utils';
 
 describe('Binder', () => {
-    forEachCases((baseName, content) => {
+  forEachCases((baseName, content) => {
+    const { localsResult, membersResult } = bindCode(content);
 
-        const { localsResult, membersResult } = bindCode(content)
+    it(`${baseName} - locals`, () => {
+      expect(localsResult).toMatchSnapshot();
+    });
 
-        it(`${baseName} - locals`, () => {
-            expect(localsResult).toMatchSnapshot()
-        })
-
-        it(`${baseName} - members`, () => {
-            expect(membersResult).toMatchSnapshot()
-        })
-    })
-})
+    it(`${baseName} - members`, () => {
+      expect(membersResult).toMatchSnapshot();
+    });
+  });
+});

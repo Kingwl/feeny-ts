@@ -17,7 +17,7 @@
     "build:dts": "tsc",
     "build:bundle": "node ./scripts/build.js",
     "build": "yarn build:bundle && yarn build:dts",
-    "lint": "prettier ./src/**/*.ts -c",
+    "lint": "prettier ./src/**/*.ts ./tests/**/*.ts -c",
     "prettier": "yarn lint -w",
     "test": "jest"
   },
