@@ -2,6 +2,10 @@
     "name": "feeny",
     "version": "0.0.1",
     "license": "MIT",
+    "main": "./dist/client.js",
+    "activationEvents": [
+        "onLanguage:feeny"
+    ],
     "description": "Basic syntax support for Feeny - a programming language for teaching purposes.",
     "author": {
         "name": "Daniel Rosenwasser",
@@ -12,9 +16,12 @@
         "url": "https://github.com/DanielRosenwasser/Feeny-VSCode"
     },
     "scripts": {
-        "package": "vsce package"
+        "package": "vsce package",
+        "build": "node ./scripts/build.js"
     },
     "devDependencies": {
+        "esbuild": "^0.14.2",
+        "typescript": "^4.5.3",
         "vsce": "^1.100.1"
     },
     "displayName": "Feeny",
@@ -27,16 +34,31 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "feeny",
-            "aliases": ["Feeny", "feeny"],
-            "extensions": ["feeny"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "feeny",
-            "scopeName": "source.feeny",
-            "path": "./syntaxes/feeny.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "feeny",
+                "aliases": [
+                    "Feeny",
+                    "feeny"
+                ],
+                "extensions": [
+                    "feeny"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "feeny",
+                "scopeName": "source.feeny",
+                "path": "./syntaxes/feeny.tmLanguage.json"
+            }
+        ]
+    },
+    "dependencies": {
+        "feeny-ts": "link:../",
+        "vscode-languageclient": "^7.0.0",
+        "vscode-languageserver": "^7.0.0",
+        "vscode-languageserver-textdocument": "^1.0.3"
     }
 }
