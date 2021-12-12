@@ -68,6 +68,13 @@ Array [
       "pos": 16,
     },
   },
+  Object {
+    "message": "Expected expression statement",
+    "span": Object {
+      "end": 26,
+      "pos": 16,
+    },
+  },
 ]
 `;
 
@@ -121,10 +128,10 @@ Array [
     },
   },
   Object {
-    "message": "Is not callable",
+    "message": "Cannot assign",
     "span": Object {
-      "end": 105,
-      "pos": 99,
+      "end": 107,
+      "pos": 106,
     },
   },
 ]
@@ -132,39 +139,12 @@ Array [
 
 exports[`Checker diagnostics - should-work-with-null 1`] = `Array []`;
 
-exports[`Checker diagnostics - should-work-with-object-without-extends 1`] = `
-Array [
-  Object {
-    "message": "Property x not found",
-    "span": Object {
-      "end": 53,
-      "pos": 52,
-    },
-  },
-]
-`;
+exports[`Checker diagnostics - should-work-with-object-without-extends 1`] = `Array []`;
 
-exports[`Checker diagnostics - should-work-with-objects 1`] = `
-Array [
-  Object {
-    "message": "Property x not found",
-    "span": Object {
-      "end": 88,
-      "pos": 87,
-    },
-  },
-]
-`;
+exports[`Checker diagnostics - should-work-with-objects 1`] = `Array []`;
 
 exports[`Checker diagnostics - should-work-with-objects-and-slots 1`] = `
 Array [
-  Object {
-    "message": "Property x not found",
-    "span": Object {
-      "end": 95,
-      "pos": 94,
-    },
-  },
   Object {
     "message": "Property add not found",
     "span": Object {
@@ -250,13 +230,6 @@ exports[`Checker diagnostics - should-work-with-type-method-signature 1`] = `Arr
 
 exports[`Checker diagnostics - should-work-with-type-method-slot 1`] = `
 Array [
-  Object {
-    "message": "Property foo not found",
-    "span": Object {
-      "end": 96,
-      "pos": 93,
-    },
-  },
   Object {
     "message": "Property add not found",
     "span": Object {
@@ -780,10 +753,10 @@ Array [
     "type": "Null",
   },
   Object {
-    "id": 0,
+    "id": 1,
     "kind": "FunctionCallExpression",
     "pos": 44,
-    "type": "Unknown",
+    "type": "Never",
   },
   Object {
     "id": 7,
@@ -1019,13 +992,13 @@ Array [
 exports[`Checker types - should-work-with-method-call 1`] = `
 Array [
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "VariableStatement",
     "pos": 0,
     "type": "Object",
   },
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "ObjectsExpression",
     "pos": 8,
     "type": "Object",
@@ -1055,7 +1028,7 @@ Array [
     "type": "Unknown",
   },
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "VariableReferenceExpression",
     "pos": 44,
     "type": "Object",
@@ -1084,7 +1057,7 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 7,
+    "id": 8,
     "kind": "FunctionStatement",
     "pos": 10,
     "type": "Function",
@@ -1096,7 +1069,7 @@ Array [
     "type": "Unknown",
   },
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "SequenceOfStatements",
     "pos": 27,
     "type": "Function",
@@ -1114,7 +1087,7 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "FunctionStatement",
     "pos": 41,
     "type": "Function",
@@ -1186,7 +1159,7 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "VariableReferenceExpression",
     "pos": 84,
     "type": "Function",
@@ -1204,13 +1177,13 @@ Array [
     "type": "Never",
   },
   Object {
-    "id": 0,
+    "id": 7,
     "kind": "FunctionCallExpression",
     "pos": 99,
-    "type": "Unknown",
+    "type": "Function",
   },
   Object {
-    "id": 7,
+    "id": 8,
     "kind": "VariableReferenceExpression",
     "pos": 99,
     "type": "Function",
@@ -1235,7 +1208,7 @@ exports[`Checker types - should-work-with-null 1`] = `Array []`;
 exports[`Checker types - should-work-with-object-without-extends 1`] = `
 Array [
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "ObjectsExpression",
     "pos": 0,
     "type": "Object",
@@ -1259,22 +1232,22 @@ Array [
     "type": "Function",
   },
   Object {
-    "id": 1,
+    "id": 4,
     "kind": "SequenceOfStatements",
     "pos": 47,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
-    "id": 1,
+    "id": 4,
     "kind": "SlotLookupExpression",
     "pos": 47,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
-    "id": 0,
+    "id": 7,
     "kind": "ThisExpression",
     "pos": 47,
-    "type": "Unknown",
+    "type": "Object",
   },
 ]
 `;
@@ -1306,7 +1279,7 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 9,
+    "id": 8,
     "kind": "ObjectsExpression",
     "pos": 32,
     "type": "Object",
@@ -1336,22 +1309,22 @@ Array [
     "type": "Function",
   },
   Object {
-    "id": 1,
+    "id": 4,
     "kind": "SequenceOfStatements",
     "pos": 82,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
-    "id": 1,
+    "id": 4,
     "kind": "SlotLookupExpression",
     "pos": 82,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
-    "id": 0,
+    "id": 8,
     "kind": "ThisExpression",
     "pos": 82,
-    "type": "Unknown",
+    "type": "Object",
   },
 ]
 `;
@@ -1383,7 +1356,7 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 9,
+    "id": 8,
     "kind": "ObjectsExpression",
     "pos": 32,
     "type": "Object",
@@ -1437,16 +1410,16 @@ Array [
     "type": "Never",
   },
   Object {
-    "id": 1,
+    "id": 4,
     "kind": "SlotLookupExpression",
     "pos": 89,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
-    "id": 0,
+    "id": 8,
     "kind": "ThisExpression",
     "pos": 89,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "id": 0,
@@ -1560,13 +1533,13 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 10,
+    "id": 8,
     "kind": "VariableStatement",
     "pos": 35,
     "type": "Object",
   },
   Object {
-    "id": 10,
+    "id": 8,
     "kind": "ObjectsExpression",
     "pos": 43,
     "type": "Object",
@@ -1584,13 +1557,13 @@ Array [
     "type": "Object",
   },
   Object {
-    "id": 8,
+    "id": 10,
     "kind": "VariableSlot",
     "pos": 79,
     "type": "Object",
   },
   Object {
-    "id": 8,
+    "id": 10,
     "kind": "ObjectsExpression",
     "pos": 87,
     "type": "Object",
@@ -1632,7 +1605,7 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 8,
+    "id": 10,
     "kind": "SlotLookupExpression",
     "pos": 135,
     "type": "Object",
@@ -1644,7 +1617,7 @@ Array [
     "type": "Object",
   },
   Object {
-    "id": 10,
+    "id": 8,
     "kind": "VariableReferenceExpression",
     "pos": 132,
     "type": "Object",
@@ -1685,13 +1658,13 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 10,
+    "id": 8,
     "kind": "VariableStatement",
     "pos": 35,
     "type": "Object",
   },
   Object {
-    "id": 10,
+    "id": 8,
     "kind": "ObjectsExpression",
     "pos": 43,
     "type": "Object",
@@ -1709,13 +1682,13 @@ Array [
     "type": "Object",
   },
   Object {
-    "id": 8,
+    "id": 10,
     "kind": "VariableSlot",
     "pos": 79,
     "type": "Object",
   },
   Object {
-    "id": 8,
+    "id": 10,
     "kind": "ObjectsExpression",
     "pos": 87,
     "type": "Object",
@@ -1751,7 +1724,7 @@ Array [
     "type": "Integer",
   },
   Object {
-    "id": 8,
+    "id": 10,
     "kind": "SlotLookupExpression",
     "pos": 131,
     "type": "Object",
@@ -1763,7 +1736,7 @@ Array [
     "type": "Object",
   },
   Object {
-    "id": 10,
+    "id": 8,
     "kind": "VariableReferenceExpression",
     "pos": 128,
     "type": "Object",
@@ -2013,13 +1986,13 @@ Array [
 exports[`Checker types - should-work-with-type-method-slot 1`] = `
 Array [
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "VariableStatement",
     "pos": 0,
     "type": "Object",
   },
   Object {
-    "id": 8,
+    "id": 7,
     "kind": "ObjectsExpression",
     "pos": 8,
     "type": "Object",
@@ -2061,16 +2034,16 @@ Array [
     "type": "Never",
   },
   Object {
-    "id": 1,
+    "id": 4,
     "kind": "SlotLookupExpression",
     "pos": 88,
-    "type": "Never",
+    "type": "Integer",
   },
   Object {
-    "id": 0,
+    "id": 7,
     "kind": "ThisExpression",
     "pos": 88,
-    "type": "Unknown",
+    "type": "Object",
   },
   Object {
     "id": 0,

@@ -1,6 +1,6 @@
-import { BinaryShorthandToken, Declaration, NodeArray, ParamsAndReturnType, Symbol, SymbolFlag, TextSpan } from ".";
+import { BinaryShorthandToken, Declaration, FunctionBase, NodeArray, ParamsAndReturnType, Symbol, SymbolFlag, TextSpan } from ".";
 import { VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression, Type, TypeKind, Diangostic } from "./types";
-import { assertDef, assertKind, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
+import { assert, assertDef, assertKind, findAncestor, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
 import { forEachChild } from './visitor'
 
 
@@ -112,11 +112,17 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
                 }
                 return symbolResolveCache.get(node);
             case SyntaxKind.Identifier:
+            case SyntaxKind.ThisExpression:
                 return node.parent ? getSymbolAtNode(node.parent) : undefined;
             case SyntaxKind.SlotLookupExpression: {
                 assertKind<SlotLookupExpression>(node);
                 const type = checkExpression(node.expression);
                 return getPropertyFromType(type, node.name.text)
+            }
+            case SyntaxKind.ThisExpression: {
+                assertKind<ThisExpression>(node);
+                const container = findThisContainer(node);
+                return container?.symbol
             }
             default:
                 return undefined;
@@ -363,7 +369,7 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
     }
 
     function checkMethodSlot(node: MethodSlot) {
-        const type = checkParamsAndReturnType(node)
+        const type = checkParamsAndReturnType(node, undefined)
         check(node.body);
         return type;
     }
@@ -385,7 +391,7 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
     }
 
     function checkMethodSlotSignature(node: MethodSlotSignatureDeclaration): Type {
-        return checkParamsAndReturnType(node);
+        return checkParamsAndReturnType(node, undefined);
     }
 
     function checkTypeDefDeclaration(node: TypeDefDeclaration) {
@@ -439,13 +445,19 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         return unknownType
     }
 
-    function checkParamsAndReturnType(node: ParamsAndReturnType) {
+    function checkParamsAndReturnType(node: ParamsAndReturnType, body: FunctionBase["body"] | undefined) {
         const paramTypes: Type[] = [];
         node.params.forEach(param => {
             const paramType = checkParameterDeclaration(param)
             paramTypes.push(paramType)
         })
-        const returnType = node.type ? checkTypeNode(node.type) : unknownType;
+
+        let returnType: Type = unknownType;
+        if (node.type) {
+            returnType = checkTypeNode(node.type)
+        } else if (body) {
+            returnType = checkSequenceOfStatementsOrExpressionStatement(body)
+        }
         return createFunctionType(undefined, paramTypes, returnType);
     }
 
@@ -453,8 +465,22 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
         return checkExpression(node)
     }
 
+    function findThisContainer (node: ThisExpression) {
+        const methodSlot = findAncestor(node, x => x.kind === SyntaxKind.MethodSlot);
+        if (!methodSlot?.parent) {
+            return undefined
+        }
+        assert(methodSlot.parent.kind === SyntaxKind.ObjectsExpression);
+        assertKind<ObjectsExpression>(methodSlot.parent)
+        return methodSlot.parent
+    }
+
     function checkThisExpression(node: ThisExpression) {
-        return unknownType
+        const container = findThisContainer(node);
+        if (!container) {
+            return unknownType
+        }
+        return check(container)
     }
 
     function checkFunctionCallLike (type: Type, args: Type[], callNode: ASTNode, argsNode: readonly Expression[]) {
@@ -510,12 +536,15 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
 
     function checkObjectsExpression(node: ObjectsExpression) {
         const properties = new Map<string, Symbol>();
+        const type = createObjectType(properties);
+        typeCheckCache.set(node, type);
+
         node.slots.forEach(slot => {
             checkVariableSlotOrMethodSlot(slot);
             assertDef(slot.symbol);
             properties.set(slot.name.text, slot.symbol);
         })
-        return createObjectType(properties);
+        return type;
     }
 
     function checkArraysExpression(node: ArraysExpression) {
@@ -530,13 +559,13 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
     }
 
     function checkFunctionStatement(node: FunctionStatement): Type {
-        const type = checkParamsAndReturnType(node)
+        const type = checkParamsAndReturnType(node, node.body)
         check(node.body);
         return type;
     }
 
     function checkFunctionExpression(node: FunctionExpression) {
-        const type = checkParamsAndReturnType(node)
+        const type = checkParamsAndReturnType(node, node.body)
         check(node.body);
         return type;
     }

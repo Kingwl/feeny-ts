@@ -3,11 +3,7 @@ import { createLanguageService } from '../src'
 describe('Language service', () => {
     const code = 
 `
-typedef ab:
-    var a: integer
-    var b: integer
-
-defn foo() -> ab:
+defn foo():
     object:
         var a = 1
         var b = 2
