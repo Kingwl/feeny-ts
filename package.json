@@ -4,6 +4,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": "./cli/bin.js",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "esbuild": "^0.14.1",
