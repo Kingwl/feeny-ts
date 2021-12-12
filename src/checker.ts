@@ -1,48 +1,6 @@
-import { BinaryShorthandToken, Declaration, FunctionBase, ParamsAndReturnType, Symbol, SymbolFlag, VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression, Type, TypeKind, Diangostic, IdentifierToken } from "./types";
+import { BinaryShorthandToken, Declaration, FunctionBase, ParamsAndReturnType, Symbol, SymbolFlag, VariableStatement, MethodSlotSignatureDeclaration, ObjectSlot, ObjectSlotSignature, TypeNode, VariableSlotSignatureDeclaration, ArraysExpression, ASTNode, BreakExpression, ContinueExpression, Expression, ExpressionStatement, FunctionStatement, ParenExpression, PrintingExpression, FunctionCallExpression, FunctionExpression, IfExpression, MethodCallExpression, ObjectsExpression, SequenceOfStatements, SlotAssignmentExpression, SlotLookupExpression, SourceFile, SyntaxKind, ThisExpression, VariableAssignmentExpression, WhileExpression, BinaryShorthand, GetShorthand, SetShorthand, MethodSlot, VariableSlot, TypeDefDeclaration, ArraysTypeNode, TypeReferenceTypeNode, ParameterDeclaration, VariableReferenceExpression, Type, TypeKind, Diangostic, IdentifierToken, BooleanType, FunctionType, IntegerType, NeverType, NullType, ObjectType, StringType, UnionType, UnknownType } from "./types";
 import { assert, assertDef, assertKind, findAncestor, first, frontAndTail, isDeclaration, isDef, isExpression, shorthandTokenToOperator } from "./utils";
 import { forEachChild } from './visitor'
-
-
-interface UnknownType extends Type {
-    kind: TypeKind.Unknown
-}
-
-interface NeverType extends Type {
-    kind: TypeKind.Never
-}
-
-interface NullType extends Type {
-    kind: TypeKind.Null
-}
-
-interface IntegerType extends Type {
-    kind: TypeKind.Integer
-}
-
-interface BooleanType extends Type {
-    kind: TypeKind.Boolean
-}
-
-interface StringType extends Type {
-    kind: TypeKind.String
-}
-
-interface ObjectType extends Type {
-    kind: TypeKind.Object
-    properties: Map<string, Symbol>
-}
-
-interface FunctionType extends Type {
-    kind: TypeKind.Function
-    thisType?: Type
-    paramTypes: Type[]
-    returnType: Type
-}
-
-interface UnionType extends Type {
-    kind: TypeKind.Union
-    types: Type[]
-}
 
 export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: SymbolFlag) => Symbol) {
     let uid = 0;

@@ -608,3 +608,45 @@ export type BinaryShorthandTokenSyntaxKind =
   | SyntaxKind.EqualsEqualsToken;
 
 export type BinaryShorthandToken = Token<BinaryShorthandTokenSyntaxKind>;
+
+
+export interface UnknownType extends Type {
+  kind: TypeKind.Unknown
+}
+
+export interface NeverType extends Type {
+  kind: TypeKind.Never
+}
+
+export interface NullType extends Type {
+  kind: TypeKind.Null
+}
+
+export interface IntegerType extends Type {
+  kind: TypeKind.Integer
+}
+
+export interface BooleanType extends Type {
+  kind: TypeKind.Boolean
+}
+
+export interface StringType extends Type {
+  kind: TypeKind.String
+}
+
+export interface ObjectType extends Type {
+  kind: TypeKind.Object
+  properties: Map<string, Symbol>
+}
+
+export interface FunctionType extends Type {
+  kind: TypeKind.Function
+  thisType?: Type
+  paramTypes: Type[]
+  returnType: Type
+}
+
+export interface UnionType extends Type {
+  kind: TypeKind.Union
+  types: Type[]
+}
