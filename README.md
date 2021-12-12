@@ -8,7 +8,7 @@ Feeny was introduced in the U.C. Berkeley course [Virtual Machines and Managed R
 
 This package provides `parsing tools` and an `interpreter` written in pure `TypeScript`. We can use it in the web toolchains. Obviously, It can runs in either browser an node. Or some other JavaScript Runtime.
 
-And we have extended the Feeny to add some syntax and a simple type checker. It too simple and not even a type system yet. But I think it will be better in the future.
+And we have extended the Feeny to add some syntax (`break/continue`, `closure`, etc.) and a simple type checker(and also type annitations). It too simple and not even a type system yet. But I think it will be better in the future.
 
 And we also provides a `language service toolchains` and a `VSCode extension` that based above features. It's only supports `diagnostics` (for type check result) and `goToDefinition` yet.
 
