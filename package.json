@@ -1,6 +1,6 @@
 {
   "name": "feeny-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": "./cli/bin.js",
@@ -20,5 +20,9 @@
     "lint": "prettier ./src/**/*.ts -c",
     "prettier": "yarn lint -w",
     "test": "jest"
-  }
+  },
+  "files": [
+    "dist",
+    "cli"
+  ]
 }
