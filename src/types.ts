@@ -292,6 +292,7 @@ export interface NullExpression extends Expression {
 
 export interface ObjectsExpression extends Expression, Declaration {
   kind: SyntaxKind.ObjectsExpression;
+  objectToken: ObjectsKeywordToken;
   extendsClause?: Expression;
   slots: NodeArray<ObjectSlot>;
 }

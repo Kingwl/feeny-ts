@@ -13,7 +13,6 @@ import {
   ThisExpression,
   VariableSlot,
   BinaryShorthand,
-  BinaryShorthandTokenSyntaxKind,
   FunctionCallExpression,
   GetShorthand,
   VariableStatement,

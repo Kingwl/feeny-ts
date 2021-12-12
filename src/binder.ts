@@ -1,5 +1,5 @@
 import { ASTNode, Symbol, FunctionStatement, MethodSlot, ObjectsExpression, Declaration, ParameterDeclaration, SourceFile, SyntaxKind, VariableSlot, VariableStatement, HasLocalVariables, SymbolFlag, TypeDefDeclaration, MethodSlotSignatureDeclaration, VariableSlotSignatureDeclaration } from "./types";
-import { assertDef, getDeclarationSymbolFlags, isLocalVariableContainer, setupSymbolDebugInfo, symbolFlagToDisplayText } from "./utils";
+import { assertDef, getDeclarationSymbolFlags, isLocalVariableContainer, setupSymbolDebugInfo } from "./utils";
 import { forEachChild } from "./visitor";
 
 export function createBinder(file: SourceFile) {

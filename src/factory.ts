@@ -1,5 +1,5 @@
-import { ObjectSlotSignature, TypeDefDeclaration, TypeNode, VariableSlotSignatureDeclaration } from '.';
 import {
+  ObjectSlotSignature, TypeDefDeclaration, TypeNode, VariableSlotSignatureDeclaration,
   Statement,
   ParameterDeclaration,
   BreakExpression,

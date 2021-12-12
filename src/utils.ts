@@ -1,4 +1,4 @@
-import { forEachChild } from '.';
+import { forEachChild } from './visitor';
 import {
   KeywordSyntaxKind,
   ObjectSlot,

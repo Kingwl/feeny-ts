@@ -1,40 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Language service 1 Definition of 47 1`] = `
-"var bar = object:
-    var a = 1
-    var b = 2"
-`;
+exports[`Language service 1 Definition of 47 1`] = `"bar"`;
 
-exports[`Language service 1 Definition of 51 1`] = `"var a = 1"`;
+exports[`Language service 1 Definition of 51 1`] = `"a"`;
 
-exports[`Language service 1 Definition of 57 1`] = `"var b = 2"`;
+exports[`Language service 1 Definition of 57 1`] = `"b"`;
 
-exports[`Language service 2 Definition of 71 1`] = `
-"var bar = object:
-    var a = 1
-    var b = object:
-        var c = 2"
-`;
+exports[`Language service 2 Definition of 71 1`] = `"bar"`;
 
-exports[`Language service 2 Definition of 75 1`] = `"var a = 1"`;
+exports[`Language service 2 Definition of 75 1`] = `"a"`;
 
-exports[`Language service 2 Definition of 81 1`] = `
-"var b = object:
-        var c = 2"
-`;
+exports[`Language service 2 Definition of 81 1`] = `"b"`;
 
-exports[`Language service 2 Definition of 89 1`] = `"var c = 2"`;
+exports[`Language service 2 Definition of 89 1`] = `"c"`;
 
-exports[`Language service Definition of 71 1`] = `
-"defn foo():
-    object:
-        var a = 1
-        var b = 2"
-`;
+exports[`Language service Definition of 71 1`] = `"foo"`;
 
-exports[`Language service Definition of 77 1`] = `"var bar = foo()"`;
+exports[`Language service Definition of 77 1`] = `"bar"`;
 
-exports[`Language service Definition of 81 1`] = `"var a = 1"`;
+exports[`Language service Definition of 81 1`] = `"a"`;
 
-exports[`Language service Definition of 87 1`] = `"var b = 2"`;
+exports[`Language service Definition of 87 1`] = `"b"`;
