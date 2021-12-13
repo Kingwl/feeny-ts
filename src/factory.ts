@@ -1,7 +1,10 @@
-import { ObjectsKeywordToken } from '.';
 import {
-  ObjectSlotSignature, TypeDefDeclaration, TypeNode, VariableSlotSignatureDeclaration,
+  ObjectSlotSignature,
+  TypeDefDeclaration,
+  TypeNode,
+  VariableSlotSignatureDeclaration,
   Statement,
+  ObjectsKeywordToken,
   ParameterDeclaration,
   BreakExpression,
   ContinueExpression,
