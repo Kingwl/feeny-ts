@@ -2318,6 +2318,14 @@ Object {
           "end": 42,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 14,
+            "fullPos": 7,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 8,
+          },
           "pos": 8,
           "slots": Array [
             Object {
@@ -2960,6 +2968,14 @@ Object {
           "end": 53,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 6,
+            "fullPos": 0,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 0,
+          },
           "pos": 0,
           "slots": Array [
             Object {
@@ -3086,6 +3102,14 @@ Object {
           "end": 30,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 14,
+            "fullPos": 7,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 8,
+          },
           "pos": 8,
           "slots": Array [
             Object {
@@ -3157,6 +3181,14 @@ Object {
             "pos": 39,
           },
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 38,
+            "fullPos": 30,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 32,
+          },
           "pos": 32,
           "slots": Array [
             Object {
@@ -3283,6 +3315,14 @@ Object {
           "end": 30,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 14,
+            "fullPos": 7,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 8,
+          },
           "pos": 8,
           "slots": Array [
             Object {
@@ -3354,6 +3394,14 @@ Object {
             "pos": 39,
           },
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 38,
+            "fullPos": 30,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 32,
+          },
           "pos": 32,
           "slots": Array [
             Object {
@@ -3813,6 +3861,14 @@ Object {
           "end": 33,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 14,
+            "fullPos": 7,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 8,
+          },
           "pos": 8,
           "slots": Array [
             Object {
@@ -3870,6 +3926,14 @@ Object {
           "end": 116,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 49,
+            "fullPos": 42,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 43,
+          },
           "pos": 43,
           "slots": Array [
             Object {
@@ -3880,6 +3944,14 @@ Object {
                 "end": 116,
                 "extendsClause": undefined,
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 69,
+                  "fullPos": 62,
+                  "kind": 26,
+                  "leadingIndent": 4,
+                  "pos": 63,
+                },
                 "pos": 63,
                 "slots": Array [
                   Object {
@@ -3890,6 +3962,14 @@ Object {
                       "end": 116,
                       "extendsClause": undefined,
                       "kind": 50,
+                      "objectToken": Object {
+                        "__debugKind": "ObjectsKeyword",
+                        "end": 93,
+                        "fullPos": 86,
+                        "kind": 26,
+                        "leadingIndent": 8,
+                        "pos": 87,
+                      },
                       "pos": 87,
                       "slots": Array [
                         Object {
@@ -4137,6 +4217,14 @@ Object {
           "end": 33,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 14,
+            "fullPos": 7,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 8,
+          },
           "pos": 8,
           "slots": Array [
             Object {
@@ -4194,6 +4282,14 @@ Object {
           "end": 117,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 49,
+            "fullPos": 42,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 43,
+          },
           "pos": 43,
           "slots": Array [
             Object {
@@ -4204,6 +4300,14 @@ Object {
                 "end": 117,
                 "extendsClause": undefined,
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 69,
+                  "fullPos": 62,
+                  "kind": 26,
+                  "leadingIndent": 4,
+                  "pos": 63,
+                },
                 "pos": 63,
                 "slots": Array [
                   Object {
@@ -4214,6 +4318,14 @@ Object {
                       "end": 117,
                       "extendsClause": undefined,
                       "kind": 50,
+                      "objectToken": Object {
+                        "__debugKind": "ObjectsKeyword",
+                        "end": 93,
+                        "fullPos": 86,
+                        "kind": 26,
+                        "leadingIndent": 8,
+                        "pos": 87,
+                      },
                       "pos": 87,
                       "slots": Array [
                         Object {
@@ -5250,6 +5362,14 @@ Object {
           "end": 104,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 14,
+            "fullPos": 7,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 8,
+          },
           "pos": 8,
           "slots": Array [
             Object {
@@ -5642,6 +5762,14 @@ Object {
           "end": 67,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 52,
+            "fullPos": 45,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 46,
+          },
           "pos": 46,
           "slots": Array [
             Object {
@@ -5739,6 +5867,14 @@ Object {
           "end": 40,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 14,
+            "fullPos": 7,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 8,
+          },
           "pos": 8,
           "slots": Array [
             Object {

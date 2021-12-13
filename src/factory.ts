@@ -1,3 +1,4 @@
+import { ObjectsKeywordToken } from '.';
 import {
   ObjectSlotSignature, TypeDefDeclaration, TypeNode, VariableSlotSignatureDeclaration,
   Statement,
@@ -162,10 +163,12 @@ export function createNullExpression(token: NullKeywordToken): NullExpression {
 }
 
 export function createObjectsExpression(
+  objectToken: ObjectsKeywordToken,
   extendsClause: Expression | undefined,
   slots: NodeArray<ObjectSlot>
 ): ObjectsExpression {
   const node = createNode<ObjectsExpression>(SyntaxKind.ObjectsExpression);
+  node.objectToken = objectToken;
   node.extendsClause = extendsClause;
   node.slots = slots;
   return node;

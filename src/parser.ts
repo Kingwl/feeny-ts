@@ -73,7 +73,8 @@ import {
   ObjectSlotSignature,
   TypeNode,
   TypeReferenceTypeNode,
-  ParameterDeclaration
+  ParameterDeclaration,
+  ObjectsKeywordToken
 } from './types';
 import {
   BinaryShorthandPriority,
@@ -900,7 +901,7 @@ export function createParser(text: string) {
 
   function parseObjectsExpression(): ObjectsExpression {
     const pos = scanner.getTokenStart();
-    const objectKeyword = parseExpectdToken(SyntaxKind.ObjectsKeyword);
+    const objectKeyword = parseExpectdToken<ObjectsKeywordToken>(SyntaxKind.ObjectsKeyword);
 
     let extendsClause: Expression | undefined;
     if (parseOptionalToken(SyntaxKind.OpenParenToken)) {
@@ -912,7 +913,7 @@ export function createParser(text: string) {
     const slots = parseObjectSlotListLike(objectKeyword.leadingIndent, parseObjectSlot);
 
     return finishNode(
-      createObjectsExpression(extendsClause, slots),
+      createObjectsExpression(objectKeyword, extendsClause, slots),
       pos,
       scanner.getTokenFullStart()
     );

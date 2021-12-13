@@ -3233,6 +3233,14 @@ Object {
                 "end": 830,
                 "extendsClause": undefined,
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 28,
+                  "fullPos": 18,
+                  "kind": 26,
+                  "leadingIndent": 3,
+                  "pos": 22,
+                },
                 "pos": 22,
                 "slots": Array [
                   Object {
@@ -9292,6 +9300,14 @@ Object {
                 "end": 163,
                 "extendsClause": undefined,
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 24,
+                  "fullPos": 14,
+                  "kind": 26,
+                  "leadingIndent": 3,
+                  "pos": 18,
+                },
                 "pos": 18,
                 "slots": Array [
                   Object {
@@ -9554,6 +9570,14 @@ Object {
                   "pos": 191,
                 },
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 190,
+                  "fullPos": 180,
+                  "kind": 26,
+                  "leadingIndent": 3,
+                  "pos": 184,
+                },
                 "pos": 184,
                 "slots": Array [
                   Object {
@@ -9725,6 +9749,14 @@ Object {
                   "pos": 273,
                 },
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 272,
+                  "fullPos": 262,
+                  "kind": 26,
+                  "leadingIndent": 3,
+                  "pos": 266,
+                },
                 "pos": 266,
                 "slots": Array [
                   Object {
@@ -10108,6 +10140,14 @@ Object {
           "end": 181,
           "extendsClause": undefined,
           "kind": 50,
+          "objectToken": Object {
+            "__debugKind": "ObjectsKeyword",
+            "end": 16,
+            "fullPos": 9,
+            "kind": 26,
+            "leadingIndent": 0,
+            "pos": 10,
+          },
           "pos": 10,
           "slots": Array [
             Object {
@@ -10395,6 +10435,14 @@ Object {
                 "end": 727,
                 "extendsClause": undefined,
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 211,
+                  "fullPos": 201,
+                  "kind": 26,
+                  "leadingIndent": 3,
+                  "pos": 205,
+                },
                 "pos": 205,
                 "slots": Array [
                   Object {
@@ -14885,6 +14933,14 @@ Object {
                 "end": 2606,
                 "extendsClause": undefined,
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 892,
+                  "fullPos": 882,
+                  "kind": 26,
+                  "leadingIndent": 3,
+                  "pos": 886,
+                },
                 "pos": 886,
                 "slots": Array [
                   Object {
@@ -27175,6 +27231,14 @@ Object {
                 "end": 2606,
                 "extendsClause": undefined,
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 892,
+                  "fullPos": 882,
+                  "kind": 26,
+                  "leadingIndent": 3,
+                  "pos": 886,
+                },
                 "pos": 886,
                 "slots": Array [
                   Object {
@@ -38384,6 +38448,14 @@ Object {
                 "end": 1088,
                 "extendsClause": undefined,
                 "kind": 50,
+                "objectToken": Object {
+                  "__debugKind": "ObjectsKeyword",
+                  "end": 379,
+                  "fullPos": 369,
+                  "kind": 26,
+                  "leadingIndent": 3,
+                  "pos": 373,
+                },
                 "pos": 373,
                 "slots": Array [
                   Object {
