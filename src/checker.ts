@@ -504,9 +504,23 @@ export function createChecker(file: SourceFile, createBuiltinSymbol: (flag: Symb
     }
 
     function checkObjectsExpression(node: ObjectsExpression) {
+        let extendsType: ObjectType | undefined
+        if (node.extendsClause) {
+            const extType = checkExpression(node.extendsClause);
+            if (extType.kind === TypeKind.Object) {
+                extendsType = extType as ObjectType
+            } else if (extType.kind !== TypeKind.Null) {
+                addDiagnosticForNode(node.extendsClause, 'Extends clause must be an object type or null')
+            }
+        }
+
         const properties = new Map<string, Symbol>();
         const type = createObjectType(properties);
         typeCheckCache.set(node, type);
+
+        extendsType?.properties.forEach((propSymbol, propName) => {
+            properties.set(propName, propSymbol);
+        });
 
         node.slots.forEach(slot => {
             checkVariableSlotOrMethodSlot(slot);

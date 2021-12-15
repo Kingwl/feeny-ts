@@ -145,11 +145,11 @@ export class ObjectValue extends EnvValue {
     super();
 
     if (parent) {
-      if (!parent.isEnvValue()) {
+      if (!parent.isEnvValue() && !parent.isNull()) {
         throw new TypeError('Invalid extends');
       }
 
-      this._instanceEnv = new Environment(parent.env);
+      this._instanceEnv = new Environment(parent.isNull() ? undefined : parent.env);
     } else {
       this._instanceEnv = new Environment();
     }

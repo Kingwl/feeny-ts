@@ -74,3 +74,36 @@ bar.b.c
     });
   });
 });
+
+
+describe('Language service 3', () => {
+  const code = `
+var bar = object:
+    var a = 1
+    var b = object:
+        var c = 2
+
+var baz = object(bar):
+    var c = 2
+
+baz.a
+baz.b
+baz.b.c
+baz.c
+`;
+
+  const posList = [
+    code.indexOf(`baz.`),
+    code.indexOf(`baz.a`) + 'baz.'.length,
+    code.indexOf(`baz.b`) + 'baz.'.length,
+    code.indexOf(`baz.b.c`) + 'baz.b.'.length,
+    code.indexOf(`baz.c`) + 'baz.'.length
+  ];
+  const ls = createLanguageService(code);
+  posList.forEach(pos => {
+    const decl = ls.goToDefinition(pos);
+    it(`Definition of ${pos}`, () => {
+      expect(decl?.__debugText).toMatchSnapshot();
+    });
+  });
+});

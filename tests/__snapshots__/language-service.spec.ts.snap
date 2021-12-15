@@ -14,6 +14,16 @@ exports[`Language service 2 Definition of 81 1`] = `"b"`;
 
 exports[`Language service 2 Definition of 89 1`] = `"c"`;
 
+exports[`Language service 3 Definition of 110 1`] = `"baz"`;
+
+exports[`Language service 3 Definition of 114 1`] = `"a"`;
+
+exports[`Language service 3 Definition of 120 1`] = `"b"`;
+
+exports[`Language service 3 Definition of 128 1`] = `"c"`;
+
+exports[`Language service 3 Definition of 134 1`] = `"c"`;
+
 exports[`Language service Definition of 71 1`] = `"foo"`;
 
 exports[`Language service Definition of 77 1`] = `"bar"`;
