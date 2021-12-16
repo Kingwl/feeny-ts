@@ -149,7 +149,9 @@ export class ObjectValue extends EnvValue {
         throw new TypeError('Invalid extends');
       }
 
-      this._instanceEnv = new Environment(parent.isNull() ? undefined : parent.env);
+      this._instanceEnv = new Environment(
+        parent.isNull() ? undefined : parent.env
+      );
     } else {
       this._instanceEnv = new Environment();
     }

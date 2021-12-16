@@ -75,7 +75,6 @@ bar.b.c
   });
 });
 
-
 describe('Language service 3', () => {
   const code = `
 var bar = object:
